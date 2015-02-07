@@ -1,0 +1,569 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BA2AF35EB62163E6E2166FF5 /* libPods-Tomorrow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 12968796F3B1B36658164424 /* libPods-Tomorrow.a */; };
+		F0178D601A7421B600ED2795 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0178D5F1A7421B600ED2795 /* AppDelegate.swift */; };
+		F0178D681A7421B600ED2795 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0178D661A7421B600ED2795 /* Onboarding.storyboard */; };
+		F0178D6A1A7421B600ED2795 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0178D691A7421B600ED2795 /* Images.xcassets */; };
+		F0178D6D1A7421B600ED2795 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0178D6B1A7421B600ED2795 /* LaunchScreen.xib */; };
+		F0178D791A7421B600ED2795 /* TomorrowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0178D781A7421B600ED2795 /* TomorrowTests.swift */; };
+		F01AF94E1A742A4D0012D3F8 /* IGIOnboardTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AF94D1A742A4D0012D3F8 /* IGIOnboardTitleViewController.swift */; };
+		F01AF9501A742B610012D3F8 /* IGICustomerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AF94F1A742B610012D3F8 /* IGICustomerDetailsViewController.swift */; };
+		F01AF9521A742B930012D3F8 /* IGICustomerHelloViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AF9511A742B930012D3F8 /* IGICustomerHelloViewController.swift */; };
+		F01AF9541A742BB30012D3F8 /* IGITaskEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AF9531A742BB30012D3F8 /* IGITaskEntryViewController.swift */; };
+		F01AF9561A742BE50012D3F8 /* IGITaskReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AF9551A742BE50012D3F8 /* IGITaskReviewViewController.swift */; };
+		F01AF9581A742C0E0012D3F8 /* IGITimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AF9571A742C0E0012D3F8 /* IGITimelineViewController.swift */; };
+		F01AF95C1A743F510012D3F8 /* IGIBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AF95B1A743F510012D3F8 /* IGIBaseViewController.swift */; };
+		F01AF95F1A7440D70012D3F8 /* IGIGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AF95E1A7440D70012D3F8 /* IGIGradientView.swift */; };
+		F06B7DA81A868175007011FF /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F06B7DA71A868175007011FF /* Timeline.storyboard */; };
+		F07D40891A7ECF3500C0D91D /* icon-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = F07D40881A7ECF3500C0D91D /* icon-1024.png */; };
+		F09C5F331A7446F70033FF94 /* IGICircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C5F321A7446F70033FF94 /* IGICircularView.swift */; };
+		F09C5F411A7455DB0033FF94 /* IGIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C5F3E1A7455DB0033FF94 /* IGIButton.swift */; };
+		F09C5F421A7455DB0033FF94 /* IGILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C5F3F1A7455DB0033FF94 /* IGILabel.swift */; };
+		F09C5F431A7455DB0033FF94 /* IGIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C5F401A7455DB0033FF94 /* IGIView.swift */; };
+		F09C5F451A7468E90033FF94 /* IGITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C5F441A7468E90033FF94 /* IGITextField.swift */; };
+		F09C5F471A746BF30033FF94 /* IGIViewAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C5F461A746BF30033FF94 /* IGIViewAnimation.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F0178D731A7421B600ED2795 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F0178D521A7421B600ED2795 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F0178D591A7421B600ED2795;
+			remoteInfo = Tomorrow;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		12968796F3B1B36658164424 /* libPods-Tomorrow.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tomorrow.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		31AA9E225A194DF9F8CEC7B9 /* Pods-Tomorrow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tomorrow.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tomorrow/Pods-Tomorrow.release.xcconfig"; sourceTree = "<group>"; };
+		A8ABEEA44980A21935280464 /* Pods-Tomorrow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tomorrow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tomorrow/Pods-Tomorrow.debug.xcconfig"; sourceTree = "<group>"; };
+		F0178D5A1A7421B600ED2795 /* Tomorrow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tomorrow.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0178D5E1A7421B600ED2795 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0178D5F1A7421B600ED2795 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F0178D671A7421B600ED2795 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
+		F0178D691A7421B600ED2795 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F0178D6C1A7421B600ED2795 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		F0178D721A7421B600ED2795 /* Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_renameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_renameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0178D771A7421B600ED2795 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0178D781A7421B600ED2795 /* TomorrowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomorrowTests.swift; sourceTree = "<group>"; };
+		F01AF94D1A742A4D0012D3F8 /* IGIOnboardTitleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIOnboardTitleViewController.swift; sourceTree = "<group>"; };
+		F01AF94F1A742B610012D3F8 /* IGICustomerDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGICustomerDetailsViewController.swift; sourceTree = "<group>"; };
+		F01AF9511A742B930012D3F8 /* IGICustomerHelloViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGICustomerHelloViewController.swift; sourceTree = "<group>"; };
+		F01AF9531A742BB30012D3F8 /* IGITaskEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGITaskEntryViewController.swift; sourceTree = "<group>"; };
+		F01AF9551A742BE50012D3F8 /* IGITaskReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGITaskReviewViewController.swift; sourceTree = "<group>"; };
+		F01AF9571A742C0E0012D3F8 /* IGITimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGITimelineViewController.swift; sourceTree = "<group>"; };
+		F01AF95B1A743F510012D3F8 /* IGIBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIBaseViewController.swift; sourceTree = "<group>"; };
+		F01AF95E1A7440D70012D3F8 /* IGIGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIGradientView.swift; sourceTree = "<group>"; };
+		F06B7DA71A868175007011FF /* Timeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
+		F07D40881A7ECF3500C0D91D /* icon-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-1024.png"; sourceTree = "<group>"; };
+		F09C5F321A7446F70033FF94 /* IGICircularView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGICircularView.swift; sourceTree = "<group>"; };
+		F09C5F341A744B8F0033FF94 /* Tomorrow-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tomorrow-Bridging-Header.h"; sourceTree = "<group>"; };
+		F09C5F3E1A7455DB0033FF94 /* IGIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIButton.swift; sourceTree = "<group>"; };
+		F09C5F3F1A7455DB0033FF94 /* IGILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGILabel.swift; sourceTree = "<group>"; };
+		F09C5F401A7455DB0033FF94 /* IGIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIView.swift; sourceTree = "<group>"; };
+		F09C5F441A7468E90033FF94 /* IGITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGITextField.swift; sourceTree = "<group>"; };
+		F09C5F461A746BF30033FF94 /* IGIViewAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIViewAnimation.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F0178D571A7421B600ED2795 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA2AF35EB62163E6E2166FF5 /* libPods-Tomorrow.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0178D6F1A7421B600ED2795 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		03ABBB3F0D638317C14C38A9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A8ABEEA44980A21935280464 /* Pods-Tomorrow.debug.xcconfig */,
+				31AA9E225A194DF9F8CEC7B9 /* Pods-Tomorrow.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F0178D511A7421B600ED2795 = {
+			isa = PBXGroup;
+			children = (
+				F0178D5C1A7421B600ED2795 /* Tomorrow */,
+				F0178D751A7421B600ED2795 /* TomorrowTests */,
+				F0178D5B1A7421B600ED2795 /* Products */,
+				03ABBB3F0D638317C14C38A9 /* Pods */,
+				F1EF4EFA3FAA3C253B1D45AF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F0178D5B1A7421B600ED2795 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F0178D5A1A7421B600ED2795 /* Tomorrow.app */,
+				F0178D721A7421B600ED2795 /* Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_renameTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F0178D5C1A7421B600ED2795 /* Tomorrow */ = {
+			isa = PBXGroup;
+			children = (
+				F0178D661A7421B600ED2795 /* Onboarding.storyboard */,
+				F06B7DA71A868175007011FF /* Timeline.storyboard */,
+				F01AF95B1A743F510012D3F8 /* IGIBaseViewController.swift */,
+				F01AF94D1A742A4D0012D3F8 /* IGIOnboardTitleViewController.swift */,
+				F01AF94F1A742B610012D3F8 /* IGICustomerDetailsViewController.swift */,
+				F01AF9511A742B930012D3F8 /* IGICustomerHelloViewController.swift */,
+				F01AF9531A742BB30012D3F8 /* IGITaskEntryViewController.swift */,
+				F01AF9551A742BE50012D3F8 /* IGITaskReviewViewController.swift */,
+				F01AF9571A742C0E0012D3F8 /* IGITimelineViewController.swift */,
+				F0178D5F1A7421B600ED2795 /* AppDelegate.swift */,
+				F01AF95D1A7440BF0012D3F8 /* Supplementing Views */,
+				F0178D5D1A7421B600ED2795 /* Supporting Files */,
+			);
+			path = Tomorrow;
+			sourceTree = "<group>";
+		};
+		F0178D5D1A7421B600ED2795 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F07D40881A7ECF3500C0D91D /* icon-1024.png */,
+				F0178D6B1A7421B600ED2795 /* LaunchScreen.xib */,
+				F0178D691A7421B600ED2795 /* Images.xcassets */,
+				F09C5F341A744B8F0033FF94 /* Tomorrow-Bridging-Header.h */,
+				F0178D5E1A7421B600ED2795 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F0178D751A7421B600ED2795 /* TomorrowTests */ = {
+			isa = PBXGroup;
+			children = (
+				F0178D781A7421B600ED2795 /* TomorrowTests.swift */,
+				F0178D761A7421B600ED2795 /* Supporting Files */,
+			);
+			path = TomorrowTests;
+			sourceTree = "<group>";
+		};
+		F0178D761A7421B600ED2795 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F0178D771A7421B600ED2795 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F01AF95D1A7440BF0012D3F8 /* Supplementing Views */ = {
+			isa = PBXGroup;
+			children = (
+				F09C5F2F1A7445680033FF94 /* Segues */,
+				F01AF95E1A7440D70012D3F8 /* IGIGradientView.swift */,
+				F09C5F321A7446F70033FF94 /* IGICircularView.swift */,
+				F09C5F3E1A7455DB0033FF94 /* IGIButton.swift */,
+				F09C5F3F1A7455DB0033FF94 /* IGILabel.swift */,
+				F09C5F401A7455DB0033FF94 /* IGIView.swift */,
+				F09C5F441A7468E90033FF94 /* IGITextField.swift */,
+				F09C5F461A746BF30033FF94 /* IGIViewAnimation.swift */,
+			);
+			name = "Supplementing Views";
+			sourceTree = "<group>";
+		};
+		F09C5F2F1A7445680033FF94 /* Segues */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Segues;
+			sourceTree = "<group>";
+		};
+		F1EF4EFA3FAA3C253B1D45AF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				12968796F3B1B36658164424 /* libPods-Tomorrow.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F0178D591A7421B600ED2795 /* Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_rename */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0178D7C1A7421B600ED2795 /* Build configuration list for PBXNativeTarget "Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_rename" */;
+			buildPhases = (
+				E4CFBE00B25D6353386FBC9C /* Check Pods Manifest.lock */,
+				F0178D561A7421B600ED2795 /* Sources */,
+				F0178D571A7421B600ED2795 /* Frameworks */,
+				F0178D581A7421B600ED2795 /* Resources */,
+				A15CA3B1084A3C493168ACE5 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_rename;
+			productName = Tomorrow;
+			productReference = F0178D5A1A7421B600ED2795 /* Tomorrow.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F0178D711A7421B600ED2795 /* Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_renameTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0178D7F1A7421B600ED2795 /* Build configuration list for PBXNativeTarget "Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_renameTests" */;
+			buildPhases = (
+				F0178D6E1A7421B600ED2795 /* Sources */,
+				F0178D6F1A7421B600ED2795 /* Frameworks */,
+				F0178D701A7421B600ED2795 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F0178D741A7421B600ED2795 /* PBXTargetDependency */,
+			);
+			name = Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_renameTests;
+			productName = TomorrowTests;
+			productReference = F0178D721A7421B600ED2795 /* Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_renameTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F0178D521A7421B600ED2795 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = "David McGraw";
+				TargetAttributes = {
+					F0178D591A7421B600ED2795 = {
+						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = TS6V23BE8W;
+					};
+					F0178D711A7421B600ED2795 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = F0178D591A7421B600ED2795;
+					};
+				};
+			};
+			buildConfigurationList = F0178D551A7421B600ED2795 /* Build configuration list for PBXProject "Tomorrow" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F0178D511A7421B600ED2795;
+			productRefGroup = F0178D5B1A7421B600ED2795 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F0178D591A7421B600ED2795 /* Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_rename */,
+				F0178D711A7421B600ED2795 /* Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_renameTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F0178D581A7421B600ED2795 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0178D681A7421B600ED2795 /* Onboarding.storyboard in Resources */,
+				F07D40891A7ECF3500C0D91D /* icon-1024.png in Resources */,
+				F06B7DA81A868175007011FF /* Timeline.storyboard in Resources */,
+				F0178D6D1A7421B600ED2795 /* LaunchScreen.xib in Resources */,
+				F0178D6A1A7421B600ED2795 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0178D701A7421B600ED2795 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A15CA3B1084A3C493168ACE5 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tomorrow/Pods-Tomorrow-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4CFBE00B25D6353386FBC9C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F0178D561A7421B600ED2795 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F09C5F411A7455DB0033FF94 /* IGIButton.swift in Sources */,
+				F09C5F451A7468E90033FF94 /* IGITextField.swift in Sources */,
+				F01AF9581A742C0E0012D3F8 /* IGITimelineViewController.swift in Sources */,
+				F09C5F421A7455DB0033FF94 /* IGILabel.swift in Sources */,
+				F01AF95C1A743F510012D3F8 /* IGIBaseViewController.swift in Sources */,
+				F01AF9501A742B610012D3F8 /* IGICustomerDetailsViewController.swift in Sources */,
+				F01AF9541A742BB30012D3F8 /* IGITaskEntryViewController.swift in Sources */,
+				F0178D601A7421B600ED2795 /* AppDelegate.swift in Sources */,
+				F01AF9561A742BE50012D3F8 /* IGITaskReviewViewController.swift in Sources */,
+				F09C5F471A746BF30033FF94 /* IGIViewAnimation.swift in Sources */,
+				F01AF94E1A742A4D0012D3F8 /* IGIOnboardTitleViewController.swift in Sources */,
+				F09C5F331A7446F70033FF94 /* IGICircularView.swift in Sources */,
+				F09C5F431A7455DB0033FF94 /* IGIView.swift in Sources */,
+				F01AF95F1A7440D70012D3F8 /* IGIGradientView.swift in Sources */,
+				F01AF9521A742B930012D3F8 /* IGICustomerHelloViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0178D6E1A7421B600ED2795 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0178D791A7421B600ED2795 /* TomorrowTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F0178D741A7421B600ED2795 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F0178D591A7421B600ED2795 /* Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_rename */;
+			targetProxy = F0178D731A7421B600ED2795 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F0178D661A7421B600ED2795 /* Onboarding.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F0178D671A7421B600ED2795 /* Base */,
+			);
+			name = Onboarding.storyboard;
+			sourceTree = "<group>";
+		};
+		F0178D6B1A7421B600ED2795 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F0178D6C1A7421B600ED2795 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F0178D7A1A7421B600ED2795 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F0178D7B1A7421B600ED2795 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F0178D7D1A7421B600ED2795 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A8ABEEA44980A21935280464 /* Pods-Tomorrow.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Tomorrow/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = Tomorrow;
+				SWIFT_OBJC_BRIDGING_HEADER = "Tomorrow/Tomorrow-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F0178D7E1A7421B600ED2795 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31AA9E225A194DF9F8CEC7B9 /* Pods-Tomorrow.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Tomorrow/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = Tomorrow;
+				SWIFT_OBJC_BRIDGING_HEADER = "Tomorrow/Tomorrow-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		F0178D801A7421B600ED2795 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TomorrowTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_renameTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tomorrow.app/Tomorrow";
+			};
+			name = Debug;
+		};
+		F0178D811A7421B600ED2795 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TomorrowTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_renameTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tomorrow.app/Tomorrow";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F0178D551A7421B600ED2795 /* Build configuration list for PBXProject "Tomorrow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0178D7A1A7421B600ED2795 /* Debug */,
+				F0178D7B1A7421B600ED2795 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F0178D7C1A7421B600ED2795 /* Build configuration list for PBXNativeTarget "Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_rename" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0178D7D1A7421B600ED2795 /* Debug */,
+				F0178D7E1A7421B600ED2795 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F0178D7F1A7421B600ED2795 /* Build configuration list for PBXNativeTarget "Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_renameTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0178D801A7421B600ED2795 /* Debug */,
+				F0178D811A7421B600ED2795 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F0178D521A7421B600ED2795 /* Project object */;
+}
