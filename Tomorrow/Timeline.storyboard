@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6750" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6750" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PLr-UF-NQQ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
     </dependencies>
@@ -20,10 +20,29 @@
             </objects>
             <point key="canvasLocation" x="208" y="460"/>
         </scene>
-        <!--View Controller-->
+        <!--Timeline View Controller-->
+        <scene sceneID="uLZ-sP-yXI">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="bhZ-jI-aIf" customClass="IGITimelineViewController" customModule="Tomorrow" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="49N-8c-Cag"/>
+                        <viewControllerLayoutGuide type="bottom" id="U2y-el-c4f"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="C43-Cf-Ic8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oap-hn-pi9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1637" y="460"/>
+        </scene>
+        <!--Base View Controller-->
         <scene sceneID="HjP-fZ-dpa">
             <objects>
-                <viewController id="zZn-H0-Bzr" sceneMemberID="viewController">
+                <viewController id="zZn-H0-Bzr" customClass="IGIBaseViewController" customModule="Tomorrow" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9Ll-Hg-taD"/>
                         <viewControllerLayoutGuide type="bottom" id="Kan-Rw-s3G"/>
@@ -31,13 +50,39 @@
                     <view key="view" contentMode="scaleToFill" id="Ci6-25-mUH">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background5" translatesAutoresizingMaskIntoConstraints="NO" id="ohP-gK-7G0" userLabel="Background Image">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <view alpha="0.80000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q9R-eg-5wV" userLabel="Gradient Overlay" customClass="IGIGradientView" customModule="Tomorrow" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Kan-Rw-s3G" firstAttribute="top" secondItem="ohP-gK-7G0" secondAttribute="bottom" id="BFB-to-1xY"/>
+                            <constraint firstItem="ohP-gK-7G0" firstAttribute="top" secondItem="Ci6-25-mUH" secondAttribute="top" id="BwX-MN-Ayv"/>
+                            <constraint firstItem="Kan-Rw-s3G" firstAttribute="top" secondItem="q9R-eg-5wV" secondAttribute="bottom" id="CwR-m0-Iel"/>
+                            <constraint firstItem="ohP-gK-7G0" firstAttribute="leading" secondItem="Ci6-25-mUH" secondAttribute="leading" id="Cwv-cP-j1l"/>
+                            <constraint firstItem="q9R-eg-5wV" firstAttribute="leading" secondItem="Ci6-25-mUH" secondAttribute="leading" id="EQl-KM-MCd"/>
+                            <constraint firstAttribute="trailing" secondItem="q9R-eg-5wV" secondAttribute="trailing" id="hMI-Mb-rVj"/>
+                            <constraint firstAttribute="trailing" secondItem="ohP-gK-7G0" secondAttribute="trailing" id="jMP-w5-MEP"/>
+                            <constraint firstItem="q9R-eg-5wV" firstAttribute="top" secondItem="Ci6-25-mUH" secondAttribute="top" id="zgI-nv-KzL"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fWI-ee-iWV"/>
+                    <connections>
+                        <outlet property="currentGradient" destination="q9R-eg-5wV" id="wWl-Ej-V1Q"/>
+                        <segue destination="bhZ-jI-aIf" kind="presentation" identifier="timelineSegue" id="Ro7-yq-PZE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UxW-3g-bAt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="927" y="460"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background5" width="466" height="736"/>
+    </resources>
 </document>

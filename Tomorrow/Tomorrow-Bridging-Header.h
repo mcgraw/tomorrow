@@ -3,3 +3,6 @@
 //
 
 #import <pop/POP.h>
+
+#import <Shimmer/FBShimmering.h>
+#import <Shimmer/FBShimmeringView.h>

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BA2AF35EB62163E6E2166FF5 /* libPods-Tomorrow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 12968796F3B1B36658164424 /* libPods-Tomorrow.a */; };
+		8EB6098900D858F687DBE4FE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D19D1E513F2332275F65E411 /* libPods.a */; };
 		F0178D601A7421B600ED2795 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0178D5F1A7421B600ED2795 /* AppDelegate.swift */; };
 		F0178D681A7421B600ED2795 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0178D661A7421B600ED2795 /* Onboarding.storyboard */; };
 		F0178D6A1A7421B600ED2795 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0178D691A7421B600ED2795 /* Images.xcassets */; };
@@ -22,6 +22,7 @@
 		F01AF95C1A743F510012D3F8 /* IGIBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AF95B1A743F510012D3F8 /* IGIBaseViewController.swift */; };
 		F01AF95F1A7440D70012D3F8 /* IGIGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AF95E1A7440D70012D3F8 /* IGIGradientView.swift */; };
 		F06B7DA81A868175007011FF /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F06B7DA71A868175007011FF /* Timeline.storyboard */; };
+		F078BFB41A868DCB0095A518 /* IGITimelineNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F078BFB31A868DCB0095A518 /* IGITimelineNodeView.swift */; };
 		F07D40891A7ECF3500C0D91D /* icon-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = F07D40881A7ECF3500C0D91D /* icon-1024.png */; };
 		F09C5F331A7446F70033FF94 /* IGICircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C5F321A7446F70033FF94 /* IGICircularView.swift */; };
 		F09C5F411A7455DB0033FF94 /* IGIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C5F3E1A7455DB0033FF94 /* IGIButton.swift */; };
@@ -29,6 +30,7 @@
 		F09C5F431A7455DB0033FF94 /* IGIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C5F401A7455DB0033FF94 /* IGIView.swift */; };
 		F09C5F451A7468E90033FF94 /* IGITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C5F441A7468E90033FF94 /* IGITextField.swift */; };
 		F09C5F471A746BF30033FF94 /* IGIViewAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C5F461A746BF30033FF94 /* IGIViewAnimation.swift */; };
+		F0D1F20C1A86E895009CAB50 /* IGILoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D1F20B1A86E895009CAB50 /* IGILoremIpsum.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,8 +45,9 @@
 
 /* Begin PBXFileReference section */
 		12968796F3B1B36658164424 /* libPods-Tomorrow.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tomorrow.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		31AA9E225A194DF9F8CEC7B9 /* Pods-Tomorrow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tomorrow.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tomorrow/Pods-Tomorrow.release.xcconfig"; sourceTree = "<group>"; };
-		A8ABEEA44980A21935280464 /* Pods-Tomorrow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tomorrow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tomorrow/Pods-Tomorrow.debug.xcconfig"; sourceTree = "<group>"; };
+		60C6AB8AC9A6EF8D8A003DFF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B2A7DCE0DECA9C9019E9FBB5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D19D1E513F2332275F65E411 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0178D5A1A7421B600ED2795 /* Tomorrow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tomorrow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0178D5E1A7421B600ED2795 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0178D5F1A7421B600ED2795 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +66,7 @@
 		F01AF95B1A743F510012D3F8 /* IGIBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIBaseViewController.swift; sourceTree = "<group>"; };
 		F01AF95E1A7440D70012D3F8 /* IGIGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIGradientView.swift; sourceTree = "<group>"; };
 		F06B7DA71A868175007011FF /* Timeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
+		F078BFB31A868DCB0095A518 /* IGITimelineNodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGITimelineNodeView.swift; sourceTree = "<group>"; };
 		F07D40881A7ECF3500C0D91D /* icon-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-1024.png"; sourceTree = "<group>"; };
 		F09C5F321A7446F70033FF94 /* IGICircularView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGICircularView.swift; sourceTree = "<group>"; };
 		F09C5F341A744B8F0033FF94 /* Tomorrow-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tomorrow-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -71,6 +75,7 @@
 		F09C5F401A7455DB0033FF94 /* IGIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIView.swift; sourceTree = "<group>"; };
 		F09C5F441A7468E90033FF94 /* IGITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGITextField.swift; sourceTree = "<group>"; };
 		F09C5F461A746BF30033FF94 /* IGIViewAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIViewAnimation.swift; sourceTree = "<group>"; };
+		F0D1F20B1A86E895009CAB50 /* IGILoremIpsum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGILoremIpsum.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA2AF35EB62163E6E2166FF5 /* libPods-Tomorrow.a in Frameworks */,
+				8EB6098900D858F687DBE4FE /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,8 +100,8 @@
 		03ABBB3F0D638317C14C38A9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A8ABEEA44980A21935280464 /* Pods-Tomorrow.debug.xcconfig */,
-				31AA9E225A194DF9F8CEC7B9 /* Pods-Tomorrow.release.xcconfig */,
+				B2A7DCE0DECA9C9019E9FBB5 /* Pods.debug.xcconfig */,
+				60C6AB8AC9A6EF8D8A003DFF /* Pods.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -134,6 +139,7 @@
 				F01AF9551A742BE50012D3F8 /* IGITaskReviewViewController.swift */,
 				F01AF9571A742C0E0012D3F8 /* IGITimelineViewController.swift */,
 				F0178D5F1A7421B600ED2795 /* AppDelegate.swift */,
+				F0D1F20A1A86E84C009CAB50 /* Model */,
 				F01AF95D1A7440BF0012D3F8 /* Supplementing Views */,
 				F0178D5D1A7421B600ED2795 /* Supporting Files */,
 			);
@@ -180,6 +186,7 @@
 				F09C5F401A7455DB0033FF94 /* IGIView.swift */,
 				F09C5F441A7468E90033FF94 /* IGITextField.swift */,
 				F09C5F461A746BF30033FF94 /* IGIViewAnimation.swift */,
+				F078BFB31A868DCB0095A518 /* IGITimelineNodeView.swift */,
 			);
 			name = "Supplementing Views";
 			sourceTree = "<group>";
@@ -191,10 +198,19 @@
 			name = Segues;
 			sourceTree = "<group>";
 		};
+		F0D1F20A1A86E84C009CAB50 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F0D1F20B1A86E895009CAB50 /* IGILoremIpsum.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		F1EF4EFA3FAA3C253B1D45AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				12968796F3B1B36658164424 /* libPods-Tomorrow.a */,
+				D19D1E513F2332275F65E411 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -202,9 +218,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F0178D591A7421B600ED2795 /* Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_rename */ = {
+		F0178D591A7421B600ED2795 /* Tomorrow */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F0178D7C1A7421B600ED2795 /* Build configuration list for PBXNativeTarget "Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_rename" */;
+			buildConfigurationList = F0178D7C1A7421B600ED2795 /* Build configuration list for PBXNativeTarget "Tomorrow" */;
 			buildPhases = (
 				E4CFBE00B25D6353386FBC9C /* Check Pods Manifest.lock */,
 				F0178D561A7421B600ED2795 /* Sources */,
@@ -216,14 +232,14 @@
 			);
 			dependencies = (
 			);
-			name = Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_rename;
+			name = Tomorrow;
 			productName = Tomorrow;
 			productReference = F0178D5A1A7421B600ED2795 /* Tomorrow.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F0178D711A7421B600ED2795 /* Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_renameTests */ = {
+		F0178D711A7421B600ED2795 /* TomorrowTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F0178D7F1A7421B600ED2795 /* Build configuration list for PBXNativeTarget "Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_renameTests" */;
+			buildConfigurationList = F0178D7F1A7421B600ED2795 /* Build configuration list for PBXNativeTarget "TomorrowTests" */;
 			buildPhases = (
 				F0178D6E1A7421B600ED2795 /* Sources */,
 				F0178D6F1A7421B600ED2795 /* Frameworks */,
@@ -234,7 +250,7 @@
 			dependencies = (
 				F0178D741A7421B600ED2795 /* PBXTargetDependency */,
 			);
-			name = Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_renameTests;
+			name = TomorrowTests;
 			productName = TomorrowTests;
 			productReference = F0178D721A7421B600ED2795 /* Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_renameTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -271,8 +287,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F0178D591A7421B600ED2795 /* Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_rename */,
-				F0178D711A7421B600ED2795 /* Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_renameTests */,
+				F0178D591A7421B600ED2795 /* Tomorrow */,
+				F0178D711A7421B600ED2795 /* TomorrowTests */,
 			);
 		};
 /* End PBXProject section */
@@ -312,7 +328,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tomorrow/Pods-Tomorrow-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E4CFBE00B25D6353386FBC9C /* Check Pods Manifest.lock */ = {
@@ -337,9 +353,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0D1F20C1A86E895009CAB50 /* IGILoremIpsum.swift in Sources */,
 				F09C5F411A7455DB0033FF94 /* IGIButton.swift in Sources */,
 				F09C5F451A7468E90033FF94 /* IGITextField.swift in Sources */,
 				F01AF9581A742C0E0012D3F8 /* IGITimelineViewController.swift in Sources */,
+				F078BFB41A868DCB0095A518 /* IGITimelineNodeView.swift in Sources */,
 				F09C5F421A7455DB0033FF94 /* IGILabel.swift in Sources */,
 				F01AF95C1A743F510012D3F8 /* IGIBaseViewController.swift in Sources */,
 				F01AF9501A742B610012D3F8 /* IGICustomerDetailsViewController.swift in Sources */,
@@ -368,7 +386,7 @@
 /* Begin PBXTargetDependency section */
 		F0178D741A7421B600ED2795 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F0178D591A7421B600ED2795 /* Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_rename */;
+			target = F0178D591A7421B600ED2795 /* Tomorrow */;
 			targetProxy = F0178D731A7421B600ED2795 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -472,9 +490,10 @@
 		};
 		F0178D7D1A7421B600ED2795 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A8ABEEA44980A21935280464 /* Pods-Tomorrow.debug.xcconfig */;
+			baseConfigurationReference = B2A7DCE0DECA9C9019E9FBB5 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Tomorrow/Info.plist;
@@ -487,9 +506,10 @@
 		};
 		F0178D7E1A7421B600ED2795 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 31AA9E225A194DF9F8CEC7B9 /* Pods-Tomorrow.release.xcconfig */;
+			baseConfigurationReference = 60C6AB8AC9A6EF8D8A003DFF /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Tomorrow/Info.plist;
@@ -545,7 +565,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F0178D7C1A7421B600ED2795 /* Build configuration list for PBXNativeTarget "Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_rename" */ = {
+		F0178D7C1A7421B600ED2795 /* Build configuration list for PBXNativeTarget "Tomorrow" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F0178D7D1A7421B600ED2795 /* Debug */,
@@ -554,7 +574,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F0178D7F1A7421B600ED2795 /* Build configuration list for PBXNativeTarget "Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_renameTests" */ = {
+		F0178D7F1A7421B600ED2795 /* Build configuration list for PBXNativeTarget "TomorrowTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F0178D801A7421B600ED2795 /* Debug */,
