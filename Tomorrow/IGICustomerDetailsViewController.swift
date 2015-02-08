@@ -22,6 +22,26 @@ class IGICustomerDetailsViewController: UIViewController, UITextFieldDelegate {
     var selectedGender: IGIGender = .Unspecified
     var accessoryView: UIView?
     
+    var userObject: IGIUser?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // We only want to worry about one user object on the device
+        RLMRealm.defaultRealm().beginWriteTransaction()
+        let users = IGIUser.allObjects()
+        if users.count == 0 {
+            userObject = IGIUser()
+            userObject?.userId = 1
+            IGIUser.createOrUpdateInDefaultRealmWithObject(userObject)
+        } else {
+            userObject = users[0] as? IGIUser
+        }
+        RLMRealm.defaultRealm().commitWriteTransaction()
+        
+        println(RLMRealm.defaultRealm().path)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -64,6 +84,11 @@ class IGICustomerDetailsViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func toggleMaleAction(sender: AnyObject) {
+        RLMRealm.defaultRealm().beginWriteTransaction()
+        userObject?.gender = "male"
+        IGIUser.createOrUpdateInDefaultRealmWithObject(userObject)
+        RLMRealm.defaultRealm().commitWriteTransaction()
+        
         maleAction.updateColor(UIColor(red:0.18, green:0.67, blue:0.82, alpha:1), fill: UIColor(red:0.18, green:0.67, blue:0.82, alpha:0.2))
         femaleAction.updateColor(UIColor.whiteColor(), fill: UIColor.clearColor())
         selectedGender = .Female
@@ -72,6 +97,11 @@ class IGICustomerDetailsViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func toggleFemaleAction(sender: AnyObject) {
+        RLMRealm.defaultRealm().beginWriteTransaction()
+        userObject?.gender = "female"
+        IGIUser.createOrUpdateInDefaultRealmWithObject(userObject)
+        RLMRealm.defaultRealm().commitWriteTransaction()
+        
         maleAction.updateColor(UIColor.whiteColor(), fill: UIColor.clearColor())
         femaleAction.updateColor(UIColor(red:0.82, green:0.18, blue:0.73, alpha:1), fill: UIColor(red:0.82, green:0.18, blue:0.73, alpha:0.2))
         selectedGender = .Female
@@ -111,8 +141,14 @@ class IGICustomerDetailsViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         inputField.enabled = false
         
-        NSUserDefaults.standardUserDefaults().setObject(textField.text, forKey: "name")
-        NSUserDefaults.standardUserDefaults().synchronize()
+        RLMRealm.defaultRealm().beginWriteTransaction()
+        
+        if let name = textField.text {
+            userObject?.firstName = name
+        }
+        
+        IGIUser.createOrUpdateInDefaultRealmWithObject(userObject)
+        RLMRealm.defaultRealm().commitWriteTransaction()
         
         playDismissAnimation()
         

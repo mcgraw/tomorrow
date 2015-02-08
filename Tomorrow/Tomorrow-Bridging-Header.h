@@ -8,3 +8,5 @@
 #import <Shimmer/FBShimmeringView.h>
 
 #import <PureLayout/PureLayout.h>
+
+#import <Realm/Realm.h>

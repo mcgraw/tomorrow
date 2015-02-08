@@ -11,6 +11,7 @@ import UIKit
 class IGIButton: UIButton, POPAnimationDelegate {
     
     @IBOutlet weak var layoutConstraint: NSLayoutConstraint?
+    @IBOutlet weak var spacingConstraint: NSLayoutConstraint?
     
     weak var viewToReveal: UIView?
     
@@ -25,6 +26,34 @@ class IGIButton: UIButton, POPAnimationDelegate {
     func updateColor(border: UIColor, fill: UIColor) {
         layer.borderColor = border.CGColor
         backgroundColor = fill
+    }
+    
+    // MARK: Jump Button Animation
+    
+    func jumpAnimationToConstant(constant: Int, delayStart: Double) {
+        // sink into the screen, anticipate the jump
+        let sink = POPBasicAnimation(propertyNamed: kPOPLayerScaleXY)
+        sink.toValue = NSValue(CGPoint: CGPointMake(0.95, 0.95))
+        sink.beginTime = CACurrentMediaTime() + delayStart
+        layer.pop_addAnimation(sink, forKey: "sink")
+        
+        // scale up, jump!
+        let jump = POPSpringAnimation(propertyNamed: kPOPLayerScaleXY)
+        jump.toValue = NSValue(CGPoint: CGPointMake(1.8, 1.8))
+        jump.beginTime = CACurrentMediaTime() + delayStart + 0.2
+        layer.pop_addAnimation(jump, forKey: "jump")
+        
+        let move = POPBasicAnimation(propertyNamed: kPOPLayoutConstraintConstant)
+        move.toValue = constant
+        move.beginTime = CACurrentMediaTime() + delayStart + 0.2
+        move.duration = 0.8
+        layoutConstraint?.pop_addAnimation(move, forKey: "move")
+        
+        // move to the top of the screen
+        let fall = POPSpringAnimation(propertyNamed: kPOPLayerScaleXY)
+        fall.toValue = NSValue(CGPoint: CGPointMake(1.0, 1.0))
+        fall.beginTime = CACurrentMediaTime() + delayStart + 0.45
+        layer.pop_addAnimation(fall, forKey: "fall")
     }
     
     // MARK: Reveal

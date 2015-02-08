@@ -21,6 +21,7 @@ class IGICustomerHelloViewController: UIViewController, POPAnimationDelegate {
     
     @IBOutlet weak var topThree: IGILabel!
     
+    var userObject: IGIUser?
     var step = 0
     
     override func viewDidLoad() {
@@ -32,8 +33,20 @@ class IGICustomerHelloViewController: UIViewController, POPAnimationDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        var name: String = NSUserDefaults.standardUserDefaults().objectForKey("name") as String
-        titleLabel.text = "Hello, \(name)"
+        let users = IGIUser.allObjects()
+        if users.count > 0 {
+            userObject = users[0] as? IGIUser
+        } else {
+            assertionFailure("No users found!")
+        }
+    
+        // user object should not be nil!
+        if userObject!.firstName == "" {
+            titleLabel.text = "Hello!"
+        } else {
+            var name = userObject!.firstName
+            titleLabel.text = "Hello, \(name)"
+        }
     }
     
     override func viewDidAppear(animated: Bool) {

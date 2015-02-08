@@ -28,9 +28,12 @@ class IGIBaseViewController: UIViewController {
         super.viewWillAppear(animated)
     
         // if we've onboarded, the base controller should load the timeline
-//        performSegueWithIdentifier("onboardTitleSegue", sender: self)
-        
-        performSegueWithIdentifier("timelineSegue", sender: self)
+        let users = IGIUser.allObjects()
+        if users.count == 0 {
+            performSegueWithIdentifier("onboardTitleSegue", sender: self)
+        } else {
+            performSegueWithIdentifier("timelineSegue", sender: self)
+        }
     }
     
     // MARK: Notification

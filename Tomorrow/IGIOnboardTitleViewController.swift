@@ -15,7 +15,7 @@ class IGIOnboardTitleViewController: UIViewController {
     @IBOutlet weak var continueAction: IGIButton!
     
     var hasPlayedAnimation = false
-    
+        
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         

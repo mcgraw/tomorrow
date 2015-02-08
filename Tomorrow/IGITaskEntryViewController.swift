@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum IGITaskStatus: Int {
+enum IGITaskEntryStatus: Int {
     case Task1, Task2, Task3, Done
 }
 
@@ -17,12 +17,29 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var titleLabel: IGILabel!
     @IBOutlet weak var inputField: IGITextField!
     
-    var status: IGITaskStatus = .Task1
+    var status: IGITaskEntryStatus = .Task1
+    
+    var userObject: IGIUser?
+    var userGoal: IGIGoal?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.clearColor()
+        
+        let users = IGIUser.allObjects()
+        if users.count > 0 {
+            userObject = users[0] as? IGIUser
+            
+            RLMRealm.defaultRealm().beginWriteTransaction()
+            userGoal = IGIGoal()
+            userGoal?.user = userObject
+            userObject?.goals.addObject(userGoal)
+            IGIUser.createOrUpdateInDefaultRealmWithObject(userObject)
+            RLMRealm.defaultRealm().commitWriteTransaction()
+        } else {
+            assertionFailure("Something went wrong! User does not exist so we cannot add taskss!")
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -60,18 +77,25 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         playDismissAnimation()
         
+        RLMRealm.defaultRealm().beginWriteTransaction()
         if status == .Task1 {
-            NSUserDefaults.standardUserDefaults().setObject(textField.text, forKey: "task1")
+            let task = IGITask()
+            task.name = textField.text
+            userGoal?.tasks.addObject(task)
             status = .Task2
         } else if status == .Task2 {
-            NSUserDefaults.standardUserDefaults().setObject(textField.text, forKey: "task2")
+            let task = IGITask()
+            task.name = textField.text
+            userGoal?.tasks.addObject(task)
             status = .Task3
         } else if status == .Task3 {
-            NSUserDefaults.standardUserDefaults().setObject(textField.text, forKey: "task3")
+            let task = IGITask()
+            task.name = textField.text
+            userGoal?.tasks.addObject(task)
             status = .Done
         }
+        RLMRealm.defaultRealm().commitWriteTransaction()
         
-        NSUserDefaults.standardUserDefaults().synchronize()
         NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "advanceOnboarding", userInfo: nil, repeats: false)
         return true
     }

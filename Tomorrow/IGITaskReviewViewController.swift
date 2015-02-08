@@ -18,26 +18,63 @@ class IGITaskReviewViewController: UIViewController {
     
     @IBOutlet weak var completeAction: IGIButton!
     @IBOutlet weak var info: IGILabel!
+    
+    var userObject: IGIUser?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.clearColor()
+        
+        let users = IGIUser.allObjects()
+        if users.count > 0 {
+            userObject = users[0] as? IGIUser
+        } else {
+            assertionFailure("Something went wrong! User does not exist so we cannot add taskss!")
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        // TODO: replace with model
-        task1.setTitle(NSUserDefaults.standardUserDefaults().objectForKey("task1") as String!, forState: UIControlState.Normal)
-        task2.setTitle(NSUserDefaults.standardUserDefaults().objectForKey("task2") as String!, forState: UIControlState.Normal)
-        task3.setTitle(NSUserDefaults.standardUserDefaults().objectForKey("task3") as String!, forState: UIControlState.Normal)
+        // Should only have one goal during onboarding...
+        let goals: IGIGoal = userObject?.goals.firstObject() as IGIGoal
+        
+        var index = 0
+        for item in goals.tasks {
+            var task = item as IGITask
+            if index == 0 {
+                task1.setTitle(task.name, forState: UIControlState.Normal)
+            } else if index == 1 {
+                task2.setTitle(task.name, forState: UIControlState.Normal)
+            } else if index == 2 {
+                task3.setTitle(task.name, forState: UIControlState.Normal)
+            }
+            index++
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
                 
         playIntroductionAnimation()
+    }
+    
+    @IBAction func completeActionPressed(sender: AnyObject) {
+        UIView.animateWithDuration(0.4, animations: {
+            self.titleLabel.alpha = 0.0
+            self.completeAction.alpha = 0.0
+            self.info.alpha = 0.0
+        })
+        
+        // Remove spacing constraints so they don't interfere with our animation
+        view.removeConstraint(task1.spacingConstraint!)
+        view.removeConstraint(task3.spacingConstraint!)
+        
+        // Jump the tasks before transitioning to the timeline
+        task1.jumpAnimationToConstant(500, delayStart: 0)
+        task2.jumpAnimationToConstant(500, delayStart: 0.3)
+        task3.jumpAnimationToConstant(500, delayStart: 0.6)
     }
     
     // MARK: Animation

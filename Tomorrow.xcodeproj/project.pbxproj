@@ -31,6 +31,10 @@
 		F09C5F451A7468E90033FF94 /* IGITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C5F441A7468E90033FF94 /* IGITextField.swift */; };
 		F09C5F471A746BF30033FF94 /* IGIViewAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C5F461A746BF30033FF94 /* IGIViewAnimation.swift */; };
 		F0D1F20C1A86E895009CAB50 /* IGILoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D1F20B1A86E895009CAB50 /* IGILoremIpsum.swift */; };
+		F0D1F20F1A87250A009CAB50 /* IGIUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D1F20E1A87250A009CAB50 /* IGIUser.swift */; };
+		F0D1F2111A872877009CAB50 /* IGITask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D1F2101A872877009CAB50 /* IGITask.swift */; };
+		F0D1F2131A872997009CAB50 /* IGIGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D1F2121A872997009CAB50 /* IGIGoal.swift */; };
+		F0D1F2151A8731A0009CAB50 /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D1F2141A8731A0009CAB50 /* RLMSupport.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +80,10 @@
 		F09C5F441A7468E90033FF94 /* IGITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGITextField.swift; sourceTree = "<group>"; };
 		F09C5F461A746BF30033FF94 /* IGIViewAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIViewAnimation.swift; sourceTree = "<group>"; };
 		F0D1F20B1A86E895009CAB50 /* IGILoremIpsum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGILoremIpsum.swift; sourceTree = "<group>"; };
+		F0D1F20E1A87250A009CAB50 /* IGIUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIUser.swift; sourceTree = "<group>"; };
+		F0D1F2101A872877009CAB50 /* IGITask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGITask.swift; sourceTree = "<group>"; };
+		F0D1F2121A872997009CAB50 /* IGIGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIGoal.swift; sourceTree = "<group>"; };
+		F0D1F2141A8731A0009CAB50 /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +157,7 @@
 		F0178D5D1A7421B600ED2795 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F0D1F2141A8731A0009CAB50 /* RLMSupport.swift */,
 				F07D40881A7ECF3500C0D91D /* icon-1024.png */,
 				F0178D6B1A7421B600ED2795 /* LaunchScreen.xib */,
 				F0178D691A7421B600ED2795 /* Images.xcassets */,
@@ -201,6 +210,9 @@
 		F0D1F20A1A86E84C009CAB50 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F0D1F20E1A87250A009CAB50 /* IGIUser.swift */,
+				F0D1F2121A872997009CAB50 /* IGIGoal.swift */,
+				F0D1F2101A872877009CAB50 /* IGITask.swift */,
 				F0D1F20B1A86E895009CAB50 /* IGILoremIpsum.swift */,
 			);
 			name = Model;
@@ -353,19 +365,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0D1F2131A872997009CAB50 /* IGIGoal.swift in Sources */,
 				F0D1F20C1A86E895009CAB50 /* IGILoremIpsum.swift in Sources */,
 				F09C5F411A7455DB0033FF94 /* IGIButton.swift in Sources */,
 				F09C5F451A7468E90033FF94 /* IGITextField.swift in Sources */,
 				F01AF9581A742C0E0012D3F8 /* IGITimelineViewController.swift in Sources */,
+				F0D1F20F1A87250A009CAB50 /* IGIUser.swift in Sources */,
 				F078BFB41A868DCB0095A518 /* IGITimelineNodeView.swift in Sources */,
 				F09C5F421A7455DB0033FF94 /* IGILabel.swift in Sources */,
 				F01AF95C1A743F510012D3F8 /* IGIBaseViewController.swift in Sources */,
 				F01AF9501A742B610012D3F8 /* IGICustomerDetailsViewController.swift in Sources */,
 				F01AF9541A742BB30012D3F8 /* IGITaskEntryViewController.swift in Sources */,
+				F0D1F2111A872877009CAB50 /* IGITask.swift in Sources */,
 				F0178D601A7421B600ED2795 /* AppDelegate.swift in Sources */,
 				F01AF9561A742BE50012D3F8 /* IGITaskReviewViewController.swift in Sources */,
 				F09C5F471A746BF30033FF94 /* IGIViewAnimation.swift in Sources */,
 				F01AF94E1A742A4D0012D3F8 /* IGIOnboardTitleViewController.swift in Sources */,
+				F0D1F2151A8731A0009CAB50 /* RLMSupport.swift in Sources */,
 				F09C5F331A7446F70033FF94 /* IGICircularView.swift in Sources */,
 				F09C5F431A7455DB0033FF94 /* IGIView.swift in Sources */,
 				F01AF95F1A7440D70012D3F8 /* IGIGradientView.swift in Sources */,

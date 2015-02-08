@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6750" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IL9-hW-VOs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6750" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TRo-zP-ROM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -34,7 +34,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="T" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="se7-4W-fRO">
                                         <rect key="frame" x="0.0" y="6" width="100" height="94"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="78"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="78"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -364,38 +364,53 @@
                                 </connections>
                             </label>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FpJ-eP-E0o" customClass="IGIButton" customModule="Tomorrow" customModuleProvider="target">
-                                <rect key="frame" x="254" y="168" width="94" height="58"/>
+                                <rect key="frame" x="253" y="168" width="94" height="58"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="33"/>
                                 <state key="normal" title="Task 1">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="completeActionPressed:" destination="TRo-zP-ROM" eventType="touchUpInside" id="JnB-2q-qX7"/>
+                                    <outlet property="layoutConstraint" destination="eM4-gt-ZDA" id="sOe-ax-DkM"/>
+                                    <outlet property="spacingConstraint" destination="HmN-1s-w9r" id="Uck-NC-zef"/>
+                                </connections>
                             </button>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikm-70-v1R" customClass="IGIButton" customModule="Tomorrow" customModuleProvider="target">
-                                <rect key="frame" x="254" y="251" width="94" height="58"/>
+                                <rect key="frame" x="253" y="251" width="94" height="58"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="33"/>
                                 <state key="normal" title="Task 2">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <outlet property="layoutConstraint" destination="52j-vm-uMO" id="9iR-5I-I6A"/>
+                                </connections>
                             </button>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffr-Rk-CF4" customClass="IGIButton" customModule="Tomorrow" customModuleProvider="target">
-                                <rect key="frame" x="254" y="334" width="94" height="58"/>
+                                <rect key="frame" x="253" y="334" width="94" height="58"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="33"/>
                                 <state key="normal" title="Task 3">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <outlet property="layoutConstraint" destination="px6-cr-g0f" id="13c-CS-SaC"/>
+                                    <outlet property="spacingConstraint" destination="xa3-wO-MGs" id="gNY-w4-Ezo"/>
+                                </connections>
                             </button>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geZ-9j-X2I" customClass="IGIButton" customModule="Tomorrow" customModuleProvider="target">
-                                <rect key="frame" x="227" y="502" width="148" height="58"/>
+                                <rect key="frame" x="226" y="502" width="148" height="58"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="33"/>
                                 <state key="normal" title="Complete">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="continueActionPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Eqo-u1-kIk"/>
+                                    <action selector="completeActionPressed:" destination="TRo-zP-ROM" eventType="touchUpInside" id="bna-69-nSV"/>
                                     <outlet property="layoutConstraint" destination="IBw-8H-bhC" id="CDc-Go-eV3"/>
                                 </connections>
                             </button>
@@ -411,17 +426,19 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ikm-70-v1R" firstAttribute="top" secondItem="FpJ-eP-E0o" secondAttribute="bottom" constant="25" id="4dx-ii-Lh4"/>
                             <constraint firstAttribute="centerY" secondItem="ikm-70-v1R" secondAttribute="centerY" constant="20" id="52j-vm-uMO"/>
+                            <constraint firstItem="ikm-70-v1R" firstAttribute="top" secondItem="FpJ-eP-E0o" secondAttribute="bottom" constant="25" id="HmN-1s-w9r"/>
                             <constraint firstItem="r7v-IR-Zud" firstAttribute="top" secondItem="geZ-9j-X2I" secondAttribute="bottom" constant="40" id="IBw-8H-bhC"/>
-                            <constraint firstAttribute="centerX" secondItem="geZ-9j-X2I" secondAttribute="centerX" constant="-0.5" id="NBT-qP-D5g"/>
+                            <constraint firstAttribute="centerX" secondItem="geZ-9j-X2I" secondAttribute="centerX" id="NBT-qP-D5g"/>
                             <constraint firstAttribute="centerX" secondItem="2yI-VK-8cd" secondAttribute="centerX" id="Rvh-io-dUR"/>
-                            <constraint firstItem="ffr-Rk-CF4" firstAttribute="top" secondItem="ikm-70-v1R" secondAttribute="bottom" constant="25" id="hDm-3K-7Ec"/>
+                            <constraint firstAttribute="centerX" secondItem="ffr-Rk-CF4" secondAttribute="centerX" id="bgW-wa-lcc"/>
+                            <constraint firstAttribute="centerY" secondItem="FpJ-eP-E0o" secondAttribute="centerY" priority="750" constant="103" id="eM4-gt-ZDA"/>
                             <constraint firstAttribute="centerX" secondItem="c4u-wt-MuC" secondAttribute="centerX" constant="-0.5" id="mqA-df-0cd"/>
-                            <constraint firstAttribute="centerX" secondItem="ikm-70-v1R" secondAttribute="centerX" constant="-1" id="oPI-EY-8UA"/>
-                            <constraint firstItem="ffr-Rk-CF4" firstAttribute="centerX" secondItem="ikm-70-v1R" secondAttribute="centerX" id="obR-Xr-wIl"/>
-                            <constraint firstItem="FpJ-eP-E0o" firstAttribute="centerX" secondItem="ikm-70-v1R" secondAttribute="centerX" id="pV4-hG-iuW"/>
+                            <constraint firstAttribute="centerX" secondItem="ikm-70-v1R" secondAttribute="centerX" id="oPI-EY-8UA"/>
+                            <constraint firstAttribute="centerY" secondItem="ffr-Rk-CF4" secondAttribute="centerY" priority="750" constant="-63" id="px6-cr-g0f"/>
                             <constraint firstItem="r7v-IR-Zud" firstAttribute="top" secondItem="2yI-VK-8cd" secondAttribute="bottom" id="vrk-Mq-tAM"/>
+                            <constraint firstAttribute="centerX" secondItem="FpJ-eP-E0o" secondAttribute="centerX" id="xXc-zc-3iM"/>
+                            <constraint firstItem="ffr-Rk-CF4" firstAttribute="top" secondItem="ikm-70-v1R" secondAttribute="bottom" constant="25" id="xa3-wO-MGs"/>
                             <constraint firstItem="c4u-wt-MuC" firstAttribute="top" secondItem="KYq-cr-8Rd" secondAttribute="bottom" constant="60" id="znl-jn-r7Y"/>
                         </constraints>
                     </view>
