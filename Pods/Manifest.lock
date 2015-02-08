@@ -1,5 +1,6 @@
 PODS:
   - pop (1.0.7)
+  - PureLayout (2.0.5)
   - Realm (0.90.5):
     - Realm/Headers (= 0.90.5)
   - Realm/Headers (0.90.5)
@@ -7,11 +8,13 @@ PODS:
 
 DEPENDENCIES:
   - pop
+  - PureLayout
   - Realm
   - Shimmer
 
 SPEC CHECKSUMS:
   pop: 2f14a1ea61339767af9e66741b418c831b3844df
+  PureLayout: 63a3257320223e8edddcd3afb407445f85a6bf74
   Realm: aea25534b97be77995650c2339aa6ed010dfcc8a
   Shimmer: 057fcfe9c1c978d69d50b64fce93a61080cd08ec
 

@@ -31,9 +31,38 @@
                     <view key="view" contentMode="scaleToFill" id="C43-Cf-Ic8">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="h78-ZH-sty" userLabel="Timeline">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timelineItemId" id="hi5-ok-DRs" userLabel="Item">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hi5-ok-DRs" id="oOp-Mw-UoF">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="bhZ-jI-aIf" id="Wy2-ux-Dk5"/>
+                                    <outlet property="delegate" destination="bhZ-jI-aIf" id="lbT-9g-DLy"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="h78-ZH-sty" secondAttribute="trailing" id="Ah8-YZ-y0Q"/>
+                            <constraint firstItem="U2y-el-c4f" firstAttribute="top" secondItem="h78-ZH-sty" secondAttribute="bottom" id="IEe-1I-uL2"/>
+                            <constraint firstItem="h78-ZH-sty" firstAttribute="top" secondItem="49N-8c-Cag" secondAttribute="top" id="kbH-se-uzx"/>
+                            <constraint firstItem="h78-ZH-sty" firstAttribute="leading" secondItem="C43-Cf-Ic8" secondAttribute="leading" id="mAS-db-Cnh"/>
+                        </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="h78-ZH-sty" id="Blr-Oe-5Qr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oap-hn-pi9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

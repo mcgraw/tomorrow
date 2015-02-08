@@ -29,6 +29,10 @@ let kStatusPlanTomorrowColor = UIColor.clearColor()
 
 // TODO: should show 'Streak: 4 days' on the top right corner
 
+protocol IGITimelineNodeDelegate {
+    func nodeDidCompleteAnimation()
+}
+
 class IGITimelineNodeView: UIView, POPAnimationDelegate {
     
     // Each node will have a line, node, task headline, and a node icon
@@ -44,9 +48,13 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
     var upperSubMessage: UILabel?
     var lowerSubMessage: UILabel?
     
+    // Constraints
+    var lineHeight: NSLayoutConstraint?
+
     var nodeStatus: IGINodeStatus = .PlanTomorrow
+    var delegate: IGITimelineNodeDelegate?
     
-    var taskFirstRevealAnimation = true
+    var revealAnimationComplete = false
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -58,27 +66,22 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         line.layer.masksToBounds = true
         
         
-        // Task Layout
-//        shrinkAnimationForNode()
-        
-//        headline.text = "Write Chapter 5"
-        
-        
-        
         // Completed Day
-//        let headlineOriginX = node.frame.origin.x + node.frame.size.width + 10
-//        let datePositionY = headline.frame.origin.y - 25
-//        upperSubMessage = UILabel(frame: CGRectMake(headlineOriginX, datePositionY, 320, 20))
+//        upperSubMessage = UILabel(frame: CGRectMake(0, 0, 320, 20))
 //        upperSubMessage!.textColor = UIColor.whiteColor()
 //        upperSubMessage!.text = "January 23rd, 2015"
-//        upperSubMessage!.font = UIFont(name: "AvenirNext-UltraLight", size: 16)
+//        upperSubMessage!.font = UIFont(name: "AvenirNext-UltraLight", size: 16
 //        addSubview(upperSubMessage!)
+//        
+//        upperSubMessage!.autoPinEdge(ALEdge.Bottom, toEdge: ALEdge.Top, ofView: headline, withOffset: -5)
+//        upperSubMessage!.autoPinEdge(ALEdge.Leading, toEdge: ALEdge.Left, ofView: headline, withOffset: 0)
+//        upperSubMessage!.autoPinEdge(ALEdge.Trailing, toEdge: ALEdge.Trailing, ofView: self, withOffset: -10)
 //        
 //        var image = UIImage(named: "checkmark")
 //        node.backgroundColor = kStatusCompletedDayColor
 //        image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
 //        nodeIcon.image = image
-//    
+//        
 //        headline.text = "Tasks Completed"
 //        headline.alpha = 1.0
 //        lowerSubMessage?.alpha = 1.0
@@ -139,44 +142,77 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
     init(state: IGINodeStatus, withTask: NSString) {
         super.init()
+        
+        initializeBaseLayoutStyle()
+        
+        shrinkAnimationForNode()
+
+//        headline.text = withTask
+        
+        upperSubMessage = UILabel(frame: CGRectMake(0, 0, 320, 20))
+        upperSubMessage!.textColor = UIColor.whiteColor()
+        upperSubMessage!.text = "January 23rd, 2015"
+        upperSubMessage!.font = UIFont(name: "AvenirNext-UltraLight", size: 16)
+        upperSubMessage!.alpha = 0.0
+        addSubview(upperSubMessage!)
+        
+        upperSubMessage!.autoPinEdge(ALEdge.Bottom, toEdge: ALEdge.Top, ofView: headline, withOffset: -5)
+        upperSubMessage!.autoPinEdge(ALEdge.Leading, toEdge: ALEdge.Left, ofView: headline, withOffset: 0)
+        upperSubMessage!.autoPinEdge(ALEdge.Trailing, toEdge: ALEdge.Trailing, ofView: self, withOffset: -10)
+        
+        var image = UIImage(named: "checkmark")
+        node.backgroundColor = kStatusCompletedDayColor
+        image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        nodeIcon.image = image
+        
+        headline.text = "Tasks Completed"
+        lowerSubMessage?.text = IGILoremIpsum.randomMotivationPhrase()
+    }
+    
+    func prepareForReuse() {
+        headline.alpha = 0.0
+        upperSubMessage?.alpha = 0.0
+        lowerSubMessage?.alpha = 0.0
+        
+        node.alpha = 0.0
+        
+        setNeedsUpdateConstraints()
+        lineHeight?.constant = 0
+        layoutIfNeeded()
     }
     
     // MARK: Animation
     
+    func playTimelineAnimationDelayed(#delay: Double) {
+        NSTimer.scheduledTimerWithTimeInterval(delay, target: self, selector: "playTimelineAnimation", userInfo: nil, repeats: false)
+    }
+    
     func playTimelineAnimation() {
-        let anim = POPBasicAnimation(propertyNamed: kPOPViewFrame)
-        anim.toValue = NSValue(CGRect: CGRectMake(line.frame.origin.x, line.frame.origin.y, line.frame.size.width, bounds.size.height/2 + 25))
+        let anim = POPBasicAnimation(propertyNamed: kPOPLayoutConstraintConstant)
+        anim.toValue = Double(bounds.size.height/2) + 25
         anim.duration = 0.5
         anim.delegate = self
         anim.name = "timeline-animate"
-        line.pop_addAnimation(anim, forKey: anim.name)
+        lineHeight!.pop_addAnimation(anim, forKey: anim.name)
     }
     
-    func resetTimelineNode() {
-        headline.alpha = 0
-        upperSubMessage?.alpha = 0
-        lowerSubMessage?.alpha = 0
+    func finishTimelineAnimation() {
+        let anim = POPBasicAnimation(propertyNamed: kPOPLayoutConstraintConstant)
+        anim.toValue = Double(bounds.size.height) + 25
+        anim.duration = 0.5
+        lineHeight!.pop_addAnimation(anim, forKey: anim.name)
         
-        line.frame = CGRectMake(46, -25, line.frame.size.width, 0)
-        node.center = CGPointMake(line.center.x, bounds.size.height/2)
-        
-        shrinkAnimationForNode()
-        
-        let anim = POPBasicAnimation(propertyNamed: kPOPLayerScaleXY)
-        anim.toValue = NSValue(CGPoint: CGPointMake(2.0, 2.0))
-        headline.layer.pop_addAnimation(anim, forKey: "headline-scale-up")
+        revealAnimationComplete = true
+        delegate?.nodeDidCompleteAnimation()
     }
     
     // MARK: Private Zone
-    
-    private func finishTimelineAnimation() {
-        let anim = POPBasicAnimation(propertyNamed: kPOPViewFrame)
-        anim.toValue = NSValue(CGRect: CGRectMake(line.frame.origin.x, line.frame.origin.y, line.frame.size.width, bounds.size.height))
-        anim.duration = 0.5
-        line.pop_addAnimation(anim, forKey: anim.name)
-    }
     
     private func shrinkAnimationForNode() {
         let anim = POPBasicAnimation(propertyNamed: kPOPLayerScaleXY)
@@ -222,7 +258,7 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         }
         else if anim.name == "headline-display" {
             // text displayed, conintue timeline node
-            finishTimelineAnimation()
+            NSTimer.scheduledTimerWithTimeInterval(0.6, target: self, selector: "finishTimelineAnimation", userInfo: nil, repeats: false)
         }
         else if anim.name == "reveal-node" {
             // we over-expanded, so restore to 1x
@@ -365,6 +401,7 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         
         line.backgroundColor = UIColor.whiteColor()
         
+        // Node is the circle + icon
         node.frame = CGRectMake(0, 0, 40, 40)
         node.backgroundColor = UIColor(red: 66.0/255.0, green: 110.0/255.0, blue: 173.0/255.0, alpha: 1.0)
         node.layer.cornerRadius = self.node.bounds.size.width/2
@@ -372,7 +409,6 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         node.layer.borderColor = UIColor.whiteColor().CGColor
         node.layer.borderWidth = 2
         
-        // Initialize the icon for the node
         nodeIcon = UIImageView(frame: CGRectMake(4, 4, node.bounds.width - 8, node.bounds.height - 8))
         nodeIcon.contentMode = UIViewContentMode.ScaleAspectFit
         nodeIcon.tintColor = UIColor.whiteColor()
@@ -381,11 +417,18 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         nodeIcon.image = image
         node.addSubview(nodeIcon)
         
-        line.frame = CGRectMake(46, -25, 2, 0)
-        node.center = CGPointMake(line.center.x, bounds.size.height/2)
-        
         addSubview(line)
         addSubview(node)
+        
+        lineHeight = line.autoSetDimension(ALDimension.Height, toSize: 0)
+        line.autoSetDimension(ALDimension.Width, toSize: 2)
+        line.autoPinEdgeToSuperviewEdge(ALEdge.Top, withInset: -25)
+        line.autoPinEdgeToSuperviewEdge(ALEdge.Leading, withInset: 46)
+
+        node.autoSetDimension(ALDimension.Height, toSize: 40)
+        node.autoSetDimension(ALDimension.Width, toSize: 40)
+        node.autoPinEdgeToSuperviewEdge(ALEdge.Leading, withInset: 26)
+        node.autoAlignAxisToSuperviewAxis(ALAxis.Horizontal)
         
         // Headline exists for all states
         let headlineOriginX = node.frame.origin.x + node.frame.size.width + 10
@@ -397,13 +440,21 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         headline.alpha = 0
         addSubview(headline)
         
-        let subHeadlinePositionY = headline.frame.origin.y + headline.frame.size.height + 5
-        lowerSubMessage = UILabel(frame: CGRectMake(headlineOriginX, subHeadlinePositionY, 320, 20))
+        headline.autoAlignAxisToSuperviewAxis(ALAxis.Horizontal)
+        headline.autoPinEdge(ALEdge.Leading, toEdge: ALEdge.Trailing, ofView: node, withOffset: 10)
+        headline.autoPinEdge(ALEdge.Trailing, toEdge: ALEdge.Trailing, ofView: self, withOffset: -10)
+        
+        // Subheadline
+        lowerSubMessage = UILabel(frame: CGRectMake(0, 0, 320, 20))
         lowerSubMessage!.textColor = UIColor.whiteColor()
         lowerSubMessage!.font = UIFont(name: "AvenirNext-UltraLight", size: 16)
         lowerSubMessage!.alpha = 0
         lowerSubMessage!.numberOfLines = 0
         addSubview(lowerSubMessage!)
+        
+        lowerSubMessage!.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Bottom, ofView: headline, withOffset: 5)
+        lowerSubMessage!.autoPinEdge(ALEdge.Leading, toEdge: ALEdge.Left, ofView: headline, withOffset: 0)
+        lowerSubMessage!.autoPinEdge(ALEdge.Trailing, toEdge: ALEdge.Trailing, ofView: self, withOffset: -10)
         
         // Gestures
         iconTapGesture = UITapGestureRecognizer(target: self, action: "iconTapGesturePressed:")
