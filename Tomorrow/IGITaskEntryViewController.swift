@@ -9,7 +9,7 @@
 import UIKit
 
 enum IGITaskEntryStatus: Int {
-    case Task1, Task2, Task3, Done
+    case Task1, Task2, Task3, Done, Editing
 }
 
 class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
@@ -21,6 +21,8 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
     
     var userObject: IGIUser?
     var userGoal: IGIGoal?
+    
+    var taskUnderEdit: IGITask?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +52,22 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
         playIntroductionAnimation()
     }
     
+    @IBAction func unwindToTaskEntry(sender: UIStoryboardSegue) {
+        // Should not unwind back here without a goal under edit!
+        let goalEditing = userObject?.getCurrentGoalUnderEdit()!
+        if goalEditing == nil {
+            assertionFailure("Don't unwind to edit if no goal is being edited!")
+        }
+        
+        taskUnderEdit = goalEditing?.getCurrentTaskUnderEdit()
+        if taskUnderEdit == nil {
+            assertionFailure("Don't unwind to edit if a task is not being edited!")
+        }
+        
+        titleLabel.text = "Edit Task"
+        inputField.text = taskUnderEdit?.name.capitalizedString
+        status = .Editing
+    }
     
     // MARK: Animation
     
@@ -78,22 +96,35 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
         playDismissAnimation()
         
         RLMRealm.defaultRealm().beginWriteTransaction()
-        if status == .Task1 {
-            let task = IGITask()
-            task.name = textField.text
-            userGoal?.tasks.addObject(task)
-            status = .Task2
-        } else if status == .Task2 {
-            let task = IGITask()
-            task.name = textField.text
-            userGoal?.tasks.addObject(task)
-            status = .Task3
-        } else if status == .Task3 {
-            let task = IGITask()
-            task.name = textField.text
-            userGoal?.tasks.addObject(task)
+        if status == .Editing {
+            
+            if taskUnderEdit?.name.lowercaseString == textField.text.lowercaseString {
+                // Nothing changed, move back to the review screen
+            } else {
+                let goalEditing = userObject?.getCurrentGoalUnderEdit()!
+                
+                let task = userObject?.createNewTask(name: textField.text)
+                task?.goals.addObject(goalEditing)
+                goalEditing?.removeTaskAndReplace(taskUnderEdit!, replacement: task!)
+                
+                // Done
+                taskUnderEdit?.edit_needed = false
+            }
             status = .Done
         }
+        else if status == .Task1 {
+            userObject?.addNewTask(name: textField.text)
+            status = .Task2
+        }
+        else if status == .Task2 {
+            userObject?.addNewTask(name: textField.text)
+            status = .Task3
+        }
+        else if status == .Task3 {
+            userObject?.addNewTask(name: textField.text)
+            status = .Done
+        }
+        IGIUser.createOrUpdateInDefaultRealmWithObject(userObject)
         RLMRealm.defaultRealm().commitWriteTransaction()
         
         NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "advanceOnboarding", userInfo: nil, repeats: false)
@@ -101,15 +132,16 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
     }
     
     func advanceOnboarding() {
-        if status == .Done {
+        if status == .Done || status == .Editing {
             performSegueWithIdentifier("taskReviewSegue", sender: self)
-        } else {
+        }
+        else {
             inputField.text = ""
             
             if status == .Task2 {
-                titleLabel.text = "Perfect! What's #2?"
+                titleLabel.text = "Perfect! What else?"
             } else if status == .Task3 {
-                titleLabel.text = "Great! And your final task?"
+                titleLabel.text = "Great! Your final task?"
             }
             resetAndReplay()
         }

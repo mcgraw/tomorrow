@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6750" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TRo-zP-ROM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6750" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IL9-hW-VOs">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -363,7 +363,7 @@
                                     <outlet property="layoutConstraint" destination="znl-jn-r7Y" id="4ot-Tp-VgM"/>
                                 </connections>
                             </label>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FpJ-eP-E0o" customClass="IGIButton" customModule="Tomorrow" customModuleProvider="target">
+                            <button opaque="NO" alpha="0.0" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FpJ-eP-E0o" customClass="IGIButton" customModule="Tomorrow" customModuleProvider="target">
                                 <rect key="frame" x="253" y="168" width="94" height="58"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="33"/>
@@ -372,12 +372,12 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="completeActionPressed:" destination="TRo-zP-ROM" eventType="touchUpInside" id="JnB-2q-qX7"/>
+                                    <action selector="taskEditPressed:" destination="TRo-zP-ROM" eventType="touchUpInside" id="POb-Sm-By5"/>
                                     <outlet property="layoutConstraint" destination="eM4-gt-ZDA" id="sOe-ax-DkM"/>
                                     <outlet property="spacingConstraint" destination="HmN-1s-w9r" id="Uck-NC-zef"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikm-70-v1R" customClass="IGIButton" customModule="Tomorrow" customModuleProvider="target">
+                            <button opaque="NO" alpha="0.0" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikm-70-v1R" customClass="IGIButton" customModule="Tomorrow" customModuleProvider="target">
                                 <rect key="frame" x="253" y="251" width="94" height="58"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="33"/>
@@ -386,10 +386,11 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="taskEditPressed:" destination="TRo-zP-ROM" eventType="touchUpInside" id="nkL-U7-aRH"/>
                                     <outlet property="layoutConstraint" destination="52j-vm-uMO" id="9iR-5I-I6A"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffr-Rk-CF4" customClass="IGIButton" customModule="Tomorrow" customModuleProvider="target">
+                            <button opaque="NO" alpha="0.0" tag="1003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffr-Rk-CF4" customClass="IGIButton" customModule="Tomorrow" customModuleProvider="target">
                                 <rect key="frame" x="253" y="334" width="94" height="58"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="33"/>
@@ -398,6 +399,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="taskEditPressed:" destination="TRo-zP-ROM" eventType="touchUpInside" id="fAK-LD-uMm"/>
                                     <outlet property="layoutConstraint" destination="px6-cr-g0f" id="13c-CS-SaC"/>
                                     <outlet property="spacingConstraint" destination="xa3-wO-MGs" id="gNY-w4-Ezo"/>
                                 </connections>
@@ -449,9 +451,11 @@
                         <outlet property="task2" destination="ikm-70-v1R" id="ABP-1h-QOh"/>
                         <outlet property="task3" destination="ffr-Rk-CF4" id="y10-lU-0bG"/>
                         <outlet property="titleLabel" destination="c4u-wt-MuC" id="BEX-r3-7Ch"/>
+                        <segue destination="sRK-e9-BhQ" kind="unwind" identifier="unwindToTaskEdit" unwindAction="unwindToTaskEntry:" id="rrg-Ei-gZM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sbq-aj-cQx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="sRK-e9-BhQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4202" y="587.5"/>
         </scene>

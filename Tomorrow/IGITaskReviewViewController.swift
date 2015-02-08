@@ -37,20 +37,21 @@ class IGITaskReviewViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Should only have one goal during onboarding...
-        let goals: IGIGoal = userObject?.goals.firstObject() as IGIGoal
-        
-        var index = 0
-        for item in goals.tasks {
-            var task = item as IGITask
-            if index == 0 {
-                task1.setTitle(task.name, forState: UIControlState.Normal)
-            } else if index == 1 {
-                task2.setTitle(task.name, forState: UIControlState.Normal)
-            } else if index == 2 {
-                task3.setTitle(task.name, forState: UIControlState.Normal)
+        if let goal = userObject?.getCurrentGoalUnderEdit() {
+            var index = 0
+            for item in goal.tasks {
+                var task = item as IGITask
+                if index == 0 {
+                    task1.setTitle(task.name.capitalizedString, forState: UIControlState.Normal)
+                } else if index == 1 {
+                    task2.setTitle(task.name.capitalizedString, forState: UIControlState.Normal)
+                } else if index == 2 {
+                    task3.setTitle(task.name.capitalizedString, forState: UIControlState.Normal)
+                }
+                index++
             }
-            index++
+        } else {
+            assertionFailure("A goal should exist! No goal with edit_completed == false found.")
         }
     }
     
@@ -75,6 +76,24 @@ class IGITaskReviewViewController: UIViewController {
         task1.jumpAnimationToConstant(500, delayStart: 0)
         task2.jumpAnimationToConstant(500, delayStart: 0.3)
         task3.jumpAnimationToConstant(500, delayStart: 0.6)
+    }
+    
+    @IBAction func taskEditPressed(sender: AnyObject) {
+        var tag: Int = (sender.tag - 1000) - 1
+        userObject!.setTaskNeedsEdit(index: UInt(tag))
+        
+        UIView.animateWithDuration(0.3, animations: {
+            self.titleLabel.alpha = 0.0
+            self.task1.alpha = 0.0
+            self.task2.alpha = 0.0
+            self.task3.alpha = 0.0
+            self.completeAction.alpha = 0.0
+            self.info.alpha = 0.0
+        }, completion: { (done) in
+            println("") // sigh..
+            
+            self.performSegueWithIdentifier("unwindToTaskEdit", sender: self)
+        })
     }
     
     // MARK: Animation
