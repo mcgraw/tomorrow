@@ -20,6 +20,13 @@ class IGIUser: RLMObject {
         return "userId"
     }
     
+    func isGoalComplete() -> Bool {
+        if let goal = getCurrentGoal() {
+            return goal.areAllTasksCompleted()
+        }
+        return false
+    }
+    
     func setTaskNeedsEdit(#index: UInt) {
         let goals: RLMResults? = self.goals.objectsWhere("edit_completed == false")
         let goal: IGIGoal = self.goals!.firstObject() as IGIGoal
@@ -37,6 +44,17 @@ class IGIUser: RLMObject {
         // We should not have multiple goals under edit
         if goals?.count > 1 {
             assertionFailure("More than 1 goal is under editing mode! There should be 1!")
+        }
+        
+        return goals?.firstObject() as? IGIGoal
+    }
+    
+    func getCurrentGoal() -> IGIGoal? {
+        let goals: RLMResults? = self.goals.objectsWhere("goal_completed == false")
+        
+        // We should not have multiple goals under edit
+        if goals?.count > 1 {
+            assertionFailure("More than 1 goal is marked not completed! There should be 1!")
         }
         
         return goals?.firstObject() as? IGIGoal

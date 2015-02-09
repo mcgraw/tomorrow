@@ -31,6 +31,7 @@ let kStatusPlanTomorrowColor = UIColor.clearColor()
 
 protocol IGITimelineNodeDelegate {
     func nodeDidCompleteAnimation()
+    func nodeCompletionStatusUpdated()
 }
 
 class IGITimelineNodeView: UIView, POPAnimationDelegate {
@@ -45,13 +46,21 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
     var iconTapGesture: UITapGestureRecognizer?
     
     // A node may or may not have any of these
-    var upperSubMessage: UILabel?
-    var lowerSubMessage: UILabel?
+    var upperSubMessage: UILabel = UILabel()
+    var lowerSubMessage: UILabel = UILabel()
+    var shimmerView: FBShimmeringView?
+    var tomorrowLogoT: UILabel?
+    
+    // Data
+    var nodeTask: IGITask?
+    var nodeGoal: IGIGoal?
     
     // Constraints
     var lineHeight: NSLayoutConstraint?
+    var lowerSubMessageSpacing: NSLayoutConstraint?
+    var upperSubMessageSpacing: NSLayoutConstraint?
 
-    var nodeStatus: IGINodeStatus = .PlanTomorrow
+    var nodeStatus: IGINodeStatus = .Task
     var delegate: IGITimelineNodeDelegate?
     
     var revealAnimationComplete = false
@@ -119,26 +128,7 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
 //        headline.alpha = 1.0
 //        lowerSubMessage?.alpha = 1.0
         
-        // Plan
-//        line.frame = CGRectMake(line.frame.origin.x, line.frame.origin.y, line.frame.size.width, bounds.size.height / 2 - node.bounds.size.height / 2 + 25)
-//        nodeIcon.alpha = 0
-//        node.backgroundColor = kStatusPlanTomorrowColor
-//
-//        let logoT = UILabel(frame: CGRectMake(4, 7, node.bounds.width - 8, node.bounds.height - 11))
-//        logoT.text = "T"
-//        logoT.textColor = UIColor.whiteColor()
-//        logoT.textAlignment = NSTextAlignment.Center
-//        logoT.font = UIFont(name: "AvenirNext-Medium", size: 30)
-//        node.addSubview(logoT)
-//        
-//        let planView = FBShimmeringView(frame: headline.frame)
-//        let plan = UILabel(frame: planView.frame)
-//        plan.text = "Let's Plan Tomorrow!"
-//        plan.font = UIFont(name: "AvenirNext-UltraLight", size: 30)
-//        plan.textColor = UIColor.whiteColor()
-//        addSubview(planView)
-//        planView.contentView = plan
-//        planView.shimmering = true
+
         
     }
     
@@ -146,41 +136,111 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         super.init(frame: frame)
     }
     
-    init(state: IGINodeStatus, withTask: NSString) {
+    override init() {
         super.init()
-        
         initializeBaseLayoutStyle()
+    }
+    
+    func updateLayoutWithGoal(goal: IGIGoal) {
+        prepareForReuse()
+        nodeGoal = goal
         
-        shrinkAnimationForNode()
-
-//        headline.text = withTask
-        
-        upperSubMessage = UILabel(frame: CGRectMake(0, 0, 320, 20))
-        upperSubMessage!.textColor = UIColor.whiteColor()
-        upperSubMessage!.text = "January 23rd, 2015"
-        upperSubMessage!.font = UIFont(name: "AvenirNext-UltraLight", size: 16)
-        upperSubMessage!.alpha = 0.0
-        addSubview(upperSubMessage!)
-        
-        upperSubMessage!.autoPinEdge(ALEdge.Bottom, toEdge: ALEdge.Top, ofView: headline, withOffset: -5)
-        upperSubMessage!.autoPinEdge(ALEdge.Leading, toEdge: ALEdge.Left, ofView: headline, withOffset: 0)
-        upperSubMessage!.autoPinEdge(ALEdge.Trailing, toEdge: ALEdge.Trailing, ofView: self, withOffset: -10)
-        
-        var image = UIImage(named: "checkmark")
-        node.backgroundColor = kStatusCompletedDayColor
+        var image = goal.goal_completed ? UIImage(named: "checkmark") : UIImage(named: "cross")
+        node.backgroundColor = goal.goal_completed ? kStatusCompletedDayColor : kStatusFailedColor
         image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         nodeIcon.image = image
         
-        headline.text = "Tasks Completed"
-        lowerSubMessage?.text = IGILoremIpsum.randomMotivationPhrase()
+        upperSubMessage.text = goal.getDateAsString()
+                
+        if goal.goal_completed {
+            nodeStatus = .CompletedDay
+            headline.text = "Tasks Completed"
+            lowerSubMessage.text = IGILoremIpsum.randomMotivationPhrase()
+        } else {
+            nodeStatus = .Failed
+            headline.text = "Failed to complete 1 task!"
+            lowerSubMessage.text = IGILoremIpsum.randomEncouragementPhrase()
+        }
+    }
+    
+    func updateLayoutWithTask(task: IGITask) {
+        prepareForReuse()
+        nodeTask = task
+        
+        var image = task.completed ? UIImage(named: "checkmark") : UIImage(named: "waiting")
+        node.backgroundColor = task.completed ? kStatusCompletedDayColor : kStatusTaskColor
+        image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        nodeIcon.image = image
+        
+        if task.completed {
+            nodeStatus = .Completed
+        } else {
+            nodeStatus = .Task
+        }
+        
+        shrinkAnimationForNode()
+        
+        headline.text = task.name.capitalizedString
+        
+        upperSubMessage.text = ""
+        lowerSubMessage.text = ""
+    }
+    
+    func updateLayoutAsTomorrowNode() {
+        prepareForReuse()
+        nodeIcon.alpha = 0
+        
+        nodeStatus = .PlanTomorrow
+        
+        node.backgroundColor = kStatusPlanTomorrowColor
+        
+        tomorrowLogoT = UILabel(frame: CGRectMake(4, 7, node.bounds.width - 8, node.bounds.height - 11))
+        tomorrowLogoT!.text = "T"
+        tomorrowLogoT!.textColor = UIColor.whiteColor()
+        tomorrowLogoT!.textAlignment = NSTextAlignment.Center
+        tomorrowLogoT!.font = UIFont(name: "AvenirNext-Medium", size: 30)
+        node.addSubview(tomorrowLogoT!)
+        tomorrowLogoT!.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsetsMake(4, 1, 0, 0))
+        
+        shimmerView = FBShimmeringView(frame: headline.frame)
+        let plan = UILabel(frame: shimmerView!.frame)
+        plan.text = "Let's Plan Tomorrow!"
+        plan.font = UIFont(name: "AvenirNext-UltraLight", size: 30)
+        plan.textColor = UIColor.whiteColor()
+        addSubview(shimmerView!)
+
+        shimmerView!.autoAlignAxis(ALAxis.Horizontal, toSameAxisOfView: node)
+        shimmerView!.autoPinEdge(ALEdge.Left, toEdge: ALEdge.Trailing, ofView: node, withOffset: 10)
+        shimmerView!.autoPinEdge(ALEdge.Right, toEdge: ALEdge.Trailing, ofView: self, withOffset: -10)
+        
+        shimmerView!.contentView = plan
+        plan.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsetsZero)
+
+        shimmerView!.alpha = 0.0
+        shimmerView!.shimmering = true
+        
+        shrinkAnimationForNode()
+        
+        headline.text = ""
+        upperSubMessage.text = ""
+        lowerSubMessage.text = ""
     }
     
     func prepareForReuse() {
         headline.alpha = 0.0
-        upperSubMessage?.alpha = 0.0
-        lowerSubMessage?.alpha = 0.0
+        upperSubMessage.alpha = 0.0
+        lowerSubMessage.alpha = 0.0
+
+        node.alpha = 0
         
-        node.alpha = 0.0
+        // part of a node, but may be hidden in certain status
+        nodeIcon.alpha = 1
+        
+        nodeTask = nil
+        nodeGoal = nil
+        
+        shimmerView?.removeFromSuperview()
+        tomorrowLogoT?.removeFromSuperview()
         
         setNeedsUpdateConstraints()
         lineHeight?.constant = 0
@@ -195,7 +255,14 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
     
     func playTimelineAnimation() {
         let anim = POPBasicAnimation(propertyNamed: kPOPLayoutConstraintConstant)
-        anim.toValue = Double(bounds.size.height/2) + 25
+        
+        // Do not move to the midpoint if the background of the node is transparent
+        if nodeStatus == .PlanTomorrow {
+            anim.toValue = Double(bounds.size.height/2) - Double(node.frame.size.height / 2) + 6
+        } else {
+            anim.toValue = Double(bounds.size.height/2) + 25
+        }
+        
         anim.duration = 0.5
         anim.delegate = self
         anim.name = "timeline-animate"
@@ -203,10 +270,13 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
     }
     
     func finishTimelineAnimation() {
-        let anim = POPBasicAnimation(propertyNamed: kPOPLayoutConstraintConstant)
-        anim.toValue = Double(bounds.size.height) + 25
-        anim.duration = 0.5
-        lineHeight!.pop_addAnimation(anim, forKey: anim.name)
+        // Do not move the line to the bottom if we've reached the end
+        if nodeStatus != .PlanTomorrow {
+            let anim = POPBasicAnimation(propertyNamed: kPOPLayoutConstraintConstant)
+            anim.toValue = Double(bounds.size.height) + 25
+            anim.duration = 0.5
+            lineHeight!.pop_addAnimation(anim, forKey: anim.name)
+        }
         
         revealAnimationComplete = true
         delegate?.nodeDidCompleteAnimation()
@@ -244,8 +314,8 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         })
         
         UIView.animateWithDuration(1.2, animations: {
-            self.upperSubMessage?.alpha = 1
-            self.lowerSubMessage?.alpha = 1
+            self.upperSubMessage.alpha = 1
+            self.lowerSubMessage.alpha = 1
         })
     }
     
@@ -276,6 +346,7 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
                     self.headline.alpha = 0.5
                 } else {
                     self.headline.alpha = 1
+                    self.shimmerView?.alpha = 1
                 }
             })
         }
@@ -318,21 +389,24 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
             // switch & reveal new icon
             var image: UIImage?
             if nodeStatus == .Completed {
-                lowerSubMessage?.text = IGILoremIpsum.randomMotivationPhrase()
+                lowerSubMessage.text = IGILoremIpsum.randomMotivationPhrase()
                 image = UIImage(named: "checkmark")
                 node.backgroundColor = kStatusCompletedColor
                 
-                if let message = lowerSubMessage {
-                    let originalSubMessageCenter = message.center
-                    message.center = CGPointMake(message.center.x, message.center.y - 10)
-                    
-                    let anim = POPBasicAnimation(propertyNamed: kPOPViewCenter)
-                    anim.toValue = NSValue(CGPoint: originalSubMessageCenter)
-                    message.pop_addAnimation(anim, forKey: "slide-down-sub-message")
-                }
+                let anim = POPBasicAnimation(propertyNamed: kPOPLayoutConstraintConstant)
+                anim.toValue = lowerSubMessageSpacing!.constant + 4
+                lowerSubMessageSpacing!.pop_addAnimation(anim, forKey: "slide-down-sub-message")
+                
+                nodeTask?.updateTaskCompletionStatus(true)
             } else {
                 image = UIImage(named: "waiting")
                 node.backgroundColor = kStatusTaskColor
+                
+                let anim = POPBasicAnimation(propertyNamed: kPOPLayoutConstraintConstant)
+                anim.toValue = lowerSubMessageSpacing!.constant - 4
+                lowerSubMessageSpacing!.pop_addAnimation(anim, forKey: "restore-slide-down-sub-message")
+                
+                nodeTask?.updateTaskCompletionStatus(false)
             }
             
             image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
@@ -341,11 +415,14 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
             UIView.animateWithDuration(0.225, animations: {
                 if self.nodeStatus == .Completed {
                     self.headline.alpha = 0.25
-                    self.lowerSubMessage?.alpha = 1.0
+                    self.lowerSubMessage.alpha = 1.0
                 } else {
                     self.headline.alpha = 1.0
-                    self.lowerSubMessage?.alpha = 0.0
+                    self.lowerSubMessage.alpha = 0.0
                 }
+            }, completion: { (done) in
+                println("") // bleh
+                self.delegate?.nodeCompletionStatusUpdated()
             })
         }
     }
@@ -354,41 +431,41 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         if nodeStatus == .AllTasks || nodeStatus == .CompletedDay {
             UIView.animateWithDuration(0.225, animations: {
                 self.headline.alpha = 0.0
-                self.upperSubMessage?.alpha = 0.0
-                self.lowerSubMessage?.alpha = 0.0
+                self.upperSubMessage.alpha = 0.0
+                self.lowerSubMessage.alpha = 0.0
             }, completion: { (done) in
                 if self.nodeStatus == .AllTasks {
                     self.headline.font = UIFont(name: "AvenirNext-Regular", size: 16)
-                    self.upperSubMessage?.font = UIFont(name: "AvenirNext-Regular", size: 16)
-                    self.lowerSubMessage?.font = UIFont(name: "AvenirNext-Bold", size: 16)
+                    self.upperSubMessage.font = UIFont(name: "AvenirNext-Regular", size: 16)
+                    self.lowerSubMessage.font = UIFont(name: "AvenirNext-Bold", size: 16)
                     
                     // signal which tasks failed
-                    self.lowerSubMessage?.textColor = kStatusFailedColor
+                    self.lowerSubMessage.textColor = kStatusFailedColor
                     
                     // update text with tasks
-                    self.upperSubMessage?.text = "Write chapter 5"
+                    self.upperSubMessage.text = "Write chapter 5"
                     self.headline.text = "Walk dogs"
-                    self.lowerSubMessage?.text = "Enjoy a glass of wine"
+                    self.lowerSubMessage.text = "Enjoy a glass of wine"
                 } else {
                     self.headline.font = UIFont(name: "AvenirNext-Regular", size: 30)
-                    self.upperSubMessage?.font = UIFont(name: "AvenirNext-UltraLight", size: 16)
-                    self.lowerSubMessage?.font = UIFont(name: "AvenirNext-UltraLight", size: 16)
+                    self.upperSubMessage.font = UIFont(name: "AvenirNext-UltraLight", size: 16)
+                    self.lowerSubMessage.font = UIFont(name: "AvenirNext-UltraLight", size: 16)
                     
                     // update colors
-                    self.upperSubMessage?.textColor = UIColor.whiteColor()
+                    self.upperSubMessage.textColor = UIColor.whiteColor()
                     self.headline.textColor = UIColor.whiteColor()
-                    self.lowerSubMessage?.textColor = UIColor.whiteColor()
+                    self.lowerSubMessage.textColor = UIColor.whiteColor()
                     
                     // update text with tasks
-                    self.upperSubMessage?.text = "January 23rd, 2015"
+                    self.upperSubMessage.text = "January 23rd, 2015"
                     self.headline.text = "Tasks Completed"
-                    self.lowerSubMessage?.text = IGILoremIpsum.randomMotivationPhrase()
+                    self.lowerSubMessage.text = IGILoremIpsum.randomMotivationPhrase()
                 }
                 
                 UIView.animateWithDuration(0.225, animations: {
                     self.headline.alpha = 1.0
-                    self.upperSubMessage?.alpha = 1.0
-                    self.lowerSubMessage?.alpha = 1.0
+                    self.upperSubMessage.alpha = 1.0
+                    self.lowerSubMessage.alpha = 1.0
                 })
             })
         }
@@ -427,7 +504,7 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
 
         node.autoSetDimension(ALDimension.Height, toSize: 40)
         node.autoSetDimension(ALDimension.Width, toSize: 40)
-        node.autoPinEdgeToSuperviewEdge(ALEdge.Leading, withInset: 26)
+        node.autoAlignAxis(ALAxis.Vertical, toSameAxisOfView: line)
         node.autoAlignAxisToSuperviewAxis(ALAxis.Horizontal)
         
         // Headline exists for all states
@@ -436,25 +513,37 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         headline.textColor = UIColor.whiteColor()
         headline.text = ""
         headline.numberOfLines = 0
-        headline.font = UIFont(name: "AvenirNext-Regular", size: 30)
+        headline.font = UIFont(name: "AvenirNext-Regular", size: 26)
         headline.alpha = 0
         addSubview(headline)
         
-        headline.autoAlignAxisToSuperviewAxis(ALAxis.Horizontal)
+        headline.autoAlignAxis(ALAxis.Horizontal, toSameAxisOfView: node)
         headline.autoPinEdge(ALEdge.Leading, toEdge: ALEdge.Trailing, ofView: node, withOffset: 10)
         headline.autoPinEdge(ALEdge.Trailing, toEdge: ALEdge.Trailing, ofView: self, withOffset: -10)
         
         // Subheadline
         lowerSubMessage = UILabel(frame: CGRectMake(0, 0, 320, 20))
-        lowerSubMessage!.textColor = UIColor.whiteColor()
-        lowerSubMessage!.font = UIFont(name: "AvenirNext-UltraLight", size: 16)
-        lowerSubMessage!.alpha = 0
-        lowerSubMessage!.numberOfLines = 0
-        addSubview(lowerSubMessage!)
+        lowerSubMessage.textColor = UIColor.whiteColor()
+        lowerSubMessage.font = UIFont(name: "AvenirNext-UltraLight", size: 16)
+        lowerSubMessage.alpha = 0
+        lowerSubMessage.numberOfLines = 0
+        addSubview(lowerSubMessage)
         
-        lowerSubMessage!.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Bottom, ofView: headline, withOffset: 5)
-        lowerSubMessage!.autoPinEdge(ALEdge.Leading, toEdge: ALEdge.Left, ofView: headline, withOffset: 0)
-        lowerSubMessage!.autoPinEdge(ALEdge.Trailing, toEdge: ALEdge.Trailing, ofView: self, withOffset: -10)
+        lowerSubMessageSpacing = lowerSubMessage.autoPinEdge(ALEdge.Top, toEdge: ALEdge.Bottom, ofView: headline, withOffset: 0)
+        lowerSubMessage.autoPinEdge(ALEdge.Leading, toEdge: ALEdge.Left, ofView: headline, withOffset: 0)
+        lowerSubMessage.autoPinEdge(ALEdge.Trailing, toEdge: ALEdge.Trailing, ofView: self, withOffset: -10)
+        
+        // Upper Subheadline
+        upperSubMessage = UILabel(frame: CGRectMake(0, 0, 320, 20))
+        upperSubMessage.textColor = UIColor.whiteColor()
+        upperSubMessage.text = ""
+        upperSubMessage.font = UIFont(name: "AvenirNext-UltraLight", size: 16)
+        upperSubMessage.alpha = 0.0
+        addSubview(upperSubMessage)
+        
+        upperSubMessageSpacing = upperSubMessage.autoPinEdge(ALEdge.Bottom, toEdge: ALEdge.Top, ofView: headline, withOffset: 0)
+        upperSubMessage.autoPinEdge(ALEdge.Leading, toEdge: ALEdge.Left, ofView: headline, withOffset: 0)
+        upperSubMessage.autoPinEdge(ALEdge.Trailing, toEdge: ALEdge.Trailing, ofView: self, withOffset: -10)
         
         // Gestures
         iconTapGesture = UITapGestureRecognizer(target: self, action: "iconTapGesturePressed:")

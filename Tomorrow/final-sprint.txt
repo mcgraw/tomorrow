@@ -1,0 +1,39 @@
+[-] details, details, details
+
+[-] when scrolling move the background slightly
+[-] when tilting the device move the background slightly
+
+
+[-] all text areas must be dynamic & work with the screen
+    : calculate cell height & cache it with the task object
+    : do we restrict how long a title or sub title can be? Probably not
+
+
+[-] press 'lets plan tomorrow'
+    : fade screen, confirm dialog that asks if they are ready to complete the day
+    : kick back to tasks controller to create new goal
+    : come back & reveal the new nodes + the completed node
+    : keep the tomorrow cell & reveal text like, "Great work today!" / sub: "Enjoy the rest of your day, you've earned it!"
+
+
+[-] integrate review cell
+[-] integrate tip cell
+
+
+[-] integrate iap
+[-] integrate analytics for questions
+    : How many people actually complete the onboarding process?
+    : Are people completing daily tasks? How many?
+    : Are people planning their next day in the evening or when they wake up?
+
+
+
+
+
+v1.1 - Success?
+
+[-] notifications would be nice
+[-] formal settings area to update information
+[-] syncing so you don't lose your history
+[-] more backgrounds & style
+[-] ...

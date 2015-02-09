@@ -12,6 +12,7 @@ class IGITask: RLMObject {
     dynamic var name = ""
     dynamic var motivation = ""
     
+    dynamic var completed = false
     dynamic var completed_count = 0
 
     dynamic var edit_needed = false     // flag to inform the task entry view of an edit
@@ -28,6 +29,12 @@ class IGITask: RLMObject {
             return nil
         }
         return tasks.firstObject() as? IGITask
+    }
+    
+    func updateTaskCompletionStatus(status: Bool) {
+        RLMRealm.defaultRealm().beginWriteTransaction()
+        self.completed = status
+        RLMRealm.defaultRealm().commitWriteTransaction()
     }
     
     func removeTaskFromGoalWithDate(#date: NSDate) {

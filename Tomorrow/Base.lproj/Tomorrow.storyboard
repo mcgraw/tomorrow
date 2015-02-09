@@ -452,6 +452,7 @@
                         <outlet property="task3" destination="ffr-Rk-CF4" id="y10-lU-0bG"/>
                         <outlet property="titleLabel" destination="c4u-wt-MuC" id="BEX-r3-7Ch"/>
                         <segue destination="sRK-e9-BhQ" kind="unwind" identifier="unwindToTaskEdit" unwindAction="unwindToTaskEntry:" id="rrg-Ei-gZM"/>
+                        <segue destination="sRK-e9-BhQ" kind="unwind" identifier="completeTaskSegue" unwindAction="unwindToBaseController:" id="PIU-zR-hmZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sbq-aj-cQx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -513,14 +514,64 @@
                     </view>
                     <navigationItem key="navigationItem" id="Dmi-Qq-sfj"/>
                     <connections>
+                        <outlet property="backgroundImage" destination="YLJ-sb-aP5" id="jec-4Q-IgS"/>
                         <outlet property="currentGradient" destination="aYq-kG-e0d" id="iH1-z1-v49"/>
                         <outlet property="temporaryGradient" destination="6vq-vM-WDl" id="Zk7-n0-WNy"/>
                         <segue destination="vXZ-lx-hvc" kind="presentation" identifier="onboardTitleSegue" id="kfa-0t-BU1"/>
+                        <segue destination="tj7-RP-dOK" kind="presentation" identifier="timelineSegue" id="0rY-Vd-dIs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UKF-pQ-1NB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="655" y="588"/>
+        </scene>
+        <!--Timeline View Controller-->
+        <scene sceneID="4uh-2x-iUd">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="tj7-RP-dOK" customClass="IGITimelineViewController" customModule="Tomorrow" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xDk-t5-vJo"/>
+                        <viewControllerLayoutGuide type="bottom" id="cnG-p8-Ebe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LMo-kw-oDv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RrN-xq-a2J" userLabel="Timeline">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timelineItemId" id="x1y-Jw-ELo" userLabel="Item">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x1y-Jw-ELo" id="Zr1-3r-Sed">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="tj7-RP-dOK" id="fA4-K2-Wh7"/>
+                                    <outlet property="delegate" destination="tj7-RP-dOK" id="TNM-Kk-vv3"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cnG-p8-Ebe" firstAttribute="top" secondItem="RrN-xq-a2J" secondAttribute="bottom" id="7fC-4C-CfI"/>
+                            <constraint firstAttribute="trailing" secondItem="RrN-xq-a2J" secondAttribute="trailing" id="GwK-Lt-Yey"/>
+                            <constraint firstItem="RrN-xq-a2J" firstAttribute="leading" secondItem="LMo-kw-oDv" secondAttribute="leading" id="Qfk-z4-nKX"/>
+                            <constraint firstItem="RrN-xq-a2J" firstAttribute="top" secondItem="xDk-t5-vJo" secondAttribute="top" id="pam-Lc-CO3"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="RrN-xq-a2J" id="1Rd-1A-Vbb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S6T-r6-Td9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1379" y="1337"/>
         </scene>
     </scenes>
     <resources>

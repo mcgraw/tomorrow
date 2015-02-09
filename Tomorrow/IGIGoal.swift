@@ -12,6 +12,9 @@ class IGIGoal: RLMObject {
     // Owned by one user
     dynamic var user: IGIUser?
     
+    // Knock out the expensive formatter work
+    dynamic var date_str: String = ""
+    
     // What day was the goal created?
     dynamic var date: NSDate = NSDate()
     
@@ -40,4 +43,22 @@ class IGIGoal: RLMObject {
         task.removeTaskFromGoalWithDate(date: self.date)
     }
     
+    func getDateAsString() -> String {
+        if date_str == "" {
+            let formatter = NSDateFormatter()
+            formatter.dateFormat = "MMMM d, y"
+            date_str = formatter.stringFromDate(self.date)
+        }
+        return date_str
+    }
+    
+    func areAllTasksCompleted() -> Bool {
+        for item in tasks {
+            let task = item as IGITask
+            if !task.completed {
+                return false
+            }
+        }
+        return true
+    }
 }

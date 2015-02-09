@@ -35,6 +35,7 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
             
             RLMRealm.defaultRealm().beginWriteTransaction()
             userGoal = IGIGoal()
+            userGoal?.getDateAsString()
             userGoal?.user = userObject
             userObject?.goals.addObject(userGoal)
             IGIUser.createOrUpdateInDefaultRealmWithObject(userObject)

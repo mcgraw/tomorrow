@@ -68,6 +68,13 @@ class IGITaskReviewViewController: UIViewController {
             self.info.alpha = 0.0
         })
         
+        // We're done editing this goal
+        if let goal = userObject?.getCurrentGoalUnderEdit() {
+            RLMRealm.defaultRealm().beginWriteTransaction()
+            goal.edit_completed = true
+            RLMRealm.defaultRealm().commitWriteTransaction()
+        }
+        
         // Remove spacing constraints so they don't interfere with our animation
         view.removeConstraint(task1.spacingConstraint!)
         view.removeConstraint(task3.spacingConstraint!)
@@ -76,6 +83,8 @@ class IGITaskReviewViewController: UIViewController {
         task1.jumpAnimationToConstant(500, delayStart: 0)
         task2.jumpAnimationToConstant(500, delayStart: 0.3)
         task3.jumpAnimationToConstant(500, delayStart: 0.6)
+        
+        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "transitionToTimeline", userInfo: nil, repeats: false)
     }
     
     @IBAction func taskEditPressed(sender: AnyObject) {
@@ -94,6 +103,10 @@ class IGITaskReviewViewController: UIViewController {
             
             self.performSegueWithIdentifier("unwindToTaskEdit", sender: self)
         })
+    }
+    
+    func transitionToTimeline() {
+        performSegueWithIdentifier("completeTaskSegue", sender: self)
     }
     
     // MARK: Animation
@@ -119,11 +132,5 @@ class IGITaskReviewViewController: UIViewController {
         completeAction.revealViewWithDelay(constant: 50, delay: 3.5)
         info.revealViewWithDelay(constant: 25, delay: 3.8)
     }
-    
-    func playDismissAnimation() {
-//        inputField.dismissViewWithDelay(constant: Int(view.bounds.size.height), delay: 0.4)
-        titleLabel.dismissViewWithDelay(constant: Int(view.bounds.size.height), delay: 0.6)
-    }
-    
 }
    

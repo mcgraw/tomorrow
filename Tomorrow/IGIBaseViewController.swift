@@ -13,6 +13,10 @@ class IGIBaseViewController: UIViewController {
     @IBOutlet weak var currentGradient: IGIGradientView?
     @IBOutlet weak var temporaryGradient: IGIGradientView?
     
+    @IBOutlet weak var backgroundImage: UIImageView!
+    
+    var shouldPlayIntroduction = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,7 +36,33 @@ class IGIBaseViewController: UIViewController {
         if users.count == 0 {
             performSegueWithIdentifier("onboardTitleSegue", sender: self)
         } else {
-            performSegueWithIdentifier("timelineSegue", sender: self)
+            loadTimelineView()
+        }
+    }
+    
+    @IBAction func unwindToBaseController(sender: UIStoryboardSegue) {
+        NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: "loadTimelineView", userInfo: nil, repeats: false)
+    }
+    
+    func loadTimelineView() {
+        UIView.animateWithDuration(1.0, animations: {
+            self.backgroundImage.alpha = 0.0
+            }, completion: { (done) in
+                self.backgroundImage.image = UIImage(named: "background5")
+                
+                UIView.animateWithDuration(0.5, animations: {
+                    self.backgroundImage.alpha = 1.0
+                })
+        })
+        
+        shouldPlayIntroduction = true
+        performSegueWithIdentifier("timelineSegue", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "timelineSegue" {
+            let vc = segue.destinationViewController as IGITimelineViewController
+            vc.shouldPlayIntroduction = shouldPlayIntroduction
         }
     }
     

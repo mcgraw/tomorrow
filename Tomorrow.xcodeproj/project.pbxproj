@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		8EB6098900D858F687DBE4FE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D19D1E513F2332275F65E411 /* libPods.a */; };
 		F0178D601A7421B600ED2795 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0178D5F1A7421B600ED2795 /* AppDelegate.swift */; };
-		F0178D681A7421B600ED2795 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0178D661A7421B600ED2795 /* Onboarding.storyboard */; };
+		F0178D681A7421B600ED2795 /* Tomorrow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0178D661A7421B600ED2795 /* Tomorrow.storyboard */; };
 		F0178D6A1A7421B600ED2795 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0178D691A7421B600ED2795 /* Images.xcassets */; };
 		F0178D6D1A7421B600ED2795 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0178D6B1A7421B600ED2795 /* LaunchScreen.xib */; };
 		F0178D791A7421B600ED2795 /* TomorrowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0178D781A7421B600ED2795 /* TomorrowTests.swift */; };
@@ -21,7 +21,7 @@
 		F01AF9581A742C0E0012D3F8 /* IGITimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AF9571A742C0E0012D3F8 /* IGITimelineViewController.swift */; };
 		F01AF95C1A743F510012D3F8 /* IGIBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AF95B1A743F510012D3F8 /* IGIBaseViewController.swift */; };
 		F01AF95F1A7440D70012D3F8 /* IGIGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AF95E1A7440D70012D3F8 /* IGIGradientView.swift */; };
-		F06B7DA81A868175007011FF /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F06B7DA71A868175007011FF /* Timeline.storyboard */; };
+		F05C18F81A8845A000600C71 /* final-sprint.txt in Resources */ = {isa = PBXBuildFile; fileRef = F05C18F71A8845A000600C71 /* final-sprint.txt */; };
 		F078BFB41A868DCB0095A518 /* IGITimelineNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F078BFB31A868DCB0095A518 /* IGITimelineNodeView.swift */; };
 		F07D40891A7ECF3500C0D91D /* icon-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = F07D40881A7ECF3500C0D91D /* icon-1024.png */; };
 		F09C5F331A7446F70033FF94 /* IGICircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C5F321A7446F70033FF94 /* IGICircularView.swift */; };
@@ -55,7 +55,7 @@
 		F0178D5A1A7421B600ED2795 /* Tomorrow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tomorrow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0178D5E1A7421B600ED2795 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0178D5F1A7421B600ED2795 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F0178D671A7421B600ED2795 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
+		F0178D671A7421B600ED2795 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tomorrow.storyboard; sourceTree = "<group>"; };
 		F0178D691A7421B600ED2795 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F0178D6C1A7421B600ED2795 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F0178D721A7421B600ED2795 /* Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_renameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tomorrow.temp_caseinsensitive_rename.temp_caseinsensitive_renameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,7 +69,7 @@
 		F01AF9571A742C0E0012D3F8 /* IGITimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGITimelineViewController.swift; sourceTree = "<group>"; };
 		F01AF95B1A743F510012D3F8 /* IGIBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIBaseViewController.swift; sourceTree = "<group>"; };
 		F01AF95E1A7440D70012D3F8 /* IGIGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIGradientView.swift; sourceTree = "<group>"; };
-		F06B7DA71A868175007011FF /* Timeline.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
+		F05C18F71A8845A000600C71 /* final-sprint.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "final-sprint.txt"; sourceTree = "<group>"; };
 		F078BFB31A868DCB0095A518 /* IGITimelineNodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGITimelineNodeView.swift; sourceTree = "<group>"; };
 		F07D40881A7ECF3500C0D91D /* icon-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-1024.png"; sourceTree = "<group>"; };
 		F09C5F321A7446F70033FF94 /* IGICircularView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGICircularView.swift; sourceTree = "<group>"; };
@@ -137,8 +137,8 @@
 		F0178D5C1A7421B600ED2795 /* Tomorrow */ = {
 			isa = PBXGroup;
 			children = (
-				F0178D661A7421B600ED2795 /* Onboarding.storyboard */,
-				F06B7DA71A868175007011FF /* Timeline.storyboard */,
+				F05C18F71A8845A000600C71 /* final-sprint.txt */,
+				F0178D661A7421B600ED2795 /* Tomorrow.storyboard */,
 				F01AF95B1A743F510012D3F8 /* IGIBaseViewController.swift */,
 				F01AF94D1A742A4D0012D3F8 /* IGIOnboardTitleViewController.swift */,
 				F01AF94F1A742B610012D3F8 /* IGICustomerDetailsViewController.swift */,
@@ -310,11 +310,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0178D681A7421B600ED2795 /* Onboarding.storyboard in Resources */,
+				F0178D681A7421B600ED2795 /* Tomorrow.storyboard in Resources */,
 				F07D40891A7ECF3500C0D91D /* icon-1024.png in Resources */,
-				F06B7DA81A868175007011FF /* Timeline.storyboard in Resources */,
 				F0178D6D1A7421B600ED2795 /* LaunchScreen.xib in Resources */,
 				F0178D6A1A7421B600ED2795 /* Images.xcassets in Resources */,
+				F05C18F81A8845A000600C71 /* final-sprint.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,12 +408,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F0178D661A7421B600ED2795 /* Onboarding.storyboard */ = {
+		F0178D661A7421B600ED2795 /* Tomorrow.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F0178D671A7421B600ED2795 /* Base */,
 			);
-			name = Onboarding.storyboard;
+			name = Tomorrow.storyboard;
 			sourceTree = "<group>";
 		};
 		F0178D6B1A7421B600ED2795 /* LaunchScreen.xib */ = {
