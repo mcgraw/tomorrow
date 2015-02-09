@@ -27,9 +27,25 @@
     : Are people planning their next day in the evening or when they wake up?
 
 
+[-] make sure use cases of crashing & quitting during task creation resumes or restarts
+
+[-] on app launch, update the background if it's been over a certain amount of time
+
+
+================================================================================
+Bugs
+
+[-] the gradient switch, onboarding (improper resize)
+[-] when creating a task, 'i'm' will fail
+[-] strip any extra spaces at the end of a task entry
+[-] user gradient setting doesn't carry over to the timeline
 
 
 
+
+
+
+================================================================================
 v1.1 - Success?
 
 [-] notifications would be nice

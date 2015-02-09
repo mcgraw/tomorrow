@@ -56,6 +56,9 @@ class IGIBaseViewController: UIViewController {
         })
         
         shouldPlayIntroduction = true
+        
+        navigationController?.dismissViewControllerAnimated(false, completion: nil)
+        
         performSegueWithIdentifier("timelineSegue", sender: self)
     }
     
