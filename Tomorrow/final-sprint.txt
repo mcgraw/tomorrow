@@ -1,5 +1,6 @@
 [-] details, details, details
 
+
 [-] when scrolling move the background slightly
 [-] when tilting the device move the background slightly
 
@@ -16,6 +17,7 @@
     : keep the tomorrow cell & reveal text like, "Great work today!" / sub: "Enjoy the rest of your day, you've earned it!"
 
 
+[-] integrate the completed day cell
 [-] integrate review cell
 [-] integrate tip cell
 
@@ -29,7 +31,14 @@
 
 [-] make sure use cases of crashing & quitting during task creation resumes or restarts
 
+
 [-] on app launch, update the background if it's been over a certain amount of time
+
+
+[-] brainstorm with Megan to fill out more phrases
+
+
+[-] test on various screen sizes
 
 
 ================================================================================
@@ -52,4 +61,5 @@ v1.1 - Success?
 [-] formal settings area to update information
 [-] syncing so you don't lose your history
 [-] more backgrounds & style
+[-] streaks
 [-] ...
