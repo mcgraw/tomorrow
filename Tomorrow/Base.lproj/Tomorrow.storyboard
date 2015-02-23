@@ -567,6 +567,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="RrN-xq-a2J" id="1Rd-1A-Vbb"/>
+                        <segue destination="rFj-vI-7Ve" kind="showDetail" identifier="taskInputSegue" id="lSL-vv-dAe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6T-r6-Td9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -577,4 +578,7 @@
     <resources>
         <image name="background0" width="466" height="736"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="lSL-vv-dAe"/>
+    </inferredMetricsTieBreakers>
 </document>

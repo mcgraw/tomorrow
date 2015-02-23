@@ -43,6 +43,12 @@ class IGIGoal: RLMObject {
         task.removeTaskFromGoalWithDate(date: self.date)
     }
     
+    func setGoalCompleted() {
+        RLMRealm.defaultRealm().beginWriteTransaction()
+        goal_completed = true
+        RLMRealm.defaultRealm().commitWriteTransaction()
+    }
+    
     func getDateAsString() -> String {
         if date_str == "" {
             let formatter = NSDateFormatter()

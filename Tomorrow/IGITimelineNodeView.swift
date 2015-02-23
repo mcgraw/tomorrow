@@ -32,6 +32,7 @@ let kStatusPlanTomorrowColor = UIColor.clearColor()
 protocol IGITimelineNodeDelegate {
     func nodeDidCompleteAnimation()
     func nodeCompletionStatusUpdated()
+    func nodePlanTomorrowPressed()
 }
 
 class IGITimelineNodeView: UIView, POPAnimationDelegate {
@@ -74,28 +75,6 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         line.layer.cornerRadius = 1
         line.layer.masksToBounds = true
         
-        
-        // Completed Day
-//        upperSubMessage = UILabel(frame: CGRectMake(0, 0, 320, 20))
-//        upperSubMessage!.textColor = UIColor.whiteColor()
-//        upperSubMessage!.text = "January 23rd, 2015"
-//        upperSubMessage!.font = UIFont(name: "AvenirNext-UltraLight", size: 16
-//        addSubview(upperSubMessage!)
-//        
-//        upperSubMessage!.autoPinEdge(ALEdge.Bottom, toEdge: ALEdge.Top, ofView: headline, withOffset: -5)
-//        upperSubMessage!.autoPinEdge(ALEdge.Leading, toEdge: ALEdge.Left, ofView: headline, withOffset: 0)
-//        upperSubMessage!.autoPinEdge(ALEdge.Trailing, toEdge: ALEdge.Trailing, ofView: self, withOffset: -10)
-//        
-//        var image = UIImage(named: "checkmark")
-//        node.backgroundColor = kStatusCompletedDayColor
-//        image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-//        nodeIcon.image = image
-//        
-//        headline.text = "Tasks Completed"
-//        headline.alpha = 1.0
-//        lowerSubMessage?.alpha = 1.0
-//        lowerSubMessage?.text = IGILoremIpsum.randomMotivationPhrase()
-        
         // Tip
 //        var image = UIImage(named: "tip")
 //        node.backgroundColor = kStatusTipColor
@@ -127,8 +106,6 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
 //        node.alpha = 1.0
 //        headline.alpha = 1.0
 //        lowerSubMessage?.alpha = 1.0
-        
-
         
     }
     
@@ -202,22 +179,21 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         node.addSubview(tomorrowLogoT!)
         tomorrowLogoT!.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsetsMake(4, 1, 0, 0))
         
-        shimmerView = FBShimmeringView(frame: headline.frame)
-        let plan = UILabel(frame: shimmerView!.frame)
+        shimmerView = FBShimmeringView(frame: headline.bounds)
+        addSubview(shimmerView!)
+        
+        let plan = UILabel(frame: shimmerView!.bounds)
         plan.text = "Let's Plan Tomorrow!"
         plan.font = UIFont(name: "AvenirNext-UltraLight", size: 30)
         plan.textColor = UIColor.whiteColor()
-        addSubview(shimmerView!)
-
+        shimmerView!.contentView = plan
+        shimmerView!.alpha = 0.0
+        
+        plan.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsetsZero)
+        
         shimmerView!.autoAlignAxis(ALAxis.Horizontal, toSameAxisOfView: node)
         shimmerView!.autoPinEdge(ALEdge.Left, toEdge: ALEdge.Trailing, ofView: node, withOffset: 10)
         shimmerView!.autoPinEdge(ALEdge.Right, toEdge: ALEdge.Trailing, ofView: self, withOffset: -10)
-        
-        shimmerView!.contentView = plan
-        plan.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsetsZero)
-
-        shimmerView!.alpha = 0.0
-        shimmerView!.shimmering = true
         
         shrinkAnimationForNode()
         
@@ -230,7 +206,6 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         headline.alpha = 0.0
         upperSubMessage.alpha = 0.0
         lowerSubMessage.alpha = 0.0
-
         node.alpha = 0
         
         // part of a node, but may be hidden in certain status
@@ -242,9 +217,7 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         shimmerView?.removeFromSuperview()
         tomorrowLogoT?.removeFromSuperview()
         
-        setNeedsUpdateConstraints()
         lineHeight?.constant = 0
-        layoutIfNeeded()
     }
     
     // MARK: Animation
@@ -347,6 +320,7 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
                 } else {
                     self.headline.alpha = 1
                     self.shimmerView?.alpha = 1
+                    self.shimmerView?.shimmering = true
                 }
             })
         }
@@ -368,6 +342,8 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
             } else if nodeStatus == .AllTasks {
                 nodeStatus = .CompletedDay
                 toggleAnimationForCompletedDay()
+            } else if nodeStatus == .PlanTomorrow {
+                delegate?.nodePlanTomorrowPressed()
             }
         }
     }
@@ -519,7 +495,7 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         
         headline.autoAlignAxis(ALAxis.Horizontal, toSameAxisOfView: node)
         headline.autoPinEdge(ALEdge.Leading, toEdge: ALEdge.Trailing, ofView: node, withOffset: 10)
-        headline.autoPinEdge(ALEdge.Trailing, toEdge: ALEdge.Trailing, ofView: self, withOffset: -10)
+        headline.autoPinEdge(ALEdge.Trailing, toEdge: ALEdge.Right, ofView: self, withOffset: -10)
         
         // Subheadline
         lowerSubMessage = UILabel(frame: CGRectMake(0, 0, 320, 20))

@@ -23,6 +23,10 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     var shouldShowTipNode = false
     var shouldShowRatingNode = false
     
+    var completedGoalCount  = 0         // unlimited
+    var activeTaskCount     = 0         // max 3
+    var specialtyNodeCount  = 0         // should be 1 or 0, we don't want to show a tip and a review at the same time
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +36,13 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
         allGoals = IGIGoal.allObjects()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // let the view appear before we refresh everything
+        refreshTableView()
+    }
+    
     // MARK: Table View 
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -39,23 +50,9 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var rows: Int = 0
-        
-        // Total goals minus 1 (the goal we're working on)
-        if let goals = allGoals {
-            rows += Int(goals.count - 1)
-        }
-        
-        // 3 tasks (the goal we're working on
-        if activeGoal != nil {
-            rows += 3
-        }
-        
-        // Specialty Rows
-        rows += shouldShowTomorrowNode ? 1 : 0
-        rows += shouldShowTipNode ? 1 : 0
-        rows += shouldShowRatingNode ? 1 : 0
-        
+        var rows = (shouldShowTomorrowNode) ? 1 : 0
+        rows += completedGoalCount + activeTaskCount + specialtyNodeCount
+        println("table refresh debug row count \(rows)")
         return rows
     }
     
@@ -70,38 +67,47 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
             nodeView!.delegate = self
             nodeView!.autoPinEdgesToSuperviewEdgesWithInsets(UIEdgeInsetsZero)
         }
+        else {
+            nodeView = cell.contentView.subviews.first as? IGITimelineNodeView
+        }
+        
+        /*      row         complete goals          active tasks
+                 0               1                       2                 5 rows needed
+                 1               0                       2
+                 2                                       2
+                 3                                       1
+                 4                                       0
+         */
+
+        if indexPath.row < completedGoalCount {     // Show completed goal nodes
+            println("\(indexPath.row) - get goal")
+            nodeView!.updateLayoutWithGoal(goalForIndexPath(indexPath))
+        }
+        else if indexPath.row == completedGoalCount && specialtyNodeCount > 0 {   // Do we need to reveal a tip or rating node?
+            
+        }
+        else if indexPath.row - specialtyNodeCount < activeTaskCount + 1 {   // Show tasks (if anything)
+            println("\(indexPath.row) - get task")
+            nodeView!.updateLayoutWithTask(taskForIndexPath(indexPath))
+        }
+        else if shouldShowTomorrowNode {        // Show active tomorrow node last (if needed)
+            println("\(indexPath.row) - get tomorrow node")
+            nodeView!.updateLayoutAsTomorrowNode()
+        }
         
         if indexPath.row == 0 && shouldPlayIntroduction {
             nodeView!.playTimelineAnimationDelayed(delay: 1.0)
         }
         
-        if allGoals!.count == 1 {
-            if indexPath.row < 3 {
-                let task = activeGoal?.tasks.objectAtIndex(UInt(indexPath.row)) as? IGITask
-                nodeView!.updateLayoutWithTask(task!)
-            } else if shouldShowTomorrowNode {
-                nodeView!.updateLayoutAsTomorrowNode()
-                nodeView!.playTimelineAnimationDelayed(delay: 0.5)
-            }
-        }
+        // TODO: Show a cell w/ a completed day
         
-    
-//        var goal: IGIGoal? = allGoals?.objectAtIndex(UInt(indexPath.row)) as? IGIGoal
-//        if (goal?.goal_completed == true) {
-//            nodeView!.updateLayoutWithGoal(goal!)
-//        } else if allGoals!.count == 1 {
-//            let task = activeGoal?.tasks.objectAtIndex(UInt(indexPath.row)) as? IGITask
-//            nodeView!.updateLayoutWithTask(task!)
-//        } else {
-//            let task = activeGoal?.tasks.objectAtIndex(UInt(indexPath.row - (allGoals!.count - 1))) as? IGITask
-//            nodeView!.updateLayoutWithTask(task!)
-//        }
+        // TODO: Show a tip node
         
-        
+        // TODO: Show a ratings node
         
         return cell
     }
-
+    
     // MARK: Timeline Delegate
     
     func nodeDidCompleteAnimation() {
@@ -147,13 +153,88 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
+    func nodePlanTomorrowPressed() {
+        // Mark goal as completed
+        activeGoal?.setGoalCompleted()
+        
+        // Proceed with Transition
+        let scale = POPBasicAnimation(propertyNamed: kPOPLayerScaleXY)
+        scale.toValue = NSValue(CGPoint: CGPointMake(0.5, 0.5))
+        tableView.layer.pop_addAnimation(scale, forKey: "scale-down")
+        
+        UIView.animateWithDuration(0.225, animations: {
+            self.tableView.alpha = 0.0
+        }, { (done) in
+            self.performSegueWithIdentifier("taskInputSegue", sender: nil)
+        })
+    }
+    
     // MARK: Data
     
     func refreshModelData() {
         allGoals = IGIGoal.allObjects()
         
+        refreshTableView()
+    }
+    
+    private func refreshTableView() {
+        // Update counts & flags
+        refreshCountStatus()
+        
+        // Refresh Table
         tableView.reloadData()
     }
     
+    private func refreshCountStatus() {
+        completedGoalCount  = 0
+        activeTaskCount     = 0
+        specialtyNodeCount  = 0
+        
+        if let results = allGoals {
+            for item: RLMObject in results {
+                let goal = item as IGIGoal
+                if goal.goal_completed == true {
+                    completedGoalCount++
+                } else {
+                    // We have active tasks
+                    activeTaskCount += 3
+                    
+                    // Is this goal complete?
+                    refreshTomorrowNode()
+                }
+            }
+        }
+    
+        if shouldShowTipNode || shouldShowRatingNode {
+            specialtyNodeCount++
+        }
+    }
+    
+    private func refreshTomorrowNode() {
+        if let goal = activeUser?.getCurrentGoal() {
+            if goal.goal_completed == false {
+                shouldShowTomorrowNode = goal.areAllTasksCompleted()
+            }
+        }
+    }
+    
+    private func shouldRevealSpecialtyNode() -> Bool {
+        if shouldShowTipNode || shouldShowRatingNode {
+            return true
+        }
+        return false
+    }
+    
+    // Nothing comes before a completed goal so we're fine with this index
+    private func goalForIndexPath(indexPath: NSIndexPath) -> IGIGoal {
+        return allGoals?.objectAtIndex(UInt(indexPath.row)) as IGIGoal
+    }
+    
+    // Account for goals (unlimited) and a potnetial specialty row
+    private func taskForIndexPath(indexPath: NSIndexPath) -> IGITask {
+        let index = completedGoalCount + specialtyNodeCount
+        println("debug task index: \(indexPath.row - index)")
+        return activeGoal?.tasks.objectAtIndex(UInt(indexPath.row - index)) as IGITask
+    }
 }
               

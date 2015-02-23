@@ -106,7 +106,11 @@ class IGITaskReviewViewController: UIViewController {
     }
     
     func transitionToTimeline() {
-        performSegueWithIdentifier("completeTaskSegue", sender: self)
+        if navigationController == nil {
+            dismissViewControllerAnimated(false, completion: nil)
+        } else {
+            performSegueWithIdentifier("completeTaskSegue", sender: self)
+        }
     }
     
     // MARK: Animation
