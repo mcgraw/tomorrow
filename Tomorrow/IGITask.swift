@@ -24,7 +24,8 @@ class IGITask: RLMObject {
     }
     
     class func findTaskWithExistingKey(name: String) -> IGITask? {
-        let tasks = IGITask.objectsWhere("name == '\(name)'")
+        let searchValue = name.stringByReplacingOccurrencesOfString("'", withString: "\\", options: NSStringCompareOptions.allZeros, range: nil)
+        let tasks = IGITask.objectsWhere("name == '\(searchValue)'")
         if tasks.count == 0 {
             return nil
         }
