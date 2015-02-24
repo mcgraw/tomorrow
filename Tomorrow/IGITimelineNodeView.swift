@@ -122,21 +122,23 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         prepareForReuse()
         nodeGoal = goal
         
-        var image = goal.goal_completed ? UIImage(named: "checkmark") : UIImage(named: "cross")
-        node.backgroundColor = goal.goal_completed ? kStatusCompletedDayColor : kStatusFailedColor
+        assert(goal.goal_completed == true, "Must not load an incompleted goal.")
+        
+        var image = goal.goal_failed ? UIImage(named: "cross") : UIImage(named: "checkmark")
+        node.backgroundColor = goal.goal_failed ? kStatusFailedColor : kStatusCompletedDayColor
         image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         nodeIcon.image = image
         
         upperSubMessage.text = goal.getDateAsString()
                 
-        if goal.goal_completed {
-            nodeStatus = .CompletedDay
-            headline.text = "Tasks Completed"
-            lowerSubMessage.text = IGILoremIpsum.randomMotivationPhrase()
-        } else {
+        if goal.goal_failed {
             nodeStatus = .Failed
             headline.text = "Failed to complete 1 task!"
             lowerSubMessage.text = IGILoremIpsum.randomEncouragementPhrase()
+        } else {
+            nodeStatus = .CompletedDay
+            headline.text = "Tasks Completed"
+            lowerSubMessage.text = IGILoremIpsum.randomMotivationPhrase()
         }
     }
     
@@ -150,6 +152,7 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         nodeIcon.image = image
         
         if task.completed {
+            lowerSubMessage.text = IGILoremIpsum.randomMotivationPhrase() // use stored value
             nodeStatus = .Completed
         } else {
             nodeStatus = .Task
@@ -158,9 +161,6 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         shrinkAnimationForNode()
         
         headline.text = task.name.capitalizedString
-        
-        upperSubMessage.text = ""
-        lowerSubMessage.text = ""
     }
     
     func updateLayoutAsTomorrowNode() {
@@ -224,6 +224,60 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
     
     func playTimelineAnimationDelayed(#delay: Double) {
         NSTimer.scheduledTimerWithTimeInterval(delay, target: self, selector: "playTimelineAnimation", userInfo: nil, repeats: false)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        // If the animation is complete our line should follow the the view updates
+        if revealAnimationComplete {
+            if nodeStatus == .PlanTomorrow {
+                lineHeight?.constant = bounds.size.height/2 - (node.frame.size.height / 2) + 6
+            } else {
+                lineHeight?.constant = bounds.size.height + 50
+            }
+        }
+    }
+    
+    
+    func revealTimelineWithoutAnimation() {
+        revealAnimationComplete = true  // not animating this cell
+        
+        let nodeAnim = POPBasicAnimation(propertyNamed: kPOPLayerScaleXY)
+        nodeAnim.toValue = NSValue(CGPoint: CGPointMake(1.0, 1.0))
+        node.layer.pop_addAnimation(nodeAnim, forKey: nodeAnim.name)
+        
+        let headlineAnim = POPBasicAnimation(propertyNamed: kPOPLayerScaleXY)
+        headlineAnim.toValue = NSValue(CGPoint: CGPointMake(1.0, 1.0))
+        headline.layer.pop_addAnimation(headlineAnim, forKey: headlineAnim.name)
+        
+        node.alpha = 1
+        line.alpha = 1
+        
+        if nodeStatus == .Completed {
+            if nodeTask != nil {
+                headline.alpha = 0.25
+                upperSubMessage.alpha = 0.0
+                lowerSubMessage.alpha = 1.0
+            }
+        }
+        else if nodeStatus == .CompletedDay || nodeStatus == .Failed {
+            if nodeGoal != nil {
+                headline.alpha = 1.0
+                upperSubMessage.alpha = 1.0
+                lowerSubMessage.alpha = 1.0
+            }
+        }
+        else if nodeStatus == .Task {
+            if nodeTask != nil {
+                headline.alpha = 1.0
+                upperSubMessage.alpha = 0.0
+                lowerSubMessage.alpha = 0.0
+            }
+        }
+        
+        self.shimmerView?.alpha = 1
+        self.shimmerView?.shimmering = true
     }
     
     func playTimelineAnimation() {
@@ -336,7 +390,7 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
             } else if nodeStatus == .Completed {
                 nodeStatus = .Task
                 toggleAnimationForTask()
-            } else if nodeStatus == .CompletedDay {
+            } else if nodeStatus == .CompletedDay || nodeStatus == .Failed {
                 nodeStatus = .AllTasks
                 toggleAnimationForCompletedDay()
             } else if nodeStatus == .AllTasks {
@@ -365,7 +419,6 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
             // switch & reveal new icon
             var image: UIImage?
             if nodeStatus == .Completed {
-                lowerSubMessage.text = IGILoremIpsum.randomMotivationPhrase()
                 image = UIImage(named: "checkmark")
                 node.backgroundColor = kStatusCompletedColor
                 
@@ -411,19 +464,23 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
                 self.lowerSubMessage.alpha = 0.0
             }, completion: { (done) in
                 if self.nodeStatus == .AllTasks {
-                    self.headline.font = UIFont(name: "AvenirNext-Regular", size: 16)
-                    self.upperSubMessage.font = UIFont(name: "AvenirNext-Regular", size: 16)
-                    self.lowerSubMessage.font = UIFont(name: "AvenirNext-Bold", size: 16)
-                    
-                    // signal which tasks failed
-                    self.lowerSubMessage.textColor = kStatusFailedColor
-                    
                     // update text with tasks
-                    self.upperSubMessage.text = "Write chapter 5"
-                    self.headline.text = "Walk dogs"
-                    self.lowerSubMessage.text = "Enjoy a glass of wine"
+                    var (title, color, font) = self.getTaskTitleAndColorForPosition(0)
+                    self.upperSubMessage.text = title
+                    self.upperSubMessage.textColor = color
+                    self.upperSubMessage.font = font
+                    
+                    (title, color, font) = self.getTaskTitleAndColorForPosition(1)
+                    self.headline.text = title
+                    self.headline.textColor = color
+                    self.headline.font = font
+                    
+                    (title, color, font) = self.getTaskTitleAndColorForPosition(2)
+                    self.lowerSubMessage.text = title
+                    self.lowerSubMessage.textColor = color
+                    self.lowerSubMessage.font = font
                 } else {
-                    self.headline.font = UIFont(name: "AvenirNext-Regular", size: 30)
+                    self.headline.font = UIFont(name: "AvenirNext-Regular", size: 26)
                     self.upperSubMessage.font = UIFont(name: "AvenirNext-UltraLight", size: 16)
                     self.lowerSubMessage.font = UIFont(name: "AvenirNext-UltraLight", size: 16)
                     
@@ -433,9 +490,20 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
                     self.lowerSubMessage.textColor = UIColor.whiteColor()
                     
                     // update text with tasks
-                    self.upperSubMessage.text = "January 23rd, 2015"
-                    self.headline.text = "Tasks Completed"
-                    self.lowerSubMessage.text = IGILoremIpsum.randomMotivationPhrase()
+                    
+                    if self.nodeGoal!.goal_failed == true {
+                        self.nodeStatus = .Failed
+                        let incomplete = self.nodeGoal!.countIncompleteTasks()
+                        let append = (incomplete > 1) ? "s" : ""
+                        self.upperSubMessage.text = self.nodeGoal?.getDateAsString()
+                        self.headline.text = "Failed to complete \(incomplete) task\(append)"
+                        self.lowerSubMessage.text = IGILoremIpsum.randomEncouragementPhrase()
+                    } else {
+                        self.nodeStatus = .Completed
+                        self.upperSubMessage.text = self.nodeGoal?.getDateAsString()
+                        self.headline.text = "Tasks Completed"
+                        self.lowerSubMessage.text = IGILoremIpsum.randomMotivationPhrase()
+                    }
                 }
                 
                 UIView.animateWithDuration(0.225, animations: {
@@ -445,6 +513,14 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
                 })
             })
         }
+    }
+    
+    private func getTaskTitleAndColorForPosition(taskPosition: Int) -> (String, UIColor, UIFont) {
+        let object: RLMObject = nodeGoal!.tasks.objectAtIndex(UInt(taskPosition)) as RLMObject
+        let task = object as IGITask
+        return (task.name,
+            (task.completed == true ? kStatusCompletedColor : kStatusFailedColor),
+            (task.completed == true ? UIFont(name: "AvenirNext-Regular", size: 16) : UIFont(name: "AvenirNext-Bold", size: 16))!)
     }
     
     // MARK: Initialize

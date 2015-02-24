@@ -15,8 +15,6 @@ class IGIBaseViewController: UIViewController {
     
     @IBOutlet weak var backgroundImage: UIImageView!
     
-    var shouldPlayIntroduction = false
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,18 +53,9 @@ class IGIBaseViewController: UIViewController {
                 })
         })
         
-        shouldPlayIntroduction = true
-        
         navigationController?.dismissViewControllerAnimated(false, completion: nil)
         
         performSegueWithIdentifier("timelineSegue", sender: self)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "timelineSegue" {
-            let vc = segue.destinationViewController as IGITimelineViewController
-            vc.shouldPlayIntroduction = shouldPlayIntroduction
-        }
     }
     
     // MARK: Notification

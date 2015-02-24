@@ -18,6 +18,8 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     var activeGoal: IGIGoal?
     
     var shouldPlayIntroduction = false
+    var shouldPlayTomorrowNodeIntroduction = false
+    var introductionAnimationPlaying = false
     
     var shouldShowTomorrowNode = false
     var shouldShowTipNode = false
@@ -34,13 +36,22 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
         activeUser = users[0] as? IGIUser
         activeGoal = activeUser?.getCurrentGoal()
         allGoals = IGIGoal.allObjects()
+        
+        if allGoals?.count == 1 {
+            shouldPlayIntroduction = true
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         // let the view appear before we refresh everything
-        refreshTableView()
+        refreshModelData()
+        
+        // First time loading the view should reveal the tomorrow node if needed
+        shouldPlayTomorrowNodeIntroduction = shouldShowTomorrowNode
+        
+        tableView.reloadData()
     }
     
     // MARK: Table View 
@@ -71,39 +82,42 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
             nodeView = cell.contentView.subviews.first as? IGITimelineNodeView
         }
         
-        /*      row         complete goals          active tasks
-                 0               1                       2                 5 rows needed
-                 1               0                       2
-                 2                                       2
-                 3                                       1
-                 4                                       0
-         */
-
-        if indexPath.row < completedGoalCount {     // Show completed goal nodes
+        // Cell Layout Handling
+        
+        if indexPath.row < completedGoalCount {                                     // Show completed goal nodes
             println("\(indexPath.row) - get goal")
             nodeView!.updateLayoutWithGoal(goalForIndexPath(indexPath))
+            nodeView!.revealTimelineWithoutAnimation()
         }
-        else if indexPath.row == completedGoalCount && specialtyNodeCount > 0 {   // Do we need to reveal a tip or rating node?
+        else if indexPath.row == completedGoalCount && specialtyNodeCount > 0 {     // Do we need to reveal a tip or rating node?
             
         }
-        else if indexPath.row - specialtyNodeCount < activeTaskCount + 1 {   // Show tasks (if anything)
+        else if indexPath.row < (completedGoalCount + activeTaskCount + specialtyNodeCount) {          // Show tasks (if anything)
             println("\(indexPath.row) - get task")
             nodeView!.updateLayoutWithTask(taskForIndexPath(indexPath))
+
+            // Only trigger the animation waterfall once & only if it should be played
+            if !introductionAnimationPlaying {
+                if !shouldPlayIntroduction {
+                    nodeView!.revealTimelineWithoutAnimation()
+                } else {
+                    introductionAnimationPlaying = true
+                    nodeView!.playTimelineAnimationDelayed(delay: 1.0)
+                    println("task introduction reveal triggered")
+                }
+            }
         }
-        else if shouldShowTomorrowNode {        // Show active tomorrow node last (if needed)
+        else if shouldShowTomorrowNode {                                            // Show active tomorrow node last (if needed)
             println("\(indexPath.row) - get tomorrow node")
             nodeView!.updateLayoutAsTomorrowNode()
+            
+            // This could be revealed by us (completing all tasks > inserting row)
+            if shouldPlayTomorrowNodeIntroduction {
+                nodeView!.playTimelineAnimationDelayed(delay: 1.0)
+            } else {
+                // The task animation reveal will trigger an animation if needed
+            }
         }
-        
-        if indexPath.row == 0 && shouldPlayIntroduction {
-            nodeView!.playTimelineAnimationDelayed(delay: 1.0)
-        }
-        
-        // TODO: Show a cell w/ a completed day
-        
-        // TODO: Show a tip node
-        
-        // TODO: Show a ratings node
         
         return cell
     }
@@ -132,6 +146,7 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
         if let status = activeGoal?.areAllTasksCompleted() {
             if status {
                 shouldShowTomorrowNode = true
+                shouldPlayTomorrowNodeIntroduction = true
                 
                 let rows = tableView.numberOfRowsInSection(0)
                 
@@ -143,6 +158,7 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
             else if shouldShowTomorrowNode {
                 // remove the tomorrow planning cell if the user changed their mind
                 shouldShowTomorrowNode = false
+                shouldPlayTomorrowNodeIntroduction = false
                 
                 let rows = tableView.numberOfRowsInSection(0)
                 

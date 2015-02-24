@@ -27,6 +27,9 @@ class IGIGoal: RLMObject {
     // When all tasks are complete, or the day has advanced, mark completed
     dynamic var goal_completed = false
     
+    // When the day has advanced and tasks were not completed
+    dynamic var goal_failed = false
+    
     func getCurrentTaskUnderEdit() -> IGITask? {
         let tasks: RLMResults? = self.tasks.objectsWhere("edit_needed == true")
         
@@ -66,5 +69,16 @@ class IGIGoal: RLMObject {
             }
         }
         return true
+    }
+    
+    func countIncompleteTasks() -> Int {
+        var count = 0
+        for item in tasks {
+            let task = item as IGITask
+            if !task.completed {
+                count++
+            }
+        }
+        return count
     }
 }
