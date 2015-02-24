@@ -65,6 +65,7 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
     var delegate: IGITimelineNodeDelegate?
     
     var revealAnimationComplete = false
+    var revealAnimationOff = false
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -230,7 +231,7 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         super.layoutSubviews()
         
         // If the animation is complete our line should follow the the view updates
-        if revealAnimationComplete {
+        if revealAnimationOff {
             if nodeStatus == .PlanTomorrow {
                 lineHeight?.constant = bounds.size.height/2 - (node.frame.size.height / 2) + 6
             } else {
@@ -241,7 +242,7 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
     
     
     func revealTimelineWithoutAnimation() {
-        revealAnimationComplete = true  // not animating this cell
+        revealAnimationOff = true  // not animating this cell
         
         let nodeAnim = POPBasicAnimation(propertyNamed: kPOPLayerScaleXY)
         nodeAnim.toValue = NSValue(CGPoint: CGPointMake(1.0, 1.0))
@@ -304,7 +305,7 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
             anim.duration = 0.5
             lineHeight!.pop_addAnimation(anim, forKey: anim.name)
         }
-        
+    
         revealAnimationComplete = true
         delegate?.nodeDidCompleteAnimation()
     }
