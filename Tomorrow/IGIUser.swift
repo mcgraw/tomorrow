@@ -83,4 +83,8 @@ class IGIUser: RLMObject {
         }
         return task!
     }
+    
+    func totalUserGoals() -> Int {
+        return Int(goals.count)
+    }
 }

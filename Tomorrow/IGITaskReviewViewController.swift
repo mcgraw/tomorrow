@@ -106,7 +106,7 @@ class IGITaskReviewViewController: UIViewController {
     }
     
     func transitionToTimeline() {
-        if navigationController == nil {
+        if userObject!.totalUserGoals() > 1 {
             dismissViewControllerAnimated(false, completion: nil)
         } else {
             performSegueWithIdentifier("completeTaskSegue", sender: self)
