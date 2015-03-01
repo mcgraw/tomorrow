@@ -7,14 +7,28 @@
 //
 
 import UIKit
-import CoreData
+import Batch
+import Batch.Push
+import Batch.Ads
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate {
 
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        // Register Notifications
+        BatchPush.registerForRemoteNotifications()
+        
+        // Clear any notifications when the user opens the app
+        BatchPush.dismissNotifications()
+        
+        // Setup Ads
+        BatchAds.setupAds()
+        
+        // Start Batch
+        Batch.startWithAPIKey("DEV54EF398118121451CB109F931AE")
         
         // Realm Migration Check
         RLMRealm.setSchemaVersion(1, forRealmAtPath: RLMRealm.defaultRealmPath()) { (migration, oldSchemaVersion) in
@@ -25,4 +39,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        
+    }    
 }

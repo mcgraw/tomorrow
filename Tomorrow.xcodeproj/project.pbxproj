@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		8EB6098900D858F687DBE4FE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D19D1E513F2332275F65E411 /* libPods.a */; };
+		F0120F531AA3A94A0014013F /* Batch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F0120F511AA3A94A0014013F /* Batch.bundle */; };
+		F0120F541AA3A94A0014013F /* Batch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0120F521AA3A94A0014013F /* Batch.framework */; };
+		F0120F561AA3A9660014013F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F0120F551AA3A9660014013F /* libsqlite3.dylib */; };
+		F0120F581AA3AF3D0014013F /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0120F571AA3AF3D0014013F /* AdSupport.framework */; };
 		F0178D601A7421B600ED2795 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0178D5F1A7421B600ED2795 /* AppDelegate.swift */; };
 		F0178D681A7421B600ED2795 /* Tomorrow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0178D661A7421B600ED2795 /* Tomorrow.storyboard */; };
 		F0178D6A1A7421B600ED2795 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0178D691A7421B600ED2795 /* Images.xcassets */; };
@@ -52,6 +56,10 @@
 		60C6AB8AC9A6EF8D8A003DFF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B2A7DCE0DECA9C9019E9FBB5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D19D1E513F2332275F65E411 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0120F511AA3A94A0014013F /* Batch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Batch.bundle; sourceTree = "<group>"; };
+		F0120F521AA3A94A0014013F /* Batch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Batch.framework; sourceTree = "<group>"; };
+		F0120F551AA3A9660014013F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		F0120F571AA3AF3D0014013F /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		F0178D5A1A7421B600ED2795 /* Tomorrow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tomorrow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0178D5E1A7421B600ED2795 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0178D5F1A7421B600ED2795 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +100,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EB6098900D858F687DBE4FE /* libPods.a in Frameworks */,
+				F0120F561AA3A9660014013F /* libsqlite3.dylib in Frameworks */,
+				F0120F541AA3A94A0014013F /* Batch.framework in Frameworks */,
+				F0120F581AA3AF3D0014013F /* AdSupport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +123,15 @@
 				60C6AB8AC9A6EF8D8A003DFF /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F0120F501AA3A94A0014013F /* Batch.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				F0120F511AA3A94A0014013F /* Batch.bundle */,
+				F0120F521AA3A94A0014013F /* Batch.framework */,
+			);
+			path = Batch.embeddedframework;
 			sourceTree = "<group>";
 		};
 		F0178D511A7421B600ED2795 = {
@@ -221,6 +241,9 @@
 		F1EF4EFA3FAA3C253B1D45AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F0120F571AA3AF3D0014013F /* AdSupport.framework */,
+				F0120F551AA3A9660014013F /* libsqlite3.dylib */,
+				F0120F501AA3A94A0014013F /* Batch.embeddedframework */,
 				12968796F3B1B36658164424 /* libPods-Tomorrow.a */,
 				D19D1E513F2332275F65E411 /* libPods.a */,
 			);
@@ -312,6 +335,7 @@
 			files = (
 				F0178D681A7421B600ED2795 /* Tomorrow.storyboard in Resources */,
 				F07D40891A7ECF3500C0D91D /* icon-1024.png in Resources */,
+				F0120F531AA3A94A0014013F /* Batch.bundle in Resources */,
 				F0178D6D1A7421B600ED2795 /* LaunchScreen.xib in Resources */,
 				F0178D6A1A7421B600ED2795 /* Images.xcassets in Resources */,
 				F05C18F81A8845A000600C71 /* final-sprint.txt in Resources */,
@@ -512,6 +536,10 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Batch.embeddedframework",
+				);
 				INFOPLIST_FILE = Tomorrow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Tomorrow;
@@ -528,6 +556,10 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Batch.embeddedframework",
+				);
 				INFOPLIST_FILE = Tomorrow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Tomorrow;
