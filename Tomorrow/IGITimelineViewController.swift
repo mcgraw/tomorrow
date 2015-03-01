@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Batch.Ads
 
 class IGITimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, IGITimelineNodeDelegate {
 
@@ -40,10 +41,6 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
         if allGoals?.count == 1 {
             shouldPlayIntroduction = true
         }
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
         
         // let the view appear before we refresh everything
         refreshModelData()
@@ -53,8 +50,8 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
         
         tableView.reloadData()
     }
-    
-    // MARK: Table View 
+
+    // MARK: Table View
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 150
