@@ -10,9 +10,10 @@ import UIKit
 import Batch
 import Batch.Push
 import Batch.Ads
+import Batch.Unlock
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate, BatchUnlockDelegate {
 
     var window: UIWindow?
 
@@ -26,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate {
         
         // Setup Ads
         BatchAds.setupAds()
+        
+        // Unlock
+        BatchUnlock.setupUnlockWithDelegate(self)
         
         // Start Batch
         Batch.startWithAPIKey("DEV54EF398118121451CB109F931AE")
@@ -46,5 +50,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate {
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         
-    }    
+    }
+    
+    func automaticOfferRedeemed(offer: BatchOffer!) {
+        println(offer.offerAdditionalParameters())
+        
+        for feature in offer.features() as [BatchFeature] {
+            let reference = feature.reference()
+            let value = feature.value()
+            
+            // unlock
+            println("ref \(reference) & val \(value)")
+        }
+    }
 }
