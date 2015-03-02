@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Spring
+import pop
 
-class IGILabel: UILabel {
+class IGILabel: SpringLabel {
     
     @IBOutlet weak var layoutConstraint: NSLayoutConstraint?
     

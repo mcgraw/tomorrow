@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Realm
 
 enum IGITaskEntryStatus: Int {
     case Task1, Task2, Task3, Done, Editing

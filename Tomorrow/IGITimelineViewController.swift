@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import pop
+import Realm
 import Batch.Ads
 
 class IGITimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, IGITimelineNodeDelegate {
@@ -49,6 +51,12 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
         shouldPlayTomorrowNodeIntroduction = shouldShowTomorrowNode
         
         tableView.reloadData()
+        
+        NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "testMessage", userInfo: nil, repeats: false)
+    }
+    
+    func testMessage() {
+        performSegueWithIdentifier("revealMessageSegue", sender: self)
     }
 
     // MARK: Table View

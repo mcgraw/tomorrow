@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Realm
 
 enum IGIGender: Int {
     case Unspecified, Male, Female
@@ -139,7 +140,7 @@ class IGICustomerDetailsViewController: UIViewController, UITextFieldDelegate {
     // Text Delegate
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        inputField.enabled = false
+        inputField.selectable = false
         
         RLMRealm.defaultRealm().beginWriteTransaction()
         

@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Spring
+import pop
 
-class IGIButton: UIButton, POPAnimationDelegate {
+class IGIButton: SpringButton, POPAnimationDelegate {
     
     @IBOutlet weak var layoutConstraint: NSLayoutConstraint?
     @IBOutlet weak var spacingConstraint: NSLayoutConstraint?

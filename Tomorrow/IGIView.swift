@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Spring
+import pop
 
-class IGIView: UIView {
+class IGIView: SpringView {
 
     @IBOutlet weak var layoutConstraint: NSLayoutConstraint?
     

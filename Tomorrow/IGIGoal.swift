@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Realm
 
 class IGIGoal: RLMObject {
     // Owned by one user

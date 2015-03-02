@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8EB6098900D858F687DBE4FE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D19D1E513F2332275F65E411 /* libPods.a */; };
+		C8FFFA0A4A2801829C2AB005 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEC39AB0FD4DD99C02A46B7B /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F0120F531AA3A94A0014013F /* Batch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F0120F511AA3A94A0014013F /* Batch.bundle */; };
 		F0120F541AA3A94A0014013F /* Batch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0120F521AA3A94A0014013F /* Batch.framework */; };
 		F0120F561AA3A9660014013F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F0120F551AA3A9660014013F /* libsqlite3.dylib */; };
@@ -36,6 +36,7 @@
 		F070A2E91AA4D49E00CE9B55 /* YokoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070A2E01AA4D49E00CE9B55 /* YokoTextField.swift */; };
 		F078BFB41A868DCB0095A518 /* IGITimelineNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F078BFB31A868DCB0095A518 /* IGITimelineNodeView.swift */; };
 		F07D40891A7ECF3500C0D91D /* icon-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = F07D40881A7ECF3500C0D91D /* icon-1024.png */; };
+		F098E7C71AA4E40800DA6E57 /* IGIMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098E7C61AA4E40800DA6E57 /* IGIMessageViewController.swift */; };
 		F09C5F331A7446F70033FF94 /* IGICircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C5F321A7446F70033FF94 /* IGICircularView.swift */; };
 		F09C5F411A7455DB0033FF94 /* IGIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C5F3E1A7455DB0033FF94 /* IGIButton.swift */; };
 		F09C5F421A7455DB0033FF94 /* IGILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C5F3F1A7455DB0033FF94 /* IGILabel.swift */; };
@@ -63,7 +64,6 @@
 		12968796F3B1B36658164424 /* libPods-Tomorrow.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tomorrow.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60C6AB8AC9A6EF8D8A003DFF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B2A7DCE0DECA9C9019E9FBB5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		D19D1E513F2332275F65E411 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0120F511AA3A94A0014013F /* Batch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Batch.bundle; sourceTree = "<group>"; };
 		F0120F521AA3A94A0014013F /* Batch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Batch.framework; sourceTree = "<group>"; };
 		F0120F551AA3A9660014013F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -97,6 +97,7 @@
 		F070A2E01AA4D49E00CE9B55 /* YokoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YokoTextField.swift; sourceTree = "<group>"; };
 		F078BFB31A868DCB0095A518 /* IGITimelineNodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGITimelineNodeView.swift; sourceTree = "<group>"; };
 		F07D40881A7ECF3500C0D91D /* icon-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-1024.png"; sourceTree = "<group>"; };
+		F098E7C61AA4E40800DA6E57 /* IGIMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIMessageViewController.swift; sourceTree = "<group>"; };
 		F09C5F321A7446F70033FF94 /* IGICircularView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGICircularView.swift; sourceTree = "<group>"; };
 		F09C5F341A744B8F0033FF94 /* Tomorrow-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tomorrow-Bridging-Header.h"; sourceTree = "<group>"; };
 		F09C5F3E1A7455DB0033FF94 /* IGIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIButton.swift; sourceTree = "<group>"; };
@@ -109,6 +110,7 @@
 		F0D1F2101A872877009CAB50 /* IGITask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGITask.swift; sourceTree = "<group>"; };
 		F0D1F2121A872997009CAB50 /* IGIGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIGoal.swift; sourceTree = "<group>"; };
 		F0D1F2141A8731A0009CAB50 /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
+		FEC39AB0FD4DD99C02A46B7B /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,10 +118,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EB6098900D858F687DBE4FE /* libPods.a in Frameworks */,
 				F0120F561AA3A9660014013F /* libsqlite3.dylib in Frameworks */,
 				F0120F541AA3A94A0014013F /* Batch.framework in Frameworks */,
 				F0120F581AA3AF3D0014013F /* AdSupport.framework in Frameworks */,
+				C8FFFA0A4A2801829C2AB005 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +184,7 @@
 				F01AF9531A742BB30012D3F8 /* IGITaskEntryViewController.swift */,
 				F01AF9551A742BE50012D3F8 /* IGITaskReviewViewController.swift */,
 				F01AF9571A742C0E0012D3F8 /* IGITimelineViewController.swift */,
+				F098E7C61AA4E40800DA6E57 /* IGIMessageViewController.swift */,
 				F0178D5F1A7421B600ED2795 /* AppDelegate.swift */,
 				F0D1F20A1A86E84C009CAB50 /* Model */,
 				F01AF95D1A7440BF0012D3F8 /* Supplementing Views */,
@@ -279,7 +282,7 @@
 				F070A2D61AA4D49E00CE9B55 /* TextFieldEffects */,
 				F0120F501AA3A94A0014013F /* Batch.embeddedframework */,
 				12968796F3B1B36658164424 /* libPods-Tomorrow.a */,
-				D19D1E513F2332275F65E411 /* libPods.a */,
+				FEC39AB0FD4DD99C02A46B7B /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				F0178D571A7421B600ED2795 /* Frameworks */,
 				F0178D581A7421B600ED2795 /* Resources */,
 				A15CA3B1084A3C493168ACE5 /* Copy Pods Resources */,
+				D98913C0A8755C594C963605 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -401,6 +405,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D98913C0A8755C594C963605 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E4CFBE00B25D6353386FBC9C /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -423,10 +442,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0D1F2151A8731A0009CAB50 /* RLMSupport.swift in Sources */,
 				F0D1F2131A872997009CAB50 /* IGIGoal.swift in Sources */,
 				F0D1F20C1A86E895009CAB50 /* IGILoremIpsum.swift in Sources */,
 				F09C5F411A7455DB0033FF94 /* IGIButton.swift in Sources */,
 				F09C5F451A7468E90033FF94 /* IGITextField.swift in Sources */,
+				F098E7C71AA4E40800DA6E57 /* IGIMessageViewController.swift in Sources */,
 				F01AF9581A742C0E0012D3F8 /* IGITimelineViewController.swift in Sources */,
 				F0D1F20F1A87250A009CAB50 /* IGIUser.swift in Sources */,
 				F070A2E51AA4D49E00CE9B55 /* KaedeTextField.swift in Sources */,
@@ -446,7 +467,6 @@
 				F09C5F471A746BF30033FF94 /* IGIViewAnimation.swift in Sources */,
 				F01AF94E1A742A4D0012D3F8 /* IGIOnboardTitleViewController.swift in Sources */,
 				F070A2E71AA4D49E00CE9B55 /* MinoruTextField.swift in Sources */,
-				F0D1F2151A8731A0009CAB50 /* RLMSupport.swift in Sources */,
 				F09C5F331A7446F70033FF94 /* IGICircularView.swift in Sources */,
 				F070A2E31AA4D49E00CE9B55 /* IsaoTextField.swift in Sources */,
 				F09C5F431A7455DB0033FF94 /* IGIView.swift in Sources */,

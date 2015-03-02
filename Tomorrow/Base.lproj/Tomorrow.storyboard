@@ -299,7 +299,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's the #1 task to complete tomorrow?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugU-ID-LH2" userLabel="Title" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="What's the #1 task to complete tomorrow?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugU-ID-LH2" userLabel="Title" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
                                 <rect key="frame" x="20" y="80" width="560" height="93"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="34"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -308,7 +308,7 @@
                                     <outlet property="layoutConstraint" destination="XGJ-aa-TuJ" id="4ou-zp-RI4"/>
                                 </connections>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hLq-DC-SPK" userLabel="Input Field" customClass="IGITextField" customModule="Tomorrow" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hLq-DC-SPK" userLabel="Input Field" customClass="IGITextField" customModule="Tomorrow" customModuleProvider="target">
                                 <rect key="frame" x="25" y="200" width="550" height="47"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -354,7 +354,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4u-wt-MuC" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Review" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4u-wt-MuC" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
                                 <rect key="frame" x="249" y="80" width="104" height="47"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="34"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -568,11 +568,85 @@
                     <connections>
                         <outlet property="tableView" destination="RrN-xq-a2J" id="1Rd-1A-Vbb"/>
                         <segue destination="rFj-vI-7Ve" kind="showDetail" identifier="taskInputSegue" id="lSL-vv-dAe"/>
+                        <segue destination="IUO-FI-dTy" kind="presentation" identifier="revealMessageSegue" modalTransitionStyle="crossDissolve" id="Hwj-ag-Xc0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S6T-r6-Td9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1379" y="1337"/>
+        </scene>
+        <!--Message View Controller-->
+        <scene sceneID="qbI-mv-uTB">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="IUO-FI-dTy" customClass="IGIMessageViewController" customModule="Tomorrow" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gt4-6E-PQs"/>
+                        <viewControllerLayoutGuide type="bottom" id="2QE-6U-c3Z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NVn-i1-FlW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sad-eM-V5a">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="uAt-cD-aNb">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axg-hg-QmQ" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
+                                            <rect key="frame" x="239" y="40" width="123" height="47"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="34"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                            <connections>
+                                                <outlet property="layoutConstraint" destination="znl-jn-r7Y" id="Tm1-0w-TrB"/>
+                                            </connections>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you ready to complete the day?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhX-M0-yHR">
+                                            <rect key="frame" x="20" y="283" width="560" height="33"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="24"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xsY-Ga-hxG" customClass="IGIButton" customModule="Tomorrow" customModuleProvider="target">
+                                            <rect key="frame" x="226" y="505" width="148" height="58"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="33"/>
+                                            <state key="normal" title="Complete">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="completeActionPressed:" destination="TRo-zP-ROM" eventType="touchUpInside" id="AyX-74-pKs"/>
+                                                <outlet property="layoutConstraint" destination="IBw-8H-bhC" id="OXV-fZ-dhe"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="BhX-M0-yHR" firstAttribute="leading" secondItem="uAt-cD-aNb" secondAttribute="leading" constant="20" id="20S-nq-KF6"/>
+                                        <constraint firstAttribute="bottom" secondItem="xsY-Ga-hxG" secondAttribute="bottom" constant="37" id="UsZ-MF-fUz"/>
+                                        <constraint firstAttribute="trailing" secondItem="BhX-M0-yHR" secondAttribute="trailing" constant="20" id="bDr-je-edr"/>
+                                        <constraint firstAttribute="centerX" secondItem="xsY-Ga-hxG" secondAttribute="centerX" id="cvO-ep-8sr"/>
+                                        <constraint firstAttribute="centerX" secondItem="BhX-M0-yHR" secondAttribute="centerX" id="ogi-kz-CYr"/>
+                                        <constraint firstItem="axg-hg-QmQ" firstAttribute="top" secondItem="uAt-cD-aNb" secondAttribute="top" constant="40" id="tSI-lE-EIM"/>
+                                        <constraint firstAttribute="centerX" secondItem="axg-hg-QmQ" secondAttribute="centerX" constant="-0.5" id="wEY-1v-md9"/>
+                                        <constraint firstAttribute="centerY" secondItem="BhX-M0-yHR" secondAttribute="centerY" constant="0.5" id="zah-Tw-5Lf"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sad-eM-V5a" firstAttribute="top" secondItem="NVn-i1-FlW" secondAttribute="top" id="Uxk-Rt-Zez"/>
+                            <constraint firstAttribute="trailing" secondItem="sad-eM-V5a" secondAttribute="trailing" id="fbH-Qr-uZ3"/>
+                            <constraint firstItem="2QE-6U-c3Z" firstAttribute="top" secondItem="sad-eM-V5a" secondAttribute="bottom" id="lgp-SD-ezU"/>
+                            <constraint firstItem="sad-eM-V5a" firstAttribute="leading" secondItem="NVn-i1-FlW" secondAttribute="leading" id="tbj-6N-3re"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0h8-fT-Je1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2094" y="1337"/>
         </scene>
     </scenes>
     <resources>

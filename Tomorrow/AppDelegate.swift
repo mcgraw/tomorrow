@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Realm
 import Batch
 import Batch.Push
 import Batch.Ads
@@ -19,20 +20,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate, 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        // Register Notifications
-        BatchPush.registerForRemoteNotifications()
-        
-        // Clear any notifications when the user opens the app
-        BatchPush.dismissNotifications()
-        
-        // Setup Ads
-        BatchAds.setupAds()
-        
-        // Unlock
-        BatchUnlock.setupUnlockWithDelegate(self)
-        
-        // Start Batch
-        Batch.startWithAPIKey("DEV54EF398118121451CB109F931AE")
+//        // Register Notifications
+//        BatchPush.registerForRemoteNotifications()
+//        
+//        // Clear any notifications when the user opens the app
+//        BatchPush.dismissNotifications()
+//        
+//        // Setup Ads
+//        BatchAds.setupAds()
+//        
+//        // Unlock
+//        BatchUnlock.setupUnlockWithDelegate(self)
+//        
+//        // Start Batch
+//        Batch.startWithAPIKey("DEV54EF398118121451CB109F931AE")
         
         // Realm Migration Check
         RLMRealm.setSchemaVersion(1, forRealmAtPath: RLMRealm.defaultRealmPath()) { (migration, oldSchemaVersion) in

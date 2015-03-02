@@ -2,6 +2,7 @@
 platform :ios, '8.0'
 
 pod 'pop'
+pod 'Spring'
 pod 'Shimmer'
 pod 'Realm'
 pod 'PureLayout'

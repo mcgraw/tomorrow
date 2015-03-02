@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Realm
 
 class IGIUser: RLMObject {
     dynamic var userId = 0
