@@ -25,7 +25,15 @@
 		F01AF9581A742C0E0012D3F8 /* IGITimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AF9571A742C0E0012D3F8 /* IGITimelineViewController.swift */; };
 		F01AF95C1A743F510012D3F8 /* IGIBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AF95B1A743F510012D3F8 /* IGIBaseViewController.swift */; };
 		F01AF95F1A7440D70012D3F8 /* IGIGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AF95E1A7440D70012D3F8 /* IGIGradientView.swift */; };
-		F05C18F81A8845A000600C71 /* final-sprint.txt in Resources */ = {isa = PBXBuildFile; fileRef = F05C18F71A8845A000600C71 /* final-sprint.txt */; };
+		F070A2E11AA4D49E00CE9B55 /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070A2D71AA4D49E00CE9B55 /* HoshiTextField.swift */; };
+		F070A2E21AA4D49E00CE9B55 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F070A2D81AA4D49E00CE9B55 /* Info.plist */; };
+		F070A2E31AA4D49E00CE9B55 /* IsaoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070A2D91AA4D49E00CE9B55 /* IsaoTextField.swift */; };
+		F070A2E41AA4D49E00CE9B55 /* JiroTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070A2DA1AA4D49E00CE9B55 /* JiroTextField.swift */; };
+		F070A2E51AA4D49E00CE9B55 /* KaedeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070A2DB1AA4D49E00CE9B55 /* KaedeTextField.swift */; };
+		F070A2E61AA4D49E00CE9B55 /* MadokaTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070A2DC1AA4D49E00CE9B55 /* MadokaTextField.swift */; };
+		F070A2E71AA4D49E00CE9B55 /* MinoruTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070A2DD1AA4D49E00CE9B55 /* MinoruTextField.swift */; };
+		F070A2E81AA4D49E00CE9B55 /* TextFieldsEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070A2DF1AA4D49E00CE9B55 /* TextFieldsEffects.swift */; };
+		F070A2E91AA4D49E00CE9B55 /* YokoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070A2E01AA4D49E00CE9B55 /* YokoTextField.swift */; };
 		F078BFB41A868DCB0095A518 /* IGITimelineNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F078BFB31A868DCB0095A518 /* IGITimelineNodeView.swift */; };
 		F07D40891A7ECF3500C0D91D /* icon-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = F07D40881A7ECF3500C0D91D /* icon-1024.png */; };
 		F09C5F331A7446F70033FF94 /* IGICircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C5F321A7446F70033FF94 /* IGICircularView.swift */; };
@@ -77,7 +85,16 @@
 		F01AF9571A742C0E0012D3F8 /* IGITimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGITimelineViewController.swift; sourceTree = "<group>"; };
 		F01AF95B1A743F510012D3F8 /* IGIBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIBaseViewController.swift; sourceTree = "<group>"; };
 		F01AF95E1A7440D70012D3F8 /* IGIGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIGradientView.swift; sourceTree = "<group>"; };
-		F05C18F71A8845A000600C71 /* final-sprint.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "final-sprint.txt"; sourceTree = "<group>"; };
+		F070A2D71AA4D49E00CE9B55 /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoshiTextField.swift; sourceTree = "<group>"; };
+		F070A2D81AA4D49E00CE9B55 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F070A2D91AA4D49E00CE9B55 /* IsaoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsaoTextField.swift; sourceTree = "<group>"; };
+		F070A2DA1AA4D49E00CE9B55 /* JiroTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JiroTextField.swift; sourceTree = "<group>"; };
+		F070A2DB1AA4D49E00CE9B55 /* KaedeTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KaedeTextField.swift; sourceTree = "<group>"; };
+		F070A2DC1AA4D49E00CE9B55 /* MadokaTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MadokaTextField.swift; sourceTree = "<group>"; };
+		F070A2DD1AA4D49E00CE9B55 /* MinoruTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinoruTextField.swift; sourceTree = "<group>"; };
+		F070A2DE1AA4D49E00CE9B55 /* TextFieldEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldEffects.h; sourceTree = "<group>"; };
+		F070A2DF1AA4D49E00CE9B55 /* TextFieldsEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldsEffects.swift; sourceTree = "<group>"; };
+		F070A2E01AA4D49E00CE9B55 /* YokoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YokoTextField.swift; sourceTree = "<group>"; };
 		F078BFB31A868DCB0095A518 /* IGITimelineNodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGITimelineNodeView.swift; sourceTree = "<group>"; };
 		F07D40881A7ECF3500C0D91D /* icon-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-1024.png"; sourceTree = "<group>"; };
 		F09C5F321A7446F70033FF94 /* IGICircularView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGICircularView.swift; sourceTree = "<group>"; };
@@ -157,7 +174,6 @@
 		F0178D5C1A7421B600ED2795 /* Tomorrow */ = {
 			isa = PBXGroup;
 			children = (
-				F05C18F71A8845A000600C71 /* final-sprint.txt */,
 				F0178D661A7421B600ED2795 /* Tomorrow.storyboard */,
 				F01AF95B1A743F510012D3F8 /* IGIBaseViewController.swift */,
 				F01AF94D1A742A4D0012D3F8 /* IGIOnboardTitleViewController.swift */,
@@ -220,6 +236,23 @@
 			name = "Supplementing Views";
 			sourceTree = "<group>";
 		};
+		F070A2D61AA4D49E00CE9B55 /* TextFieldEffects */ = {
+			isa = PBXGroup;
+			children = (
+				F070A2D71AA4D49E00CE9B55 /* HoshiTextField.swift */,
+				F070A2D81AA4D49E00CE9B55 /* Info.plist */,
+				F070A2D91AA4D49E00CE9B55 /* IsaoTextField.swift */,
+				F070A2DA1AA4D49E00CE9B55 /* JiroTextField.swift */,
+				F070A2DB1AA4D49E00CE9B55 /* KaedeTextField.swift */,
+				F070A2DC1AA4D49E00CE9B55 /* MadokaTextField.swift */,
+				F070A2DD1AA4D49E00CE9B55 /* MinoruTextField.swift */,
+				F070A2DE1AA4D49E00CE9B55 /* TextFieldEffects.h */,
+				F070A2DF1AA4D49E00CE9B55 /* TextFieldsEffects.swift */,
+				F070A2E01AA4D49E00CE9B55 /* YokoTextField.swift */,
+			);
+			path = TextFieldEffects;
+			sourceTree = "<group>";
+		};
 		F09C5F2F1A7445680033FF94 /* Segues */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +276,7 @@
 			children = (
 				F0120F571AA3AF3D0014013F /* AdSupport.framework */,
 				F0120F551AA3A9660014013F /* libsqlite3.dylib */,
+				F070A2D61AA4D49E00CE9B55 /* TextFieldEffects */,
 				F0120F501AA3A94A0014013F /* Batch.embeddedframework */,
 				12968796F3B1B36658164424 /* libPods-Tomorrow.a */,
 				D19D1E513F2332275F65E411 /* libPods.a */,
@@ -338,7 +372,7 @@
 				F0120F531AA3A94A0014013F /* Batch.bundle in Resources */,
 				F0178D6D1A7421B600ED2795 /* LaunchScreen.xib in Resources */,
 				F0178D6A1A7421B600ED2795 /* Images.xcassets in Resources */,
-				F05C18F81A8845A000600C71 /* final-sprint.txt in Resources */,
+				F070A2E21AA4D49E00CE9B55 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,18 +429,26 @@
 				F09C5F451A7468E90033FF94 /* IGITextField.swift in Sources */,
 				F01AF9581A742C0E0012D3F8 /* IGITimelineViewController.swift in Sources */,
 				F0D1F20F1A87250A009CAB50 /* IGIUser.swift in Sources */,
+				F070A2E51AA4D49E00CE9B55 /* KaedeTextField.swift in Sources */,
 				F078BFB41A868DCB0095A518 /* IGITimelineNodeView.swift in Sources */,
+				F070A2E61AA4D49E00CE9B55 /* MadokaTextField.swift in Sources */,
 				F09C5F421A7455DB0033FF94 /* IGILabel.swift in Sources */,
+				F070A2E81AA4D49E00CE9B55 /* TextFieldsEffects.swift in Sources */,
 				F01AF95C1A743F510012D3F8 /* IGIBaseViewController.swift in Sources */,
 				F01AF9501A742B610012D3F8 /* IGICustomerDetailsViewController.swift in Sources */,
 				F01AF9541A742BB30012D3F8 /* IGITaskEntryViewController.swift in Sources */,
+				F070A2E41AA4D49E00CE9B55 /* JiroTextField.swift in Sources */,
+				F070A2E11AA4D49E00CE9B55 /* HoshiTextField.swift in Sources */,
 				F0D1F2111A872877009CAB50 /* IGITask.swift in Sources */,
 				F0178D601A7421B600ED2795 /* AppDelegate.swift in Sources */,
 				F01AF9561A742BE50012D3F8 /* IGITaskReviewViewController.swift in Sources */,
+				F070A2E91AA4D49E00CE9B55 /* YokoTextField.swift in Sources */,
 				F09C5F471A746BF30033FF94 /* IGIViewAnimation.swift in Sources */,
 				F01AF94E1A742A4D0012D3F8 /* IGIOnboardTitleViewController.swift in Sources */,
+				F070A2E71AA4D49E00CE9B55 /* MinoruTextField.swift in Sources */,
 				F0D1F2151A8731A0009CAB50 /* RLMSupport.swift in Sources */,
 				F09C5F331A7446F70033FF94 /* IGICircularView.swift in Sources */,
+				F070A2E31AA4D49E00CE9B55 /* IsaoTextField.swift in Sources */,
 				F09C5F431A7455DB0033FF94 /* IGIView.swift in Sources */,
 				F01AF95F1A7440D70012D3F8 /* IGIGradientView.swift in Sources */,
 				F01AF9521A742B930012D3F8 /* IGICustomerHelloViewController.swift in Sources */,
