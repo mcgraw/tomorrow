@@ -11,7 +11,7 @@ import pop
 import Realm
 import Batch.Ads
 
-class IGITimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, IGITimelineNodeDelegate {
+class IGITimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, IGITimelineNodeDelegate, IGIMessageViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -37,28 +37,49 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
         
         let users = IGIUser.allObjects()
         activeUser = users[0] as? IGIUser
-        activeGoal = activeUser?.getCurrentGoal()
-        allGoals = IGIGoal.allObjects()
-        
-        if allGoals?.count == 1 {
-            shouldPlayIntroduction = true
-        }
         
         // let the view appear before we refresh everything
         refreshModelData()
-        
+    
+//        if allGoals?.count == 1 {
+//            shouldPlayIntroduction = true
+//        }
+
         // First time loading the view should reveal the tomorrow node if needed
         shouldPlayTomorrowNodeIntroduction = shouldShowTomorrowNode
-        
-        tableView.reloadData()
-        
-        NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "testMessage", userInfo: nil, repeats: false)
     }
     
-    func testMessage() {
-        performSegueWithIdentifier("revealMessageSegue", sender: self)
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if tableView.alpha == 0 {
+            let scale = POPBasicAnimation(propertyNamed: kPOPLayerScaleXY)
+            scale.toValue = NSValue(CGPoint: CGPointMake(1.0, 1.0))
+            tableView.layer.pop_addAnimation(scale, forKey: "scale-down")
+            tableView.alpha = 1.0
+        }
     }
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "revealMessageSegue" {
+            let vc = segue.destinationViewController as IGIMessageViewController
+            vc.delegate = self
+        }
+    }
+    
+    @IBAction func unwindToTimeline(sender: UIStoryboardSegue) {
+        shouldPlayIntroduction = false
+        
+        // let the view appear before we refresh everything
+        refreshModelData()
+    }
+    
     // MARK: Table View
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -175,24 +196,38 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func nodePlanTomorrowPressed() {
-        // Mark goal as completed
-        activeGoal?.setGoalCompleted()
+        // Confirm completion
+        performSegueWithIdentifier("revealMessageSegue", sender: self)
+    }
+    
+    // MARK: Message Delegate
+    
+    func cancelPressed() {
         
-        // Proceed with Transition
-        let scale = POPBasicAnimation(propertyNamed: kPOPLayerScaleXY)
-        scale.toValue = NSValue(CGPoint: CGPointMake(0.5, 0.5))
-        tableView.layer.pop_addAnimation(scale, forKey: "scale-down")
-        
-        UIView.animateWithDuration(0.225, animations: {
-            self.tableView.alpha = 0.0
-        }, { (done) in
-            self.performSegueWithIdentifier("taskInputSegue", sender: nil)
+    }
+    
+    func acceptPressed() {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+            // Mark goal as completed
+            self.activeGoal?.setGoalCompleted()
+            
+            // Proceed with Transition
+            let scale = POPBasicAnimation(propertyNamed: kPOPLayerScaleXY)
+            scale.toValue = NSValue(CGPoint: CGPointMake(0.5, 0.5))
+            self.tableView.layer.pop_addAnimation(scale, forKey: "scale-down")
+            
+            UIView.animateWithDuration(0.225, animations: {
+                self.tableView.alpha = 0.0
+            }, { (done) in
+                self.performSegueWithIdentifier("taskInputSegue", sender: nil)
+            })
         })
     }
     
     // MARK: Data
     
     func refreshModelData() {
+        activeGoal = activeUser?.getCurrentGoal()
         allGoals = IGIGoal.allObjects()
         
         refreshTableView()

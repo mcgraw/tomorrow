@@ -29,8 +29,8 @@ class IGIUser: RLMObject {
     }
     
     func setTaskNeedsEdit(#index: UInt) {
-        let goals: RLMResults? = self.goals.objectsWhere("edit_completed == false")
-        let goal: IGIGoal = self.goals!.firstObject() as IGIGoal
+        let incomplete_goals: RLMResults? = self.goals.objectsWhere("edit_completed == false")
+        let goal: IGIGoal = incomplete_goals!.firstObject() as IGIGoal
         let task: IGITask = goal.tasks.objectAtIndex(index) as IGITask
         
         RLMRealm.defaultRealm().beginWriteTransaction()
@@ -40,25 +40,25 @@ class IGIUser: RLMObject {
     }
     
     func getCurrentGoalUnderEdit() -> IGIGoal? {
-        let goals: RLMResults? = self.goals.objectsWhere("edit_completed == false")
+        let incomplete_goals: RLMResults? = self.goals.objectsWhere("edit_completed == false")
         
         // We should not have multiple goals under edit
-        if goals?.count > 1 {
+        if incomplete_goals?.count > 1 {
             assertionFailure("More than 1 goal is under editing mode! There should be 1!")
         }
         
-        return goals?.firstObject() as? IGIGoal
+        return incomplete_goals?.firstObject() as? IGIGoal
     }
     
     func getCurrentGoal() -> IGIGoal? {
-        let goals: RLMResults? = self.goals.objectsWhere("goal_completed == false")
+        let incomplete_goals: RLMResults? = self.goals.objectsWhere("goal_completed == false")
         
         // We should not have multiple goals under edit
-        if goals?.count > 1 {
+        if incomplete_goals?.count > 1 {
             assertionFailure("More than 1 goal is marked not completed! There should be 1!")
         }
         
-        return goals?.firstObject() as? IGIGoal
+        return incomplete_goals?.firstObject() as? IGIGoal
     }
     
     func createNewTask(#name: String) -> IGITask {

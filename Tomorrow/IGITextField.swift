@@ -7,10 +7,9 @@
 //
 
 import UIKit
-import Spring
 import pop
 
-class IGITextField: SpringTextView {
+class IGITextField: UITextField {
 
     @IBOutlet weak var layoutConstraint: NSLayoutConstraint?
     
@@ -19,8 +18,8 @@ class IGITextField: SpringTextView {
     var tempDismissValue: Int32?
     var separator: UIView?
     
-    required override init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    override func awakeFromNib() {
+        super.awakeFromNib()
         
         UITextField.appearance().tintColor = UIColor.whiteColor()
         

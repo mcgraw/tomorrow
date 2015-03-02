@@ -8,7 +8,22 @@
 
 import UIKit
 
+protocol IGIMessageViewDelegate {
+    func cancelPressed()
+    func acceptPressed()
+}
+
 class IGIMessageViewController: UIViewController {
     
+    var delegate: IGIMessageViewDelegate?
     
+    @IBAction func cancelPressed(sender: AnyObject) {
+        delegate?.cancelPressed()
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func dismissPressed(sender: AnyObject) {
+        delegate?.acceptPressed()
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }

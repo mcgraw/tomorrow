@@ -86,7 +86,7 @@ class IGITaskReviewViewController: UIViewController {
         task2.jumpAnimationToConstant(500, delayStart: 0.3)
         task3.jumpAnimationToConstant(500, delayStart: 0.6)
         
-        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "transitionToTimeline", userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(1.2, target: self, selector: "transitionToTimeline", userInfo: nil, repeats: false)
     }
     
     @IBAction func taskEditPressed(sender: AnyObject) {
@@ -108,10 +108,11 @@ class IGITaskReviewViewController: UIViewController {
     }
     
     func transitionToTimeline() {
-        if userObject!.totalUserGoals() > 1 {
-            dismissViewControllerAnimated(false, completion: nil)
-        } else {
+        let total = userObject!.totalUserGoals()
+        if total == 1 {
             performSegueWithIdentifier("completeTaskSegue", sender: self)
+        } else {
+            performSegueWithIdentifier("unwindToTimeline", sender: self)
         }
     }
     

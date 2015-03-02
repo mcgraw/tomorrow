@@ -151,12 +151,12 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         prepareForReuse()
         nodeTask = task
         
-        var image = task.completed ? UIImage(named: "checkmark") : UIImage(named: "waiting")
-        node.backgroundColor = task.completed ? kStatusCompletedDayColor : kStatusTaskColor
+        var image = nodeTask!.completed ? UIImage(named: "checkmark") : UIImage(named: "waiting")
+        node.backgroundColor = nodeTask!.completed ? kStatusCompletedDayColor : kStatusTaskColor
         image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         nodeIcon.image = image
         
-        if task.completed {
+        if nodeTask!.completed {
             lowerSubMessage.text = IGILoremIpsum.randomMotivationPhrase() // use stored value
             nodeStatus = .Completed
         } else {
@@ -165,7 +165,7 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         
         shrinkAnimationForNode()
         
-        headline.text = task.name.capitalizedString
+        headline.text = nodeTask!.name.capitalizedString
     }
     
     func updateLayoutAsTomorrowNode() {

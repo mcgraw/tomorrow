@@ -140,7 +140,7 @@ class IGICustomerDetailsViewController: UIViewController, UITextFieldDelegate {
     // Text Delegate
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        inputField.selectable = false
+//        inputField.selectable = false
         
         RLMRealm.defaultRealm().beginWriteTransaction()
         
