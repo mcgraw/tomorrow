@@ -170,6 +170,9 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
                     })
                 }
                 break;
+            } else {
+                introductionAnimationPlaying = false
+                shouldPlayIntroduction = false
             }
         }
     }

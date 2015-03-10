@@ -314,7 +314,10 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
             lineHeight!.pop_addAnimation(anim, forKey: anim.name)
         }
     
-        revealAnimationComplete = true
+        if !revealAnimationOff {
+            revealAnimationComplete = true
+        }
+        
         delegate?.nodeDidCompleteAnimation()
     }
     
