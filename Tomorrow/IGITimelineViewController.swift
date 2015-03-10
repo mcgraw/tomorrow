@@ -144,9 +144,10 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
             
             // This could be revealed by us (completing all tasks > inserting row)
             if shouldPlayTomorrowNodeIntroduction {
+                shouldPlayTomorrowNodeIntroduction = false
                 nodeView!.playTimelineAnimationDelayed(delay: 1.0)
             } else {
-                // The task animation reveal will trigger an animation if needed
+                nodeView!.revealTimelineWithoutAnimation()
             }
         }
         
@@ -184,6 +185,8 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
                 tableView.beginUpdates()
                 tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: rows, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
                 tableView.endUpdates()
+                
+                tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: rows, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
                 
             }
             else if shouldShowTomorrowNode {
