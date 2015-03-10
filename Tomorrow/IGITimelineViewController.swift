@@ -41,10 +41,6 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
         // let the view appear before we refresh everything
         refreshModelData()
     
-        if allGoals?.count == 1 {
-            shouldPlayIntroduction = true
-        }
-
         // First time loading the view should reveal the tomorrow node if needed
         shouldPlayTomorrowNodeIntroduction = shouldShowTomorrowNode
     }
