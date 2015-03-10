@@ -72,15 +72,18 @@ class IGIUser: RLMObject {
     }
     
     func addNewTask(#name: String) -> IGITask {
-        let goalEditing = self.getCurrentGoalUnderEdit()!
+        let goalEditing: IGIGoal? = self.getCurrentGoalUnderEdit()!
+    
+        assert(goalEditing != nil, "Can't add a task without a goal under edit")
         
         // Create a new task object & remove this one from the current goal
         var task = IGITask.findTaskWithExistingKey(name.lowercaseString)
         if task == nil {
+            println("Creating new task: \(name)")
             task = IGITask()
             task?.name = name.lowercaseString
             task?.goals.addObject(goalEditing)
-            goalEditing.tasks.addObject(task)
+            goalEditing!.tasks.addObject(task)
         }
         return task!
     }

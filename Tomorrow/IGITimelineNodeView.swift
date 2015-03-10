@@ -126,6 +126,7 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
     func updateLayoutWithGoal(goal: IGIGoal) {
         prepareForReuse()
         nodeGoal = goal
+        revealAnimationComplete = true
         
         assert(goal.goal_completed == true, "Must not load an incompleted goal.")
         
@@ -150,6 +151,7 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
     func updateLayoutWithTask(task: IGITask) {
         prepareForReuse()
         nodeTask = task
+        revealAnimationComplete = false
         
         var image = nodeTask!.completed ? UIImage(named: "checkmark") : UIImage(named: "waiting")
         node.backgroundColor = nodeTask!.completed ? kStatusCompletedDayColor : kStatusTaskColor
@@ -160,6 +162,7 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
             lowerSubMessage.text = IGILoremIpsum.randomMotivationPhrase() // use stored value
             nodeStatus = .Completed
         } else {
+            lowerSubMessage.text = ""
             nodeStatus = .Task
         }
         
@@ -436,6 +439,7 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
             } else {
                 image = UIImage(named: "waiting")
                 node.backgroundColor = kStatusTaskColor
+                lowerSubMessage.text = ""
                 
                 let anim = POPBasicAnimation(propertyNamed: kPOPLayoutConstraintConstant)
                 anim.toValue = lowerSubMessageSpacing!.constant - 4
