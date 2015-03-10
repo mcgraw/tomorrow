@@ -126,7 +126,6 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
     func updateLayoutWithGoal(goal: IGIGoal) {
         prepareForReuse()
         nodeGoal = goal
-        revealAnimationComplete = true
         
         assert(goal.goal_completed == true, "Must not load an incompleted goal.")
         
@@ -151,7 +150,6 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
     func updateLayoutWithTask(task: IGITask) {
         prepareForReuse()
         nodeTask = task
-        revealAnimationComplete = false
         
         var image = nodeTask!.completed ? UIImage(named: "checkmark") : UIImage(named: "waiting")
         node.backgroundColor = nodeTask!.completed ? kStatusCompletedDayColor : kStatusTaskColor
@@ -222,6 +220,9 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         nodeTask = nil
         nodeGoal = nil
         
+        revealAnimationComplete = false
+        revealAnimationOff = false
+        
         shimmerView?.removeFromSuperview()
         tomorrowLogoT?.removeFromSuperview()
         
@@ -249,6 +250,7 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
     
     
     func revealTimelineWithoutAnimation() {
+        revealAnimationComplete = true
         revealAnimationOff = true  // not animating this cell
         
         let nodeAnim = POPBasicAnimation(propertyNamed: kPOPLayerScaleXY)
@@ -257,6 +259,8 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         
         let headlineAnim = POPBasicAnimation(propertyNamed: kPOPLayerScaleXY)
         headlineAnim.toValue = NSValue(CGPoint: CGPointMake(1.0, 1.0))
+        headlineAnim.delegate = self
+        headlineAnim.name = "headline-display"
         headline.layer.pop_addAnimation(headlineAnim, forKey: headlineAnim.name)
         
         node.alpha = 1
@@ -283,9 +287,6 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
                 lowerSubMessage.alpha = 0.0
             }
         }
-        
-        self.shimmerView?.alpha = 1
-        self.shimmerView?.shimmering = true
     }
     
     func playTimelineAnimation() {
