@@ -426,6 +426,7 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
             if nodeStatus == .Completed {
                 image = UIImage(named: "checkmark")
                 node.backgroundColor = kStatusCompletedColor
+                lowerSubMessage.text = IGILoremIpsum.randomMotivationPhrase()
                 
                 let anim = POPBasicAnimation(propertyNamed: kPOPLayoutConstraintConstant)
                 anim.toValue = lowerSubMessageSpacing!.constant + 4
