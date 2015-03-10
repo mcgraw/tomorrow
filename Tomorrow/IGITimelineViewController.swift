@@ -11,7 +11,7 @@ import pop
 import Realm
 import Batch.Ads
 
-class IGITimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, IGITimelineNodeDelegate, IGIMessageViewDelegate {
+class IGITimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, IGITimelineNodeDelegate, IGIMessageViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -297,6 +297,26 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
         let index = completedGoalCount + specialtyNodeCount
         println("debug task index: \(indexPath.row - index)")
         return activeGoal?.tasks.objectAtIndex(UInt(indexPath.row - index)) as IGITask
+    }
+    
+    // MARK: Scroll Delegate
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < -20 {
+            scrollView.setContentOffset(CGPointMake(0, -20), animated: false)
+        }
+    }
+    
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView.contentOffset.y < 0 {
+            scrollView.setContentOffset(CGPointZero, animated: true)
+        }
+    }
+    
+    func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if scrollView.contentOffset.y < 0 {
+            scrollView.setContentOffset(CGPointZero, animated: true)
+        }
     }
 }
               
