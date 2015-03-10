@@ -15,6 +15,8 @@ class IGIBaseViewController: UIViewController {
     
     @IBOutlet weak var backgroundImage: UIImageView!
     
+    var shouldPlayIntroduction = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,7 +40,16 @@ class IGIBaseViewController: UIViewController {
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "timelineSegue" {
+            let vc = segue.destinationViewController as IGITimelineViewController
+            vc.shouldPlayIntroduction = shouldPlayIntroduction
+        }
+    }
+    
     @IBAction func unwindToBaseController(sender: UIStoryboardSegue) {
+        shouldPlayIntroduction = true // just completed a new entry, fancy reveal time
+    
         NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: "loadTimelineView", userInfo: nil, repeats: false)
     }
     
