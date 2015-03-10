@@ -38,9 +38,8 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
         let users = IGIUser.allObjects()
         activeUser = users[0] as? IGIUser
         
-        // let the view appear before we refresh everything
-        refreshModelData()
-    
+        assert(activeUser != nil, "User should not be nil")
+        
         // First time loading the view should reveal the tomorrow node if needed
         shouldPlayTomorrowNodeIntroduction = shouldShowTomorrowNode
     }
@@ -49,11 +48,13 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
         super.viewWillAppear(animated)
         
         tableView.alpha = 0
-        tableView.reloadData()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        // let the view appear before we refresh everything
+        refreshModelData()
         
         UIView.animateWithDuration(0.225, animations: {
             self.tableView.alpha = 1.0
@@ -80,7 +81,8 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     
     @IBAction func unwindToTimeline(sender: UIStoryboardSegue) {
         // let the view appear before we refresh everything
-        refreshModelData()
+        introductionAnimationPlaying = false
+        shouldPlayIntroduction = true // introduce the new tasks
     }
     
     // MARK: Table View
@@ -230,11 +232,10 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     // MARK: Data
     
     func refreshModelData() {
-        introductionAnimationPlaying = false
-        shouldPlayIntroduction = false
-        
         activeGoal = activeUser?.getCurrentGoal()
         allGoals = IGIGoal.allObjects()
+        
+        assert(activeGoal != nil, "Active goal should not be nil")
         
         refreshTableView()
     }
