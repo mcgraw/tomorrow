@@ -41,6 +41,8 @@ class IGICustomerDetailsViewController: UIViewController, UITextFieldDelegate {
         RLMRealm.defaultRealm().commitWriteTransaction()
         
         println(RLMRealm.defaultRealm().path)
+        
+        inputField.becomeFirstResponder()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -57,9 +59,13 @@ class IGICustomerDetailsViewController: UIViewController, UITextFieldDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        inputField.becomeFirstResponder()
-        
         playIntroductionAnimation()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        inputField.resignFirstResponder()
     }
     
     func addInfoAccessoryView() {

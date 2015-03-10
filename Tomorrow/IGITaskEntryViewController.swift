@@ -44,14 +44,20 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
         } else {
             assertionFailure("Something went wrong! User does not exist so we cannot add taskss!")
         }
+        
+        inputField.becomeFirstResponder()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        inputField.becomeFirstResponder()
-        
         playIntroductionAnimation()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        inputField.resignFirstResponder()
     }
     
     @IBAction func unwindToTaskEntry(sender: UIStoryboardSegue) {

@@ -41,9 +41,9 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
         // let the view appear before we refresh everything
         refreshModelData()
     
-//        if allGoals?.count == 1 {
-//            shouldPlayIntroduction = true
-//        }
+        if allGoals?.count == 1 {
+            shouldPlayIntroduction = true
+        }
 
         // First time loading the view should reveal the tomorrow node if needed
         shouldPlayTomorrowNodeIntroduction = shouldShowTomorrowNode
@@ -74,8 +74,6 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     @IBAction func unwindToTimeline(sender: UIStoryboardSegue) {
-        shouldPlayIntroduction = false
-        
         // let the view appear before we refresh everything
         refreshModelData()
     }
@@ -227,6 +225,9 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     // MARK: Data
     
     func refreshModelData() {
+        introductionAnimationPlaying = false
+        shouldPlayIntroduction = false
+        
         activeGoal = activeUser?.getCurrentGoal()
         allGoals = IGIGoal.allObjects()
         
