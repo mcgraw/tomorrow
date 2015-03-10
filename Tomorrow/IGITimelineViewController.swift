@@ -48,7 +48,16 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        tableView.alpha = 0
         tableView.reloadData()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        UIView.animateWithDuration(0.225, animations: {
+            self.tableView.alpha = 1.0
+        })
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -57,7 +66,7 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
         if tableView.alpha == 0 {
             let scale = POPBasicAnimation(propertyNamed: kPOPLayerScaleXY)
             scale.toValue = NSValue(CGPoint: CGPointMake(1.0, 1.0))
-            tableView.layer.pop_addAnimation(scale, forKey: "scale-down")
+            tableView.layer.pop_addAnimation(scale, forKey: "restore-scale")
             tableView.alpha = 1.0
         }
     }
