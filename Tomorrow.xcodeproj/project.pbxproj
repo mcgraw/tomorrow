@@ -34,6 +34,7 @@
 		F070A2E71AA4D49E00CE9B55 /* MinoruTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070A2DD1AA4D49E00CE9B55 /* MinoruTextField.swift */; };
 		F070A2E81AA4D49E00CE9B55 /* TextFieldsEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070A2DF1AA4D49E00CE9B55 /* TextFieldsEffects.swift */; };
 		F070A2E91AA4D49E00CE9B55 /* YokoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070A2E01AA4D49E00CE9B55 /* YokoTextField.swift */; };
+		F07626851AB0CEC900612F51 /* IGIString.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07626841AB0CEC900612F51 /* IGIString.swift */; };
 		F078BFB41A868DCB0095A518 /* IGITimelineNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F078BFB31A868DCB0095A518 /* IGITimelineNodeView.swift */; };
 		F07D40891A7ECF3500C0D91D /* icon-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = F07D40881A7ECF3500C0D91D /* icon-1024.png */; };
 		F098E7C71AA4E40800DA6E57 /* IGIMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098E7C61AA4E40800DA6E57 /* IGIMessageViewController.swift */; };
@@ -95,6 +96,7 @@
 		F070A2DE1AA4D49E00CE9B55 /* TextFieldEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldEffects.h; sourceTree = "<group>"; };
 		F070A2DF1AA4D49E00CE9B55 /* TextFieldsEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldsEffects.swift; sourceTree = "<group>"; };
 		F070A2E01AA4D49E00CE9B55 /* YokoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YokoTextField.swift; sourceTree = "<group>"; };
+		F07626841AB0CEC900612F51 /* IGIString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIString.swift; sourceTree = "<group>"; };
 		F078BFB31A868DCB0095A518 /* IGITimelineNodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGITimelineNodeView.swift; sourceTree = "<group>"; };
 		F07D40881A7ECF3500C0D91D /* icon-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-1024.png"; sourceTree = "<group>"; };
 		F098E7C61AA4E40800DA6E57 /* IGIMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIMessageViewController.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				F0D1F2121A872997009CAB50 /* IGIGoal.swift */,
 				F0D1F2101A872877009CAB50 /* IGITask.swift */,
 				F0D1F20B1A86E895009CAB50 /* IGILoremIpsum.swift */,
+				F07626841AB0CEC900612F51 /* IGIString.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				F09C5F331A7446F70033FF94 /* IGICircularView.swift in Sources */,
 				F070A2E31AA4D49E00CE9B55 /* IsaoTextField.swift in Sources */,
 				F09C5F431A7455DB0033FF94 /* IGIView.swift in Sources */,
+				F07626851AB0CEC900612F51 /* IGIString.swift in Sources */,
 				F01AF95F1A7440D70012D3F8 /* IGIGradientView.swift in Sources */,
 				F01AF9521A742B930012D3F8 /* IGICustomerHelloViewController.swift in Sources */,
 			);
