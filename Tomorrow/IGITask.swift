@@ -35,7 +35,12 @@ class IGITask: RLMObject {
     
     func updateTaskCompletionStatus(status: Bool) {
         RLMRealm.defaultRealm().beginWriteTransaction()
-        self.completed = status
+        completed = status
+        if status {
+            completed_count += 1
+        } else {
+            completed_count -= 1
+        }
         RLMRealm.defaultRealm().commitWriteTransaction()
     }
     
