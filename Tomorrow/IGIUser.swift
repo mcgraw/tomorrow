@@ -84,7 +84,13 @@ class IGIUser: RLMObject {
             task?.name = name.lowercaseString
             task?.goals.addObject(goalEditing)
             goalEditing!.tasks.addObject(task)
+        } else {
+            println("Task already exists. Add it to the new goal!")
+            task?.completed = false
+            task?.goals.addObject(goalEditing)
+            goalEditing!.tasks.addObject(task)
         }
+        
         return task!
     }
     

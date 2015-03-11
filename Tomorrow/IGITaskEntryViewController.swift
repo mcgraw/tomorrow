@@ -54,12 +54,6 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
         playIntroductionAnimation()
     }
     
-//    override func viewWillDisappear(animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        
-//        inputField.resignFirstResponder()
-//    }
-    
     @IBAction func unwindToTaskEntry(sender: UIStoryboardSegue) {
         // Should not unwind back here without a goal under edit!
         let goalEditing = userObject?.getCurrentGoalUnderEdit()!
