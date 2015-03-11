@@ -39,6 +39,23 @@ class IGIUser: RLMObject {
         RLMRealm.defaultRealm().commitWriteTransaction()
     }
     
+    func setUserName(#name: String?) {
+        if name != nil {
+            RLMRealm.defaultRealm().beginWriteTransaction()
+            let strip = name!.trimLeadingAndTrailingWhitespace()
+            firstName = strip
+            IGIUser.createOrUpdateInDefaultRealmWithObject(self)
+            RLMRealm.defaultRealm().commitWriteTransaction()
+        }
+    }
+    
+    func setUserGender(#type: String) {
+        RLMRealm.defaultRealm().beginWriteTransaction()
+        gender = type
+        IGIUser.createOrUpdateInDefaultRealmWithObject(self)
+        RLMRealm.defaultRealm().commitWriteTransaction()
+    }
+    
     func getCurrentGoalUnderEdit() -> IGIGoal? {
         let incomplete_goals: RLMResults? = self.goals.objectsWhere("edit_completed == false")
         
@@ -63,10 +80,11 @@ class IGIUser: RLMObject {
     
     func createNewTask(#name: String) -> IGITask {
         // Create a new task object & remove this one from the current goal
-        var task = IGITask.findTaskWithExistingKey(name.lowercaseString)
+        let strip = name.trimLeadingAndTrailingWhitespace()
+        var task = IGITask.findTaskWithExistingKey(strip.lowercase)
         if task == nil {
             task = IGITask()
-            task?.name = name.lowercaseString
+            task?.name = strip.lowercase
         }
         return task!
     }
@@ -77,11 +95,12 @@ class IGIUser: RLMObject {
         assert(goalEditing != nil, "Can't add a task without a goal under edit")
         
         // Create a new task object & remove this one from the current goal
-        var task = IGITask.findTaskWithExistingKey(name.lowercaseString)
+        let strip = name.trimLeadingAndTrailingWhitespace()
+        var task = IGITask.findTaskWithExistingKey(strip.lowercase)
         if task == nil {
-            println("Creating new task: \(name)")
+            println("Creating new task: \(strip)")
             task = IGITask()
-            task?.name = name.lowercaseString
+            task?.name = strip.lowercase
             task?.goals.addObject(goalEditing)
             goalEditing!.tasks.addObject(task)
         } else {

@@ -91,10 +91,7 @@ class IGICustomerDetailsViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func toggleMaleAction(sender: AnyObject) {
-        RLMRealm.defaultRealm().beginWriteTransaction()
-        userObject?.gender = "male"
-        IGIUser.createOrUpdateInDefaultRealmWithObject(userObject)
-        RLMRealm.defaultRealm().commitWriteTransaction()
+        userObject?.setUserGender(type: "male")
         
         maleAction.updateColor(UIColor(red:0.18, green:0.67, blue:0.82, alpha:1), fill: UIColor(red:0.18, green:0.67, blue:0.82, alpha:0.2))
         femaleAction.updateColor(UIColor.whiteColor(), fill: UIColor.clearColor())
@@ -104,10 +101,7 @@ class IGICustomerDetailsViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func toggleFemaleAction(sender: AnyObject) {
-        RLMRealm.defaultRealm().beginWriteTransaction()
-        userObject?.gender = "female"
-        IGIUser.createOrUpdateInDefaultRealmWithObject(userObject)
-        RLMRealm.defaultRealm().commitWriteTransaction()
+        userObject?.setUserGender(type: "female")
         
         maleAction.updateColor(UIColor.whiteColor(), fill: UIColor.clearColor())
         femaleAction.updateColor(UIColor(red:0.82, green:0.18, blue:0.73, alpha:1), fill: UIColor(red:0.82, green:0.18, blue:0.73, alpha:0.2))
@@ -148,14 +142,7 @@ class IGICustomerDetailsViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
 //        inputField.selectable = false
         
-        RLMRealm.defaultRealm().beginWriteTransaction()
-        
-        if let name = textField.text {
-            userObject?.firstName = name
-        }
-        
-        IGIUser.createOrUpdateInDefaultRealmWithObject(userObject)
-        RLMRealm.defaultRealm().commitWriteTransaction()
+        userObject?.setUserName(name: textField.text)
         
         playDismissAnimation()
         
