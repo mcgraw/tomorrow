@@ -60,7 +60,7 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
             self.tableView.alpha = 1.0
         })
     }
-    
+        
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         
@@ -68,7 +68,6 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
             let scale = POPBasicAnimation(propertyNamed: kPOPLayerScaleXY)
             scale.toValue = NSValue(CGPoint: CGPointMake(1.0, 1.0))
             tableView.layer.pop_addAnimation(scale, forKey: "restore-scale")
-            tableView.alpha = 1.0
         }
     }
 

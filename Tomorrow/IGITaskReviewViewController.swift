@@ -77,16 +77,28 @@ class IGITaskReviewViewController: UIViewController {
             RLMRealm.defaultRealm().commitWriteTransaction()
         }
         
-        // Remove spacing constraints so they don't interfere with our animation
-        view.removeConstraint(task1.spacingConstraint!)
-        view.removeConstraint(task3.spacingConstraint!)
+        let goals = IGIGoal.allObjects()
+        println("Goal count is \(goals.count)")
+        if goals.count > 1 {
+            UIView.animateWithDuration(0.5, animations: {
+                self.task1.alpha = 0
+                self.task2.alpha = 0
+                self.task3.alpha = 0
+            }, completion: { (done) in
+                self.transitionToTimeline()
+            })
+        } else {
+            // Remove spacing constraints so they don't interfere with our animation
+            view.removeConstraint(task1.spacingConstraint!)
+            view.removeConstraint(task3.spacingConstraint!)
+            
+            // Jump the tasks before transitioning to the timeline
+            task1.jumpAnimationToConstant(500, delayStart: 0)
+            task2.jumpAnimationToConstant(500, delayStart: 0.3)
+            task3.jumpAnimationToConstant(500, delayStart: 0.6)
         
-        // Jump the tasks before transitioning to the timeline
-        task1.jumpAnimationToConstant(500, delayStart: 0)
-        task2.jumpAnimationToConstant(500, delayStart: 0.3)
-        task3.jumpAnimationToConstant(500, delayStart: 0.6)
-        
-        NSTimer.scheduledTimerWithTimeInterval(1.2, target: self, selector: "transitionToTimeline", userInfo: nil, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(1.2, target: self, selector: "transitionToTimeline", userInfo: nil, repeats: false)
+        }
     }
     
     @IBAction func taskEditPressed(sender: AnyObject) {

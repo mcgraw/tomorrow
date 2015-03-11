@@ -48,6 +48,11 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
         inputField.becomeFirstResponder()
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -125,6 +130,7 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
         else if status == .Task3 {
             userObject?.addNewTask(name: textField.text)
             status = .Done
+            inputField.resignFirstResponder()
         }
         IGIUser.createOrUpdateInDefaultRealmWithObject(userObject)
         RLMRealm.defaultRealm().commitWriteTransaction()
