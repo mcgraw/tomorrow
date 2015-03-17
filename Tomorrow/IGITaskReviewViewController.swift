@@ -43,7 +43,7 @@ class IGITaskReviewViewController: UIViewController {
         if let goal = userObject?.getCurrentGoalUnderEdit() {
             var index = 0
             for item in goal.tasks {
-                var task = item as IGITask
+                var task = item as! IGITask
                 if index == 0 {
                     task1.setTitle(task.name.capitalizedString, forState: UIControlState.Normal)
                 } else if index == 1 {

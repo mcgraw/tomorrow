@@ -42,7 +42,7 @@ class IGIBaseViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "timelineSegue" {
-            let vc = segue.destinationViewController as IGITimelineViewController
+            let vc = segue.destinationViewController as! IGITimelineViewController
             vc.shouldPlayIntroduction = shouldPlayIntroduction
         }
     }
@@ -72,7 +72,7 @@ class IGIBaseViewController: UIViewController {
     // MARK: Notification
     
     func genderChanged(notification: NSNotification) {
-        let obj = notification.object as String
+        let obj = notification.object as! String
         
         if obj == "female" {
             let startColor = UIColor(red:0.19, green:0.12, blue:0.53, alpha:1)

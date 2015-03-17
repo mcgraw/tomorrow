@@ -64,7 +64,7 @@ class IGIGoal: RLMObject {
     
     func areAllTasksCompleted() -> Bool {
         for item in tasks {
-            let task = item as IGITask
+            let task = item as! IGITask
             if !task.completed {
                 return false
             }
@@ -75,7 +75,7 @@ class IGIGoal: RLMObject {
     func countIncompleteTasks() -> Int {
         var count = 0
         for item in tasks {
-            let task = item as IGITask
+            let task = item as! IGITask
             if !task.completed {
                 count++
             }
