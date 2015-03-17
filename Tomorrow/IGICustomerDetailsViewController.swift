@@ -13,7 +13,7 @@ enum IGIGender: Int {
     case Unspecified, Male, Female
 }
 
-class IGICustomerDetailsViewController: UIViewController, UITextFieldDelegate {
+class IGICustomerDetailsViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var inputField: IGITextField!
     @IBOutlet weak var maleAction: IGIButton!
