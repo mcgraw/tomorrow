@@ -116,10 +116,6 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-    }
-    
-    override init() {
-        super.init()
         initializeBaseLayoutStyle()
     }
     
@@ -530,8 +526,8 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
     }
     
     private func getTaskTitleAndColorForPosition(taskPosition: Int) -> (String, UIColor, UIFont) {
-        let object: RLMObject = nodeGoal!.tasks.objectAtIndex(UInt(taskPosition)) as RLMObject
-        let task = object as IGITask
+        let object: RLMObject = nodeGoal!.tasks.objectAtIndex(UInt(taskPosition)) as! RLMObject
+        let task = object as! IGITask
         return (task.name,
             (task.completed == true ? kStatusCompletedColor : kStatusFailedColor),
             (task.completed == true ? UIFont(name: "AvenirNext-Regular", size: 16) : UIFont(name: "AvenirNext-Bold", size: 16))!)

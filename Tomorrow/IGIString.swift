@@ -10,7 +10,7 @@ import Foundation
 
 extension String {
     
-    var length: Int { return countElements(self) }
+    var length: Int { return count(self) }
     
     var capitalized: String { return capitalizedString }
     

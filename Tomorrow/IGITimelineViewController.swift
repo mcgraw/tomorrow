@@ -75,7 +75,7 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "revealMessageSegue" {
-            let vc = segue.destinationViewController as IGIMessageViewController
+            let vc = segue.destinationViewController as! IGIMessageViewController
             vc.delegate = self
         }
     }
@@ -100,7 +100,7 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("timelineItemId") as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("timelineItemId") as! UITableViewCell
         var nodeView: IGITimelineNodeView?
         
         if cell.contentView.subviews.count == 0 {
@@ -160,11 +160,11 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     func nodeDidCompleteAnimation() {
         // Play the next cell
         for cell in tableView.visibleCells() {
-            var nodeView = cell.contentView.subviews[0] as IGITimelineNodeView
+            var nodeView = cell.contentView.subviews[0] as! IGITimelineNodeView
             if !nodeView.revealAnimationComplete {
                 nodeView.playTimelineAnimationDelayed(delay: 0.15)
                 
-                if var path = tableView.indexPathForCell(cell as UITableViewCell) {
+                if var path = tableView.indexPathForCell(cell as! UITableViewCell) {
                     // smooth out the scroll animation
                     UIView.animateWithDuration(1.0, animations: {
                         self.tableView.scrollToRowAtIndexPath(path, atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
@@ -230,7 +230,7 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
             
             UIView.animateWithDuration(0.225, animations: {
                 self.tableView.alpha = 0.0
-            }, { (done) in
+            },completion:  { (done) in
                 self.performSegueWithIdentifier("taskInputSegue", sender: nil)
             })
         })
@@ -262,7 +262,7 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
         
         if let results = allGoals {
             for item: RLMObject in results {
-                let goal = item as IGIGoal
+                let goal = item as! IGIGoal
                 if goal.goal_completed == true {
                     completedGoalCount++
                 } else {
@@ -297,14 +297,14 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     
     // Nothing comes before a completed goal so we're fine with this index
     private func goalForIndexPath(indexPath: NSIndexPath) -> IGIGoal {
-        return allGoals?.objectAtIndex(UInt(indexPath.row)) as IGIGoal
+        return allGoals?.objectAtIndex(UInt(indexPath.row)) as! IGIGoal
     }
     
     // Account for goals (unlimited) and a potnetial specialty row
     private func taskForIndexPath(indexPath: NSIndexPath) -> IGITask {
         let index = completedGoalCount + specialtyNodeCount
         println("debug task index: \(indexPath.row - index)")
-        return activeGoal?.tasks.objectAtIndex(UInt(indexPath.row - index)) as IGITask
+        return activeGoal?.tasks.objectAtIndex(UInt(indexPath.row - index)) as! IGITask
     }
     
     // MARK: Scroll Delegate

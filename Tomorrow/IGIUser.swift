@@ -30,8 +30,8 @@ class IGIUser: RLMObject {
     
     func setTaskNeedsEdit(#index: UInt) {
         let incomplete_goals: RLMResults? = self.goals.objectsWhere("edit_completed == false")
-        let goal: IGIGoal = incomplete_goals!.firstObject() as IGIGoal
-        let task: IGITask = goal.tasks.objectAtIndex(index) as IGITask
+        let goal: IGIGoal = incomplete_goals!.firstObject() as! IGIGoal
+        let task: IGITask = goal.tasks.objectAtIndex(index) as! IGITask
         
         RLMRealm.defaultRealm().beginWriteTransaction()
         task.edit_needed = true
