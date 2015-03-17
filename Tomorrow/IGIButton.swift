@@ -32,6 +32,12 @@ class IGIButton: SpringButton, POPAnimationDelegate {
     
     // MARK: Jump Button Animation
     
+    /**
+    Move button to location
+    
+    :param: constant   location offset
+    :param: delayStart time to begin
+    */
     func jumpAnimationToConstant(constant: Int, delayStart: Double) {
         // sink into the screen, anticipate the jump
         let sink = POPBasicAnimation(propertyNamed: kPOPLayerScaleXY)

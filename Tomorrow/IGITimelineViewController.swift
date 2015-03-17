@@ -32,6 +32,7 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     var activeTaskCount     = 0         // max 3
     var specialtyNodeCount  = 0         // should be 1 or 0, we don't want to show a tip and a review at the same time
     
+    // TODO: Add a way to cancel new task flow
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,7 +61,8 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
             self.tableView.alpha = 1.0
         })
     }
-        
+    
+    // FIXME: The animation here is causing an issue with the transition
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         

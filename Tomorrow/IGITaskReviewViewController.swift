@@ -34,6 +34,7 @@ class IGITaskReviewViewController: UIViewController {
         } else {
             assertionFailure("Something went wrong! User does not exist so we cannot add taskss!")
         }
+        
     }
     
     override func viewWillAppear(animated: Bool) {
