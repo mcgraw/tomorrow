@@ -22,8 +22,10 @@ class IGIBaseViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "genderChanged:", name: "didChangeGender", object: nil)
         
-        let startColor = UIColor(red:0.19, green:0.12, blue:0.53, alpha:1)
-        let endColor = UIColor(red:0.52, green:0.8, blue:1, alpha:1)
+//        let startColor = UIColor(red:0.19, green:0.12, blue:0.53, alpha:1)
+//        let endColor = UIColor(red:0.52, green:0.8, blue:1, alpha:1)
+        let startColor = UIColor(red:0.11, green:0.48, blue:0.72, alpha:1)
+        let endColor = UIColor(red:0.87, green:0.85, blue:0.96, alpha:1)
         currentGradient?.updateGradientLayer(startColor, endColor: endColor)
         temporaryGradient?.alpha = 0.0
     }

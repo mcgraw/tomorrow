@@ -25,6 +25,7 @@
 		F01AF9581A742C0E0012D3F8 /* IGITimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AF9571A742C0E0012D3F8 /* IGITimelineViewController.swift */; };
 		F01AF95C1A743F510012D3F8 /* IGIBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AF95B1A743F510012D3F8 /* IGIBaseViewController.swift */; };
 		F01AF95F1A7440D70012D3F8 /* IGIGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AF95E1A7440D70012D3F8 /* IGIGradientView.swift */; };
+		F06E829C1ABB471E00CEB9B0 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F06E829B1ABB471E00CEB9B0 /* iTunesArtwork@2x.png */; };
 		F070A2E11AA4D49E00CE9B55 /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070A2D71AA4D49E00CE9B55 /* HoshiTextField.swift */; };
 		F070A2E21AA4D49E00CE9B55 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F070A2D81AA4D49E00CE9B55 /* Info.plist */; };
 		F070A2E31AA4D49E00CE9B55 /* IsaoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070A2D91AA4D49E00CE9B55 /* IsaoTextField.swift */; };
@@ -36,7 +37,6 @@
 		F070A2E91AA4D49E00CE9B55 /* YokoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070A2E01AA4D49E00CE9B55 /* YokoTextField.swift */; };
 		F07626851AB0CEC900612F51 /* IGIString.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07626841AB0CEC900612F51 /* IGIString.swift */; };
 		F078BFB41A868DCB0095A518 /* IGITimelineNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F078BFB31A868DCB0095A518 /* IGITimelineNodeView.swift */; };
-		F07D40891A7ECF3500C0D91D /* icon-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = F07D40881A7ECF3500C0D91D /* icon-1024.png */; };
 		F098E7C71AA4E40800DA6E57 /* IGIMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F098E7C61AA4E40800DA6E57 /* IGIMessageViewController.swift */; };
 		F09C5F331A7446F70033FF94 /* IGICircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C5F321A7446F70033FF94 /* IGICircularView.swift */; };
 		F09C5F411A7455DB0033FF94 /* IGIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09C5F3E1A7455DB0033FF94 /* IGIButton.swift */; };
@@ -86,6 +86,7 @@
 		F01AF9571A742C0E0012D3F8 /* IGITimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGITimelineViewController.swift; sourceTree = "<group>"; };
 		F01AF95B1A743F510012D3F8 /* IGIBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIBaseViewController.swift; sourceTree = "<group>"; };
 		F01AF95E1A7440D70012D3F8 /* IGIGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIGradientView.swift; sourceTree = "<group>"; };
+		F06E829B1ABB471E00CEB9B0 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		F070A2D71AA4D49E00CE9B55 /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoshiTextField.swift; sourceTree = "<group>"; };
 		F070A2D81AA4D49E00CE9B55 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F070A2D91AA4D49E00CE9B55 /* IsaoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsaoTextField.swift; sourceTree = "<group>"; };
@@ -98,7 +99,6 @@
 		F070A2E01AA4D49E00CE9B55 /* YokoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YokoTextField.swift; sourceTree = "<group>"; };
 		F07626841AB0CEC900612F51 /* IGIString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIString.swift; sourceTree = "<group>"; };
 		F078BFB31A868DCB0095A518 /* IGITimelineNodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGITimelineNodeView.swift; sourceTree = "<group>"; };
-		F07D40881A7ECF3500C0D91D /* icon-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-1024.png"; sourceTree = "<group>"; };
 		F098E7C61AA4E40800DA6E57 /* IGIMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIMessageViewController.swift; sourceTree = "<group>"; };
 		F09C5F321A7446F70033FF94 /* IGICircularView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGICircularView.swift; sourceTree = "<group>"; };
 		F09C5F341A744B8F0033FF94 /* Tomorrow-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tomorrow-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -199,7 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				F0D1F2141A8731A0009CAB50 /* RLMSupport.swift */,
-				F07D40881A7ECF3500C0D91D /* icon-1024.png */,
+				F06E829B1ABB471E00CEB9B0 /* iTunesArtwork@2x.png */,
 				F0178D6B1A7421B600ED2795 /* LaunchScreen.xib */,
 				F0178D691A7421B600ED2795 /* Images.xcassets */,
 				F09C5F341A744B8F0033FF94 /* Tomorrow-Bridging-Header.h */,
@@ -375,7 +375,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0178D681A7421B600ED2795 /* Tomorrow.storyboard in Resources */,
-				F07D40891A7ECF3500C0D91D /* icon-1024.png in Resources */,
+				F06E829C1ABB471E00CEB9B0 /* iTunesArtwork@2x.png in Resources */,
 				F0120F531AA3A94A0014013F /* Batch.bundle in Resources */,
 				F0178D6D1A7421B600ED2795 /* LaunchScreen.xib in Resources */,
 				F0178D6A1A7421B600ED2795 /* Images.xcassets in Resources */,
