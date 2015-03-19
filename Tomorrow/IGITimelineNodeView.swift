@@ -244,6 +244,9 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         }
     }
     
+    func revealTimelineWithoutAnimation(#delay: Double) {
+        NSTimer.scheduledTimerWithTimeInterval(delay, target: self, selector: "revealTimelineWithoutAnimation", userInfo: nil, repeats: false)
+    }
     
     func revealTimelineWithoutAnimation() {
         revealAnimationComplete = true

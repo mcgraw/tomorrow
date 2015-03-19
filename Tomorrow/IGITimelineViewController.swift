@@ -151,7 +151,7 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
                 shouldPlayTomorrowNodeIntroduction = false
                 nodeView!.playTimelineAnimationDelayed(delay: 1.0)
             } else {
-                nodeView!.revealTimelineWithoutAnimation()
+                nodeView!.revealTimelineWithoutAnimation(delay: 1.5)
             }
         }
         
