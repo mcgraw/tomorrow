@@ -36,7 +36,12 @@ class IGIBaseViewController: UIViewController {
         if users.count == 0 {
             performSegueWithIdentifier("onboardTitleSegue", sender: self)
         } else {
-            loadTimelineView()
+            let user = users.firstObject() as! IGIUser
+            if user.goals.count == 0 {
+                performSegueWithIdentifier("onboardTitleSegue", sender: self)
+            } else {
+                loadTimelineView()
+            }
         }
     }
     

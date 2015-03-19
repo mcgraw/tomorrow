@@ -31,6 +31,19 @@ class IGIGoal: RLMObject {
     // When the day has advanced and tasks were not completed
     dynamic var goal_failed = false
     
+    class func cleanInvalidGoals() {
+        RLMRealm.defaultRealm().beginWriteTransaction()
+        let goals = IGIGoal.allObjects()
+        for item in goals {
+            let goal = item as! IGIGoal
+            if goal.edit_completed == false {
+                println("Deleting incomplete goal")
+                RLMRealm.defaultRealm().deleteObject(goal)
+            }
+        }
+        RLMRealm.defaultRealm().commitWriteTransaction()
+    }
+    
     func getCurrentTaskUnderEdit() -> IGITask? {
         let tasks: RLMResults? = self.tasks.objectsWhere("edit_needed == true")
         

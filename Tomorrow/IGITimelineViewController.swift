@@ -267,7 +267,7 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
                     completedGoalCount++
                 } else {
                     // We have active tasks
-                    activeTaskCount += 3
+                    activeTaskCount += Int(goal.tasks.count)
                     
                     // Is this goal complete?
                     refreshTomorrowNode()
