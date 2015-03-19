@@ -19,6 +19,7 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var inputField: IGITextField!
     
     var status: IGITaskEntryStatus = .Task1
+    var accessoryView: UIView?
     
     var userObject: IGIUser?
     var userGoal: IGIGoal?
@@ -44,6 +45,8 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
         } else {
             assertionFailure("Something went wrong! User does not exist so we cannot add taskss!")
         }
+        
+        addInfoAccessoryView()
         
         inputField.becomeFirstResponder()
     }
@@ -76,11 +79,40 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
         status = .Editing
     }
     
+    func addInfoAccessoryView() {
+        accessoryView = UIView()
+        accessoryView?.alpha = 0
+        accessoryView!.frame = CGRectMake(0, 0, view.frame.width, 50)
+        accessoryView!.backgroundColor = UIColor.clearColor()
+        
+        let info = UIButton(frame: accessoryView!.frame)
+        info.setTitle("Skip... no more tasks.", forState: UIControlState.Normal)
+        info.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        info.titleLabel?.textAlignment = NSTextAlignment.Center
+        info.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 12.0)
+        info.addTarget(self, action: "taskEntryComplete:", forControlEvents: UIControlEvents.TouchUpInside)
+        accessoryView!.addSubview(info)
+        
+        inputField.inputAccessoryView = accessoryView!
+    }
+    
+    func taskEntryComplete(sender: AnyObject) {
+        status = .Done
+        inputField.resignFirstResponder()
+        advanceOnboarding()
+    }
+    
     // MARK: Animation
     
     func playIntroductionAnimation() {
         titleLabel.revealView(constant: 50)
         inputField.revealView(constant: 170)
+        
+        if status == .Task2 {
+            UIView.animateWithDuration(0.225, animations: { () -> Void in
+                self.accessoryView!.alpha = 1.0
+            })
+        }
     }
     
     func playDismissAnimation() {

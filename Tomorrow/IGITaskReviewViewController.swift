@@ -40,16 +40,31 @@ class IGITaskReviewViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        task1.setTitle("", forState: UIControlState.Normal)
+        task2.setTitle("", forState: UIControlState.Normal)
+        task3.setTitle("", forState: UIControlState.Normal)
+        
         if let goal = userObject?.getCurrentGoalUnderEdit() {
             var index = 0
+            let count = goal.tasks.count
             for item in goal.tasks {
                 var task = item as! IGITask
-                if index == 0 {
-                    task1.setTitle(task.name.capitalizedString, forState: UIControlState.Normal)
-                } else if index == 1 {
+                if count == 3 {
+                    if index == 0 {
+                        task1.setTitle(task.name.capitalizedString, forState: UIControlState.Normal)
+                    } else if index == 1 {
+                        task2.setTitle(task.name.capitalizedString, forState: UIControlState.Normal)
+                    } else if index == 2 {
+                        task3.setTitle(task.name.capitalizedString, forState: UIControlState.Normal)
+                    }
+                } else if count == 2 {
+                    if index == 0 {
+                        task1.setTitle(task.name.capitalizedString, forState: UIControlState.Normal)
+                    } else if index == 1 {
+                        task2.setTitle(task.name.capitalizedString, forState: UIControlState.Normal)
+                    }
+                } else if count == 1 {
                     task2.setTitle(task.name.capitalizedString, forState: UIControlState.Normal)
-                } else if index == 2 {
-                    task3.setTitle(task.name.capitalizedString, forState: UIControlState.Normal)
                 }
                 index++
             }
