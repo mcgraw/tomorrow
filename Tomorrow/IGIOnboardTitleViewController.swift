@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import pop
 
 class IGIOnboardTitleViewController: UIViewController {
 
@@ -52,8 +53,12 @@ class IGIOnboardTitleViewController: UIViewController {
         
         continueAction.revealView(constant: 50)
         
+        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "showCheck", userInfo: nil, repeats: false)
+    }
+    
+    func showCheck() {
         UIView.animateWithDuration(1.0, animations: { () -> Void in
-            self.checkImage.alpha = 0.25
+            self.checkImage.alpha = 0.35
         })
     }
     

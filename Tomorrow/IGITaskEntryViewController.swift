@@ -73,12 +73,17 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
         
         taskUnderEdit = goalEditing?.getCurrentTaskUnderEdit()
         if taskUnderEdit == nil {
-            assertionFailure("Don't unwind to edit if a task is not being edited!")
+            if goalEditing?.tasks.count == 1 {
+                status = .Task2
+            } else if goalEditing?.tasks.count == 2 {
+                status = .Task3
+            }
+        } else {
+            inputField.text = taskUnderEdit?.name.capitalizedString
+            status = .Editing
         }
         
         titleLabel.text = "Edit Task"
-        inputField.text = taskUnderEdit?.name.capitalizedString
-        status = .Editing
     }
     
     func addInfoAccessoryView() {
