@@ -45,7 +45,7 @@ class IGICustomerHelloViewController: UIViewController, POPAnimationDelegate {
         if userObject!.firstName == "" {
             titleLabel.text = "Hello!"
         } else {
-            var name = userObject!.firstName
+            var name = userObject!.getFirstName()
             titleLabel.text = "Hello, \(name)"
         }
     }

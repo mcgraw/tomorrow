@@ -162,7 +162,7 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         
         shrinkAnimationForNode()
         
-        headline.text = nodeTask!.name.capitalizedString
+        headline.text = nodeTask!.getTaskTitle()
     }
     
     func updateLayoutAsTomorrowNode() {
