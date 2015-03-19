@@ -53,7 +53,7 @@ class IGICustomerDetailsViewController: UIViewController, UITableViewDelegate, U
         maleAction.addRoundedBorder()
         femaleAction.addRoundedBorder()
         
-        addInfoAccessoryView()
+//        addInfoAccessoryView()
     }
     
     override func viewDidAppear(animated: Bool) {
