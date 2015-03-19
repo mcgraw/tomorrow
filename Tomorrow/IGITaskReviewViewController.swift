@@ -45,23 +45,14 @@ class IGITaskReviewViewController: UIViewController {
             for item in goal.tasks {
                 var task = item as! IGITask
                 let title = task.name.capitalizedString
-                if count == 3 {
-                    if index == 0 {
-                        task1?.text = title
-                    } else if index == 1 {
-                        task2?.text = title
-                    } else if index == 2 {
-                        task3?.text = title
-                    }
-                } else if count == 2 {
-                    if index == 0 {
-                        task1?.text = title
-                    } else if index == 1 {
-                        task2?.text = title
-                    }
-                } else if count == 1 {
+                if index == 0 {
+                    task1?.text = title
+                } else if index == 1 {
                     task2?.text = title
+                } else if index == 2 {
+                    task3?.text = title
                 }
+                
                 index++
             }
         } else {
