@@ -14,9 +14,9 @@ class IGITaskReviewViewController: UIViewController {
 
     @IBOutlet weak var titleLabel: IGILabel!
     
-    @IBOutlet weak var task1: IGIButton!
-    @IBOutlet weak var task2: IGIButton!
-    @IBOutlet weak var task3: IGIButton!
+    @IBOutlet weak var task1: IGILabel!
+    @IBOutlet weak var task2: IGILabel!
+    @IBOutlet weak var task3: IGILabel!
     
     @IBOutlet weak var completeAction: IGIButton!
     @IBOutlet weak var info: IGILabel!
@@ -25,7 +25,7 @@ class IGITaskReviewViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.userInteractionEnabled = false
         view.backgroundColor = UIColor.clearColor()
         
         let users = IGIUser.allObjects()
@@ -34,37 +34,33 @@ class IGITaskReviewViewController: UIViewController {
         } else {
             assertionFailure("Something went wrong! User does not exist so we cannot add taskss!")
         }
-        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        task1.setTitle("", forState: UIControlState.Normal)
-        task2.setTitle("", forState: UIControlState.Normal)
-        task3.setTitle("", forState: UIControlState.Normal)
         
         if let goal = userObject?.getCurrentGoalUnderEdit() {
             var index = 0
             let count = goal.tasks.count
             for item in goal.tasks {
                 var task = item as! IGITask
+                let title = task.name.capitalizedString
                 if count == 3 {
                     if index == 0 {
-                        task1.setTitle(task.name.capitalizedString, forState: UIControlState.Normal)
+                        task1?.text = title
                     } else if index == 1 {
-                        task2.setTitle(task.name.capitalizedString, forState: UIControlState.Normal)
+                        task2?.text = title
                     } else if index == 2 {
-                        task3.setTitle(task.name.capitalizedString, forState: UIControlState.Normal)
+                        task3?.text = title
                     }
                 } else if count == 2 {
                     if index == 0 {
-                        task1.setTitle(task.name.capitalizedString, forState: UIControlState.Normal)
+                        task1?.text = title
                     } else if index == 1 {
-                        task2.setTitle(task.name.capitalizedString, forState: UIControlState.Normal)
+                        task2?.text = title
                     }
                 } else if count == 1 {
-                    task2.setTitle(task.name.capitalizedString, forState: UIControlState.Normal)
+                    task2?.text = title
                 }
                 index++
             }
@@ -75,7 +71,7 @@ class IGITaskReviewViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-                
+        
         playIntroductionAnimation()
     }
     
@@ -105,13 +101,11 @@ class IGITaskReviewViewController: UIViewController {
             })
         } else {
             // Remove spacing constraints so they don't interfere with our animation
-            view.removeConstraint(task1.spacingConstraint!)
-            view.removeConstraint(task3.spacingConstraint!)
-            
+        
             // Jump the tasks before transitioning to the timeline
-            task1.jumpAnimationToConstant(500, delayStart: 0)
-            task2.jumpAnimationToConstant(500, delayStart: 0.3)
-            task3.jumpAnimationToConstant(500, delayStart: 0.6)
+            task1.jumpAnimationToConstant(-300, delayStart: 0)
+            task2.jumpAnimationToConstant(-300, delayStart: 0.3)
+            task3.jumpAnimationToConstant(-300, delayStart: 0.6)
         
             NSTimer.scheduledTimerWithTimeInterval(1.2, target: self, selector: "transitionToTimeline", userInfo: nil, repeats: false)
         }
@@ -166,6 +160,12 @@ class IGITaskReviewViewController: UIViewController {
         
         completeAction.revealViewWithDelay(constant: 50, delay: 3.5)
         info.revealViewWithDelay(constant: 25, delay: 3.8)
+        
+        NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "unlockView", userInfo: nil, repeats: false)
+    }
+    
+    func unlockView() {
+        view.userInteractionEnabled = true
     }
 }
    

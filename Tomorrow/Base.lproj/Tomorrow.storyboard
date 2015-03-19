@@ -77,6 +77,7 @@
                         <outlet property="checkImage" destination="DhK-n8-dXg" id="0vr-e7-N7m"/>
                         <outlet property="continueAction" destination="Jii-Nd-mfO" id="396-b6-j09"/>
                         <outlet property="logoIcon" destination="tF7-7A-D0a" id="MwF-SC-Ote"/>
+                        <outlet property="logoImage" destination="eCY-FH-H96" id="83Y-yO-ngZ"/>
                         <outlet property="logoTitle" destination="H6i-If-eNZ" id="eRA-cE-YtV"/>
                         <segue destination="gnh-15-1ei" kind="show" identifier="nameSegue" id="fll-Us-ybW"/>
                     </connections>
@@ -355,7 +356,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Review" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4u-wt-MuC" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4u-wt-MuC" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
                                 <rect key="frame" x="249" y="80" width="104" height="47"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="34"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -364,47 +365,6 @@
                                     <outlet property="layoutConstraint" destination="znl-jn-r7Y" id="4ot-Tp-VgM"/>
                                 </connections>
                             </label>
-                            <button opaque="NO" alpha="0.0" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FpJ-eP-E0o" customClass="IGIButton" customModule="Tomorrow" customModuleProvider="target">
-                                <rect key="frame" x="253" y="168" width="94" height="58"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="33"/>
-                                <state key="normal" title="Task 1">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="taskEditPressed:" destination="TRo-zP-ROM" eventType="touchUpInside" id="POb-Sm-By5"/>
-                                    <outlet property="layoutConstraint" destination="eM4-gt-ZDA" id="sOe-ax-DkM"/>
-                                    <outlet property="spacingConstraint" destination="HmN-1s-w9r" id="Uck-NC-zef"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" alpha="0.0" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikm-70-v1R" customClass="IGIButton" customModule="Tomorrow" customModuleProvider="target">
-                                <rect key="frame" x="253" y="251" width="94" height="58"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="33"/>
-                                <state key="normal" title="Task 2">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="taskEditPressed:" destination="TRo-zP-ROM" eventType="touchUpInside" id="nkL-U7-aRH"/>
-                                    <outlet property="layoutConstraint" destination="52j-vm-uMO" id="9iR-5I-I6A"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" alpha="0.0" tag="1003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffr-Rk-CF4" customClass="IGIButton" customModule="Tomorrow" customModuleProvider="target">
-                                <rect key="frame" x="253" y="334" width="94" height="58"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="33"/>
-                                <state key="normal" title="Task 3">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="taskEditPressed:" destination="TRo-zP-ROM" eventType="touchUpInside" id="fAK-LD-uMm"/>
-                                    <outlet property="layoutConstraint" destination="px6-cr-g0f" id="13c-CS-SaC"/>
-                                    <outlet property="spacingConstraint" destination="xa3-wO-MGs" id="gNY-w4-Ezo"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geZ-9j-X2I" customClass="IGIButton" customModule="Tomorrow" customModuleProvider="target">
                                 <rect key="frame" x="226" y="502" width="148" height="58"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="33"/>
@@ -426,31 +386,108 @@
                                     <outlet property="layoutConstraint" destination="vrk-Mq-tAM" id="B3r-DE-RCY"/>
                                 </connections>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Task Entered" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFq-IZ-bn1" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
+                                <rect key="frame" x="177" y="205" width="247" height="46"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="33"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outlet property="layoutConstraint" destination="lSw-bd-BA7" id="NMW-uc-TA6"/>
+                                    <outlet property="spacingConstraint" destination="dLJ-LD-tyG" id="f8p-93-Xjr"/>
+                                </connections>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Task Entered" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYb-DP-TSf" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
+                                <rect key="frame" x="177" y="277" width="247" height="46"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="33"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outlet property="layoutConstraint" destination="Jc2-bm-kgb" id="6te-02-WVO"/>
+                                </connections>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Task Entered" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="poj-Qc-079" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
+                                <rect key="frame" x="177" y="349" width="247" height="46"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="33"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outlet property="layoutConstraint" destination="YMg-ey-wg3" id="mfR-tY-zkr"/>
+                                    <outlet property="spacingConstraint" destination="nab-GP-cub" id="5nf-W1-7mG"/>
+                                </connections>
+                            </label>
+                            <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pUe-DV-Lxd" userLabel="Task 1 Action">
+                                <rect key="frame" x="177" y="205" width="247" height="46"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="taskEditPressed:" destination="TRo-zP-ROM" eventType="touchUpInside" id="tlT-im-jo9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8R-mv-xpJ" userLabel="Task 2 Action">
+                                <rect key="frame" x="177" y="277" width="247" height="46"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="taskEditPressed:" destination="TRo-zP-ROM" eventType="touchUpInside" id="gVU-ZZ-Tzw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X5v-Bw-3FX" userLabel="Task 3 Action">
+                                <rect key="frame" x="177" y="349" width="247" height="46"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="taskEditPressed:" destination="TRo-zP-ROM" eventType="touchUpInside" id="cXT-lx-Cgr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="ikm-70-v1R" secondAttribute="centerY" constant="20" id="52j-vm-uMO"/>
-                            <constraint firstItem="ikm-70-v1R" firstAttribute="top" secondItem="FpJ-eP-E0o" secondAttribute="bottom" constant="25" id="HmN-1s-w9r"/>
+                            <constraint firstItem="pUe-DV-Lxd" firstAttribute="trailing" secondItem="XFq-IZ-bn1" secondAttribute="trailing" id="10h-Xx-OOt"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="poj-Qc-079" secondAttribute="trailing" constant="20" id="AHE-AZ-jWD"/>
+                            <constraint firstItem="Z8R-mv-xpJ" firstAttribute="bottom" secondItem="oYb-DP-TSf" secondAttribute="bottom" id="BO6-ss-V8v"/>
                             <constraint firstItem="r7v-IR-Zud" firstAttribute="top" secondItem="geZ-9j-X2I" secondAttribute="bottom" constant="40" id="IBw-8H-bhC"/>
+                            <constraint firstItem="poj-Qc-079" firstAttribute="top" secondItem="X5v-Bw-3FX" secondAttribute="top" id="IDd-jj-78b"/>
+                            <constraint firstItem="poj-Qc-079" firstAttribute="leading" secondItem="X5v-Bw-3FX" secondAttribute="leading" id="J9r-jB-HpE"/>
+                            <constraint firstAttribute="centerY" secondItem="oYb-DP-TSf" secondAttribute="centerY" constant="0.5" id="Jc2-bm-kgb"/>
+                            <constraint firstItem="poj-Qc-079" firstAttribute="bottom" secondItem="X5v-Bw-3FX" secondAttribute="bottom" id="Kf2-Oy-HUw"/>
                             <constraint firstAttribute="centerX" secondItem="geZ-9j-X2I" secondAttribute="centerX" id="NBT-qP-D5g"/>
+                            <constraint firstAttribute="centerX" secondItem="poj-Qc-079" secondAttribute="centerX" id="NFu-Kt-tSo"/>
+                            <constraint firstItem="Z8R-mv-xpJ" firstAttribute="top" secondItem="oYb-DP-TSf" secondAttribute="top" id="Nnw-X4-C63"/>
+                            <constraint firstItem="Z8R-mv-xpJ" firstAttribute="leading" secondItem="oYb-DP-TSf" secondAttribute="leading" id="Nvr-F1-SX1"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="XFq-IZ-bn1" secondAttribute="trailing" constant="20" id="ObN-ud-eym"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oYb-DP-TSf" secondAttribute="trailing" constant="20" id="Pi5-gj-py3"/>
+                            <constraint firstItem="poj-Qc-079" firstAttribute="trailing" secondItem="X5v-Bw-3FX" secondAttribute="trailing" id="Qax-xq-vkG"/>
                             <constraint firstAttribute="centerX" secondItem="2yI-VK-8cd" secondAttribute="centerX" id="Rvh-io-dUR"/>
-                            <constraint firstAttribute="centerX" secondItem="ffr-Rk-CF4" secondAttribute="centerX" id="bgW-wa-lcc"/>
-                            <constraint firstAttribute="centerY" secondItem="FpJ-eP-E0o" secondAttribute="centerY" priority="750" constant="103" id="eM4-gt-ZDA"/>
+                            <constraint firstAttribute="centerY" secondItem="poj-Qc-079" secondAttribute="centerY" priority="250" constant="-72" id="YMg-ey-wg3"/>
+                            <constraint firstItem="pUe-DV-Lxd" firstAttribute="top" secondItem="XFq-IZ-bn1" secondAttribute="top" id="ZI0-51-oZ6"/>
+                            <constraint firstAttribute="centerX" secondItem="oYb-DP-TSf" secondAttribute="centerX" id="aC3-oq-qoO"/>
+                            <constraint firstItem="poj-Qc-079" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="U4N-Nl-KKj" secondAttribute="leading" constant="20" id="cTn-nU-Pds"/>
+                            <constraint firstItem="oYb-DP-TSf" firstAttribute="top" secondItem="XFq-IZ-bn1" secondAttribute="bottom" priority="750" constant="26" id="dLJ-LD-tyG"/>
+                            <constraint firstItem="oYb-DP-TSf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="U4N-Nl-KKj" secondAttribute="leading" constant="20" id="gWw-sN-sxA"/>
+                            <constraint firstAttribute="centerX" secondItem="XFq-IZ-bn1" secondAttribute="centerX" id="jYO-Xq-aIj"/>
+                            <constraint firstAttribute="centerY" secondItem="XFq-IZ-bn1" secondAttribute="centerY" priority="250" constant="72" id="lSw-bd-BA7"/>
+                            <constraint firstItem="XFq-IZ-bn1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="U4N-Nl-KKj" secondAttribute="leading" constant="20" id="mp6-Rw-UFG"/>
                             <constraint firstAttribute="centerX" secondItem="c4u-wt-MuC" secondAttribute="centerX" constant="-0.5" id="mqA-df-0cd"/>
-                            <constraint firstAttribute="centerX" secondItem="ikm-70-v1R" secondAttribute="centerX" id="oPI-EY-8UA"/>
-                            <constraint firstAttribute="centerY" secondItem="ffr-Rk-CF4" secondAttribute="centerY" priority="750" constant="-63" id="px6-cr-g0f"/>
+                            <constraint firstItem="pUe-DV-Lxd" firstAttribute="leading" secondItem="XFq-IZ-bn1" secondAttribute="leading" id="nYQ-Gr-PBt"/>
+                            <constraint firstItem="poj-Qc-079" firstAttribute="top" secondItem="oYb-DP-TSf" secondAttribute="bottom" priority="750" constant="26" id="nab-GP-cub"/>
                             <constraint firstItem="r7v-IR-Zud" firstAttribute="top" secondItem="2yI-VK-8cd" secondAttribute="bottom" id="vrk-Mq-tAM"/>
-                            <constraint firstAttribute="centerX" secondItem="FpJ-eP-E0o" secondAttribute="centerX" id="xXc-zc-3iM"/>
-                            <constraint firstItem="ffr-Rk-CF4" firstAttribute="top" secondItem="ikm-70-v1R" secondAttribute="bottom" constant="25" id="xa3-wO-MGs"/>
+                            <constraint firstItem="Z8R-mv-xpJ" firstAttribute="trailing" secondItem="oYb-DP-TSf" secondAttribute="trailing" id="yVM-lp-J7D"/>
+                            <constraint firstItem="pUe-DV-Lxd" firstAttribute="bottom" secondItem="XFq-IZ-bn1" secondAttribute="bottom" id="yiB-vK-eDY"/>
                             <constraint firstItem="c4u-wt-MuC" firstAttribute="top" secondItem="KYq-cr-8Rd" secondAttribute="bottom" constant="60" id="znl-jn-r7Y"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="completeAction" destination="geZ-9j-X2I" id="293-TY-0P1"/>
                         <outlet property="info" destination="2yI-VK-8cd" id="Qql-XH-KcE"/>
-                        <outlet property="task1" destination="FpJ-eP-E0o" id="uYc-Ox-lVQ"/>
-                        <outlet property="task2" destination="ikm-70-v1R" id="ABP-1h-QOh"/>
-                        <outlet property="task3" destination="ffr-Rk-CF4" id="y10-lU-0bG"/>
+                        <outlet property="task1" destination="XFq-IZ-bn1" id="q03-ix-yTe"/>
+                        <outlet property="task2" destination="oYb-DP-TSf" id="7Z8-Tc-1vB"/>
+                        <outlet property="task3" destination="poj-Qc-079" id="0MC-Tg-Fb6"/>
                         <outlet property="titleLabel" destination="c4u-wt-MuC" id="BEX-r3-7Ch"/>
                         <segue destination="sRK-e9-BhQ" kind="unwind" identifier="unwindToTaskEdit" unwindAction="unwindToTaskEntry:" id="rrg-Ei-gZM"/>
                         <segue destination="sRK-e9-BhQ" kind="unwind" identifier="completeTaskSegue" unwindAction="unwindToBaseController:" id="PIU-zR-hmZ"/>
@@ -460,7 +497,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sbq-aj-cQx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="sRK-e9-BhQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4202" y="587.5"/>
+            <point key="canvasLocation" x="4202" y="587"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8or-Q6-Nw1">

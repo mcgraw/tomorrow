@@ -14,6 +14,7 @@ class IGIOnboardTitleViewController: UIViewController {
     @IBOutlet weak var logoTitle: IGILabel!
     @IBOutlet weak var continueAction: IGIButton!
     
+    @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var checkImage: UIImageView!
     
     var hasPlayedAnimation = false
@@ -41,6 +42,7 @@ class IGIOnboardTitleViewController: UIViewController {
     
     func advanceOnboarding() {
         performSegueWithIdentifier("nameSegue", sender: self)
+
     }
     
     // MARK: Animation
@@ -51,7 +53,7 @@ class IGIOnboardTitleViewController: UIViewController {
         continueAction.revealView(constant: 50)
         
         UIView.animateWithDuration(1.0, animations: { () -> Void in
-            self.checkImage.alpha = 0.33
+            self.checkImage.alpha = 0.25
         })
     }
     
