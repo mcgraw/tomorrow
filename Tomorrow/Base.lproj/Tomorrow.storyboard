@@ -29,24 +29,24 @@
                                     <outlet property="layoutConstraint" destination="11b-SE-Wco" id="Zdf-zm-GRp"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tF7-7A-D0a" userLabel="Logo" customClass="IGICircularView" customModule="Tomorrow" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tF7-7A-D0a" userLabel="Logo" customClass="IGIView" customModule="Tomorrow" customModuleProvider="target">
                                 <rect key="frame" x="250" y="250" width="100" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="T" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="se7-4W-fRO">
-                                        <rect key="frame" x="0.0" y="6" width="100" height="94"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="78"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="inverse-logo" translatesAutoresizingMaskIntoConstraints="NO" id="eCY-FH-H96">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="inverse-logo-check" translatesAutoresizingMaskIntoConstraints="NO" id="DhK-n8-dXg">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="se7-4W-fRO" secondAttribute="trailing" id="2Sy-SV-sgY"/>
-                                    <constraint firstItem="se7-4W-fRO" firstAttribute="top" secondItem="tF7-7A-D0a" secondAttribute="top" constant="6" id="BoE-4U-pQv"/>
-                                    <constraint firstItem="se7-4W-fRO" firstAttribute="leading" secondItem="tF7-7A-D0a" secondAttribute="leading" id="EAa-H8-PV1"/>
+                                    <constraint firstItem="eCY-FH-H96" firstAttribute="top" secondItem="tF7-7A-D0a" secondAttribute="top" id="D7x-6m-EWw"/>
                                     <constraint firstAttribute="height" constant="100" id="KqM-Sc-HBB"/>
-                                    <constraint firstAttribute="bottom" secondItem="se7-4W-fRO" secondAttribute="bottom" id="cgM-oo-lRs"/>
+                                    <constraint firstItem="eCY-FH-H96" firstAttribute="leading" secondItem="tF7-7A-D0a" secondAttribute="leading" id="R5Y-RF-NAR"/>
+                                    <constraint firstAttribute="bottom" secondItem="eCY-FH-H96" secondAttribute="bottom" id="a5S-LC-U3M"/>
                                     <constraint firstAttribute="width" constant="100" id="vQI-Re-lJa"/>
+                                    <constraint firstAttribute="trailing" secondItem="eCY-FH-H96" secondAttribute="trailing" id="xdJ-b4-JLf"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="layoutConstraint" destination="An9-pK-Cmm" id="Xba-df-Rdz"/>
@@ -74,6 +74,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="uqf-3c-rQV"/>
                     <connections>
+                        <outlet property="checkImage" destination="DhK-n8-dXg" id="0vr-e7-N7m"/>
                         <outlet property="continueAction" destination="Jii-Nd-mfO" id="396-b6-j09"/>
                         <outlet property="logoIcon" destination="tF7-7A-D0a" id="MwF-SC-Ote"/>
                         <outlet property="logoTitle" destination="H6i-If-eNZ" id="eRA-cE-YtV"/>
@@ -240,7 +241,7 @@
                                     <outlet property="layoutConstraint" destination="izZ-Xw-5XA" id="wg1-l1-L3m"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Think of the top 3 tasks you would like to complete tomorrow." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="raD-qa-2Lw" userLabel="Top 3 Things" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Think of 3 important tasks you need to complete tomorrow." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="raD-qa-2Lw" userLabel="Top 3 Things" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
                                 <rect key="frame" x="36" y="269" width="528" height="61"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="22"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -705,8 +706,10 @@
     </scenes>
     <resources>
         <image name="background0" width="466" height="736"/>
+        <image name="inverse-logo" width="66" height="66"/>
+        <image name="inverse-logo-check" width="66" height="66"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lSL-vv-dAe"/>
+        <segue reference="8uv-KJ-Afq"/>
     </inferredMetricsTieBreakers>
 </document>

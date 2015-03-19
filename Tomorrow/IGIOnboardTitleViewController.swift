@@ -10,9 +10,11 @@ import UIKit
 
 class IGIOnboardTitleViewController: UIViewController {
 
-    @IBOutlet weak var logoIcon: IGICircularView!
+    @IBOutlet weak var logoIcon: IGIView!
     @IBOutlet weak var logoTitle: IGILabel!
     @IBOutlet weak var continueAction: IGIButton!
+    
+    @IBOutlet weak var checkImage: UIImageView!
     
     var hasPlayedAnimation = false
         
@@ -24,7 +26,7 @@ class IGIOnboardTitleViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         if hasPlayedAnimation == false {
             hasPlayedAnimation = true
             playIntroductionAnimation()
@@ -47,6 +49,10 @@ class IGIOnboardTitleViewController: UIViewController {
         logoIcon.revealViewWithDelay(constant: 80, delay: 0.0, view: logoTitle)
         
         continueAction.revealView(constant: 50)
+        
+        UIView.animateWithDuration(1.0, animations: { () -> Void in
+            self.checkImage.alpha = 0.33
+        })
     }
     
     func playDismissAnimation() {

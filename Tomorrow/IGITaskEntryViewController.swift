@@ -48,6 +48,8 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
         
         addInfoAccessoryView()
         
+        titleLabel.text = "What is your most important task?"
+        
         inputField.becomeFirstResponder()
     }
     
@@ -179,7 +181,7 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
             inputField.text = ""
             
             if status == .Task2 {
-                titleLabel.text = "Perfect! What else?"
+                titleLabel.text = "What is your second most important task?"
             } else if status == .Task3 {
                 titleLabel.text = "Great! Your final task?"
             }
