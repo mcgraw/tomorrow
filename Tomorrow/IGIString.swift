@@ -31,7 +31,8 @@ extension String {
     }
     
     func trimLeadingAndTrailingWhitespace() -> String {
-        return trimLeadingWhitespace().trimTrailingWhitespace()
+        let value = trimLeadingWhitespace().trimTrailingWhitespace()
+        return value.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
     }
     
     

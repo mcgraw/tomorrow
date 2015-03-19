@@ -78,6 +78,7 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
             } else if goalEditing?.tasks.count == 2 {
                 status = .Task3
             }
+            inputField.text = ""
         } else {
             inputField.text = taskUnderEdit?.name.capitalizedString
             status = .Editing

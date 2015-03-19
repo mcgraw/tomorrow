@@ -10,6 +10,7 @@ import UIKit
 import Realm
 
 class IGITask: RLMObject {
+    
     dynamic var name = ""
     dynamic var motivation = ""
     
@@ -31,6 +32,10 @@ class IGITask: RLMObject {
             return nil
         }
         return tasks.firstObject() as? IGITask
+    }
+    
+    func getTaskTitle() -> String {
+        return name.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!.capitalizedString
     }
     
     func updateTaskCompletionStatus(status: Bool) {

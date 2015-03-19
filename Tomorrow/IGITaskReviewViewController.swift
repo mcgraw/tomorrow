@@ -44,7 +44,7 @@ class IGITaskReviewViewController: UIViewController {
             let count = goal.tasks.count
             for item in goal.tasks {
                 var task = item as! IGITask
-                let title = task.name.capitalizedString
+                let title = task.getTaskTitle()
                 if index == 0 {
                     task1?.text = title
                 } else if index == 1 {

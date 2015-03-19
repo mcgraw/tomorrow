@@ -21,6 +21,10 @@ class IGIUser: RLMObject {
         return "userId"
     }
     
+    func getFirstName() -> String {
+        return firstName.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!.capitalizedString
+    }
+    
     func isGoalComplete() -> Bool {
         if let goal = getCurrentGoal() {
             return goal.areAllTasksCompleted()
