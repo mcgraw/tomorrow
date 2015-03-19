@@ -81,6 +81,9 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     @IBAction func unwindToTimeline(sender: UIStoryboardSegue) {
+        // Mark goal as completed
+        self.activeGoal?.setGoalCompleted()
+
         // let the view appear before we refresh everything
         introductionAnimationPlaying = false
         shouldPlayIntroduction = true // introduce the new tasks
@@ -220,9 +223,6 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     
     func acceptPressed() {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
-            // Mark goal as completed
-            self.activeGoal?.setGoalCompleted()
-            
             // Proceed with Transition
             let scale = POPBasicAnimation(propertyNamed: kPOPLayerScaleXY)
             scale.toValue = NSValue(CGPoint: CGPointMake(0.5, 0.5))
