@@ -26,6 +26,7 @@
 		F01AF95C1A743F510012D3F8 /* IGIBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AF95B1A743F510012D3F8 /* IGIBaseViewController.swift */; };
 		F01AF95F1A7440D70012D3F8 /* IGIGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AF95E1A7440D70012D3F8 /* IGIGradientView.swift */; };
 		F06E829C1ABB471E00CEB9B0 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F06E829B1ABB471E00CEB9B0 /* iTunesArtwork@2x.png */; };
+		F06E82A01ABB9CDB00CEB9B0 /* IGIAboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E829F1ABB9CDB00CEB9B0 /* IGIAboutTableViewController.swift */; };
 		F070A2E11AA4D49E00CE9B55 /* HoshiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070A2D71AA4D49E00CE9B55 /* HoshiTextField.swift */; };
 		F070A2E21AA4D49E00CE9B55 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F070A2D81AA4D49E00CE9B55 /* Info.plist */; };
 		F070A2E31AA4D49E00CE9B55 /* IsaoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F070A2D91AA4D49E00CE9B55 /* IsaoTextField.swift */; };
@@ -87,6 +88,7 @@
 		F01AF95B1A743F510012D3F8 /* IGIBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIBaseViewController.swift; sourceTree = "<group>"; };
 		F01AF95E1A7440D70012D3F8 /* IGIGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIGradientView.swift; sourceTree = "<group>"; };
 		F06E829B1ABB471E00CEB9B0 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		F06E829F1ABB9CDB00CEB9B0 /* IGIAboutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIAboutTableViewController.swift; sourceTree = "<group>"; };
 		F070A2D71AA4D49E00CE9B55 /* HoshiTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoshiTextField.swift; sourceTree = "<group>"; };
 		F070A2D81AA4D49E00CE9B55 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F070A2D91AA4D49E00CE9B55 /* IsaoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsaoTextField.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				F01AF9551A742BE50012D3F8 /* IGITaskReviewViewController.swift */,
 				F01AF9571A742C0E0012D3F8 /* IGITimelineViewController.swift */,
 				F098E7C61AA4E40800DA6E57 /* IGIMessageViewController.swift */,
+				F06E829F1ABB9CDB00CEB9B0 /* IGIAboutTableViewController.swift */,
 				F0178D5F1A7421B600ED2795 /* AppDelegate.swift */,
 				F0D1F20A1A86E84C009CAB50 /* Model */,
 				F01AF95D1A7440BF0012D3F8 /* Supplementing Views */,
@@ -455,6 +458,7 @@
 				F0D1F20F1A87250A009CAB50 /* IGIUser.swift in Sources */,
 				F070A2E51AA4D49E00CE9B55 /* KaedeTextField.swift in Sources */,
 				F078BFB41A868DCB0095A518 /* IGITimelineNodeView.swift in Sources */,
+				F06E82A01ABB9CDB00CEB9B0 /* IGIAboutTableViewController.swift in Sources */,
 				F070A2E61AA4D49E00CE9B55 /* MadokaTextField.swift in Sources */,
 				F09C5F421A7455DB0033FF94 /* IGILabel.swift in Sources */,
 				F070A2E81AA4D49E00CE9B55 /* TextFieldsEffects.swift in Sources */,
