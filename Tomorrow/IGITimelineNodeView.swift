@@ -101,7 +101,9 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
                 
         if goal.goal_failed {
             nodeStatus = .Failed
-            headline.text = "Failed to complete 1 task!"
+            let incomplete = self.nodeGoal!.countIncompleteTasks()
+            let append = (incomplete > 1) ? "s" : ""
+            headline.text = "Failed to complete \(incomplete) task\(append)!"
             lowerSubMessage.text = IGILoremIpsum.randomEncouragementPhrase()
         } else {
             nodeStatus = .CompletedDay

@@ -259,7 +259,10 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
         activeGoal = activeUser?.getCurrentGoal()
         allGoals = IGIGoal.allObjects()
         
-        assert(activeGoal != nil, "Active goal should not be nil")
+        // If we don't have an active goal we need to show the tomorrow node
+        if activeGoal == nil {
+            shouldShowTomorrowNode = true
+        }
         
         refreshTableView()
     }
@@ -342,6 +345,11 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
         if scrollView.contentOffset.y < 0 {
             scrollView.setContentOffset(CGPointZero, animated: true)
         }
+    }
+    
+    func applicationDidBecomeActive(application: UIApplication) {
+        // if we're returning it's possible that the goal time elapsed
+        refreshModelData()
     }
 }
               
