@@ -18,6 +18,8 @@ class IGICustomerHelloViewController: UIViewController, POPAnimationDelegate {
     @IBOutlet weak var message3: IGILabel!
     @IBOutlet weak var message4: IGILabel!
     
+    // and prioritize
+    
     @IBOutlet weak var continueAction: IGIButton!
     
     @IBOutlet weak var topThree: IGILabel!
@@ -34,15 +36,11 @@ class IGICustomerHelloViewController: UIViewController, POPAnimationDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        let users = IGIUser.allObjects()
-        if users.count > 0 {
-            userObject = users[0] as? IGIUser
-        } else {
-            assertionFailure("No users found!")
-        }
-    
+        userObject = IGIUser.getCurrentUser()
+        assert(userObject != nil, "User object should not be nil!")
+        
         // user object should not be nil!
-        if userObject!.firstName == "" {
+        if userObject!.getFirstName() == "" {
             titleLabel.text = "Hello!"
         } else {
             var name = userObject!.getFirstName()
