@@ -21,6 +21,14 @@ class IGIUser: RLMObject {
         return "userId"
     }
     
+    class func getCurrentUser() -> IGIUser? {
+        let users = IGIUser.allObjects()
+        if users.count > 0 {
+            return users[0] as? IGIUser
+        }
+        return nil
+    }
+    
     func getFirstName() -> String {
         return firstName.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!.capitalizedString
     }
