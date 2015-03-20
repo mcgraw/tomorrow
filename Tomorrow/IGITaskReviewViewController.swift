@@ -84,11 +84,9 @@ class IGITaskReviewViewController: UIViewController {
         println("Goal count is \(goals.count)")
         if goals.count > 1 {
             UIView.animateWithDuration(0.5, animations: {
-                self.task1.alpha = 0
-                self.task2.alpha = 0
-                self.task3.alpha = 0
+                self.view.alpha = 0.0
             }, completion: { (done) in
-                self.transitionToTimeline()
+                NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "transitionToTimeline", userInfo: nil, repeats: false)
             })
         } else {
             // Remove spacing constraints so they don't interfere with our animation
