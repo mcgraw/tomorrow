@@ -174,6 +174,8 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
     }
     
     func prepareForReuse() {
+        self.resetLabelStyle()
+        
         headline.alpha = 0.0
         upperSubMessage.alpha = 0.0
         lowerSubMessage.alpha = 0.0
@@ -462,14 +464,7 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
                     self.lowerSubMessage.textColor = color
                     self.lowerSubMessage.font = font
                 } else {
-                    self.headline.font = UIFont(name: "AvenirNext-Regular", size: 26)
-                    self.upperSubMessage.font = UIFont(name: "AvenirNext-UltraLight", size: 16)
-                    self.lowerSubMessage.font = UIFont(name: "AvenirNext-UltraLight", size: 16)
-                    
-                    // update colors
-                    self.upperSubMessage.textColor = UIColor.whiteColor()
-                    self.headline.textColor = UIColor.whiteColor()
-                    self.lowerSubMessage.textColor = UIColor.whiteColor()
+                    self.resetLabelStyle()
                     
                     // update text with tasks
                     self.nodeStatus = .CompletedDay
@@ -504,7 +499,18 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
             (task.completed == true ? UIFont(name: "AvenirNext-Regular", size: 16) : UIFont(name: "AvenirNext-Bold", size: 16))!)
     }
     
-    // MARK: Initialize
+    // MARK: Style
+    
+    private func resetLabelStyle() {
+        self.headline.font = UIFont(name: "AvenirNext-Regular", size: 26)
+        self.upperSubMessage.font = UIFont(name: "AvenirNext-UltraLight", size: 16)
+        self.lowerSubMessage.font = UIFont(name: "AvenirNext-UltraLight", size: 16)
+        
+        // update colors
+        self.upperSubMessage.textColor = UIColor.whiteColor()
+        self.headline.textColor = UIColor.whiteColor()
+        self.lowerSubMessage.textColor = UIColor.whiteColor()
+    }
     
     private func initializeBaseLayoutStyle() {
         backgroundColor = UIColor.clearColor()
