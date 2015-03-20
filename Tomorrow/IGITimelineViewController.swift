@@ -77,6 +77,10 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
         if segue.identifier == "revealMessageSegue" {
             let vc = segue.destinationViewController as! IGIMessageViewController
             vc.delegate = self
+        } else if segue.identifier == "showAboutViewSegue" {
+            UIView.animateWithDuration(0.225, animations: { () -> Void in
+                self.view.alpha = 0.0
+            })
         }
     }
     
@@ -87,6 +91,12 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
         // let the view appear before we refresh everything
         introductionAnimationPlaying = false
         shouldPlayIntroduction = true // introduce the new tasks
+    }
+    
+    @IBAction func unwindToTimelineFromAbout(sender: UIStoryboardSegue) {
+        UIView.animateWithDuration(0.225, animations: { () -> Void in
+            self.view.alpha = 1.0
+        })
     }
     
     // MARK: Table View
