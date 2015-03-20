@@ -17,7 +17,7 @@ class IGIGoal: RLMObject {
     dynamic var date_str: String = ""
     
     // What day was the goal created?
-    dynamic var date: NSDate = NSDate()
+    dynamic var date: NSDate = NSDate(day: 19, hour: 9)
     
     // Many tasks available
     dynamic var tasks = RLMArray(objectClassName: IGITask.className())
@@ -36,9 +36,28 @@ class IGIGoal: RLMObject {
         let goals = IGIGoal.allObjects()
         for item in goals {
             let goal = item as! IGIGoal
+        
+            // Delete any invalid goals that were being built
             if goal.edit_completed == false {
                 println("Deleting incomplete goal")
                 RLMRealm.defaultRealm().deleteObject(goal)
+            }
+        }
+        RLMRealm.defaultRealm().commitWriteTransaction()
+    }
+    
+    class func cleanElapsedGoals() {
+        RLMRealm.defaultRealm().beginWriteTransaction()
+        let goals = IGIGoal.allObjects()
+        for item in goals {
+            let goal = item as! IGIGoal
+            if goal.goal_completed == false {
+                if (goal.date.isBeforeHour(9) && goal.date.isAfterDay()) ||
+                    goal.date.haveDaysElapsedIngoringTime(2) {
+                        println("Goal incomplete! Mark as failed")
+                        goal.goal_completed = true
+                        goal.goal_failed = true
+                }
             }
         }
         RLMRealm.defaultRealm().commitWriteTransaction()

@@ -48,6 +48,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate, 
         return true
     }
     
+    func applicationDidBecomeActive(application: UIApplication) {
+        
+        // If we're returning we need to check if goal progress has elapsed
+        IGIGoal.cleanElapsedGoals()
+    }
+    
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         
     }
