@@ -51,17 +51,8 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
         titleLabel.text = "What is your most important task?"
         
         inputField.becomeFirstResponder()
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
         
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        playIntroductionAnimation()
+        NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "playIntroductionAnimation", userInfo: nil, repeats: false)
     }
     
     @IBAction func unwindToTaskEntry(sender: UIStoryboardSegue) {
@@ -181,6 +172,10 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
     
     func advanceOnboarding() {
         if status == .Done || status == .Editing {
+            UIView.animateWithDuration(0.225, animations: { () -> Void in
+                self.titleLabel.alpha = 0
+                self.inputField.alpha = 0
+            })
             performSegueWithIdentifier("taskReviewSegue", sender: self)
         }
         else {
