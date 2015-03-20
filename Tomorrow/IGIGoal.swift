@@ -17,7 +17,7 @@ class IGIGoal: RLMObject {
     dynamic var date_str: String = ""
     
     // What day was the goal created?
-    dynamic var date: NSDate = NSDate(day: 19, hour: 9)
+    dynamic var date: NSDate = NSDate()
     
     // Many tasks available
     dynamic var tasks = RLMArray(objectClassName: IGITask.className())
