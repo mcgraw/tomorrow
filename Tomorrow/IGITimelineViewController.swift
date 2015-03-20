@@ -31,7 +31,7 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     var completedGoalCount  = 0         // unlimited
     var activeTaskCount     = 0         // max 3
     var specialtyNodeCount  = 0         // should be 1 or 0, we don't want to show a tip and a review at the same time
-    
+
     // TODO: Add a way to cancel new task flow
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +60,9 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
         UIView.animateWithDuration(0.225, animations: {
             self.tableView.alpha = 1.0
         })
+        
+        // on load we want to be at the bottom of the table
+        tableView.scrollToRowAtIndexPath(NSIndexPath(forRow:  activeRowCount() - 1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
     }
     
     // FIXME: The animation here is causing an issue with the transition
@@ -106,6 +109,10 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return activeRowCount()
+    }
+    
+    func activeRowCount() -> Int {
         var rows = (shouldShowTomorrowNode) ? 1 : 0
         rows += completedGoalCount + activeTaskCount + specialtyNodeCount
         println("table refresh debug row count \(rows)")
