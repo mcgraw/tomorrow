@@ -79,39 +79,6 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         // for top & bottom nodes
         line.layer.cornerRadius = 1
         line.layer.masksToBounds = true
-        
-        // Tip
-//        var image = UIImage(named: "tip")
-//        node.backgroundColor = kStatusTipColor
-//        image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-//        nodeIcon.image = image
-//        
-//        headline.text = "Enjoying the app?"
-//        lowerSubMessage?.text = "Tap to support the development of Tomorrow and other apps like this!"
-//        lowerSubMessage?.frame = CGRectMake(lowerSubMessage!.frame.origin.x, lowerSubMessage!.frame.origin.y, lowerSubMessage!.frame.size.width, 50)
-//    
-//        line.frame = CGRectMake(line.frame.origin.x, line.frame.origin.y, line.frame.size.width, bounds.size.height + 25)
-//        line.alpha = 1.0
-//        node.alpha = 1.0
-//        headline.alpha = 1.0
-//        lowerSubMessage?.alpha = 1.0
-        
-        // Review
-//        var image = UIImage(named: "rate")
-//        node.backgroundColor = kStatusReviewColor
-//        image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-//        nodeIcon.image = image
-//
-//        headline.text = "Review Tomorrow!"
-//        lowerSubMessage?.text = "Consider reviewing Tomorrow on iTunes! It's easy and helps a lot!"
-//        lowerSubMessage?.frame = CGRectMake(lowerSubMessage!.frame.origin.x, lowerSubMessage!.frame.origin.y, lowerSubMessage!.frame.size.width, 50)
-//
-//        line.frame = CGRectMake(line.frame.origin.x, line.frame.origin.y, line.frame.size.width, bounds.size.height + 25)
-//        line.alpha = 1.0
-//        node.alpha = 1.0
-//        headline.alpha = 1.0
-//        lowerSubMessage?.alpha = 1.0
-        
     }
     
     override init(frame: CGRect) {
@@ -151,6 +118,8 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         node.backgroundColor = nodeTask!.completed ? kStatusCompletedDayColor : kStatusTaskColor
         image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         nodeIcon.image = image
+        
+        upperSubMessage.text = ""
         
         if nodeTask!.completed {
             lowerSubMessage.text = IGILoremIpsum.randomMotivationPhrase() // use stored value
