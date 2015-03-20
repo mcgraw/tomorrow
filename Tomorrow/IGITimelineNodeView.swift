@@ -472,16 +472,15 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
                     self.lowerSubMessage.textColor = UIColor.whiteColor()
                     
                     // update text with tasks
+                    self.nodeStatus = .CompletedDay
                     
                     if self.nodeGoal!.goal_failed == true {
-                        self.nodeStatus = .Failed
                         let incomplete = self.nodeGoal!.countIncompleteTasks()
                         let append = (incomplete > 1) ? "s" : ""
                         self.upperSubMessage.text = self.nodeGoal?.getDateAsString()
                         self.headline.text = "Failed to complete \(incomplete) task\(append)"
                         self.lowerSubMessage.text = IGILoremIpsum.randomEncouragementPhrase()
                     } else {
-                        self.nodeStatus = .Completed
                         self.upperSubMessage.text = self.nodeGoal?.getDateAsString()
                         self.headline.text = "Tasks Completed"
                         self.lowerSubMessage.text = IGILoremIpsum.randomMotivationPhrase()
@@ -500,8 +499,8 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
     private func getTaskTitleAndColorForPosition(taskPosition: Int) -> (String, UIColor, UIFont) {
         let object: RLMObject = nodeGoal!.tasks.objectAtIndex(UInt(taskPosition)) as! RLMObject
         let task = object as! IGITask
-        return (task.name,
-            (task.completed == true ? kStatusCompletedColor : kStatusFailedColor),
+        return (task.getTaskTitle(),
+            (task.completed == true ? UIColor.whiteColor() : kStatusFailedColor),
             (task.completed == true ? UIFont(name: "AvenirNext-Regular", size: 16) : UIFont(name: "AvenirNext-Bold", size: 16))!)
     }
     
