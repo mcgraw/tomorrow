@@ -55,6 +55,15 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
         NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "playIntroductionAnimation", userInfo: nil, repeats: false)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if taskUnderEdit != nil {
+            playIntroductionAnimation()
+            inputField.becomeFirstResponder()
+        }
+    }
+    
     @IBAction func unwindToTaskEntry(sender: UIStoryboardSegue) {
         // Should not unwind back here without a goal under edit!
         let goalEditing = userObject?.getCurrentGoalUnderEdit()!
@@ -71,7 +80,7 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
             }
             inputField.text = ""
         } else {
-            inputField.text = taskUnderEdit?.name.capitalizedString
+            inputField.text = taskUnderEdit?.getTaskTitle()
             status = .Editing
         }
         
