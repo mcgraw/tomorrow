@@ -224,6 +224,16 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&amp;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hM4-qt-GCN" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
+                                <rect key="frame" x="350" y="296" width="57" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="74e-wS-XyN"/>
+                                    <constraint firstAttribute="width" constant="57" id="Jsz-eB-eSN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="34"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to master our day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXm-pR-5q0" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
                                 <rect key="frame" x="169" y="351" width="263" height="47"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="34"/>
@@ -251,26 +261,36 @@
                                     <outlet property="layoutConstraint" destination="DX4-fJ-CWW" id="UPn-4o-On7"/>
                                 </connections>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="prioritize" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMC-ie-x3o" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
+                                <rect key="frame" x="415" y="296" width="140" height="47"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="34"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="bMC-ie-x3o" firstAttribute="centerY" secondItem="hM4-qt-GCN" secondAttribute="centerY" id="1pO-5J-urZ"/>
                             <constraint firstItem="pAs-19-w3T" firstAttribute="centerX" secondItem="kz9-pD-fnH" secondAttribute="centerX" id="3v8-XY-aMa"/>
-                            <constraint firstItem="0fJ-Wb-CFa" firstAttribute="centerX" secondItem="eXm-pR-5q0" secondAttribute="centerX" id="64d-dy-DuX"/>
+                            <constraint firstItem="hM4-qt-GCN" firstAttribute="leading" secondItem="0fJ-Wb-CFa" secondAttribute="trailing" constant="8" id="8GV-i4-KQo"/>
                             <constraint firstAttribute="centerX" secondItem="raD-qa-2Lw" secondAttribute="centerX" id="9Eb-Zv-oSW"/>
                             <constraint firstItem="gXA-HI-Vqr" firstAttribute="top" secondItem="025-QF-bGq" secondAttribute="bottom" constant="60" id="9jM-Lp-Sr1"/>
                             <constraint firstAttribute="centerX" secondItem="gXA-HI-Vqr" secondAttribute="centerX" id="ANH-SC-Op9"/>
-                            <constraint firstItem="kz9-pD-fnH" firstAttribute="centerX" secondItem="0fJ-Wb-CFa" secondAttribute="centerX" id="D3U-XD-rL3"/>
                             <constraint firstAttribute="centerY" secondItem="raD-qa-2Lw" secondAttribute="centerY" constant="0.5" id="DX4-fJ-CWW"/>
+                            <constraint firstItem="0fJ-Wb-CFa" firstAttribute="top" secondItem="pAs-19-w3T" secondAttribute="bottom" constant="8" id="EuP-c5-DWg"/>
                             <constraint firstItem="kz9-pD-fnH" firstAttribute="top" secondItem="pAs-19-w3T" secondAttribute="bottom" constant="-10" id="HFe-uG-nwH"/>
                             <constraint firstItem="pAs-19-w3T" firstAttribute="centerX" secondItem="uhi-ah-PWB" secondAttribute="centerX" id="OSz-ye-0WF"/>
+                            <constraint firstItem="0fJ-Wb-CFa" firstAttribute="centerY" secondItem="eXm-pR-5q0" secondAttribute="centerY" constant="-55" id="Uu1-cL-lJu"/>
                             <constraint firstAttribute="centerX" secondItem="kz9-pD-fnH" secondAttribute="centerX" id="WBb-CT-TZx"/>
                             <constraint firstItem="raD-qa-2Lw" firstAttribute="leading" secondItem="CNq-9u-4UL" secondAttribute="leadingMargin" constant="20" id="aAv-em-AqL"/>
+                            <constraint firstItem="pAs-19-w3T" firstAttribute="centerX" secondItem="0fJ-Wb-CFa" secondAttribute="centerX" id="agN-5N-bfm"/>
                             <constraint firstAttribute="centerX" secondItem="w9A-A6-W5H" secondAttribute="centerX" constant="-0.5" id="aq9-G8-86Y"/>
+                            <constraint firstItem="eXm-pR-5q0" firstAttribute="leading" secondItem="pAs-19-w3T" secondAttribute="trailing" constant="-194" id="b5F-GM-RPb"/>
+                            <constraint firstItem="hM4-qt-GCN" firstAttribute="centerY" secondItem="0fJ-Wb-CFa" secondAttribute="centerY" id="bkG-n4-aa7"/>
                             <constraint firstAttribute="centerY" secondItem="kz9-pD-fnH" secondAttribute="centerY" id="dQr-O8-0Oz"/>
-                            <constraint firstItem="eXm-pR-5q0" firstAttribute="top" secondItem="0fJ-Wb-CFa" secondAttribute="bottom" constant="8" id="dwy-Vf-CTX"/>
                             <constraint firstItem="d4Y-4x-scD" firstAttribute="top" secondItem="w9A-A6-W5H" secondAttribute="bottom" constant="40" id="izZ-Xw-5XA"/>
-                            <constraint firstItem="0fJ-Wb-CFa" firstAttribute="top" secondItem="kz9-pD-fnH" secondAttribute="bottom" constant="-26" id="jaY-as-zMn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="raD-qa-2Lw" secondAttribute="trailing" constant="20" id="m9P-eA-dCR"/>
+                            <constraint firstItem="bMC-ie-x3o" firstAttribute="leading" secondItem="hM4-qt-GCN" secondAttribute="trailing" constant="8" id="uB8-Xm-aBm"/>
                             <constraint firstItem="pAs-19-w3T" firstAttribute="top" secondItem="uhi-ah-PWB" secondAttribute="bottom" id="uSm-bR-RLv"/>
                         </constraints>
                     </view>
@@ -279,6 +299,9 @@
                         <outlet property="message1" destination="uhi-ah-PWB" id="hzQ-iu-S7e"/>
                         <outlet property="message2" destination="pAs-19-w3T" id="IUG-qE-v8H"/>
                         <outlet property="message3" destination="0fJ-Wb-CFa" id="dUk-Lb-xJx"/>
+                        <outlet property="message3CenterY" destination="agN-5N-bfm" id="YCF-1N-t8i"/>
+                        <outlet property="message3p2" destination="hM4-qt-GCN" id="TrO-Ys-BHy"/>
+                        <outlet property="message3p3" destination="bMC-ie-x3o" id="6Ve-nK-DTh"/>
                         <outlet property="message4" destination="eXm-pR-5q0" id="oUH-7X-NqF"/>
                         <outlet property="titleLabel" destination="gXA-HI-Vqr" id="qTm-m2-kBC"/>
                         <outlet property="topThree" destination="raD-qa-2Lw" id="oul-Hp-rnR"/>
@@ -1039,6 +1062,6 @@
         <image name="twitter" width="21" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lSL-vv-dAe"/>
+        <segue reference="8uv-KJ-Afq"/>
     </inferredMetricsTieBreakers>
 </document>

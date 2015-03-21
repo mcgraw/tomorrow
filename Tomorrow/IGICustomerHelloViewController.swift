@@ -16,7 +16,11 @@ class IGICustomerHelloViewController: UIViewController, POPAnimationDelegate {
     @IBOutlet weak var message1: IGILabel!
     @IBOutlet weak var message2: IGILabel!
     @IBOutlet weak var message3: IGILabel!
+    @IBOutlet weak var message3p2: IGILabel!
+    @IBOutlet weak var message3p3: IGILabel!
     @IBOutlet weak var message4: IGILabel!
+    
+    @IBOutlet weak var message3CenterY: NSLayoutConstraint!
     
     // and prioritize
     
@@ -102,10 +106,10 @@ class IGICustomerHelloViewController: UIViewController, POPAnimationDelegate {
         
         anim = POPBasicAnimation(propertyNamed: kPOPViewAlpha)
         anim.toValue = 1.0
-        anim.beginTime = CACurrentMediaTime() + 4.0
+        anim.beginTime = CACurrentMediaTime() + 5.0
         message4.pop_addAnimation(anim, forKey: "alpha")
         
-        continueAction.revealViewWithDelay(constant: 50, delay: 4.5)
+        continueAction.revealViewWithDelay(constant: 50, delay: 5.5)
     }
     
     func playDismissAnimation() {
@@ -115,6 +119,8 @@ class IGICustomerHelloViewController: UIViewController, POPAnimationDelegate {
         message1.pop_addAnimation(anim, forKey: "alpha")
         message2.pop_addAnimation(anim, forKey: "alpha")
         message3.pop_addAnimation(anim, forKey: "alpha")
+        message3p2.pop_addAnimation(anim, forKey: "alpha")
+        message3p3.pop_addAnimation(anim, forKey: "alpha")
         message4.pop_addAnimation(anim, forKey: "alpha")
         
         step++
@@ -133,10 +139,27 @@ class IGICustomerHelloViewController: UIViewController, POPAnimationDelegate {
     // MARK: Animation Delegate
     
     func pop_animationDidReachToValue(anim: POPAnimation!) {
-        var scale = POPSpringAnimation(propertyNamed: kPOPLayerScaleXY)
-        scale.toValue = NSValue(CGPoint: CGPointMake(1.0, 1.0))
-        scale.springBounciness = 3
-        scale.springSpeed = 5
-        message3.layer.pop_addAnimation(scale, forKey: "scale-up")
+        if anim.name == "scale-up" {
+            var scale = POPSpringAnimation(propertyNamed: kPOPLayerScaleXY)
+            scale.toValue = NSValue(CGPoint: CGPointMake(1.0, 1.0))
+            scale.springBounciness = 3
+            scale.springSpeed = 5
+            message3.layer.pop_addAnimation(scale, forKey: "scale-restore")
+            
+            var move = POPSpringAnimation(propertyNamed: kPOPLayoutConstraintConstant)
+            move.toValue = 105
+            move.springBounciness = 14
+            move.springSpeed = 5
+            move.delegate = self
+            move.name = "move-message"
+            move.beginTime = CACurrentMediaTime() + 0.5
+            message3CenterY.pop_addAnimation(move, forKey: "move-message")
+        }
+        else if anim.name == "move-message" {
+            UIView.animateWithDuration(0.5, animations: { () -> Void in
+                self.message3p2.alpha = 1.0
+                self.message3p3.alpha = 1.0
+            })
+        }
     }
 }
