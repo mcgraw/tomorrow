@@ -16,8 +16,6 @@ enum IGIGender: Int {
 class IGICustomerDetailsViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var inputField: IGITextField!
-    @IBOutlet weak var maleAction: IGIButton!
-    @IBOutlet weak var femaleAction: IGIButton!
     @IBOutlet weak var titleLabel: IGILabel!
     
     var selectedGender: IGIGender = .Unspecified
@@ -49,9 +47,6 @@ class IGICustomerDetailsViewController: UIViewController, UITableViewDelegate, U
         super.viewWillAppear(animated)
         
         view.backgroundColor = UIColor.clearColor()
-        
-        maleAction.addRoundedBorder()
-        femaleAction.addRoundedBorder()
         
 //        addInfoAccessoryView()
     }
@@ -90,33 +85,11 @@ class IGICustomerDetailsViewController: UIViewController, UITableViewDelegate, U
         alert.show()
     }
     
-    @IBAction func toggleMaleAction(sender: AnyObject) {
-        userObject?.setUserGender(type: "male")
-        
-        maleAction.updateColor(UIColor(red:0.18, green:0.67, blue:0.82, alpha:1), fill: UIColor(red:0.18, green:0.67, blue:0.82, alpha:0.2))
-        femaleAction.updateColor(UIColor.whiteColor(), fill: UIColor.clearColor())
-        selectedGender = .Female
-        
-        NSNotificationCenter.defaultCenter().postNotificationName("didChangeGender", object: "male")
-    }
-    
-    @IBAction func toggleFemaleAction(sender: AnyObject) {
-        userObject?.setUserGender(type: "female")
-        
-        maleAction.updateColor(UIColor.whiteColor(), fill: UIColor.clearColor())
-        femaleAction.updateColor(UIColor(red:0.82, green:0.18, blue:0.73, alpha:1), fill: UIColor(red:0.82, green:0.18, blue:0.73, alpha:0.2))
-        selectedGender = .Female
-        
-        NSNotificationCenter.defaultCenter().postNotificationName("didChangeGender", object: "female")
-    }
-    
     // MARK: Animation
     
     func playIntroductionAnimation() {
         titleLabel.revealView(constant: 50)
         inputField.revealView(constant: 130)
-        maleAction.revealView(constant: 35)
-        femaleAction.revealView(constant: 35)
         
         UIView.animateWithDuration(0.5, animations: {
             println()
@@ -129,9 +102,6 @@ class IGICustomerDetailsViewController: UIViewController, UITableViewDelegate, U
             println()
             self.accessoryView?.alpha = 0.0
         })
-        
-        femaleAction.dismissView(constant: Int(view.bounds.size.height / 2))
-        maleAction.dismissView(constant: Int(view.bounds.size.height / 2))
         
         inputField.dismissViewWithDelay(constant: Int(view.bounds.size.height), delay: 0.4)
         titleLabel.dismissViewWithDelay(constant: Int(view.bounds.size.height), delay: 0.6)
