@@ -20,20 +20,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate, 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-//        // Register Notifications
-//        BatchPush.registerForRemoteNotifications()
-//        
-//        // Clear any notifications when the user opens the app
-//        BatchPush.dismissNotifications()
-//        
-//        // Setup Ads
-//        BatchAds.setupAds()
-//        
-//        // Unlock
-//        BatchUnlock.setupUnlockWithDelegate(self)
-//        
-//        // Start Batch
-//        Batch.startWithAPIKey("DEV54EF398118121451CB109F931AE")
+        // Register Notifications
+        BatchPush.registerForRemoteNotifications()
+        
+        // Clear any notifications when the user opens the app
+        BatchPush.dismissNotifications()
+        
+        // Setup Ads
+        BatchAds.setupAds()
+        
+        // Unlock
+        BatchUnlock.setupUnlockWithDelegate(self)
+        
+        // Start Batch
+        Batch.startWithAPIKey("DEV54EF398118121451CB109F931AE")
         
         // Realm Migration Check
         RLMRealm.setSchemaVersion(2, forRealmAtPath: RLMRealm.defaultRealmPath()) { (migration, oldSchemaVersion) in
@@ -44,9 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate, 
         
         // If we crashed, or the user left the app, let's start the entry over
         IGIGoal.cleanInvalidGoals()
-        
-        // should show add? check kDidLeaveDonation
-        
+                
         return true
     }
     
@@ -54,6 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate, 
         
         // If we're returning we need to check if goal progress has elapsed
         IGIGoal.cleanElapsedGoals()
+        
+        // show an advert if they haven't left a tip
+        NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "showAdvert", userInfo: nil, repeats: false)
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
@@ -73,6 +74,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate, 
             
             // unlock
             println("ref \(reference) & val \(value)")
+        }
+    }
+    
+    func showAdvert() {
+        // show an advert if they haven't left a tip
+        let leftTip = NSUserDefaults.standardUserDefaults().boolForKey("kDidLeaveDonation")
+        if !leftTip {
+            println("Display advert")
+            BatchAds.displayAdForPlacement(BatchPlacementDefault)
         }
     }
 }
