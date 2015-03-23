@@ -139,7 +139,24 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
     
     // Text Delegate
     
+    func isDuplicateInput(input: String) -> Bool {
+        let strip = input.trimLeadingAndTrailingWhitespace()
+        for item in userGoal!.tasks {
+            let task = item as! IGITask
+            if task.name == strip.lowercaseString {
+                return true
+            }
+        }
+        return false
+    }
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if isDuplicateInput(textField.text) {
+            let alert = UIAlertView(title: "Duplicate Task", message: "Please enter a unique task name", delegate: nil, cancelButtonTitle: "OK")
+            alert.show()
+            return true
+        }
+        
         playDismissAnimation()
         
         RLMRealm.defaultRealm().beginWriteTransaction()
