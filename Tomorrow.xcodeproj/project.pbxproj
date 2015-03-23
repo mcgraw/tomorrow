@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C8FFFA0A4A2801829C2AB005 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEC39AB0FD4DD99C02A46B7B /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		F00CF4251AC09438007E9DF4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F00CF4241AC09438007E9DF4 /* StoreKit.framework */; };
 		F0120F531AA3A94A0014013F /* Batch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F0120F511AA3A94A0014013F /* Batch.bundle */; };
 		F0120F541AA3A94A0014013F /* Batch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0120F521AA3A94A0014013F /* Batch.framework */; };
 		F0120F561AA3A9660014013F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F0120F551AA3A9660014013F /* libsqlite3.dylib */; };
@@ -67,6 +68,7 @@
 		12968796F3B1B36658164424 /* libPods-Tomorrow.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tomorrow.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60C6AB8AC9A6EF8D8A003DFF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B2A7DCE0DECA9C9019E9FBB5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		F00CF4241AC09438007E9DF4 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		F0120F511AA3A94A0014013F /* Batch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Batch.bundle; sourceTree = "<group>"; };
 		F0120F521AA3A94A0014013F /* Batch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Batch.framework; sourceTree = "<group>"; };
 		F0120F551AA3A9660014013F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -126,6 +128,7 @@
 			files = (
 				F0120F561AA3A9660014013F /* libsqlite3.dylib in Frameworks */,
 				F0120F541AA3A94A0014013F /* Batch.framework in Frameworks */,
+				F00CF4251AC09438007E9DF4 /* StoreKit.framework in Frameworks */,
 				F0120F581AA3AF3D0014013F /* AdSupport.framework in Frameworks */,
 				C8FFFA0A4A2801829C2AB005 /* Pods.framework in Frameworks */,
 			);
@@ -286,6 +289,7 @@
 		F1EF4EFA3FAA3C253B1D45AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F00CF4241AC09438007E9DF4 /* StoreKit.framework */,
 				F0120F571AA3AF3D0014013F /* AdSupport.framework */,
 				F0120F551AA3A9660014013F /* libsqlite3.dylib */,
 				F070A2D61AA4D49E00CE9B55 /* TextFieldEffects */,
@@ -349,6 +353,11 @@
 					F0178D591A7421B600ED2795 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = TS6V23BE8W;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					F0178D711A7421B600ED2795 = {
 						CreatedOnToolsVersion = 6.2;
@@ -610,6 +619,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Batch.embeddedframework",
@@ -617,6 +627,7 @@
 				INFOPLIST_FILE = Tomorrow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Tomorrow;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tomorrow/Tomorrow-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -630,6 +641,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Batch.embeddedframework",
@@ -637,6 +649,7 @@
 				INFOPLIST_FILE = Tomorrow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Tomorrow;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tomorrow/Tomorrow-Bridging-Header.h";
 			};
 			name = Release;

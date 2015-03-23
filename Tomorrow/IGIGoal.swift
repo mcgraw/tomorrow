@@ -63,6 +63,19 @@ class IGIGoal: RLMObject {
         RLMRealm.defaultRealm().commitWriteTransaction()
     }
     
+    class func countCompletedTasks() -> Int {
+        // https://github.com/realm/realm-cocoa/issues/1490
+//        let pred = NSPredicate(format: "completed_count.@count")
+//        let total = IGIGoal.objectsWithPredicate(pred)
+        var count = 0
+        let tasks = IGITask.allObjects()
+        for item in tasks {
+            let task = item as! IGITask
+            count += task.completed_count
+        }
+        return count
+    }
+    
     func getCurrentTaskUnderEdit() -> IGITask? {
         let tasks: RLMResults? = self.tasks.objectsWhere("edit_needed == true")
         

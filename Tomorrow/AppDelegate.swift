@@ -45,6 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate, 
         // If we crashed, or the user left the app, let's start the entry over
         IGIGoal.cleanInvalidGoals()
         
+        // should show add? check kDidLeaveDonation
+        
         return true
     }
     
