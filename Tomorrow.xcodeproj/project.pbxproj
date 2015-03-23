@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C8FFFA0A4A2801829C2AB005 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEC39AB0FD4DD99C02A46B7B /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F00CF4251AC09438007E9DF4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F00CF4241AC09438007E9DF4 /* StoreKit.framework */; };
+		F00CF4271AC0B8F9007E9DF4 /* IGIMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00CF4261AC0B8F9007E9DF4 /* IGIMapViewController.swift */; };
+		F00CF4291AC0B964007E9DF4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F00CF4281AC0B964007E9DF4 /* MapKit.framework */; };
 		F0120F531AA3A94A0014013F /* Batch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F0120F511AA3A94A0014013F /* Batch.bundle */; };
 		F0120F541AA3A94A0014013F /* Batch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0120F521AA3A94A0014013F /* Batch.framework */; };
 		F0120F561AA3A9660014013F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F0120F551AA3A9660014013F /* libsqlite3.dylib */; };
@@ -69,6 +71,8 @@
 		60C6AB8AC9A6EF8D8A003DFF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B2A7DCE0DECA9C9019E9FBB5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F00CF4241AC09438007E9DF4 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		F00CF4261AC0B8F9007E9DF4 /* IGIMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIMapViewController.swift; sourceTree = "<group>"; };
+		F00CF4281AC0B964007E9DF4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F0120F511AA3A94A0014013F /* Batch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Batch.bundle; sourceTree = "<group>"; };
 		F0120F521AA3A94A0014013F /* Batch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Batch.framework; sourceTree = "<group>"; };
 		F0120F551AA3A9660014013F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -130,6 +134,7 @@
 				F0120F541AA3A94A0014013F /* Batch.framework in Frameworks */,
 				F00CF4251AC09438007E9DF4 /* StoreKit.framework in Frameworks */,
 				F0120F581AA3AF3D0014013F /* AdSupport.framework in Frameworks */,
+				F00CF4291AC0B964007E9DF4 /* MapKit.framework in Frameworks */,
 				C8FFFA0A4A2801829C2AB005 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,6 +200,7 @@
 				F01AF9571A742C0E0012D3F8 /* IGITimelineViewController.swift */,
 				F098E7C61AA4E40800DA6E57 /* IGIMessageViewController.swift */,
 				F06E829F1ABB9CDB00CEB9B0 /* IGIAboutTableViewController.swift */,
+				F00CF4261AC0B8F9007E9DF4 /* IGIMapViewController.swift */,
 				F0178D5F1A7421B600ED2795 /* AppDelegate.swift */,
 				F0D1F20A1A86E84C009CAB50 /* Model */,
 				F01AF95D1A7440BF0012D3F8 /* Supplementing Views */,
@@ -289,6 +295,7 @@
 		F1EF4EFA3FAA3C253B1D45AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F00CF4281AC0B964007E9DF4 /* MapKit.framework */,
 				F00CF4241AC09438007E9DF4 /* StoreKit.framework */,
 				F0120F571AA3AF3D0014013F /* AdSupport.framework */,
 				F0120F551AA3A9660014013F /* libsqlite3.dylib */,
@@ -355,6 +362,9 @@
 						DevelopmentTeam = TS6V23BE8W;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
 						};
@@ -487,6 +497,7 @@
 				F01AF94E1A742A4D0012D3F8 /* IGIOnboardTitleViewController.swift in Sources */,
 				F070A2E71AA4D49E00CE9B55 /* MinoruTextField.swift in Sources */,
 				F09C5F331A7446F70033FF94 /* IGICircularView.swift in Sources */,
+				F00CF4271AC0B8F9007E9DF4 /* IGIMapViewController.swift in Sources */,
 				F06E82A21ABCA66B00CEB9B0 /* IGIDate.swift in Sources */,
 				F070A2E31AA4D49E00CE9B55 /* IsaoTextField.swift in Sources */,
 				F09C5F431A7455DB0033FF94 /* IGIView.swift in Sources */,

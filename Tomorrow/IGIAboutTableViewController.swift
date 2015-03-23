@@ -69,6 +69,10 @@ class IGIAboutTableViewController: UITableViewController, SKProductsRequestDeleg
         }
     }
     
+    @IBAction func unwindToAboutViewController(sender: UIStoryboardSegue) {
+        // close
+    }
+    
     // MARK: Products Request Delegate
     
     func fetchProductInfo() {
