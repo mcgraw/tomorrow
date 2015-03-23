@@ -142,7 +142,7 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
     func isDuplicateInput(input: String) -> Bool {
         let strip = input.trimLeadingAndTrailingWhitespace()
         for item in userGoal!.tasks {
-            let task = item as! IGITask
+            let task = item as IGITask
             if task.name == strip.lowercaseString {
                 return true
             }

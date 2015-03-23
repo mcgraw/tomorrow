@@ -42,7 +42,7 @@ class IGIUser: RLMObject {
     
     func setTaskNeedsEdit(#index: UInt) {
         let incomplete_goals: RLMResults? = self.goals.objectsWhere("edit_completed == false")
-        let goal: IGIGoal = incomplete_goals!.firstObject() as! IGIGoal
+        let goal: IGIGoal = incomplete_goals!.firstObject() as IGIGoal
         
         if index < goal.tasks.count {
             if let task = goal.tasks.objectAtIndex(index) as? IGITask {

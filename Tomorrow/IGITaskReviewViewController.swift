@@ -43,7 +43,7 @@ class IGITaskReviewViewController: UIViewController {
             var index = 0
             let count = goal.tasks.count
             for item in goal.tasks {
-                var task = item as! IGITask
+                var task = item as IGITask
                 let title = task.getTaskTitle()
                 if index == 0 {
                     task1?.text = title
@@ -86,6 +86,7 @@ class IGITaskReviewViewController: UIViewController {
             UIView.animateWithDuration(0.5, animations: {
                 self.view.alpha = 0.0
             }, completion: { (done) in
+                println("")
                 NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "transitionToTimeline", userInfo: nil, repeats: false)
             })
         } else {

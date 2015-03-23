@@ -35,7 +35,7 @@ class IGIGoal: RLMObject {
         RLMRealm.defaultRealm().beginWriteTransaction()
         let goals = IGIGoal.allObjects()
         for item in goals {
-            let goal = item as! IGIGoal
+            let goal = item as IGIGoal
         
             // Delete any invalid goals that were being built
             if goal.edit_completed == false {
@@ -50,7 +50,7 @@ class IGIGoal: RLMObject {
         RLMRealm.defaultRealm().beginWriteTransaction()
         let goals = IGIGoal.allObjects()
         for item in goals {
-            let goal = item as! IGIGoal
+            let goal = item as IGIGoal
             if goal.goal_completed == false {
                 if (goal.date.isBeforeHour(9) && goal.date.isAfterDay()) ||
                     goal.date.haveDaysElapsedIngoringTime(2) {
@@ -70,7 +70,7 @@ class IGIGoal: RLMObject {
         var count = 0
         let tasks = IGITask.allObjects()
         for item in tasks {
-            let task = item as! IGITask
+            let task = item as IGITask
             count += task.completed_count
         }
         return count
@@ -109,7 +109,7 @@ class IGIGoal: RLMObject {
     
     func areAllTasksCompleted() -> Bool {
         for item in tasks {
-            let task = item as! IGITask
+            let task = item as IGITask
             if !task.completed {
                 return false
             }
@@ -120,7 +120,7 @@ class IGIGoal: RLMObject {
     func countIncompleteTasks() -> Int {
         var count = 0
         for item in tasks {
-            let task = item as! IGITask
+            let task = item as IGITask
             if !task.completed {
                 count++
             }

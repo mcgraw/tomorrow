@@ -85,7 +85,7 @@ class IGIAboutTableViewController: UITableViewController, SKProductsRequestDeleg
             })
             activity.startAnimating()
         
-            let request = SKProductsRequest(productIdentifiers: Set(["IGIGENEROUS01", "IGIMASSIVE01", "IGIMODEST01"]))
+            let request = SKProductsRequest(productIdentifiers: NSSet(array: ["IGIGENEROUS01", "IGIMASSIVE01", "IGIMODEST01"]))
             request.delegate = self
             request.start()
         } else {
@@ -192,7 +192,7 @@ class IGIAboutTableViewController: UITableViewController, SKProductsRequestDeleg
     func paymentQueue(queue: SKPaymentQueue!, updatedTransactions transactions: [AnyObject]!) {
         println("Transaction updated")
         
-        for transaction in transactions as! [SKPaymentTransaction] {
+        for transaction in transactions as [SKPaymentTransaction] {
             switch transaction.transactionState {
             case SKPaymentTransactionState.Purchasing:
                 println("Purchasing item!")
