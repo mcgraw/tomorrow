@@ -42,7 +42,7 @@ class IGIOnboardTitleViewController: UIViewController {
     }
     
     func advanceOnboarding() {
-        performSegueWithIdentifier("nameSegue", sender: self)
+        performSegueWithIdentifier("pushSegue", sender: self)
 
     }
     

@@ -20,9 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate, 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        // Register Notifications
-        BatchPush.registerForRemoteNotifications()
-        
         // Clear any notifications when the user opens the app
         BatchPush.dismissNotifications()
         
@@ -80,7 +77,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate, 
     func showAdvert() {
         // show an advert if they haven't left a tip
         let leftTip = NSUserDefaults.standardUserDefaults().boolForKey("kDidLeaveDonation")
-        if !leftTip {
+        let onboarded = NSUserDefaults.standardUserDefaults().boolForKey("kOnboardCompleted")
+        if !leftTip && onboarded {
             println("Display advert")
             BatchAds.displayAdForPlacement(BatchPlacementDefault)
         }

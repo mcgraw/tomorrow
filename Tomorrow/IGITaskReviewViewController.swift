@@ -96,6 +96,9 @@ class IGITaskReviewViewController: UIViewController {
             task1.jumpAnimationToConstant(-300, delayStart: 0)
             task2.jumpAnimationToConstant(-300, delayStart: 0.3)
             task3.jumpAnimationToConstant(-300, delayStart: 0.6)
+            
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "kOnboardCompleted")
+            NSUserDefaults.standardUserDefaults().synchronize()
         
             NSTimer.scheduledTimerWithTimeInterval(1.2, target: self, selector: "transitionToTimeline", userInfo: nil, repeats: false)
         }

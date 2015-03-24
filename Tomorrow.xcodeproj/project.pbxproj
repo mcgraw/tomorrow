@@ -28,6 +28,7 @@
 		F01AF9581A742C0E0012D3F8 /* IGITimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AF9571A742C0E0012D3F8 /* IGITimelineViewController.swift */; };
 		F01AF95C1A743F510012D3F8 /* IGIBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AF95B1A743F510012D3F8 /* IGIBaseViewController.swift */; };
 		F01AF95F1A7440D70012D3F8 /* IGIGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01AF95E1A7440D70012D3F8 /* IGIGradientView.swift */; };
+		F0388AA01AC1C7F80073E32D /* IGINotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0388A9F1AC1C7F80073E32D /* IGINotificationViewController.swift */; };
 		F06E829C1ABB471E00CEB9B0 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F06E829B1ABB471E00CEB9B0 /* iTunesArtwork@2x.png */; };
 		F06E82A01ABB9CDB00CEB9B0 /* IGIAboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E829F1ABB9CDB00CEB9B0 /* IGIAboutTableViewController.swift */; };
 		F06E82A21ABCA66B00CEB9B0 /* IGIDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E82A11ABCA66B00CEB9B0 /* IGIDate.swift */; };
@@ -94,6 +95,7 @@
 		F01AF9571A742C0E0012D3F8 /* IGITimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGITimelineViewController.swift; sourceTree = "<group>"; };
 		F01AF95B1A743F510012D3F8 /* IGIBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIBaseViewController.swift; sourceTree = "<group>"; };
 		F01AF95E1A7440D70012D3F8 /* IGIGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIGradientView.swift; sourceTree = "<group>"; };
+		F0388A9F1AC1C7F80073E32D /* IGINotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGINotificationViewController.swift; sourceTree = "<group>"; };
 		F06E829B1ABB471E00CEB9B0 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		F06E829F1ABB9CDB00CEB9B0 /* IGIAboutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIAboutTableViewController.swift; sourceTree = "<group>"; };
 		F06E82A11ABCA66B00CEB9B0 /* IGIDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIDate.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				F0178D661A7421B600ED2795 /* Tomorrow.storyboard */,
 				F01AF95B1A743F510012D3F8 /* IGIBaseViewController.swift */,
 				F01AF94D1A742A4D0012D3F8 /* IGIOnboardTitleViewController.swift */,
+				F0388A9F1AC1C7F80073E32D /* IGINotificationViewController.swift */,
 				F01AF94F1A742B610012D3F8 /* IGICustomerDetailsViewController.swift */,
 				F01AF9511A742B930012D3F8 /* IGICustomerHelloViewController.swift */,
 				F01AF9531A742BB30012D3F8 /* IGITaskEntryViewController.swift */,
@@ -472,6 +475,7 @@
 			files = (
 				F0D1F2151A8731A0009CAB50 /* RLMSupport.swift in Sources */,
 				F0D1F2131A872997009CAB50 /* IGIGoal.swift in Sources */,
+				F0388AA01AC1C7F80073E32D /* IGINotificationViewController.swift in Sources */,
 				F0D1F20C1A86E895009CAB50 /* IGILoremIpsum.swift in Sources */,
 				F09C5F411A7455DB0033FF94 /* IGIButton.swift in Sources */,
 				F09C5F451A7468E90033FF94 /* IGITextField.swift in Sources */,

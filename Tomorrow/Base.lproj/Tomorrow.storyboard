@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7525" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IL9-hW-VOs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IL9-hW-VOs">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7516"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -79,12 +79,101 @@
                         <outlet property="logoIcon" destination="tF7-7A-D0a" id="MwF-SC-Ote"/>
                         <outlet property="logoImage" destination="eCY-FH-H96" id="83Y-yO-ngZ"/>
                         <outlet property="logoTitle" destination="H6i-If-eNZ" id="eRA-cE-YtV"/>
-                        <segue destination="gnh-15-1ei" kind="show" identifier="nameSegue" id="fll-Us-ybW"/>
+                        <segue destination="189-nD-ZaE" kind="show" identifier="pushSegue" id="8bq-6P-xSV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1379" y="588"/>
+        </scene>
+        <!--Notification View Controller-->
+        <scene sceneID="PJs-9P-zov">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" id="189-nD-ZaE" customClass="IGINotificationViewController" customModule="Tomorrow" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DlX-aQ-Itf"/>
+                        <viewControllerLayoutGuide type="bottom" id="bV1-lV-sTP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9Gw-7z-qbp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3PS-mE-6e3" customClass="IGIButton" customModule="Tomorrow" customModuleProvider="target">
+                                <rect key="frame" x="16" y="285" width="568" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="YYm-AT-DDI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                                <state key="normal" title="Enable Notifications">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animation" value="slideUp"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="curve" value="easeIn"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="notificationAction:" destination="189-nD-ZaE" eventType="touchUpInside" id="aS6-FM-V1s"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thw-sl-ZHZ" customClass="IGIButton" customModule="Tomorrow" customModuleProvider="target">
+                                <rect key="frame" x="16" y="348" width="568" height="32"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                <state key="normal" title="Skip">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animation" value="slideUp"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="skipAction:" destination="189-nD-ZaE" eventType="touchUpInside" id="YrW-SU-egg"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable notifications so Tomorrow can send you friendly reminders." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54R-MB-LvK" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
+                                <rect key="frame" x="20" y="80" width="560" height="118"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="118" id="Cf9-uA-Zbc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animation" value="slideUp"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="curve" value="easeIn"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="layoutConstraint" destination="Y2w-Em-LhS" id="PXq-e7-yn7"/>
+                                </connections>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3PS-mE-6e3" firstAttribute="centerX" secondItem="thw-sl-ZHZ" secondAttribute="centerX" id="33y-ji-BWS"/>
+                            <constraint firstAttribute="trailing" secondItem="54R-MB-LvK" secondAttribute="trailing" constant="20" id="Egb-ab-hbe"/>
+                            <constraint firstItem="thw-sl-ZHZ" firstAttribute="top" secondItem="3PS-mE-6e3" secondAttribute="bottom" constant="13" id="GjT-bm-yHP"/>
+                            <constraint firstItem="54R-MB-LvK" firstAttribute="leading" secondItem="9Gw-7z-qbp" secondAttribute="leading" constant="20" id="M2K-tR-BIk"/>
+                            <constraint firstItem="3PS-mE-6e3" firstAttribute="leading" secondItem="9Gw-7z-qbp" secondAttribute="leadingMargin" id="bos-4g-ycj"/>
+                            <constraint firstItem="thw-sl-ZHZ" firstAttribute="trailing" secondItem="9Gw-7z-qbp" secondAttribute="trailingMargin" id="i4T-Zx-Etf"/>
+                            <constraint firstItem="thw-sl-ZHZ" firstAttribute="leading" secondItem="9Gw-7z-qbp" secondAttribute="leadingMargin" id="mAX-vE-CWt"/>
+                            <constraint firstItem="54R-MB-LvK" firstAttribute="top" secondItem="DlX-aQ-Itf" secondAttribute="bottom" constant="60" id="pqJ-tk-QiT"/>
+                            <constraint firstItem="3PS-mE-6e3" firstAttribute="trailing" secondItem="9Gw-7z-qbp" secondAttribute="trailingMargin" id="sgk-rG-6JC"/>
+                            <constraint firstAttribute="centerY" secondItem="3PS-mE-6e3" secondAttribute="centerY" constant="-10" id="zo5-Nb-PCB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="gnh-15-1ei" kind="show" identifier="nameSegue" id="hb4-3o-Z9s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YSy-UR-y3F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2050" y="588"/>
         </scene>
         <!--Customer Details View Controller-->
         <scene sceneID="gsj-HB-iXl">
@@ -136,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6L6-Fd-6BX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2094" y="588"/>
+            <point key="canvasLocation" x="2740" y="589"/>
         </scene>
         <!--Customer Hello View Controller-->
         <scene sceneID="0w0-0s-11O">
@@ -271,7 +360,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="67j-ZH-dgK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2791" y="588"/>
+            <point key="canvasLocation" x="3437" y="589"/>
         </scene>
         <!--Task Entry View Controller-->
         <scene sceneID="U6I-tC-ea1">
@@ -285,7 +374,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's the #1 task to complete tomorrow?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugU-ID-LH2" userLabel="Title" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="What's the #1 task to complete tomorrow?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugU-ID-LH2" userLabel="Title" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
                                 <rect key="frame" x="20" y="80" width="560" height="93"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="34"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -294,7 +383,7 @@
                                     <outlet property="layoutConstraint" destination="XGJ-aa-TuJ" id="4ou-zp-RI4"/>
                                 </connections>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hLq-DC-SPK" userLabel="Input Field" customClass="IGITextField" customModule="Tomorrow" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hLq-DC-SPK" userLabel="Input Field" customClass="IGITextField" customModule="Tomorrow" customModuleProvider="target">
                                 <rect key="frame" x="25" y="200" width="550" height="47"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -324,7 +413,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uLN-zw-I92" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3498" y="588"/>
+            <point key="canvasLocation" x="4144" y="589"/>
         </scene>
         <!--Task Review View Controller-->
         <scene sceneID="yGd-fp-0vV">
@@ -338,7 +427,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4u-wt-MuC" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Review" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4u-wt-MuC" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
                                 <rect key="frame" x="249" y="80" width="104" height="47"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="34"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -479,7 +568,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sbq-aj-cQx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="sRK-e9-BhQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4202" y="587"/>
+            <point key="canvasLocation" x="4848" y="588"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8or-Q6-Nw1">
@@ -1251,6 +1340,6 @@
         <image name="twitter" width="21" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lSL-vv-dAe"/>
+        <segue reference="8uv-KJ-Afq"/>
     </inferredMetricsTieBreakers>
 </document>
