@@ -28,6 +28,8 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     var shouldShowTipNode = false
     var shouldShowRatingNode = false
     
+    var showingModal = false
+    
     var completedGoalCount  = 0         // unlimited
     var activeTaskCount     = 0         // max 3
     var specialtyNodeCount  = 0         // should be 1 or 0, we don't want to show a tip and a review at the same time
@@ -35,6 +37,8 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     // TODO: Add a way to cancel new task flow
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidBecomeActive:", name: UIApplicationDidBecomeActiveNotification, object: nil)
         
         let users = IGIUser.allObjects()
         activeUser = users[0] as? IGIUser
@@ -77,6 +81,8 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        showingModal = true
+        
         if segue.identifier == "revealMessageSegue" {
             let vc = segue.destinationViewController as IGIMessageViewController
             vc.delegate = self
@@ -88,6 +94,8 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     @IBAction func unwindToTimeline(sender: UIStoryboardSegue) {
+        showingModal = false
+        
         // Mark goal as completed
         self.activeGoal?.setGoalCompleted()
 
@@ -97,6 +105,8 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     @IBAction func unwindToTimelineFromAbout(sender: UIStoryboardSegue) {
+        showingModal = false
+        
         UIView.animateWithDuration(0.225, animations: { () -> Void in
             self.view.alpha = 1.0
         })
@@ -235,7 +245,7 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     // MARK: Message Delegate
     
     func cancelPressed() {
-        
+        showingModal = false
     }
     
     func acceptPressed() {
@@ -348,8 +358,19 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
+        if showingModal {
+            return
+        }
+        
         // if we're returning it's possible that the goal time elapsed
         refreshModelData()
+        
+        // show an advert if they haven't left a tip
+        let leftTip = NSUserDefaults.standardUserDefaults().boolForKey("kDidLeaveDonation")
+        let onboarded = NSUserDefaults.standardUserDefaults().boolForKey("kOnboardCompleted")
+        if !leftTip && onboarded {
+            BatchAds.displayAdForPlacement(BatchPlacementDefault)
+        }
     }
 }
               

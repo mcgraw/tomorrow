@@ -49,9 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate, 
         
         // If we're returning we need to check if goal progress has elapsed
         IGIGoal.cleanElapsedGoals()
-        
-        // show an advert if they haven't left a tip
-        NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "showAdvert", userInfo: nil, repeats: false)
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
@@ -71,15 +68,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate, 
             
             // unlock
             println("ref \(reference) & val \(value)")
-        }
-    }
-    
-    func showAdvert() {
-        // show an advert if they haven't left a tip
-        let leftTip = NSUserDefaults.standardUserDefaults().boolForKey("kDidLeaveDonation")
-        let onboarded = NSUserDefaults.standardUserDefaults().boolForKey("kOnboardCompleted")
-        if !leftTip && onboarded {
-            BatchAds.displayAdForPlacement(BatchPlacementDefault)
         }
     }
 }
