@@ -79,7 +79,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate, 
         let leftTip = NSUserDefaults.standardUserDefaults().boolForKey("kDidLeaveDonation")
         let onboarded = NSUserDefaults.standardUserDefaults().boolForKey("kOnboardCompleted")
         if !leftTip && onboarded {
-            println("Display advert")
             BatchAds.displayAdForPlacement(BatchPlacementDefault)
         }
     }

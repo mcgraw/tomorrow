@@ -121,9 +121,6 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
         inputField.curve = "easeIn"
         inputField.animate()
         
-//        titleLabel.revealView(constant: 50)
-//        inputField.revealView(constant: 170)
-        
         if status == .Task2 {
             UIView.animateWithDuration(0.225, animations: { () -> Void in
                 self.accessoryView!.alpha = 1.0
@@ -137,17 +134,9 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
         
         inputField.animation = "fall"
         inputField.animate()
-        
-//        inputField.dismissViewWithDelay(constant: Int(view.bounds.size.height), delay: 0.4)
-//        titleLabel.dismissViewWithDelay(constant: Int(view.bounds.size.height), delay: 0.6)
     }
     
     func resetAndReplay() {
-//        view.setNeedsUpdateConstraints()
-//        titleLabel.layoutConstraint?.constant = 60
-//        inputField.layoutConstraint?.constant = 180
-//        view.layoutIfNeeded()
-        
         playIntroductionAnimation()
     }
     

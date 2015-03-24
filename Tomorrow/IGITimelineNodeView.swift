@@ -83,7 +83,6 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        initializeBaseLayoutStyle()
     }
     
     override init() {
@@ -165,8 +164,9 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         addSubview(shimmerView!)
         
         let plan = UILabel(frame: shimmerView!.bounds)
-        plan.text = "Let's Plan Tomorrow!"
+        plan.text = "Plan Tomorrow!"
         plan.font = UIFont(name: "AvenirNext-UltraLight", size: 30)
+        plan.minimumScaleFactor = 0.5
         plan.textColor = UIColor.whiteColor()
         shimmerView!.contentView = plan
         shimmerView!.alpha = 0.0
