@@ -113,6 +113,11 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
     // MARK: Animation
     
     func playIntroductionAnimation() {
+        UIView.animateWithDuration(0.25, animations: { () -> Void in
+            self.titleLabel.alpha = 1.0
+            self.inputField.alpha = 1.0
+        })
+        
         titleLabel.animation = "slideUp"
         titleLabel.curve = "easeIn"
         titleLabel.animate()
@@ -134,6 +139,11 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
         
         inputField.animation = "fall"
         inputField.animate()
+        
+        UIView.animateWithDuration(0.25, animations: { () -> Void in
+            self.titleLabel.alpha = 0.0
+            self.inputField.alpha = 0.0
+        })
     }
     
     func resetAndReplay() {

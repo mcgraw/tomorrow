@@ -14,6 +14,7 @@ import Batch.Ads
 class IGITimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, IGITimelineNodeDelegate, IGIMessageViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var aboutView: IGICircularView!
     
     var allGoals: RLMResults?
     
