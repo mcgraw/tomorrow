@@ -170,6 +170,10 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
             return true
         }
         
+        if textField.text.length == 0 {
+            return false
+        }
+        
         playDismissAnimation()
         
         RLMRealm.defaultRealm().beginWriteTransaction()
