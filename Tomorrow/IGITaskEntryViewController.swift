@@ -113,8 +113,16 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
     // MARK: Animation
     
     func playIntroductionAnimation() {
-        titleLabel.revealView(constant: 50)
-        inputField.revealView(constant: 170)
+        titleLabel.animation = "slideUp"
+        titleLabel.curve = "easeIn"
+        titleLabel.animate()
+        
+        inputField.animation = "slideUp"
+        inputField.curve = "easeIn"
+        inputField.animate()
+        
+//        titleLabel.revealView(constant: 50)
+//        inputField.revealView(constant: 170)
         
         if status == .Task2 {
             UIView.animateWithDuration(0.225, animations: { () -> Void in
@@ -124,15 +132,21 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
     }
     
     func playDismissAnimation() {
-        inputField.dismissViewWithDelay(constant: Int(view.bounds.size.height), delay: 0.4)
-        titleLabel.dismissViewWithDelay(constant: Int(view.bounds.size.height), delay: 0.6)
+        titleLabel.animation = "fall"
+        titleLabel.animate()
+        
+        inputField.animation = "fall"
+        inputField.animate()
+        
+//        inputField.dismissViewWithDelay(constant: Int(view.bounds.size.height), delay: 0.4)
+//        titleLabel.dismissViewWithDelay(constant: Int(view.bounds.size.height), delay: 0.6)
     }
     
     func resetAndReplay() {
-        view.setNeedsUpdateConstraints()
-        titleLabel.layoutConstraint?.constant = 60
-        inputField.layoutConstraint?.constant = 180
-        view.layoutIfNeeded()
+//        view.setNeedsUpdateConstraints()
+//        titleLabel.layoutConstraint?.constant = 60
+//        inputField.layoutConstraint?.constant = 180
+//        view.layoutIfNeeded()
         
         playIntroductionAnimation()
     }

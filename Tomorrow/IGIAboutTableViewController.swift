@@ -50,9 +50,9 @@ class IGIAboutTableViewController: UITableViewController, SKProductsRequestDeleg
         
         // simple greeting
         if userObject.getFirstName() != "" {
-            thanks.text = "\(userObject.getFirstName())! Thanks so much for downloading Tomorrow. I'm David, the creator. Please contact me if you have any feedback and consider leaving a review on iTunes to show support-it helps (a ton)!"
+            thanks.text = "\(userObject.getFirstName())! Thanks so much for downloading Tomorrow. I'm David, the creator. Please contact me if you have any feedback!"
         } else {
-            thanks.text = "Thanks so much for downloading Tomorrow. I'm David, the creator. Please contact me if you have any feedback and consider leaving a review on iTunes to show support-it helps (a ton)!"
+            thanks.text = "Thanks so much for downloading Tomorrow. I'm David, the creator. Please contact me if you have any feedback!"
         }
         
         // completed count

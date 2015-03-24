@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Spring
 import pop
 
-class IGITextField: UITextField {
+class IGITextField: SpringTextField {
 
     @IBOutlet weak var layoutConstraint: NSLayoutConstraint?
     

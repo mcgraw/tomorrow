@@ -187,8 +187,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's your name?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YeC-9g-jhe" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
-                                <rect key="frame" x="157" y="80" width="287" height="47"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's your name?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="YeC-9g-jhe" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
+                                <rect key="frame" x="20" y="80" width="560" height="47"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="34"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -204,17 +204,17 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
                                 <connections>
                                     <outlet property="delegate" destination="gnh-15-1ei" id="9YM-IZ-HHK"/>
-                                    <outlet property="layoutConstraint" destination="efW-q3-Dea" id="lEh-mE-Unr"/>
                                 </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="YeC-9g-jhe" firstAttribute="leading" secondItem="zsD-bh-DJu" secondAttribute="leading" constant="20" id="SZP-xr-hzb"/>
                             <constraint firstAttribute="trailing" secondItem="x8c-CS-g4l" secondAttribute="trailing" constant="25" id="VsF-3R-T4D"/>
+                            <constraint firstAttribute="trailing" secondItem="YeC-9g-jhe" secondAttribute="trailing" constant="20" id="Y0E-oe-IsI"/>
                             <constraint firstItem="YeC-9g-jhe" firstAttribute="top" secondItem="L41-Ua-20M" secondAttribute="bottom" constant="60" id="Y2w-Em-LhS"/>
-                            <constraint firstItem="x8c-CS-g4l" firstAttribute="top" secondItem="L41-Ua-20M" secondAttribute="bottom" constant="140" id="efW-q3-Dea"/>
-                            <constraint firstAttribute="centerX" secondItem="YeC-9g-jhe" secondAttribute="centerX" id="nGO-UA-xGt"/>
                             <constraint firstItem="x8c-CS-g4l" firstAttribute="leading" secondItem="zsD-bh-DJu" secondAttribute="leading" constant="25" id="tVP-1h-KFS"/>
+                            <constraint firstItem="x8c-CS-g4l" firstAttribute="top" secondItem="YeC-9g-jhe" secondAttribute="bottom" constant="33" id="z0e-OZ-g0U"/>
                         </constraints>
                     </view>
                     <connections>
@@ -374,7 +374,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="What's the #1 task to complete tomorrow?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugU-ID-LH2" userLabel="Title" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's the #1 task to complete tomorrow?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugU-ID-LH2" userLabel="Title" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
                                 <rect key="frame" x="20" y="80" width="560" height="93"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="34"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -383,7 +383,7 @@
                                     <outlet property="layoutConstraint" destination="XGJ-aa-TuJ" id="4ou-zp-RI4"/>
                                 </connections>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hLq-DC-SPK" userLabel="Input Field" customClass="IGITextField" customModule="Tomorrow" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hLq-DC-SPK" userLabel="Input Field" customClass="IGITextField" customModule="Tomorrow" customModuleProvider="target">
                                 <rect key="frame" x="25" y="200" width="550" height="47"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -391,7 +391,6 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
                                 <connections>
                                     <outlet property="delegate" destination="rFj-vI-7Ve" id="Pcz-tp-otb"/>
-                                    <outlet property="layoutConstraint" destination="rFv-KJ-ggV" id="lb3-xl-k34"/>
                                 </connections>
                             </textField>
                         </subviews>
@@ -400,9 +399,9 @@
                             <constraint firstAttribute="trailing" secondItem="hLq-DC-SPK" secondAttribute="trailing" constant="25" id="BI9-Yz-AIl"/>
                             <constraint firstAttribute="trailing" secondItem="ugU-ID-LH2" secondAttribute="trailing" constant="20" id="Ksq-Fm-w77"/>
                             <constraint firstItem="ugU-ID-LH2" firstAttribute="top" secondItem="yj1-WW-TZT" secondAttribute="bottom" constant="60" id="XGJ-aa-TuJ"/>
+                            <constraint firstItem="hLq-DC-SPK" firstAttribute="top" secondItem="ugU-ID-LH2" secondAttribute="bottom" constant="27" id="k7c-mp-tEc"/>
                             <constraint firstItem="ugU-ID-LH2" firstAttribute="leading" secondItem="8KW-rc-wVO" secondAttribute="leading" constant="20" id="lmo-Ei-Q3S"/>
                             <constraint firstItem="hLq-DC-SPK" firstAttribute="leading" secondItem="8KW-rc-wVO" secondAttribute="leading" constant="25" id="mrK-2n-iRn"/>
-                            <constraint firstItem="hLq-DC-SPK" firstAttribute="top" secondItem="yj1-WW-TZT" secondAttribute="bottom" constant="180" id="rFv-KJ-ggV"/>
                         </constraints>
                     </view>
                     <connections>
@@ -689,8 +688,8 @@
                                                         <action selector="emailAction:" destination="A4H-WU-Rgu" eventType="touchUpInside" id="Pt9-do-RAj"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="You've completed 0 tasks using Tomorrow!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXh-0W-CPb">
-                                                    <rect key="frame" x="154" y="94" width="293" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You've completed 0 tasks using Tomorrow!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXh-0W-CPb">
+                                                    <rect key="frame" x="20" y="89" width="560" height="21"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -700,10 +699,12 @@
                                                 <constraint firstAttribute="centerY" secondItem="gJE-V0-ZWx" secondAttribute="centerY" constant="16.5" id="4iF-te-bKx"/>
                                                 <constraint firstAttribute="centerX" secondItem="WXh-0W-CPb" secondAttribute="centerX" constant="-0.5" id="A9w-JJ-RkJ"/>
                                                 <constraint firstItem="gJE-V0-ZWx" firstAttribute="leading" secondItem="ije-li-WRL" secondAttribute="trailing" constant="20" id="Dwr-f1-psF"/>
+                                                <constraint firstAttribute="trailing" secondItem="WXh-0W-CPb" secondAttribute="trailing" constant="20" id="LsQ-W6-M6G"/>
                                                 <constraint firstItem="ije-li-WRL" firstAttribute="width" secondItem="gJE-V0-ZWx" secondAttribute="width" id="UkL-YF-ejb"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="gJE-V0-ZWx" secondAttribute="trailing" constant="20" id="V3H-ze-K5j"/>
                                                 <constraint firstAttribute="bottom" secondItem="WXh-0W-CPb" secondAttribute="bottom" id="fxJ-Zp-Yjp"/>
                                                 <constraint firstItem="ije-li-WRL" firstAttribute="leading" secondItem="LkN-K2-GSi" secondAttribute="leadingMargin" constant="20" id="uSV-ri-GOO"/>
+                                                <constraint firstItem="WXh-0W-CPb" firstAttribute="leading" secondItem="LkN-K2-GSi" secondAttribute="leading" constant="20" id="wWt-cu-8A3"/>
                                                 <constraint firstAttribute="centerY" secondItem="ije-li-WRL" secondAttribute="centerY" constant="16.5" id="zPF-R6-3Cq"/>
                                             </constraints>
                                         </tableViewCellContentView>
