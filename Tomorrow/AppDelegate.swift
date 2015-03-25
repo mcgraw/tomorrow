@@ -35,7 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate, 
         BatchUnlock.setupUnlockWithDelegate(self)
         
         // Start Batch
-        Batch.startWithAPIKey("DEV54EF398118121451CB109F931AE")
+//        Batch.startWithAPIKey("DEV54EF398118121451CB109F931AE")
+        Batch.startWithAPIKey("54EF398117592FD98BD1BFEC4DD6A6")
         
         // Realm Migration Check
         RLMRealm.setSchemaVersion(3, forRealmAtPath: RLMRealm.defaultRealmPath()) { (migration, oldSchemaVersion) in
