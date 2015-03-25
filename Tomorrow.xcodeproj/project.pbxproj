@@ -8,11 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		C8FFFA0A4A2801829C2AB005 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEC39AB0FD4DD99C02A46B7B /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		F00803831AC356A500F7408A /* Batch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F00803811AC356A500F7408A /* Batch.bundle */; };
+		F00803841AC356A500F7408A /* Batch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F00803821AC356A500F7408A /* Batch.framework */; };
+		F008044D1AC356B300F7408A /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F00803FF1AC356B300F7408A /* libAdIdAccess.a */; };
+		F008044E1AC356B300F7408A /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F00804001AC356B300F7408A /* libGoogleAnalyticsServices.a */; };
+		F008044F1AC356B300F7408A /* Readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = F00804011AC356B300F7408A /* Readme.txt */; };
+		F00804571AC356CD00F7408A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F00804561AC356CD00F7408A /* CoreData.framework */; };
+		F00804591AC356D600F7408A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F00804581AC356D600F7408A /* SystemConfiguration.framework */; };
+		F008045B1AC356E100F7408A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F008045A1AC356E100F7408A /* libz.dylib */; };
 		F00CF4251AC09438007E9DF4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F00CF4241AC09438007E9DF4 /* StoreKit.framework */; };
 		F00CF4271AC0B8F9007E9DF4 /* IGIMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00CF4261AC0B8F9007E9DF4 /* IGIMapViewController.swift */; };
 		F00CF4291AC0B964007E9DF4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F00CF4281AC0B964007E9DF4 /* MapKit.framework */; };
-		F0120F531AA3A94A0014013F /* Batch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F0120F511AA3A94A0014013F /* Batch.bundle */; };
-		F0120F541AA3A94A0014013F /* Batch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0120F521AA3A94A0014013F /* Batch.framework */; };
 		F0120F561AA3A9660014013F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F0120F551AA3A9660014013F /* libsqlite3.dylib */; };
 		F0120F581AA3AF3D0014013F /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0120F571AA3AF3D0014013F /* AdSupport.framework */; };
 		F0178D601A7421B600ED2795 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0178D5F1A7421B600ED2795 /* AppDelegate.swift */; };
@@ -71,11 +77,27 @@
 		12968796F3B1B36658164424 /* libPods-Tomorrow.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tomorrow.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60C6AB8AC9A6EF8D8A003DFF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B2A7DCE0DECA9C9019E9FBB5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		F00803811AC356A500F7408A /* Batch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Batch.bundle; sourceTree = "<group>"; };
+		F00803821AC356A500F7408A /* Batch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Batch.framework; sourceTree = "<group>"; };
+		F00803B31AC356B300F7408A /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		F00803B41AC356B300F7408A /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		F00803B51AC356B300F7408A /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceFields.h; sourceTree = "<group>"; };
+		F00803B61AC356B300F7408A /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProduct.h; sourceTree = "<group>"; };
+		F00803B71AC356B300F7408A /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProductAction.h; sourceTree = "<group>"; };
+		F00803B81AC356B300F7408A /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommercePromotion.h; sourceTree = "<group>"; };
+		F00803B91AC356B300F7408A /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		F00803BA1AC356B300F7408A /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		F00803BB1AC356B300F7408A /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		F00803BC1AC356B300F7408A /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		F00803FF1AC356B300F7408A /* libAdIdAccess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdIdAccess.a; sourceTree = "<group>"; };
+		F00804001AC356B300F7408A /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		F00804011AC356B300F7408A /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
+		F00804561AC356CD00F7408A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F00804581AC356D600F7408A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F008045A1AC356E100F7408A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		F00CF4241AC09438007E9DF4 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		F00CF4261AC0B8F9007E9DF4 /* IGIMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGIMapViewController.swift; sourceTree = "<group>"; };
 		F00CF4281AC0B964007E9DF4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		F0120F511AA3A94A0014013F /* Batch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Batch.bundle; sourceTree = "<group>"; };
-		F0120F521AA3A94A0014013F /* Batch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Batch.framework; sourceTree = "<group>"; };
 		F0120F551AA3A9660014013F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		F0120F571AA3AF3D0014013F /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		F0178D5A1A7421B600ED2795 /* Tomorrow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tomorrow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,8 +154,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F008045B1AC356E100F7408A /* libz.dylib in Frameworks */,
+				F00804591AC356D600F7408A /* SystemConfiguration.framework in Frameworks */,
+				F00804571AC356CD00F7408A /* CoreData.framework in Frameworks */,
 				F0120F561AA3A9660014013F /* libsqlite3.dylib in Frameworks */,
-				F0120F541AA3A94A0014013F /* Batch.framework in Frameworks */,
+				F008044D1AC356B300F7408A /* libAdIdAccess.a in Frameworks */,
+				F00803841AC356A500F7408A /* Batch.framework in Frameworks */,
+				F008044E1AC356B300F7408A /* libGoogleAnalyticsServices.a in Frameworks */,
 				F00CF4251AC09438007E9DF4 /* StoreKit.framework in Frameworks */,
 				F0120F581AA3AF3D0014013F /* AdSupport.framework in Frameworks */,
 				F00CF4291AC0B964007E9DF4 /* MapKit.framework in Frameworks */,
@@ -160,13 +187,51 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		F0120F501AA3A94A0014013F /* Batch.embeddedframework */ = {
+		F00803801AC356A500F7408A /* Batch.embeddedframework */ = {
 			isa = PBXGroup;
 			children = (
-				F0120F511AA3A94A0014013F /* Batch.bundle */,
-				F0120F521AA3A94A0014013F /* Batch.framework */,
+				F00803811AC356A500F7408A /* Batch.bundle */,
+				F00803821AC356A500F7408A /* Batch.framework */,
 			);
-			path = Batch.embeddedframework;
+			name = Batch.embeddedframework;
+			path = Frameworks/Batch.embeddedframework;
+			sourceTree = "<group>";
+		};
+		F00803851AC356B300F7408A /* GoogleAnalyticsServicesiOS_3.10 */ = {
+			isa = PBXGroup;
+			children = (
+				F00803861AC356B300F7408A /* GoogleAnalytics */,
+				F00803FF1AC356B300F7408A /* libAdIdAccess.a */,
+				F00804001AC356B300F7408A /* libGoogleAnalyticsServices.a */,
+				F00804011AC356B300F7408A /* Readme.txt */,
+			);
+			name = GoogleAnalyticsServicesiOS_3.10;
+			path = Frameworks/GoogleAnalyticsServicesiOS_3.10;
+			sourceTree = "<group>";
+		};
+		F00803861AC356B300F7408A /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				F00803B21AC356B300F7408A /* Library */,
+			);
+			path = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
+		F00803B21AC356B300F7408A /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				F00803B31AC356B300F7408A /* GAI.h */,
+				F00803B41AC356B300F7408A /* GAIDictionaryBuilder.h */,
+				F00803B51AC356B300F7408A /* GAIEcommerceFields.h */,
+				F00803B61AC356B300F7408A /* GAIEcommerceProduct.h */,
+				F00803B71AC356B300F7408A /* GAIEcommerceProductAction.h */,
+				F00803B81AC356B300F7408A /* GAIEcommercePromotion.h */,
+				F00803B91AC356B300F7408A /* GAIFields.h */,
+				F00803BA1AC356B300F7408A /* GAILogger.h */,
+				F00803BB1AC356B300F7408A /* GAITrackedViewController.h */,
+				F00803BC1AC356B300F7408A /* GAITracker.h */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 		F0178D511A7421B600ED2795 = {
@@ -298,12 +363,16 @@
 		F1EF4EFA3FAA3C253B1D45AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F008045A1AC356E100F7408A /* libz.dylib */,
+				F00804581AC356D600F7408A /* SystemConfiguration.framework */,
+				F00804561AC356CD00F7408A /* CoreData.framework */,
+				F00803851AC356B300F7408A /* GoogleAnalyticsServicesiOS_3.10 */,
+				F00803801AC356A500F7408A /* Batch.embeddedframework */,
 				F00CF4281AC0B964007E9DF4 /* MapKit.framework */,
 				F00CF4241AC09438007E9DF4 /* StoreKit.framework */,
 				F0120F571AA3AF3D0014013F /* AdSupport.framework */,
 				F0120F551AA3A9660014013F /* libsqlite3.dylib */,
 				F070A2D61AA4D49E00CE9B55 /* TextFieldEffects */,
-				F0120F501AA3A94A0014013F /* Batch.embeddedframework */,
 				12968796F3B1B36658164424 /* libPods-Tomorrow.a */,
 				FEC39AB0FD4DD99C02A46B7B /* Pods.framework */,
 			);
@@ -404,8 +473,9 @@
 			files = (
 				F0178D681A7421B600ED2795 /* Tomorrow.storyboard in Resources */,
 				F06E829C1ABB471E00CEB9B0 /* iTunesArtwork@2x.png in Resources */,
-				F0120F531AA3A94A0014013F /* Batch.bundle in Resources */,
+				F00803831AC356A500F7408A /* Batch.bundle in Resources */,
 				F0178D6D1A7421B600ED2795 /* LaunchScreen.xib in Resources */,
+				F008044F1AC356B300F7408A /* Readme.txt in Resources */,
 				F0178D6A1A7421B600ED2795 /* Images.xcassets in Resources */,
 				F070A2E21AA4D49E00CE9B55 /* Info.plist in Resources */,
 			);
@@ -638,9 +708,14 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Batch.embeddedframework",
+					"$(PROJECT_DIR)/Frameworks/Batch.embeddedframework",
 				);
 				INFOPLIST_FILE = Tomorrow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/GoogleAnalyticsServicesiOS_3.10",
+				);
 				PRODUCT_NAME = Tomorrow;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tomorrow/Tomorrow-Bridging-Header.h";
@@ -660,9 +735,14 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Batch.embeddedframework",
+					"$(PROJECT_DIR)/Frameworks/Batch.embeddedframework",
 				);
 				INFOPLIST_FILE = Tomorrow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/GoogleAnalyticsServicesiOS_3.10",
+				);
 				PRODUCT_NAME = Tomorrow;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Tomorrow/Tomorrow-Bridging-Header.h";

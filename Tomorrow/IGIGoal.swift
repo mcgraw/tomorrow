@@ -61,6 +61,8 @@ class IGIGoal: RLMObject {
                         goal.goal_completed = true
                         goal.goal_failed = true
                         goal.failed_goals = goal.getFailedGoalsAsStringList()
+                        
+                        GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("milestone", action: "goal_failed", label: nil, value: nil).build())
                 }
             }
         }
@@ -115,6 +117,8 @@ class IGIGoal: RLMObject {
         RLMRealm.defaultRealm().beginWriteTransaction()
         goal_completed = true
         RLMRealm.defaultRealm().commitWriteTransaction()
+        
+        GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("milestone", action: "goal_completed", label: nil, value: nil).build())
     }
     
     func getDateAsString() -> String {

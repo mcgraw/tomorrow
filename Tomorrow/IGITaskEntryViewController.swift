@@ -13,7 +13,7 @@ enum IGITaskEntryStatus: Int {
     case Task1, Task2, Task3, Done, Editing
 }
 
-class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
+class IGITaskEntryViewController: GAITrackedViewController, UITextFieldDelegate {
     
     @IBOutlet weak var titleLabel: IGILabel!
     @IBOutlet weak var inputField: IGITextField!
@@ -53,6 +53,12 @@ class IGITaskEntryViewController: UIViewController, UITextFieldDelegate {
         inputField.becomeFirstResponder()
         
         NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "playIntroductionAnimation", userInfo: nil, repeats: false)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        screenName = "Task Entry Screen"
     }
     
     override func viewDidAppear(animated: Bool) {

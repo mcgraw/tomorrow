@@ -20,6 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate, 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        // Google
+        GAI.sharedInstance().trackUncaughtExceptions = true
+        GAI.sharedInstance().dispatchInterval = 10
+        GAI.sharedInstance().trackerWithTrackingId("UA-61198931-1")
+        
         // Clear any notifications when the user opens the app
         BatchPush.dismissNotifications()
         
@@ -49,6 +54,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate, 
         
         // If we're returning we need to check if goal progress has elapsed
         IGIGoal.cleanElapsedGoals()
+    }
+    
+    func applicationWillEnterForeground(application: UIApplication) {
+      
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {

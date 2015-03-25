@@ -11,7 +11,7 @@ import pop
 import Realm
 import Batch.Ads
 
-class IGITimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, IGITimelineNodeDelegate, IGIMessageViewDelegate, BatchAdsDisplayDelegate {
+class IGITimelineViewController: GAITrackedViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, IGITimelineNodeDelegate, IGIMessageViewDelegate, BatchAdsDisplayDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var aboutView: IGICircularView!
@@ -52,6 +52,8 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        screenName = "Timeline Screen"
         
         tableView.alpha = 0
     }
@@ -380,12 +382,18 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     
     // MARK: Ads
     func adDidAppear(placement: String!) {
+        GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("advertising", action: "did_appear", label: nil, value: nil).build())
     }
     
     func adCancelled(placement: String!) {
     }
     
+    func adNotDisplayed(placement: String!) {
+        GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("advertising", action: "not_displayed", label: nil, value: nil).build())
+    }
+    
     func adClicked(placement: String!) {
+        GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("advertising", action: "did_click", label: nil, value: nil).build())
     }
 }
               

@@ -10,7 +10,7 @@ import UIKit
 import Realm
 import pop
 
-class IGITaskReviewViewController: UIViewController {
+class IGITaskReviewViewController: GAITrackedViewController {
 
     @IBOutlet weak var titleLabel: IGILabel!
     
@@ -38,6 +38,8 @@ class IGITaskReviewViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        screenName = "Task Review Screen"
         
         if let goal = userObject?.getCurrentGoalUnderEdit() {
             var index = 0
@@ -90,8 +92,8 @@ class IGITaskReviewViewController: UIViewController {
                 NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "transitionToTimeline", userInfo: nil, repeats: false)
             })
         } else {
-            // Remove spacing constraints so they don't interfere with our animation
-        
+            GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("milestone", action: "onboard_completed", label: nil, value: nil).build())
+            
             // Jump the tasks before transitioning to the timeline
             task1.jumpAnimationToConstant(-300, delayStart: 0)
             task2.jumpAnimationToConstant(-300, delayStart: 0.3)

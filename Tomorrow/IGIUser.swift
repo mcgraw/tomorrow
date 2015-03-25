@@ -110,6 +110,7 @@ class IGIUser: RLMObject {
         assert(goalEditing != nil, "Can't add a task without a goal under edit")
         
         // Create a new task object & remove this one from the current goal
+        let original = name
         let strip = name.trimLeadingAndTrailingWhitespace()
         var task = IGITask.findTaskWithExistingKey(strip.lowercase)
         if task == nil {
@@ -118,6 +119,8 @@ class IGIUser: RLMObject {
             task?.name = strip.lowercase
             task?.goals.addObject(goalEditing)
             goalEditing!.tasks.addObject(task)
+            
+            GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("task", action: "add", label: original, value: nil).build())
         } else {
             println("Task already exists. Add it to the new goal!")
             task?.completed = false

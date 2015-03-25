@@ -9,7 +9,7 @@
 import UIKit
 import pop
 
-class IGIOnboardTitleViewController: UIViewController {
+class IGIOnboardTitleViewController: GAITrackedViewController {
 
     @IBOutlet weak var logoIcon: IGIView!
     @IBOutlet weak var logoTitle: IGILabel!
@@ -22,6 +22,8 @@ class IGIOnboardTitleViewController: UIViewController {
         
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        screenName = "Onboard Title Screen"
         
         view.backgroundColor = UIColor.clearColor()
     }

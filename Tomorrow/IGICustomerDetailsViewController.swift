@@ -13,7 +13,7 @@ enum IGIGender: Int {
     case Unspecified, Male, Female
 }
 
-class IGICustomerDetailsViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate {
+class IGICustomerDetailsViewController: GAITrackedViewController, UITableViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var inputField: IGITextField!
     @IBOutlet weak var titleLabel: IGILabel!
@@ -45,6 +45,8 @@ class IGICustomerDetailsViewController: UIViewController, UITableViewDelegate, U
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        screenName = "Onboard Name Screen"
         
         view.backgroundColor = UIColor.clearColor()
         

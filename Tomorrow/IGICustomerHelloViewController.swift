@@ -9,7 +9,7 @@
 import UIKit
 import pop
 
-class IGICustomerHelloViewController: UIViewController, POPAnimationDelegate {
+class IGICustomerHelloViewController: GAITrackedViewController, POPAnimationDelegate {
 
     @IBOutlet weak var titleLabel: IGILabel!
     
@@ -39,6 +39,8 @@ class IGICustomerHelloViewController: UIViewController, POPAnimationDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        screenName = "Onboard Hello Screen"
         
         userObject = IGIUser.getCurrentUser()
         assert(userObject != nil, "User object should not be nil!")

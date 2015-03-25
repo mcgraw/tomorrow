@@ -69,6 +69,13 @@ class IGIAboutTableViewController: UITableViewController, SKProductsRequestDeleg
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        GAI.sharedInstance().defaultTracker.set(kGAIScreenName, value: "About Screen")
+        GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createScreenView().build())
+    }
+    
     @IBAction func unwindToAboutViewController(sender: UIStoryboardSegue) {
         // close
     }
@@ -102,7 +109,6 @@ class IGIAboutTableViewController: UITableViewController, SKProductsRequestDeleg
         fetchedProducts = response.products
         
         let formatter = NSNumberFormatter()
-        formatter.locale = NSLocale.currentLocale()
         formatter.maximumFractionDigits = 2
         formatter.minimumFractionDigits = 2
         formatter.alwaysShowsDecimalSeparator = true
@@ -111,8 +117,11 @@ class IGIAboutTableViewController: UITableViewController, SKProductsRequestDeleg
         if fetchedProducts.count != 0 {
             for item in fetchedProducts {
                 let product = item as? SKProduct
+                formatter.locale = product!.priceLocale
+                
                 let title = product!.localizedTitle
                 let price = formatter.stringFromNumber(product!.price)
+                
                 switch product!.productIdentifier {
                 case "IGIGENEROUS01":
                     generousTitle.text = title
@@ -203,6 +212,12 @@ class IGIAboutTableViewController: UITableViewController, SKProductsRequestDeleg
                 
                 purchaseEnded()
                 SKPaymentQueue.defaultQueue().finishTransaction(transaction)
+                
+                if let product = productForId(transaction.payment.productIdentifier) {
+                    let tracker = GAI.sharedInstance().defaultTracker
+                    let currencyCode = product.priceLocale.objectForKey(NSLocaleCurrencyCode) as String
+                    tracker.send(GAIDictionaryBuilder.createItemWithTransactionId(transaction.transactionIdentifier, name: product.localizedTitle, sku: product.productIdentifier, category: "Donation", price: product.price, quantity: 1, currencyCode:currencyCode).build())
+                }
             case SKPaymentTransactionState.Restored:
                 println("Item restored!")
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "kDidLeaveDonation")

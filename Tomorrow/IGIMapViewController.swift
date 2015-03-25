@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import Spring
 
-class IGIMapViewController: UIViewController {
+class IGIMapViewController: GAITrackedViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mapContainer: SpringView!
@@ -23,7 +23,12 @@ class IGIMapViewController: UIViewController {
         let span = MKCoordinateSpanMake(1, 1)
         let region = MKCoordinateRegionMakeWithDistance(coord, 8000, 8000)
         mapView.setRegion(region, animated: false)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
+        screenName = "About Map Screen"
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {

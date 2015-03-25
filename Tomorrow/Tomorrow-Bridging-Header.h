@@ -10,3 +10,7 @@
 #import <PureLayout/PureLayout.h>
 
 #import <Realm/Realm.h>
+
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAIDictionaryBuilder.h"
