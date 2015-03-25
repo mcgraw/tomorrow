@@ -31,6 +31,9 @@ class IGIGoal: RLMObject {
     // When the day has advanced and tasks were not completed
     dynamic var goal_failed = false
     
+    // List of failed titles
+    dynamic var failed_goals: String = ""
+    
     class func cleanInvalidGoals() {
         RLMRealm.defaultRealm().beginWriteTransaction()
         let goals = IGIGoal.allObjects()
@@ -57,6 +60,7 @@ class IGIGoal: RLMObject {
                         println("Goal incomplete! Mark as failed")
                         goal.goal_completed = true
                         goal.goal_failed = true
+                        goal.failed_goals = goal.getFailedGoalsAsStringList()
                 }
             }
         }
@@ -74,6 +78,21 @@ class IGIGoal: RLMObject {
             count += task.completed_count
         }
         return count
+    }
+    
+    func getFailedGoalsAsStringList() -> String {
+        var failed = ""
+        var count = tasks.count
+        for item in tasks {
+            let task = item as IGITask
+            if !task.completed {
+                if failed.length > 0 {
+                    failed += ","
+                }
+                failed += task.name
+            }
+        }
+        return failed
     }
     
     func getCurrentTaskUnderEdit() -> IGITask? {
@@ -118,13 +137,17 @@ class IGIGoal: RLMObject {
     }
     
     func countIncompleteTasks() -> Int {
-        var count = 0
-        for item in tasks {
-            let task = item as IGITask
-            if !task.completed {
-                count++
+        let items = split(failed_goals) { $0 == "," }
+        return items.count
+    }
+    
+    func didFailTask(task: IGITask) -> Bool {
+        let items = split(failed_goals) { $0 == "," }
+        for str in items {
+            if str == task.name {
+                return true
             }
         }
-        return count
+        return false
     }
 }

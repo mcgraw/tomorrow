@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate, 
         Batch.startWithAPIKey("DEV54EF398118121451CB109F931AE")
         
         // Realm Migration Check
-        RLMRealm.setSchemaVersion(2, forRealmAtPath: RLMRealm.defaultRealmPath()) { (migration, oldSchemaVersion) in
+        RLMRealm.setSchemaVersion(3, forRealmAtPath: RLMRealm.defaultRealmPath()) { (migration, oldSchemaVersion) in
             if oldSchemaVersion < 1 {
                 // Nothing to do. Let realm detect properties.
             }

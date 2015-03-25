@@ -460,20 +460,30 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
             }, completion: { (done) in
                 if self.nodeStatus == .AllTasks {
                     // update text with tasks
-                    var (title, color, font) = self.getTaskTitleAndColorForPosition(0)
-                    self.upperSubMessage.text = title
-                    self.upperSubMessage.textColor = color
-                    self.upperSubMessage.font = font
+                    if self.nodeGoal!.tasks.count > 0 {
+                        var (title, color, font) = self.getTaskTitleAndColorForPosition(0)
+                        self.upperSubMessage.text = title
+                        self.upperSubMessage.textColor = color
+                        self.upperSubMessage.font = font
+                    }
                     
-                    (title, color, font) = self.getTaskTitleAndColorForPosition(1)
-                    self.headline.text = title
-                    self.headline.textColor = color
-                    self.headline.font = font
+                    if self.nodeGoal!.tasks.count > 1 {
+                        var (title, color, font) = self.getTaskTitleAndColorForPosition(1)
+                        self.headline.text = title
+                        self.headline.textColor = color
+                        self.headline.font = font
+                    } else {
+                        self.headline.text = ""
+                    }
                     
-                    (title, color, font) = self.getTaskTitleAndColorForPosition(2)
-                    self.lowerSubMessage.text = title
-                    self.lowerSubMessage.textColor = color
-                    self.lowerSubMessage.font = font
+                    if self.nodeGoal!.tasks.count > 2 {
+                        var (title, color, font) = self.getTaskTitleAndColorForPosition(2)
+                        self.lowerSubMessage.text = title
+                        self.lowerSubMessage.textColor = color
+                        self.lowerSubMessage.font = font
+                    } else {
+                        self.lowerSubMessage.text = ""
+                    }
                 } else {
                     self.resetLabelStyle()
                     
@@ -505,9 +515,10 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
     private func getTaskTitleAndColorForPosition(taskPosition: Int) -> (String, UIColor, UIFont) {
         let object: RLMObject = nodeGoal!.tasks.objectAtIndex(UInt(taskPosition)) as RLMObject
         let task = object as IGITask
+        let didFail = nodeGoal!.didFailTask(task)
         return (task.getTaskTitle(),
-            (task.completed == true ? UIColor.whiteColor() : kStatusFailedColor),
-            (task.completed == true ? UIFont(name: "AvenirNext-Regular", size: 16) : UIFont(name: "AvenirNext-Bold", size: 16))!)
+               (didFail ?  kStatusFailedColor : UIColor.whiteColor()),
+               (didFail ? UIFont(name: "AvenirNext-Bold", size: 16) : UIFont(name: "AvenirNext-Regular", size: 16))!)
     }
     
     // MARK: Style
