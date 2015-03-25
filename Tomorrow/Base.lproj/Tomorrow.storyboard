@@ -296,7 +296,7 @@
                                     <outlet property="layoutConstraint" destination="izZ-Xw-5XA" id="wg1-l1-L3m"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Think of 3 important tasks you need to complete tomorrow." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="raD-qa-2Lw" userLabel="Top 3 Things" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Think of 3 important tasks you need to complete Tomorrow." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="raD-qa-2Lw" userLabel="Top 3 Things" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
                                 <rect key="frame" x="36" y="269" width="528" height="61"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="22"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -1380,6 +1380,6 @@
         <image name="twitter" width="21" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lSL-vv-dAe"/>
+        <segue reference="8uv-KJ-Afq"/>
     </inferredMetricsTieBreakers>
 </document>
