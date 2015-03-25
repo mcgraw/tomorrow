@@ -239,8 +239,12 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func nodePlanTomorrowPressed() {
-        // Confirm completion
-        performSegueWithIdentifier("revealMessageSegue", sender: self)
+        if activeGoal == nil {
+            acceptPressed()
+        } else {
+            // Confirm completion
+            performSegueWithIdentifier("revealMessageSegue", sender: self)
+        }
     }
     
     // MARK: Message Delegate
