@@ -11,7 +11,7 @@ import pop
 import Realm
 import Batch.Ads
 
-class IGITimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, IGITimelineNodeDelegate, IGIMessageViewDelegate {
+class IGITimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, IGITimelineNodeDelegate, IGIMessageViewDelegate, BatchAdsDisplayDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var aboutView: IGICircularView!
@@ -370,8 +370,18 @@ class IGITimelineViewController: UIViewController, UITableViewDataSource, UITabl
         let leftTip = NSUserDefaults.standardUserDefaults().boolForKey("kDidLeaveDonation")
         let onboarded = NSUserDefaults.standardUserDefaults().boolForKey("kOnboardCompleted")
         if !leftTip && onboarded {
-            BatchAds.displayAdForPlacement(BatchPlacementDefault)
+            BatchAds.displayAdForPlacement(BatchPlacementDefault, withDelegate: self)
         }
+    }
+    
+    // MARK: Ads
+    func adDidAppear(placement: String!) {
+    }
+    
+    func adCancelled(placement: String!) {
+    }
+    
+    func adClicked(placement: String!) {
     }
 }
               
