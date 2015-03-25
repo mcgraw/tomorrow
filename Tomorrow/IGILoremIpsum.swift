@@ -8,9 +8,9 @@
 
 import UIKit
 
-private let motivationPhrases = ["Great job!", "Excellent!", "Way to go!", "Crushed it!", "Easy peasy!", "You've got this!", "Nice progress!"]
+private let motivationPhrases = ["Great job!", "Excellent!", "Way to go!", "Crushed it!", "Easy peasy!", "You've got this!", "Nice progress!", "Heck yeah!", "You rock!", "Nailed it!", "Outstanding!", "Right on!", "Exceptional!"]
 
-private let encouragement = ["Don't sweat it! Get after it Tomorrow!", "Tomorrow is a clean slate! Crush it!", "Stay motivated", "Get some rest. Conquer Tomorrow!"]
+private let encouragement = ["Don't sweat it! Get after it Tomorrow!", "Tomorrow is a clean slate! Crush it!", "Stay motivated", "Get some rest. Conquer Tomorrow!", "I've got faith in you!", "You can do it!", "No worries, Tomorrow is another day", "Great try!"]
 
 class IGILoremIpsum: NSObject {
 
