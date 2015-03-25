@@ -237,6 +237,10 @@ class IGIAboutTableViewController: UITableViewController, SKProductsRequestDeleg
     }
     
     // MARK: Actions
+    @IBAction func rateActionPressed(sender: AnyObject) {
+        GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("milestone", action: "rate_pressed", label: nil, value: nil).build())
+        UIApplication.sharedApplication().openURL(NSURL(string: "itms://itunes.apple.com/us/app/tomorrow-to-do-list-for-new/id963592550?ls=1&mt=8")!)
+    }
     
     @IBAction func modestActionPressed(sender: AnyObject) {
         purchaseItemWithIdentifier("IGIMODEST01")
