@@ -127,7 +127,11 @@ class IGIGoal: RLMObject {
         goal_completed = true
         RLMRealm.defaultRealm().commitWriteTransaction()
         
-        GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("milestone", action: "goal_completed", label: nil, value: nil).build())
+        if goal_failed {
+            GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("milestone", action: "goal_failed", label: nil, value: nil).build())
+        } else {
+            GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("milestone", action: "goal_completed", label: nil, value: nil).build())
+        }
     }
     
     func getDateAsString() -> String {
