@@ -214,17 +214,18 @@ class IGITimelineViewController: GAITrackedViewController, UITableViewDataSource
     func nodeCompletionStatusUpdated() {
         if let status = activeGoal?.areAllTasksCompleted() {
             if status {
-                shouldShowTomorrowNode = true
-                shouldPlayTomorrowNodeIntroduction = true
-                
-                let rows = tableView.numberOfRowsInSection(0)
-                
-                tableView.beginUpdates()
-                tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: rows, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
-                tableView.endUpdates()
-                
-                tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: rows, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
-                
+                if !shouldShowTomorrowNode {
+                    shouldShowTomorrowNode = true
+                    shouldPlayTomorrowNodeIntroduction = true
+                    
+                    let rows = tableView.numberOfRowsInSection(0)
+                    
+                    tableView.beginUpdates()
+                    tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: rows, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
+                    tableView.endUpdates()
+                    
+                    tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: rows, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+                }
             }
             else if shouldShowTomorrowNode {
                 // remove the tomorrow planning cell if the user changed their mind

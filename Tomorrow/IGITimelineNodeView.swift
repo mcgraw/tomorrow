@@ -14,6 +14,7 @@ import Realm
 
 enum IGINodeStatus {
     case Task,          // default node state, just show a single task label
+         TaskFailed,
          CompletedDay,  // day completed will only toggle the headline w/ tasks
          Completed,     // show task label, along with a date + motivation
          Failed,
@@ -381,6 +382,9 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
                 nodeStatus = .Completed
                 toggleAnimationForTask()
             } else if nodeStatus == .Completed {
+                nodeStatus = .TaskFailed
+                toggleAnimationForTask()
+            } else if nodeStatus == .TaskFailed {
                 nodeStatus = .Task
                 toggleAnimationForTask()
             } else if nodeStatus == .CompletedDay || nodeStatus == .Failed {
@@ -396,7 +400,7 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
     }
     
     private func toggleAnimationForTask() {
-        if nodeStatus == .Completed || nodeStatus == .Task {
+        if nodeStatus == .Completed || nodeStatus == .TaskFailed || nodeStatus == .Task {
             // hide icon
             let anim = POPBasicAnimation(propertyNamed: kPOPLayerScaleXY)
             anim.toValue = NSValue(CGPoint: CGPointMake(0.05, 0.05))
@@ -421,6 +425,17 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
                 lowerSubMessageSpacing!.pop_addAnimation(anim, forKey: "slide-down-sub-message")
                 
                 nodeTask?.updateTaskCompletionStatus(true)
+            } else if nodeStatus == .TaskFailed {
+                image = UIImage(named: "cross")
+                node.backgroundColor = kStatusFailedColor
+                lowerSubMessage.text = ""
+                
+                let anim = POPBasicAnimation(propertyNamed: kPOPLayoutConstraintConstant)
+                anim.toValue = lowerSubMessageSpacing!.constant + 4
+                lowerSubMessageSpacing!.pop_addAnimation(anim, forKey: "slide-down-sub-message")
+                
+                nodeTask?.updateTaskCompletionStatus(false)
+                nodeTask?.updateTaskCompletionFailed()
             } else {
                 image = UIImage(named: "waiting")
                 node.backgroundColor = kStatusTaskColor

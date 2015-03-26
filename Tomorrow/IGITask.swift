@@ -14,6 +14,7 @@ class IGITask: RLMObject {
     dynamic var name = ""
     dynamic var motivation = ""
     
+    dynamic var failed = false
     dynamic var completed = false
     dynamic var completed_count = 0
 
@@ -41,11 +42,18 @@ class IGITask: RLMObject {
     func updateTaskCompletionStatus(status: Bool) {
         RLMRealm.defaultRealm().beginWriteTransaction()
         completed = status
+        failed = false
         if status {
             completed_count += 1
         } else {
             completed_count -= 1
         }
+        RLMRealm.defaultRealm().commitWriteTransaction()
+    }
+    
+    func updateTaskCompletionFailed() {
+        RLMRealm.defaultRealm().beginWriteTransaction()
+        failed = true
         RLMRealm.defaultRealm().commitWriteTransaction()
     }
     

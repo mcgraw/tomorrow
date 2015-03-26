@@ -113,8 +113,17 @@ class IGIGoal: RLMObject {
         task.removeTaskFromGoalWithDate(date: self.date)
     }
     
+    // We may be completing a goal with a failed task
     func setGoalCompleted() {
         RLMRealm.defaultRealm().beginWriteTransaction()
+        for item in tasks {
+            let task = item as IGITask
+            if task.failed {
+                goal_failed = true
+                failed_goals = getFailedGoalsAsStringList()
+                println("Mark goal complete with failed goals: \(failed_goals)")
+            }
+        }
         goal_completed = true
         RLMRealm.defaultRealm().commitWriteTransaction()
         
@@ -133,7 +142,8 @@ class IGIGoal: RLMObject {
     func areAllTasksCompleted() -> Bool {
         for item in tasks {
             let task = item as IGITask
-            if !task.completed {
+            println("completed \(task.completed) && failed \(task.failed)")
+            if !task.completed && !task.failed {
                 return false
             }
         }
