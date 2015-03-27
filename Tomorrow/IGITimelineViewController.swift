@@ -99,9 +99,6 @@ class IGITimelineViewController: GAITrackedViewController, UITableViewDataSource
     @IBAction func unwindToTimeline(sender: UIStoryboardSegue) {
         showingModal = false
         
-        // Mark goal as completed
-        self.activeGoal?.setGoalCompleted()
-
         // let the view appear before we refresh everything
         introductionAnimationPlaying = false
         shouldPlayIntroduction = true // introduce the new tasks
@@ -262,6 +259,9 @@ class IGITimelineViewController: GAITrackedViewController, UITableViewDataSource
             let scale = POPBasicAnimation(propertyNamed: kPOPLayerScaleXY)
             scale.toValue = NSValue(CGPoint: CGPointMake(0.5, 0.5))
             self.tableView.layer.pop_addAnimation(scale, forKey: "scale-down")
+            
+            // Mark goal as completed
+            self.activeGoal?.setGoalCompleted()
             
             UIView.animateWithDuration(0.225, animations: {
                 self.tableView.alpha = 0.0

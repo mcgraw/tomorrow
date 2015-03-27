@@ -124,6 +124,7 @@ class IGIUser: RLMObject {
         } else {
             println("Task already exists. Add it to the new goal!")
             task?.completed = false
+            task?.failed = false
             task?.goals.addObject(goalEditing)
             goalEditing!.tasks.addObject(task)
         }
