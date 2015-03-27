@@ -125,20 +125,32 @@ class IGITimelineNodeView: UIView, POPAnimationDelegate {
         prepareForReuse()
         nodeTask = task
         
-        var image = nodeTask!.completed ? UIImage(named: "checkmark") : UIImage(named: "waiting")
-        node.backgroundColor = nodeTask!.completed ? kStatusCompletedDayColor : kStatusTaskColor
-        image = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        nodeIcon.image = image
+        var image: UIImage?
+        var color: UIColor?
         
         upperSubMessage.text = ""
         
-        if nodeTask!.completed {
+        if nodeTask!.failed {
+            image = UIImage(named: "cross")
+            color = kStatusFailedColor
+            lowerSubMessage.text = ""
+            nodeStatus = .TaskFailed
+        }
+        else if nodeTask!.completed {
+            image = UIImage(named: "checkmark")
+            color = kStatusCompletedColor
             lowerSubMessage.text = IGILoremIpsum.randomMotivationPhrase() // use stored value
             nodeStatus = .Completed
         } else {
+            image = UIImage(named: "waiting")
+            color = kStatusTaskColor
             lowerSubMessage.text = ""
             nodeStatus = .Task
         }
+        
+        node.backgroundColor = color!
+        image = image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        nodeIcon.image = image!
         
         shrinkAnimationForNode()
         
