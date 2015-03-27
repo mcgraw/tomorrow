@@ -216,6 +216,8 @@ class IGIAboutTableViewController: UITableViewController, SKProductsRequestDeleg
                 if let product = productForId(transaction.payment.productIdentifier) {
                     let tracker = GAI.sharedInstance().defaultTracker
                     let currencyCode = product.priceLocale.objectForKey(NSLocaleCurrencyCode) as String
+                    let revenue = product.price.doubleValue - (product.price.doubleValue * 0.30)
+                    tracker.send(GAIDictionaryBuilder.createTransactionWithId(transaction.transactionIdentifier, affiliation: "In-app Store", revenue: revenue, tax: 0, shipping: 0, currencyCode:currencyCode).build())
                     tracker.send(GAIDictionaryBuilder.createItemWithTransactionId(transaction.transactionIdentifier, name: product.localizedTitle, sku: product.productIdentifier, category: "Donation", price: product.price, quantity: 1, currencyCode:currencyCode).build())
                 }
             case SKPaymentTransactionState.Restored:
