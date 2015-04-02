@@ -66,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate, 
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        
+
     }
     
     func automaticOfferRedeemed(offer: BatchOffer!) {
