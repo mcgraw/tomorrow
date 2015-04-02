@@ -422,7 +422,7 @@ public class Spring : NSObject {
                     
                 }
                 
-            }, completion: { [weak self] finished in
+            }, { [weak self] finished in
                 
                 completion()
                 self?.resetAll()

@@ -35,6 +35,13 @@ typedef NS_OPTIONS(NSUInteger, BatchNotificationType)
 - (instancetype)init NS_UNAVAILABLE;
 
 /*!
+ @method setupPush
+ @abstract Activate Batch Push system.
+ @discussion You can call this method from any thread.
+ */
++ (void)setupPush NS_AVAILABLE_IOS(6_0);
+
+/*!
 @method setRemoteNotificationTypes:
 @abstract Change the used remote notification types.
 @discussion Default value is: BatchNotificationTypeBadge | BatchNotificationTypeSound | BatchNotificationTypeAlert
