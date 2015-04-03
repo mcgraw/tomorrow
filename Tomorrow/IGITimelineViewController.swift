@@ -377,8 +377,12 @@ class IGITimelineViewController: GAITrackedViewController, UITableViewDataSource
         let leftTip = NSUserDefaults.standardUserDefaults().boolForKey("kDidLeaveDonation")
         let onboarded = NSUserDefaults.standardUserDefaults().boolForKey("kOnboardCompleted")
         if !leftTip && onboarded {
-            BatchAds.displayAdForPlacement(BatchPlacementDefault, withDelegate: self)
+            NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "displayAdPlacementDelayed", userInfo: nil, repeats: false);
         }
+    }
+    
+    func displayAdPlacementDelayed() {
+        BatchAds.displayAdForPlacement(BatchPlacementDefault, withDelegate: self)
     }
     
     // MARK: Ads
