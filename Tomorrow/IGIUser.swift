@@ -56,6 +56,7 @@ class IGIUser: RLMObject {
     
     func setUserName(#name: String?) {
         if name != nil {
+            let realm = RLMRealm.defaultRealm()
             realm.beginWriteTransaction()
             let strip = name!.trimLeadingAndTrailingWhitespace()
             firstName = strip

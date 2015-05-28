@@ -28,6 +28,8 @@ class IGIAboutTableViewController: UITableViewController, SKProductsRequestDeleg
     @IBOutlet weak var massiveTitle: UILabel!
     @IBOutlet weak var massiveCost: UIButton!
     
+    @IBOutlet weak var version: UILabel!
+    
     @IBOutlet weak var activity: UIActivityIndicatorView!
     
     var fetchedProducts = []
@@ -47,6 +49,12 @@ class IGIAboutTableViewController: UITableViewController, SKProductsRequestDeleg
         massiveView.userInteractionEnabled = false
         
         fetchProductInfo()
+        
+        if let vStr = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as? String, bStr = NSBundle.mainBundle().infoDictionary?["CFBundleVersion"] as? String {
+            version.text = "Version \(vStr) (\(bStr))"
+        } else {
+            version.text = ":)"
+        }
         
         // simple greeting
         if userObject.getFirstName() != "" {
@@ -259,12 +267,30 @@ class IGIAboutTableViewController: UITableViewController, SKProductsRequestDeleg
     }
     
     @IBAction func twitterAction(sender: AnyObject) {
-        UIApplication.sharedApplication().openURL(NSURL(string: "http://twitter.com/xmcgraw")!)
+        
+        if openURL(NSURL(string: "twitter://user?screen_name=xmcgraw")!) {
+            // opened!
+        } else if openURL(NSURL(string: "tweetbot://xmcgraw/user_profile/xmcgraw")!) {
+            // opened!
+        } else {
+            // open simple page
+            openURL(NSURL(string: "http://twitter.com/xmcgraw")!)
+        }
+        
     }
 
     @IBAction func emailAction(sender: AnyObject) {
         var recip = "mailto:dave@moonlitsolutions.com?subject=Tomorrow - I have some feedback for you"
         recip = recip.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         UIApplication.sharedApplication().openURL(NSURL(string: recip)!)
+    }
+    
+    private func openURL(url: NSURL) -> Bool {
+        if UIApplication.sharedApplication().canOpenURL(url) {
+            UIApplication.sharedApplication().openURL(url)
+            return true
+        } else {
+            return false
+        }
     }
 }

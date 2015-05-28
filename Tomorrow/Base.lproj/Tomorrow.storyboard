@@ -983,7 +983,7 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZs-7c-IoU">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZs-7c-IoU">
                                                     <rect key="frame" x="268" y="82" width="67" height="18"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="13"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1043,6 +1043,7 @@
                         <outlet property="modestTitle" destination="Uo8-Rn-xtw" id="WAX-qg-54s"/>
                         <outlet property="modestView" destination="ZZu-NX-nID" id="fD7-jM-PDm"/>
                         <outlet property="thanks" destination="M6T-HC-jCo" id="hJ6-ec-iEf"/>
+                        <outlet property="version" destination="eZs-7c-IoU" id="SOF-Ga-Sda"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3b6-Nf-d6B" userLabel="First Responder" sceneMemberID="firstResponder"/>
