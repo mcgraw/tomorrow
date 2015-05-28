@@ -27,7 +27,8 @@ class IGINotificationViewController: GAITrackedViewController {
     }
     
     @IBAction func notificationAction(sender: AnyObject) {
-        GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("ui_action", action: "button_press", label: "register_notifications", value: nil).build())
+        let build = GAIDictionaryBuilder.createEventWithCategory("ui_action", action: "button_press", label: "register_notifications", value: nil).build()
+        GAI.sharedInstance().defaultTracker.send(build as [NSObject: AnyObject])
         
         BatchPush.registerForRemoteNotifications()
         advanceOnboarding()

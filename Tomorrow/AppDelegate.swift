@@ -72,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate, 
     func automaticOfferRedeemed(offer: BatchOffer!) {
         println(offer.offerAdditionalParameters())
         
-        for feature in offer.features() as [BatchFeature] {
+        for feature in offer.features() as! [BatchFeature] {
             let reference = feature.reference()
             let value = feature.value()
             

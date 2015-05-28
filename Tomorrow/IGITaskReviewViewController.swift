@@ -45,7 +45,7 @@ class IGITaskReviewViewController: GAITrackedViewController {
             var index = 0
             let count = goal.tasks.count
             for item in goal.tasks {
-                var task = item as IGITask
+                var task = item as! IGITask
                 let title = task.getTaskTitle()
                 if index == 0 {
                     task1?.text = title
@@ -92,7 +92,8 @@ class IGITaskReviewViewController: GAITrackedViewController {
                 NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "transitionToTimeline", userInfo: nil, repeats: false)
             })
         } else {
-            GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("milestone", action: "onboard_completed", label: nil, value: nil).build())
+            let build = GAIDictionaryBuilder.createEventWithCategory("milestone", action: "onboard_completed", label: nil, value: nil).build()
+            GAI.sharedInstance().defaultTracker.send(build as [NSObject: AnyObject])
             
             // Jump the tasks before transitioning to the timeline
             task1.jumpAnimationToConstant(-300, delayStart: 0)

@@ -38,12 +38,12 @@ class IGIGoal: RLMObject {
         RLMRealm.defaultRealm().beginWriteTransaction()
         let goals = IGIGoal.allObjects()
         for item in goals {
-            let goal = item as IGIGoal
-        
-            // Delete any invalid goals that were being built
-            if goal.edit_completed == false {
-                println("Deleting incomplete goal")
-                RLMRealm.defaultRealm().deleteObject(goal)
+            if let goal = item as? IGIGoal {
+                // Delete any invalid goals that were being built
+                if goal.edit_completed == false {
+                    println("Deleting incomplete goal")
+                    RLMRealm.defaultRealm().deleteObject(goal)
+                }
             }
         }
         RLMRealm.defaultRealm().commitWriteTransaction()
@@ -53,8 +53,7 @@ class IGIGoal: RLMObject {
         RLMRealm.defaultRealm().beginWriteTransaction()
         let goals = IGIGoal.allObjects()
         for item in goals {
-            let goal = item as IGIGoal
-            if goal.goal_completed == false {
+            if let goal = item as? IGIGoal where goal.goal_completed == false {
                 if (goal.date.isBeforeHour(9) && goal.date.isAfterDay()) ||
                     goal.date.haveDaysElapsedIngoringTime(2) {
                         println("Goal incomplete! Mark as failed")
@@ -62,9 +61,11 @@ class IGIGoal: RLMObject {
                         goal.goal_failed = true
                         goal.failed_goals = goal.getFailedGoalsAsStringList()
                         
-                        GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("milestone", action: "goal_failed", label: nil, value: nil).build())
+                        let build = GAIDictionaryBuilder.createEventWithCategory("milestone", action: "goal_failed", label: nil, value: nil).build()
+                        GAI.sharedInstance().defaultTracker.send(build as [NSObject: AnyObject])
                 }
             }
+            
         }
         RLMRealm.defaultRealm().commitWriteTransaction()
     }
@@ -76,8 +77,9 @@ class IGIGoal: RLMObject {
         var count = 0
         let tasks = IGITask.allObjects()
         for item in tasks {
-            let task = item as IGITask
-            count += task.completed_count
+            if let task = item as? IGITask {
+                count += task.completed_count
+            }
         }
         return count
     }
@@ -86,8 +88,7 @@ class IGIGoal: RLMObject {
         var failed = ""
         var count = tasks.count
         for item in tasks {
-            let task = item as IGITask
-            if !task.completed {
+            if let task = item as? IGITask where task.completed == false {
                 if failed.length > 0 {
                     failed += ","
                 }
@@ -117,8 +118,7 @@ class IGIGoal: RLMObject {
     func setGoalCompleted() {
         RLMRealm.defaultRealm().beginWriteTransaction()
         for item in tasks {
-            let task = item as IGITask
-            if task.failed {
+            if let task = item as? IGITask where task.failed == true {
                 goal_failed = true
                 failed_goals = getFailedGoalsAsStringList()
                 println("Mark goal complete with failed goals: \(failed_goals)")
@@ -128,9 +128,11 @@ class IGIGoal: RLMObject {
         RLMRealm.defaultRealm().commitWriteTransaction()
         
         if goal_failed {
-            GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("milestone", action: "goal_failed", label: nil, value: nil).build())
+            let build = GAIDictionaryBuilder.createEventWithCategory("milestone", action: "goal_failed", label: nil, value: nil).build()
+            GAI.sharedInstance().defaultTracker.send(build as [NSObject: AnyObject])
         } else {
-            GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("milestone", action: "goal_completed", label: nil, value: nil).build())
+            let build = GAIDictionaryBuilder.createEventWithCategory("milestone", action: "goal_completed", label: nil, value: nil).build()
+            GAI.sharedInstance().defaultTracker.send(build as [NSObject: AnyObject])
         }
     }
     
@@ -145,9 +147,7 @@ class IGIGoal: RLMObject {
     
     func areAllTasksCompleted() -> Bool {
         for item in tasks {
-            let task = item as IGITask
-            println("completed \(task.completed) && failed \(task.failed)")
-            if !task.completed && !task.failed {
+            if let task = item as? IGITask where (task.completed == false && task.failed == false) {
                 return false
             }
         }

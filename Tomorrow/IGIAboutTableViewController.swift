@@ -73,7 +73,7 @@ class IGIAboutTableViewController: UITableViewController, SKProductsRequestDeleg
         super.viewWillAppear(animated)
         
         GAI.sharedInstance().defaultTracker.set(kGAIScreenName, value: "About Screen")
-        GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createScreenView().build())
+        GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject: AnyObject])
     }
     
     @IBAction func unwindToAboutViewController(sender: UIStoryboardSegue) {
@@ -92,7 +92,7 @@ class IGIAboutTableViewController: UITableViewController, SKProductsRequestDeleg
             })
             activity.startAnimating()
         
-            let request = SKProductsRequest(productIdentifiers: NSSet(array: ["IGIGENEROUS01", "IGIMASSIVE01", "IGIMODEST01"]))
+            let request = SKProductsRequest(productIdentifiers: NSSet(array: ["IGIGENEROUS01", "IGIMASSIVE01", "IGIMODEST01"]) as Set<NSObject>)
             request.delegate = self
             request.start()
         } else {
@@ -201,7 +201,7 @@ class IGIAboutTableViewController: UITableViewController, SKProductsRequestDeleg
     func paymentQueue(queue: SKPaymentQueue!, updatedTransactions transactions: [AnyObject]!) {
         println("Transaction updated")
         
-        for transaction in transactions as [SKPaymentTransaction] {
+        for transaction in transactions as! [SKPaymentTransaction] {
             switch transaction.transactionState {
             case SKPaymentTransactionState.Purchasing:
                 println("Purchasing item!")
@@ -215,10 +215,10 @@ class IGIAboutTableViewController: UITableViewController, SKProductsRequestDeleg
                 
                 if let product = productForId(transaction.payment.productIdentifier) {
                     let tracker = GAI.sharedInstance().defaultTracker
-                    let currencyCode = product.priceLocale.objectForKey(NSLocaleCurrencyCode) as String
+                    let currencyCode = product.priceLocale.objectForKey(NSLocaleCurrencyCode) as! String
                     let revenue = product.price.doubleValue - (product.price.doubleValue * 0.30)
-                    tracker.send(GAIDictionaryBuilder.createTransactionWithId(transaction.transactionIdentifier, affiliation: "In-app Store", revenue: revenue, tax: 0, shipping: 0, currencyCode:currencyCode).build())
-                    tracker.send(GAIDictionaryBuilder.createItemWithTransactionId(transaction.transactionIdentifier, name: product.localizedTitle, sku: product.productIdentifier, category: "Donation", price: product.price, quantity: 1, currencyCode:currencyCode).build())
+                    tracker.send(GAIDictionaryBuilder.createTransactionWithId(transaction.transactionIdentifier, affiliation: "In-app Store", revenue: revenue, tax: 0, shipping: 0, currencyCode:currencyCode).build() as [NSObject: AnyObject])
+                    tracker.send(GAIDictionaryBuilder.createItemWithTransactionId(transaction.transactionIdentifier, name: product.localizedTitle, sku: product.productIdentifier, category: "Donation", price: product.price, quantity: 1, currencyCode:currencyCode).build() as [NSObject: AnyObject])
                 }
             case SKPaymentTransactionState.Restored:
                 println("Item restored!")
@@ -240,7 +240,9 @@ class IGIAboutTableViewController: UITableViewController, SKProductsRequestDeleg
     
     // MARK: Actions
     @IBAction func rateActionPressed(sender: AnyObject) {
-        GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("milestone", action: "rate_pressed", label: nil, value: nil).build())
+        let build = GAIDictionaryBuilder.createEventWithCategory("milestone", action: "rate_pressed", label: nil, value: nil).build()
+        GAI.sharedInstance().defaultTracker.send(build as [NSObject: AnyObject])
+        
         UIApplication.sharedApplication().openURL(NSURL(string: "itms://itunes.apple.com/us/app/tomorrow-to-do-list-for-new/id963592550?ls=1&mt=8")!)
     }
     

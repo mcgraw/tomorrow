@@ -42,33 +42,33 @@ class IGIUser: RLMObject {
     
     func setTaskNeedsEdit(#index: UInt) {
         let incomplete_goals: RLMResults? = self.goals.objectsWhere("edit_completed == false")
-        let goal: IGIGoal = incomplete_goals!.firstObject() as IGIGoal
-        
-        if index < goal.tasks.count {
-            if let task = goal.tasks.objectAtIndex(index) as? IGITask {
-                RLMRealm.defaultRealm().beginWriteTransaction()
-                task.edit_needed = true
-                IGITask.createOrUpdateInDefaultRealmWithObject(task)
-                RLMRealm.defaultRealm().commitWriteTransaction()
+        if let goal = incomplete_goals?.firstObject() as? IGIGoal {
+            if index < goal.tasks.count {
+                if let task = goal.tasks.objectAtIndex(index) as? IGITask {
+                    task.realm.beginWriteTransaction()
+                    task.edit_needed = true
+                    IGITask.createOrUpdateInDefaultRealmWithValue(task)
+                    task.realm.commitWriteTransaction()
+                }
             }
         }
     }
     
     func setUserName(#name: String?) {
         if name != nil {
-            RLMRealm.defaultRealm().beginWriteTransaction()
+            realm.beginWriteTransaction()
             let strip = name!.trimLeadingAndTrailingWhitespace()
             firstName = strip
-            IGIUser.createOrUpdateInDefaultRealmWithObject(self)
-            RLMRealm.defaultRealm().commitWriteTransaction()
+            IGIUser.createOrUpdateInDefaultRealmWithValue(self)
+            realm.commitWriteTransaction()
         }
     }
     
     func setUserGender(#type: String) {
-        RLMRealm.defaultRealm().beginWriteTransaction()
+        realm.beginWriteTransaction()
         gender = type
-        IGIUser.createOrUpdateInDefaultRealmWithObject(self)
-        RLMRealm.defaultRealm().commitWriteTransaction()
+        IGIUser.createOrUpdateInDefaultRealmWithValue(self)
+        realm.commitWriteTransaction()
     }
     
     func getCurrentGoalUnderEdit() -> IGIGoal? {
@@ -120,7 +120,9 @@ class IGIUser: RLMObject {
             task?.goals.addObject(goalEditing)
             goalEditing!.tasks.addObject(task)
             
-            GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("task", action: "add", label: original, value: nil).build())
+            let build = GAIDictionaryBuilder.createEventWithCategory("task", action: "add", label: original, value: nil).build()
+            GAI.sharedInstance().defaultTracker.send(build as [NSObject: AnyObject])
+            
         } else {
             println("Task already exists. Add it to the new goal!")
             task?.completed = false

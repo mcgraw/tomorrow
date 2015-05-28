@@ -87,8 +87,9 @@ class IGITimelineViewController: GAITrackedViewController, UITableViewDataSource
         showingModal = true
         
         if segue.identifier == "revealMessageSegue" {
-            let vc = segue.destinationViewController as IGIMessageViewController
-            vc.delegate = self
+            if let vc = segue.destinationViewController as? IGIMessageViewController {
+                vc.delegate = self
+            }
         } else if segue.identifier == "showAboutViewSegue" {
             UIView.animateWithDuration(0.225, animations: { () -> Void in
                 self.view.alpha = 0.0
@@ -130,11 +131,12 @@ class IGITimelineViewController: GAITrackedViewController, UITableViewDataSource
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("timelineItemId") as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("timelineItemId") as! UITableViewCell
         var nodeView: IGITimelineNodeView?
         
         if cell.contentView.subviews.count == 0 {
             nodeView = IGITimelineNodeView()
+            nodeView?.initializeLayout()
             cell.contentView.addSubview(nodeView!)
             
             nodeView!.delegate = self
@@ -148,7 +150,7 @@ class IGITimelineViewController: GAITrackedViewController, UITableViewDataSource
         
         if indexPath.row < completedGoalCount {                                     // Show completed goal nodes
             println("\(indexPath.row) - get goal")
-            nodeView!.updateLayoutWithGoal(goalForIndexPath(indexPath))
+            nodeView!.updateLayoutWithGoal(goalForIndexPath(indexPath)!)
             nodeView!.revealTimelineWithoutAnimation()
         }
         else if indexPath.row == completedGoalCount && specialtyNodeCount > 0 {     // Do we need to reveal a tip or rating node?
@@ -156,7 +158,7 @@ class IGITimelineViewController: GAITrackedViewController, UITableViewDataSource
         }
         else if indexPath.row < (completedGoalCount + activeTaskCount + specialtyNodeCount) {          // Show tasks (if anything)
             println("\(indexPath.row) - get task")
-            nodeView!.updateLayoutWithTask(taskForIndexPath(indexPath))
+            nodeView!.updateLayoutWithTask(taskForIndexPath(indexPath)!)
 
             // Only trigger the animation waterfall once & only if it should be played
             if !introductionAnimationPlaying {
@@ -190,20 +192,21 @@ class IGITimelineViewController: GAITrackedViewController, UITableViewDataSource
     func nodeDidCompleteAnimation() {
         // Play the next cell
         for cell in tableView.visibleCells() {
-            var nodeView = cell.contentView.subviews[0] as IGITimelineNodeView
-            if !nodeView.revealAnimationComplete {
-                nodeView.playTimelineAnimationDelayed(delay: 0.15)
-                
-                if var path = tableView.indexPathForCell(cell as UITableViewCell) {
-                    // smooth out the scroll animation
-                    UIView.animateWithDuration(1.0, animations: {
-                        self.tableView.scrollToRowAtIndexPath(path, atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
-                    })
+            if var nodeView = cell.contentView.subviews[0] as? IGITimelineNodeView {
+                if !nodeView.revealAnimationComplete {
+                    nodeView.playTimelineAnimationDelayed(delay: 0.15)
+                    
+                    if let c = cell as? UITableViewCell, var path = tableView.indexPathForCell(c) {
+                        // smooth out the scroll animation
+                        UIView.animateWithDuration(1.0, animations: {
+                            self.tableView.scrollToRowAtIndexPath(path, atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
+                        })
+                    }
+                    break;
+                } else {
+                    introductionAnimationPlaying = false
+                    shouldPlayIntroduction = false
                 }
-                break;
-            } else {
-                introductionAnimationPlaying = false
-                shouldPlayIntroduction = false
             }
         }
     }
@@ -300,15 +303,16 @@ class IGITimelineViewController: GAITrackedViewController, UITableViewDataSource
         
         if let results = allGoals {
             for item: RLMObject in results {
-                let goal = item as IGIGoal
-                if goal.goal_completed == true {
-                    completedGoalCount++
-                } else {
-                    // We have active tasks
-                    activeTaskCount += Int(goal.tasks.count)
-                    
-                    // Is this goal complete?
-                    refreshTomorrowNode()
+                if let goal = item as? IGIGoal {
+                    if goal.goal_completed == true {
+                        completedGoalCount++
+                    } else {
+                        // We have active tasks
+                        activeTaskCount += Int(goal.tasks.count)
+                        
+                        // Is this goal complete?
+                        refreshTomorrowNode()
+                    }
                 }
             }
         }
@@ -334,15 +338,15 @@ class IGITimelineViewController: GAITrackedViewController, UITableViewDataSource
     }
     
     // Nothing comes before a completed goal so we're fine with this index
-    private func goalForIndexPath(indexPath: NSIndexPath) -> IGIGoal {
-        return allGoals?.objectAtIndex(UInt(indexPath.row)) as IGIGoal
+    private func goalForIndexPath(indexPath: NSIndexPath) -> IGIGoal? {
+        return allGoals?.objectAtIndex(UInt(indexPath.row)) as? IGIGoal
     }
     
     // Account for goals (unlimited) and a potnetial specialty row
-    private func taskForIndexPath(indexPath: NSIndexPath) -> IGITask {
+    private func taskForIndexPath(indexPath: NSIndexPath) -> IGITask? {
         let index = completedGoalCount + specialtyNodeCount
         println("debug task index: \(indexPath.row - index)")
-        return activeGoal?.tasks.objectAtIndex(UInt(indexPath.row - index)) as IGITask
+        return activeGoal?.tasks.objectAtIndex(UInt(indexPath.row - index)) as? IGITask
     }
     
     // MARK: Scroll Delegate
@@ -387,18 +391,21 @@ class IGITimelineViewController: GAITrackedViewController, UITableViewDataSource
     
     // MARK: Ads
     func adDidAppear(placement: String!) {
-        GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("advertising", action: "did_appear", label: nil, value: nil).build())
+        let build = GAIDictionaryBuilder.createEventWithCategory("advertising", action: "did_appear", label: nil, value: nil).build()
+        GAI.sharedInstance().defaultTracker.send(build as [NSObject: AnyObject])
     }
     
     func adCancelled(placement: String!) {
     }
     
     func adNotDisplayed(placement: String!) {
-        GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("advertising", action: "not_displayed", label: nil, value: nil).build())
+        let build = GAIDictionaryBuilder.createEventWithCategory("advertising", action: "not_displayed", label: nil, value: nil).build()
+        GAI.sharedInstance().defaultTracker.send(build as [NSObject: AnyObject])
     }
     
     func adClicked(placement: String!) {
-        GAI.sharedInstance().defaultTracker.send(GAIDictionaryBuilder.createEventWithCategory("advertising", action: "did_click", label: nil, value: nil).build())
+        let build = GAIDictionaryBuilder.createEventWithCategory("advertising", action: "did_click", label: nil, value: nil).build()
+        GAI.sharedInstance().defaultTracker.send(build as [NSObject: AnyObject])
     }
 }
               

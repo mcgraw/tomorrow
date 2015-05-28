@@ -31,9 +31,9 @@ class IGIMapViewController: GAITrackedViewController {
         screenName = "About Map Screen"
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         super.touchesBegan(touches, withEvent: event)
-        if let touch = touches.anyObject() as? UITouch {
+        if let touch = touches.first as? UITouch {
             let point = touch.locationInView(self.view)
             if !CGRectContainsPoint(mapView.frame, point) {
                 mapContainer.animation = "fall"

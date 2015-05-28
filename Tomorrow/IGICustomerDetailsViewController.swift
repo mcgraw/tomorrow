@@ -32,7 +32,7 @@ class IGICustomerDetailsViewController: GAITrackedViewController, UITableViewDel
         if users.count == 0 {
             userObject = IGIUser()
             userObject?.userId = 1
-            IGIUser.createOrUpdateInDefaultRealmWithObject(userObject)
+            IGIUser.createOrUpdateInDefaultRealmWithValue(userObject)
         } else {
             userObject = users[0] as? IGIUser
         }

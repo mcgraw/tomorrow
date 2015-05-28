@@ -38,19 +38,21 @@ class IGIBaseViewController: UIViewController {
         if users.count == 0 {
             performSegueWithIdentifier("onboardTitleSegue", sender: self)
         } else {
-            let user = users.firstObject() as IGIUser
-            if user.goals.count == 0 {
-                performSegueWithIdentifier("onboardTitleSegue", sender: self)
-            } else {
-                loadTimelineView()
+            if let user = users.firstObject() as? IGIUser {
+                if user.goals.count == 0 {
+                    performSegueWithIdentifier("onboardTitleSegue", sender: self)
+                } else {
+                    loadTimelineView()
+                }
             }
         }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "timelineSegue" {
-            let vc = segue.destinationViewController as IGITimelineViewController
-            vc.shouldPlayIntroduction = shouldPlayIntroduction
+            if let vc = segue.destinationViewController as? IGITimelineViewController {
+                vc.shouldPlayIntroduction = shouldPlayIntroduction
+            }
         }
     }
     
@@ -79,16 +81,16 @@ class IGIBaseViewController: UIViewController {
     // MARK: Notification
     
     func genderChanged(notification: NSNotification) {
-        let obj = notification.object as String
-        
-        if obj == "female" {
-            let startColor = UIColor(red:0.19, green:0.12, blue:0.53, alpha:1)
-            let endColor = UIColor(red:1, green:0.69, blue:0.47, alpha:1)
-            temporaryGradient?.updateGradientLayer(startColor, endColor: endColor)
-        } else if obj == "male" {
-            let startColor = UIColor(red:0.11, green:0.48, blue:0.72, alpha:1)
-            let endColor = UIColor(red:0.87, green:0.85, blue:0.96, alpha:1)
-            temporaryGradient?.updateGradientLayer(startColor, endColor: endColor)
+        if let obj = notification.object as? String {
+            if obj == "female" {
+                let startColor = UIColor(red:0.19, green:0.12, blue:0.53, alpha:1)
+                let endColor = UIColor(red:1, green:0.69, blue:0.47, alpha:1)
+                temporaryGradient?.updateGradientLayer(startColor, endColor: endColor)
+            } else if obj == "male" {
+                let startColor = UIColor(red:0.11, green:0.48, blue:0.72, alpha:1)
+                let endColor = UIColor(red:0.87, green:0.85, blue:0.96, alpha:1)
+                temporaryGradient?.updateGradientLayer(startColor, endColor: endColor)
+            }
         }
         
         NSTimer.scheduledTimerWithTimeInterval(0.4, target: self, selector: "crossFadeNewColor", userInfo: nil, repeats: false)

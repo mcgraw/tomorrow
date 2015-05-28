@@ -11,9 +11,9 @@ import UIKit
 class IGIPushNoAnimationSegue: UIStoryboardSegue {
     
     override func perform() {
-        let source = self.sourceViewController as UIViewController
+        let source = self.sourceViewController as! UIViewController
         if let navigation = source.navigationController {
-            let destination = destinationViewController as UIViewController
+            let destination = destinationViewController as! UIViewController
             destination.view.backgroundColor = UIColor.clearColor()
 
             navigation.pushViewController(destination, animated: false);

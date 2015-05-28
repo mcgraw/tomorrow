@@ -40,7 +40,7 @@ class IGITaskEntryViewController: GAITrackedViewController, UITextFieldDelegate 
             userGoal?.getDateAsString()
             userGoal?.user = userObject
             userObject?.goals.addObject(userGoal)
-            IGIUser.createOrUpdateInDefaultRealmWithObject(userObject)
+            IGIUser.createOrUpdateInDefaultRealmWithValue(userObject)
             RLMRealm.defaultRealm().commitWriteTransaction()
         } else {
             assertionFailure("Something went wrong! User does not exist so we cannot add taskss!")
@@ -161,7 +161,7 @@ class IGITaskEntryViewController: GAITrackedViewController, UITextFieldDelegate 
     func isDuplicateInput(input: String) -> Bool {
         let strip = input.trimLeadingAndTrailingWhitespace()
         for item in userGoal!.tasks {
-            let task = item as IGITask
+            let task = item as! IGITask
             if task.name == strip.lowercaseString {
                 return true
             }
@@ -212,7 +212,7 @@ class IGITaskEntryViewController: GAITrackedViewController, UITextFieldDelegate 
             status = .Done
             inputField.resignFirstResponder()
         }
-        IGIUser.createOrUpdateInDefaultRealmWithObject(userObject)
+        IGIUser.createOrUpdateInDefaultRealmWithValue(userObject)
         RLMRealm.defaultRealm().commitWriteTransaction()
         
         NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "advanceOnboarding", userInfo: nil, repeats: false)

@@ -1,11 +1,11 @@
 PODS:
   - pop (1.0.7)
-  - PureLayout (2.0.5)
-  - Realm (0.91.1):
-    - Realm/Headers (= 0.91.1)
-  - Realm/Headers (0.91.1)
+  - PureLayout (2.0.6)
+  - Realm (0.93.0):
+    - Realm/Headers (= 0.93.0)
+  - Realm/Headers (0.93.0)
   - Shimmer (1.0.2)
-  - Spring (1.0.1)
+  - Spring (1.0.3)
 
 DEPENDENCIES:
   - pop
@@ -16,9 +16,9 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
-  PureLayout: a0fe75f1cf485801e7e00b723b8a3c32dca558e2
-  Realm: b9c1fd9defa26aa7276ce938a8df52ec81f24528
+  PureLayout: f25f0bb904d5ccfe6e31da3cb869185259f02e0d
+  Realm: b29e8bc1534656723fa3465a3687aade1dbd1e4b
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
-  Spring: da2110c23f2327e85868f277ef82ea2e311961c3
+  Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
 
-COCOAPODS: 0.36.0
+COCOAPODS: 0.36.3
