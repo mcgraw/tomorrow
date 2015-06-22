@@ -169,8 +169,16 @@ class IGITaskEntryViewController: GAITrackedViewController, UITextFieldDelegate 
         return false
     }
     
+    func hasChangedOriginalInput(input: String) -> Bool {
+        let strip = input.trimLeadingAndTrailingWhitespace().lowercaseString
+        if let task = taskUnderEdit?.name where (task == strip) {
+            return false
+        }
+        return true
+    }
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if isDuplicateInput(textField.text) {
+        if hasChangedOriginalInput(textField.text) && isDuplicateInput(textField.text) {
             let alert = UIAlertView(title: "Duplicate Task", message: "Please enter a unique task name", delegate: nil, cancelButtonTitle: "OK")
             alert.show()
             return true
@@ -187,6 +195,7 @@ class IGITaskEntryViewController: GAITrackedViewController, UITextFieldDelegate 
             
             if taskUnderEdit?.name.lowercaseString == textField.text.lowercaseString {
                 // Nothing changed, move back to the review screen
+                println("Nothing changed. Continue");
             } else {
                 let goalEditing = userObject?.getCurrentGoalUnderEdit()!
                 
