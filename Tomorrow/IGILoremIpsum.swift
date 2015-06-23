@@ -23,6 +23,6 @@ class IGILoremIpsum: NSObject {
     }
 
     class func randomInteger(#lowerBound: Int, upperBound: Int) -> Int {
-        return Int(arc4random()) % (upperBound - lowerBound) + lowerBound
+        return  Int(arc4random_uniform(UInt32(upperBound) - UInt32(lowerBound))) + Int(lowerBound)
     }
 }
