@@ -35,6 +35,9 @@ class IGINotificationViewController: GAITrackedViewController {
     }
     
     @IBAction func skipAction(sender: AnyObject) {
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "didIgnoreNotifications");
+        NSUserDefaults.standardUserDefaults().synchronize()
+        
         advanceOnboarding()
     }
 }

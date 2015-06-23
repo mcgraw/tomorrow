@@ -11,10 +11,9 @@ import Realm
 import Batch
 import Batch.Push
 import Batch.Ads
-import Batch.Unlock
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate, BatchUnlockDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate {
 
     var window: UIWindow?
 
@@ -30,9 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate, 
         
         // Setup Ads
         BatchAds.setupAds()
-        
-        // Unlock
-        BatchUnlock.setupUnlockWithDelegate(self)
         
         // Start Batch
 //        Batch.startWithAPIKey("DEV54EF398118121451CB109F931AE")
@@ -55,12 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate, 
         
         // If we're returning we need to check if goal progress has elapsed
         IGIGoal.cleanElapsedGoals()
-        
-        // Check for notification updates if a user has been added
-        let users = IGIUser.allObjects()
-        if let user = users.firstObject() as? IGIUser where (user.goals.count > 0) {
-            BatchPush.registerForRemoteNotifications()
-        }
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
@@ -73,17 +63,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate, 
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
 
-    }
-    
-    func automaticOfferRedeemed(offer: BatchOffer!) {
-        println(offer.offerAdditionalParameters())
-        
-        for feature in offer.features() as! [BatchFeature] {
-            let reference = feature.reference()
-            let value = feature.value()
-            
-            // unlock
-            println("ref \(reference) & val \(value)")
-        }
     }
 }
