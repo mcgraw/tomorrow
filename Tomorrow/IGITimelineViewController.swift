@@ -202,7 +202,7 @@ class IGITimelineViewController: GAITrackedViewController, UITableViewDataSource
                             self.tableView.scrollToRowAtIndexPath(path, atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
                         })
                     }
-                    break;
+                    break
                 } else {
                     introductionAnimationPlaying = false
                     shouldPlayIntroduction = false
@@ -264,7 +264,9 @@ class IGITimelineViewController: GAITrackedViewController, UITableViewDataSource
             self.tableView.layer.pop_addAnimation(scale, forKey: "scale-down")
             
             // Mark goal as completed
-            self.activeGoal?.setGoalCompleted()
+            if let completed = self.activeGoal?.goal_completed where completed == false {
+                self.activeGoal?.setGoalCompleted()
+            }
             
             UIView.animateWithDuration(0.225, animations: {
                 self.tableView.alpha = 0.0
@@ -323,10 +325,8 @@ class IGITimelineViewController: GAITrackedViewController, UITableViewDataSource
     }
     
     private func refreshTomorrowNode() {
-        if let goal = activeUser?.getCurrentGoal() {
-            if goal.goal_completed == false {
-                shouldShowTomorrowNode = goal.areAllTasksCompleted()
-            }
+        if let goal = activeUser?.getCurrentGoal() where goal.goal_completed == false {
+            shouldShowTomorrowNode = goal.areAllTasksCompleted()
         }
     }
     
@@ -381,7 +381,7 @@ class IGITimelineViewController: GAITrackedViewController, UITableViewDataSource
         let leftTip = NSUserDefaults.standardUserDefaults().boolForKey("kDidLeaveDonation")
         let onboarded = NSUserDefaults.standardUserDefaults().boolForKey("kOnboardCompleted")
         if !leftTip && onboarded {
-            NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "displayAdPlacementDelayed", userInfo: nil, repeats: false);
+            NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "displayAdPlacementDelayed", userInfo: nil, repeats: false)
         }
     }
     

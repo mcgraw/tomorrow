@@ -13,7 +13,7 @@ enum IGITaskEntryStatus: Int {
     case Task1, Task2, Task3, Done, Editing
 }
 
-class IGITaskEntryViewController: GAITrackedViewController, UITextFieldDelegate {
+class IGITaskEntryViewController: GAITrackedViewController, UIAlertViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var titleLabel: IGILabel!
     @IBOutlet weak var inputField: IGITextField!
@@ -102,12 +102,26 @@ class IGITaskEntryViewController: GAITrackedViewController, UITextFieldDelegate 
     }
     
     @IBAction func cancelEntry(sender: AnyObject) {
-        playDismissAnimation()
-        status = .Done
-        
         if taskUnderEdit != nil {
+            playDismissAnimation()
+            status = .Done
+            
             NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "advanceOnboarding", userInfo: nil, repeats: false)
         } else {
+            inputField.resignFirstResponder()
+            let alert = UIAlertView(title: "Are you sure?", message: "This action will return you to the timeline.", delegate: self, cancelButtonTitle: "NO", otherButtonTitles: "Yes")
+            alert.show()
+        }
+    }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if buttonIndex == 0 {
+            println("Canceled");
+        } else {
+            playDismissAnimation()
+            status = .Done
+            
+            IGIGoal.cleanInvalidGoals()
             NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "returnToTimeline", userInfo: nil, repeats: false)
         }
     }
@@ -142,6 +156,12 @@ class IGITaskEntryViewController: GAITrackedViewController, UITextFieldDelegate 
             self.titleLabel.alpha = 1.0
             self.inputField.alpha = 1.0
         })
+        
+        let total = userObject!.totalUserGoals()
+        if (taskUnderEdit != nil) || total > 1 {
+            cancelAction.animation = "fadeIn"
+            cancelAction.animate()
+        }
         
         titleLabel.animation = "slideUp"
         titleLabel.curve = "easeIn"
