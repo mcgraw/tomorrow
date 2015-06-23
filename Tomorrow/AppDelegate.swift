@@ -55,6 +55,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BatchAdsDisplayDelegate, 
         
         // If we're returning we need to check if goal progress has elapsed
         IGIGoal.cleanElapsedGoals()
+        
+        // Check for notification updates if a user has been added
+        let users = IGIUser.allObjects()
+        if let user = users.firstObject() as? IGIUser where (user.goals.count > 0) {
+            BatchPush.registerForRemoteNotifications()
+        }
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
