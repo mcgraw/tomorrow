@@ -17,6 +17,7 @@ class IGITaskEntryViewController: GAITrackedViewController, UITextFieldDelegate 
     
     @IBOutlet weak var titleLabel: IGILabel!
     @IBOutlet weak var inputField: IGITextField!
+    @IBOutlet weak var cancelAction: IGIButton!
     
     var status: IGITaskEntryStatus = .Task1
     var accessoryView: UIView?
@@ -58,6 +59,13 @@ class IGITaskEntryViewController: GAITrackedViewController, UITextFieldDelegate 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        let total = userObject!.totalUserGoals()
+        if (taskUnderEdit != nil) || total > 1 {
+            cancelAction.hidden = false;
+        } else {
+            cancelAction.hidden = true;
+        }
+        
         screenName = "Task Entry Screen"
     }
     
@@ -93,6 +101,17 @@ class IGITaskEntryViewController: GAITrackedViewController, UITextFieldDelegate 
         titleLabel.text = "Edit Task"
     }
     
+    @IBAction func cancelEntry(sender: AnyObject) {
+        playDismissAnimation()
+        status = .Done
+        
+        if taskUnderEdit != nil {
+            NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "advanceOnboarding", userInfo: nil, repeats: false)
+        } else {
+            NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "returnToTimeline", userInfo: nil, repeats: false)
+        }
+    }
+
     func addInfoAccessoryView() {
         accessoryView = UIView()
         accessoryView?.alpha = 0
@@ -140,6 +159,13 @@ class IGITaskEntryViewController: GAITrackedViewController, UITextFieldDelegate 
     }
     
     func playDismissAnimation() {
+        
+        let total = userObject!.totalUserGoals()
+        if (taskUnderEdit != nil) || total > 1 {
+            cancelAction.animation = "fadeOut"
+            cancelAction.animate()
+        }
+        
         titleLabel.animation = "fall"
         titleLabel.animate()
         
@@ -246,5 +272,9 @@ class IGITaskEntryViewController: GAITrackedViewController, UITextFieldDelegate 
             }
             resetAndReplay()
         }
+    }
+    
+    func returnToTimeline() {
+        performSegueWithIdentifier("unwindToTimeline", sender: self)
     }
 }

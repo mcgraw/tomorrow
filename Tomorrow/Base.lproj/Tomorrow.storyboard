@@ -372,8 +372,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="What's the #1 task to complete tomorrow?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugU-ID-LH2" userLabel="Title" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
-                                <rect key="frame" x="20" y="80" width="560" height="93"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's the #1 task to complete tomorrow?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugU-ID-LH2" userLabel="Title" customClass="IGILabel" customModule="Tomorrow" customModuleProvider="target">
+                                <rect key="frame" x="20" y="60" width="560" height="93"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="34"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -381,8 +381,8 @@
                                     <outlet property="layoutConstraint" destination="XGJ-aa-TuJ" id="4ou-zp-RI4"/>
                                 </connections>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hLq-DC-SPK" userLabel="Input Field" customClass="IGITextField" customModule="Tomorrow" customModuleProvider="target">
-                                <rect key="frame" x="25" y="200" width="550" height="47"/>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hLq-DC-SPK" userLabel="Input Field" customClass="IGITextField" customModule="Tomorrow" customModuleProvider="target">
+                                <rect key="frame" x="25" y="180" width="550" height="47"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="34"/>
@@ -391,24 +391,47 @@
                                     <outlet property="delegate" destination="rFj-vI-7Ve" id="Pcz-tp-otb"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Cu-MD-koN" userLabel="Cancel" customClass="IGIButton" customModule="Tomorrow" customModuleProvider="target">
+                                <rect key="frame" x="550" y="8" width="42" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="9IM-Tn-fhS"/>
+                                    <constraint firstAttribute="height" constant="42" id="BS1-xN-lz4"/>
+                                </constraints>
+                                <state key="normal" image="close">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animation" value="fadeIn"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="cancelEntry:" destination="rFj-vI-7Ve" eventType="touchUpInside" id="pDs-EX-bJY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="hLq-DC-SPK" secondAttribute="trailing" constant="25" id="BI9-Yz-AIl"/>
                             <constraint firstAttribute="trailing" secondItem="ugU-ID-LH2" secondAttribute="trailing" constant="20" id="Ksq-Fm-w77"/>
+                            <constraint firstItem="6Cu-MD-koN" firstAttribute="top" secondItem="yj1-WW-TZT" secondAttribute="bottom" constant="8" id="R6w-SZ-p0H"/>
                             <constraint firstItem="ugU-ID-LH2" firstAttribute="top" secondItem="yj1-WW-TZT" secondAttribute="bottom" constant="60" id="XGJ-aa-TuJ"/>
+                            <constraint firstItem="6Cu-MD-koN" firstAttribute="trailing" secondItem="8KW-rc-wVO" secondAttribute="trailing" constant="-8" id="gxx-eg-OG9"/>
                             <constraint firstItem="hLq-DC-SPK" firstAttribute="top" secondItem="ugU-ID-LH2" secondAttribute="bottom" constant="27" id="k7c-mp-tEc"/>
                             <constraint firstItem="ugU-ID-LH2" firstAttribute="leading" secondItem="8KW-rc-wVO" secondAttribute="leading" constant="20" id="lmo-Ei-Q3S"/>
                             <constraint firstItem="hLq-DC-SPK" firstAttribute="leading" secondItem="8KW-rc-wVO" secondAttribute="leading" constant="25" id="mrK-2n-iRn"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cancelAction" destination="6Cu-MD-koN" id="7WS-Kn-T8M"/>
                         <outlet property="inputField" destination="hLq-DC-SPK" id="JlP-dQ-Irp"/>
                         <outlet property="titleLabel" destination="ugU-ID-LH2" id="grp-6w-oG5"/>
                         <segue destination="TRo-zP-ROM" kind="show" identifier="taskReviewSegue" id="aCG-BX-xAV"/>
+                        <segue destination="VLp-m0-9SH" kind="unwind" identifier="unwindToTimeline" unwindAction="unwindToTimeline:" id="dEw-Bo-AoK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uLN-zw-I92" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="VLp-m0-9SH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4144" y="589"/>
         </scene>
