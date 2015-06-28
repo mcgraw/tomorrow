@@ -72,10 +72,8 @@ class IGITaskEntryViewController: GAITrackedViewController, UIAlertViewDelegate,
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        if taskUnderEdit != nil {
-            playIntroductionAnimation()
-            inputField.becomeFirstResponder()
-        }
+        playIntroductionAnimation()
+        inputField.becomeFirstResponder()
     }
     
     @IBAction func unwindToTaskEntry(sender: UIStoryboardSegue) {
