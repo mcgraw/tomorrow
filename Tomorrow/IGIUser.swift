@@ -118,6 +118,7 @@ class IGIUser: RLMObject {
             println("Creating new task: \(strip)")
             task = IGITask()
             task?.name = strip.lowercase
+            task?.name_cased = strip
             task?.goals.addObject(goalEditing)
             goalEditing!.tasks.addObject(task)
             
@@ -126,6 +127,7 @@ class IGIUser: RLMObject {
             
         } else {
             println("Task already exists. Add it to the new goal!")
+            task?.name_cased = strip // update the case the user used
             task?.completed = false
             task?.failed = false
             task?.goals.addObject(goalEditing)

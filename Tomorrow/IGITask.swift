@@ -12,6 +12,7 @@ import Realm
 class IGITask: RLMObject {
     
     dynamic var name = ""
+    dynamic var name_cased = ""
     dynamic var motivation = ""
     
     dynamic var failed = false
@@ -36,6 +37,9 @@ class IGITask: RLMObject {
     }
     
     func getTaskTitle() -> String {
+        if name_cased != "" {
+            return name_cased.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        }
         return name.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!.capitalizedString
     }
     
